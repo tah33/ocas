@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Subject;
 use App\Department;
+use App\Student;
 class SubjectsTableSeeder extends Seeder
 {
 
@@ -11,13 +12,12 @@ class SubjectsTableSeeder extends Seeder
         $subjects = array(
             array('name' => 'Software'),
             array('name' => 'Networking'),
-            array('name' => 'BBA Finance'),
-            array('name' => 'BBA Human Resource'),
-            array('name' => 'BBA in Banking and Insurance'),
-            array('name' => 'BBA Marketing'),
-            array('name' => 'Power system'),
-            array('name' => 'power station'),
-            array('name' => 'Switchgate'),
+            array('name' => 'Electronics'),
+            array('name' => 'Communication'),
+            array('name' => 'ACCOUNTING AND FINANCE'),
+            array('name' => 'HUMAN RESOURCE MANAGEMENT (HRM)'),
+            array('name' => 'MANAGEMENT'),
+            array('name' => 'MARKETING'),
         );
         Subject::insert($subjects);
     }

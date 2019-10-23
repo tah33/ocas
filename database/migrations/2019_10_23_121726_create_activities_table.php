@@ -15,8 +15,8 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('ac_id');
-            $table->unsignedBigInteger('student_id');
-            $table->unsignedBigInteger('exam_id');
+            $table->unsignedBigInteger('student_id')->nullable();
+            $table->unsignedBigInteger('exam_id')->nullable();
             $table->time('login_time');
             $table->time('logout_time');
             $table->integer('no_of_exams');

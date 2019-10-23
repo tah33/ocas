@@ -8,7 +8,8 @@ class StudentsTableSeeder extends Seeder
 
     public function run()
     {
-        /*for($i=1;$i<=20;i++)
+        $gender = array(  'male' => 1, 'female'=>0);
+        for($i=1;$i<=20;$i++)
         {
             $student=Student::create([
                 'name' =>  Str::random(6),
@@ -16,10 +17,9 @@ class StudentsTableSeeder extends Seeder
                 'username' => Str::random(6),
                 'password' => bcrypt('tanvir'),
                 'phone' =>  rand(),
-                'gender' => Str::random(6),
-                'image' => bcrypt('tanvir'),
+                'gender' => array_rand($gender,1),
+                'image' => Str::random(6).'.jpg',
             ]);
-            $student->subject()->save($student);
-        }*/
+        }
     }
 }

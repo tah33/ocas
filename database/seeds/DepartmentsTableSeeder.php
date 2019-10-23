@@ -20,5 +20,6 @@ class DepartmentsTableSeeder extends Seeder
             array('name' => 'Bachelor of Arts in Economics'),
         );
         Department::insert($departments);
+        
     }
 }
