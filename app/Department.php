@@ -4,15 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model
+class Department extends Model
 {
-    protected $primaryKey='ac_id';
+    protected $primaryKey='dept_id';
     public function students()
     {
         return $this->hasMany(Student::class,'stu_id');
-    }
-    public function exams()
-    {
-        return $this->hasMany(Exam::class,'ex_id');
     }
 }
