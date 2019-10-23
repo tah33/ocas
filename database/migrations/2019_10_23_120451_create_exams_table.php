@@ -6,21 +6,31 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateExamsTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('exams', function (Blueprint $table) {
-            $table->bigIncrements('ex_id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
             $table->integer('mark');
             $table->time('time');
             $table->timestamps();
             $table->foreign('student_id')
-                ->references('stu_id')->on('students')
+                ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('exams');

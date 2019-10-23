@@ -22,11 +22,11 @@ class CreateActivitiesTable extends Migration
             $table->integer('no_of_exams');
             $table->timestamps();
             $table->foreign('student_id')
-                ->references('stu_id')->on('students')
+                ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
             $table->foreign('exam_id')
-                ->references('ex_id')->on('exams')
+                ->references('id')->on('exams')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

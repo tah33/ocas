@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
-    protected $primaryKey='dept_id';
     public function students()
     {
-        return $this->hasMany(Student::class,'stu_id');
+        return $this->hasMany(Student::class);
+    }
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
     }
 }

@@ -8,7 +8,7 @@ class StudentsTableSeeder extends Seeder
 
     public function run()
     {
-        for($i=1;$i<=20;i++)
+        /*for($i=1;$i<=20;i++)
         {
             $student=Student::create([
                 'name' =>  Str::random(6),
@@ -20,6 +20,6 @@ class StudentsTableSeeder extends Seeder
                 'image' => bcrypt('tanvir'),
             ]);
             $student->subject()->save($student);
-        }
+        }*/
     }
 }

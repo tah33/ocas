@@ -14,17 +14,17 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->bigIncrements('ques_id');
-            $table->unsignedBigInteger('exam_id');
-            $table->string('question');
-            $table->string('options');
-            $table->string('answer');
-            $table->timestamps();
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('exam_id');
+                $table->string('question');
+                $table->string('options');
+                $table->string('answer');
+                $table->timestamps();
 
-            $table->foreign('exam_id')
-                ->references('ex_id')->on('exams')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                $table->foreign('exam_id')
+                    ->references('id')->on('exams')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 
