@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateActivitiesTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('exam_id')->nullable();
             $table->unsignedBigInteger('student_id')->nullable();
-            $table->unsignedBigInteger('test_id')->nullable();
-            $table->time('login_time');
-            $table->time('logout_time');
-            $table->integer('no_of_exams');
+            $table->integer('marks');
             $table->timestamps();
-            $table->foreign('student_id')
-                ->references('id')->on('students')
+            $table->foreign('exam_id')
+                ->references('id')->on('exams')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreign('test_id')
-                ->references('id')->on('tests')
+                $table->foreign('student_id')
+                ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -39,6 +37,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('tests');
     }
 }

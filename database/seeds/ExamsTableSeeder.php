@@ -11,15 +11,15 @@ class ExamsTableSeeder extends Seeder
      */
     public function run()
     {
-    	$mytime = Carbon\Carbon::now('Asia/Dhaka');
-    	$mytime->add('30 minutes')->calendar();
-		$mytime->toDateTimeString();
-        for($i=0;$i<=20;$i++)
-        {
-        	Exam::create([
-        		'marks'=>rand(1,20),
-        		'time'=>$mytime
-        	]);
-        }
+    	for ($i=1; $i <=10 ; $i++) { 
+    		Exam::create([
+                'question_id' =>rand(1,2),
+            ]);
+    	}
+    	for ($i=1; $i <=5 ; $i++) { 
+    		Exam::create([
+                'question_id' =>3,
+            ]);
+    	}
     }
 }

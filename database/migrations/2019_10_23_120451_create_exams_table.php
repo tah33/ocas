@@ -15,12 +15,10 @@ class CreateExamsTable extends Migration
     {
         Schema::create('exams', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('student_id')->nullable();
-            $table->integer('marks');
-            $table->time('time');
+            $table->unsignedBigInteger('question_id')->nullable();
             $table->timestamps();
-            $table->foreign('student_id')
-                ->references('id')->on('students')
+            $table->foreign('question_id')
+                ->references('id')->on('questions')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
