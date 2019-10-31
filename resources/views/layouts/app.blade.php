@@ -59,38 +59,9 @@
         </div>
     </section>
     <section id="slider" class="text-center">
-        <div class="slider-overlay">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    </ol>
-                
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
-                      <div class="item active">
-                            <h3>Creative business specialist</h3>
-                            <h2>We are Creater</h2>
-                            <h4>web Design/web application</h4>
-                      </div>
-                      <div class="item">
-                            <h3>Creative business specialist</h3>
-                            <h2>We are Creater</h2>
-                            <h4>web Design/web application</h4>
-                      </div>
-                      <div class="item">
-                            <h3>Creative business specialist</h3>
-                            <h2>We are Creater</h2>
-                            <h4>web Design/web application</h4>
-                      </div>
-                    </div>
-                </div>    
-            </div>
     </section>
-    <a href="{{url('login')}}" class="btn btn-success">Login</a>
-    <a href="{{url('register')}}" class="btn btn-primary">Register</a>
+   <section> @yield('login')
+    <a href="{{url('register')}}" class="btn btn-primary">Register</a></section>
     <section class="about-area text-center">
         <div class="container">
                 <div class="about">

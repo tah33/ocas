@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section id="menu">
@@ -51,7 +51,12 @@
                                   <li><a href="#">Gellary</a></li>
                                   <li><a href="#">portfolio</a></li>
                                 </ul>
-                                
+                                <form class="navbar-form navbar-left">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                  </div>
+                                  <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
                               </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                           </nav>
@@ -89,8 +94,6 @@
                 </div>    
             </div>
     </section>
-    <a href="{{url('login')}}" class="btn btn-success">Login</a>
-    <a href="{{url('register')}}" class="btn btn-primary">Register</a>
     <section class="about-area text-center">
         <div class="container">
                 <div class="about">
@@ -410,3 +413,49 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
