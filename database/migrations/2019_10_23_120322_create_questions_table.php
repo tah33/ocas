@@ -21,7 +21,7 @@ class CreateQuestionsTable extends Migration
                 $table->string('option2');
                 $table->string('option3')->nullable();
                 $table->string('option4')->nullable();
-                $table->string('given_ans');
+                $table->string('given_ans')->nullable();
                 $table->string('correct_ans');
                 $table->timestamps();
                 $table->foreign('subject_id')

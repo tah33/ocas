@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Test;
 class TestsTableSeeder extends Seeder
 {
     /**
@@ -14,5 +14,15 @@ class TestsTableSeeder extends Seeder
         $mytime = Carbon\Carbon::now('Asia/Dhaka');
         $mytime->add('30 minutes')->calendar();
         $mytime->toDateTimeString();
+        for($i=1;$i<=15;$i++)
+        {
+            $student=Test::create([
+                'exam_id' =>  rand(1,2),
+                'student_id' =>  rand(1,15),
+                'marks' =>  rand(1,15),
+                'time' =>  $mytime
+            ]);
+        }
+
     }
 }

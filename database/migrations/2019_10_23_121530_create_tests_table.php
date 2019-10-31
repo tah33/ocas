@@ -18,6 +18,7 @@ class CreateTestsTable extends Migration
             $table->unsignedBigInteger('exam_id')->nullable();
             $table->unsignedBigInteger('student_id')->nullable();
             $table->integer('marks');
+            $table->time('time');
             $table->timestamps();
             $table->foreign('exam_id')
                 ->references('id')->on('exams')
