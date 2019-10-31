@@ -13,14 +13,14 @@ return [
     |
     */
 
-/*    'defaults' => [
+    'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-*/     'defaults' => [
+    /* 'defaults' => [
         'guard' => 'web',
         'passwords' => 'admins',
-    ],
+    ],*/
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -43,9 +43,13 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'web' => [
+        'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
         ],
 
         'api' => [
@@ -53,6 +57,7 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        
     ],
 
     /*
@@ -73,19 +78,23 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Student::class,
+        ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'users' => [
+             'driver' => 'database',
+             'table' => 'users',
+         ],
+         'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
     ],
 
     /*
@@ -109,11 +118,11 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
-         'admins' => [
+      /*   'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
+        ],*/
     ],
 
     /*
