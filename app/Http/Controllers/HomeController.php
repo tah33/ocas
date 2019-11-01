@@ -7,6 +7,8 @@ use Auth;
 use Toastr;
 use App\Subject;
 use App\Student;
+use App\Http\Requests\Register;
+use Imagick;
 class HomeController extends Controller
 {
 //    public function __construct()
@@ -55,7 +57,7 @@ class HomeController extends Controller
         $subjects=Subject::all();
         return view('home.register',compact('subjects'));
     }
-    public function create(Request $request)
+    public function create(Register $request)
     {
         $student=new Student;
         $student->name = $request->input('name');
@@ -64,16 +66,13 @@ class HomeController extends Controller
         $student->password = bcrypt($request->input('password'));
         $student->gender = $request->input('gender');
         $student->phone = $request->input('phone');
-        if ($request->hasFile('image')) {
-            $file = $request->image;
-            $destinationPath = public_path().'/images/';
-            $filename= $student->username . '.'.$file->clientExtension();
-            $file->move($destinationPath, $filename);
-            $student->image=$filename;
-
-        }
         $student->save();
         $student->subjects()->attach($request->id);
-        return back()->with('msg','Succesfully Added');
+        return home('home');
+    }
+    public function showRequestForm()
+    {
+        $subjects=Subject::all();
+        return view('home.register',compact('subjects'));
     }
 }
