@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Toastr;				
+use Toastr;
 class HomeController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware(['auth','verified']);
+//    }
 	//For showing the login form
      public function loginForm()
      {
@@ -20,7 +24,7 @@ class HomeController extends Controller
      	$username2=Auth::guard('student')->attempt(['email' => $request->input('login'), 'password' => $request->input('password')]);
      	$email2=Auth::guard('student')->attempt(['username' => $request->input('login'), 'password' => $request->input('password')]);
      	if ($username || $email || $username2 || $email2) {
-     		   
+
      		   return redirect()->intended(url('home'));
      	}
      	else
@@ -43,4 +47,9 @@ class HomeController extends Controller
      	Auth::guard('admin')->logout();
      	return redirect('/');
      }
+     //Show RegistrationForm
+    public function registerForm()
+    {
+        return view('home.regsiter');
+    }
 }

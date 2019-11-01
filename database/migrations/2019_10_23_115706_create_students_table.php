@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('interest')->nullable();
             $table->string('gender');
             $table->string('image')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->foreign('interest')
                 ->references('id')->on('subjects')

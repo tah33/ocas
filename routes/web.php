@@ -3,10 +3,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
+Auth::routes(['verify' => true]);
 //HomeController
 Route::get('login','HomeController@loginForm');
 Route::post('verify','HomeController@verify');
 Route::get('home','HomeController@home');
 Route::get('logout','HomeController@logout');
+Route::get('register','HomeController@registerForm');
 
+Route::get('password/reset', 'HomeController@showLinkRequestForm');
+Route::post('password/email', 'HomeController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'HomeController@showResetForm');
+Route::post('password/reset', 'HomePasswordController@reset');
