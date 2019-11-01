@@ -20,15 +20,10 @@ class CreateStudentsTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('phone');
-            $table->unsignedBigInteger('interest')->nullable();
             $table->string('gender');
             $table->string('image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
-            $table->foreign('interest')
-                ->references('id')->on('subjects')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 

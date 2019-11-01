@@ -9,15 +9,15 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Authenticatable implements MustVerifyEmail
 {
 	use Notifiable;
-	protected $fillable=['name','username','phone','password','interest','email','gender','image'];
+	protected $fillable=['name','username','phone','password','email','gender','image'];
 
     public function students()
     {
         return $this->belongsTo(Activity::class);
     }
 
-    public function subject()
+    public function subjects()
     {
-        return $this->belongsTo(Subject::class,'interest');
+        return $this->belongsToMany(Subject::class);
     }
 }

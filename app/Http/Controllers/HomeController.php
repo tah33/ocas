@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Toastr;
 use App\Subject;
+use App\Student;
 class HomeController extends Controller
 {
 //    public function __construct()
@@ -53,5 +54,26 @@ class HomeController extends Controller
     {
         $subjects=Subject::all();
         return view('home.register',compact('subjects'));
+    }
+    public function create(Request $request)
+    {
+        $student=new Student;
+        $student->name = $request->input('name');
+        $student->username = $request->input('username');
+        $student->email = $request->input('email');
+        $student->password = bcrypt($request->input('password'));
+        $student->gender = $request->input('gender');
+        $student->phone = $request->input('phone');
+        if ($request->hasFile('image')) {
+            $file = $request->image;
+            $destinationPath = public_path().'/images/';
+            $filename= $student->username . '.'.$file->clientExtension();
+            $file->move($destinationPath, $filename);
+            $student->image=$filename;
+
+        }
+        $student->save();
+        $student->subjects()->attach($request->id);
+        return back()->with('msg','Succesfully Added');
     }
 }

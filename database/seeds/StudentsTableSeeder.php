@@ -10,7 +10,7 @@ class StudentsTableSeeder extends Seeder
 
     public function run()
     {
-        $gender = array(  'male' => 1, 'female'=>0);
+        $gender = array('male','female');
         $soft=Subject::where('name','software')->first();
         $net=Subject::where('name','networking')->first();
         $com=Subject::where('name','communication')->first();
@@ -22,10 +22,10 @@ class StudentsTableSeeder extends Seeder
                 'username' => Str::random(6),
                 'password' => bcrypt('tanvir'),
                 'phone' =>  rand(),
-                'interest' =>  $soft->id,
-                'gender' => array_rand($gender,1),
+                'gender' => $gender[array_rand($gender, 1)],
                 'image' => Str::random(6).'.jpg',
             ]);
+            $student->subjects()->attach($soft);
         }
         for($i=1;$i<=5;$i++)
         {
@@ -35,10 +35,10 @@ class StudentsTableSeeder extends Seeder
                 'username' => Str::random(6),
                 'password' => bcrypt('tanvir'),
                 'phone' =>  rand(),
-                'interest' =>  $net->id,
                 'gender' => array_rand($gender,1),
                 'image' => Str::random(6).'.jpg',
             ]);
+            $student->subjects()->attach($net);
         }
         for($i=1;$i<=5;$i++)
         {
@@ -48,11 +48,11 @@ class StudentsTableSeeder extends Seeder
                 'username' => Str::random(6),
                 'password' => bcrypt('tanvir'),
                 'phone' =>  rand(),
-                'interest' =>  $com->id,
                 'gender' => array_rand($gender,1),
                 'image' => Str::random(6).'.jpg',
             ]);
+            $student->subjects()->attach($com);
         }
-        
+
     }
 }
