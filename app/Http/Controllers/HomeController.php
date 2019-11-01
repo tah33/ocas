@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Toastr;
+use App\Subject;
 class HomeController extends Controller
 {
 //    public function __construct()
@@ -50,6 +51,7 @@ class HomeController extends Controller
      //Show RegistrationForm
     public function registerForm()
     {
-        return view('home.regsiter');
+        $subjects=Subject::all();
+        return view('home.register',compact('subjects'));
     }
 }
