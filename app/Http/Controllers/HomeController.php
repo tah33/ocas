@@ -68,7 +68,7 @@ class HomeController extends Controller
         $student->phone = $request->input('phone');
         $student->save();
         $student->subjects()->attach($request->id);
-        return home('home');
+        return redirect('/login');
     }
     public function showRequestForm()
     {

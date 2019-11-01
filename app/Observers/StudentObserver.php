@@ -19,14 +19,10 @@ class StudentObserver
     }
     public function creating(Student $student)
     {
-        //dd($request->image);
         if ($this->request->hasFile('image')) {
-            $file = $this->request->image;
-            $destinationPath = public_path().'/images/';
-            $filename= $student->username . '.'.$file->clientExtension();
-            $file->move($destinationPath, $filename);
+            $filename= $student->username . '.' .$this->request->image->clientExtension();
+            $this->request->file('image')->storeAs('images',$filename);
             $student->image=$filename;
-
         }
     }
 

@@ -34,7 +34,7 @@ class Register extends FormRequest
             'username.unique'  => 'This Username is alreay taken',
             'email.required'  => 'Please enter a Email',
             'email.unique'  => 'This email is alreay taken',
-            'image.mimes' => 'Please choose a correct image',
+            //'image.mimes' => 'Please choose a correct image',
             'password.required'  => 'Please enter a Password',
             'password.confirmed'  => 'Password Confirmation Does Not Match',
             'password.min'  => 'Password should be Minimum of 8 Characters',
