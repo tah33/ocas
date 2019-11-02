@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\Http\Requests\Register;
+use Illuminate\Http\Request;
 use App\Student;
 use Imagick;
 class StudentObserver
 {
     protected $request;
 
-    public function __construct(Register $request)
+    public function __construct(Request $request)
     {
         $this->request = $request;
     }
