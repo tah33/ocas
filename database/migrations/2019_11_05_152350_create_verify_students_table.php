@@ -14,7 +14,7 @@ class CreateVerifyStudentsTable extends Migration
     public function up()
     {
         Schema::create('verify_students', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
             $table->string('token');
             $table->timestamps();
@@ -24,7 +24,6 @@ class CreateVerifyStudentsTable extends Migration
                 ->onUpdate('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      *

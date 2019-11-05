@@ -4,10 +4,10 @@
     <title>Welcome Email</title>
   </head>
   <body>
-    <h2>Welcome to the site {{$student['name']}}</h2>
+    <h2>Welcome to the site {{$student->name}}</h2>
     <br/>
-    Your registered email-id is {{$student['email']}} , Please click on the below link to verify your email account
+    Your registered email-id is {{$student->email}} , Please click on the below link to verify your email account
     <br/>
-    <a href="{{url('student/verify', $student->verifyUser->token)}}">Verify Email</a>
+    <a href="{{url('student/verify', $student->verifyStudent->token)}}">Verify Email</a>
   </body>
 </html>

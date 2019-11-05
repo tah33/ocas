@@ -9,6 +9,8 @@ use App\Department;
 use App\Student;
 use App\Http\Requests\Register;
 use App\verifyStudent;
+use App\Mail\VerifyMail;
+
 class HomeController extends Controller
 {
 
@@ -58,12 +60,19 @@ class HomeController extends Controller
     {
         //Registering Students
         $student=new Student;
-        $student->name = $request->input('name');
-        $student->username = $request->input('username');
-        $student->email = $request->input('email');
-        $student->password = bcrypt($request->input('password'));
-        $student->gender = $request->input('gender');
-        $student->phone = $request->input('phone');
+        $student->name = $request->name;
+        $student->username = $request->username;
+        $student->email = $request->email;
+        $student->password = bcrypt($request->password);
+        $student->gender = $request->gender;
+        $student->phone = $request->phone;
+        if ($request->image) {
+            $file=$request->File('image');
+            $ext=$student->username. "." .$file->clientExtension();
+            $path = public_path(). '/images/';
+            $file->storeAs('images/',$ext);
+            $student->image = $ext;
+        }
         $student->save();
 
         //Saving Departments to Students
@@ -76,7 +85,7 @@ class HomeController extends Controller
             ]);
         //Sending Mail to Student
         \Mail::to($student->email)->send(new VerifyMail($student));
-        return $student;
+        return view('home.verify',compact('student'));
     }
     public function verifyStudent($token)
     {

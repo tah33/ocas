@@ -20,7 +20,7 @@ class VerifyMail extends Mailable
 
    public function __construct($student)
    {
-        $this->user = $user;
+        $this->student = $student;
    }
 
     /**
@@ -30,6 +30,6 @@ class VerifyMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verifyUser');    
+        return $this->view('home.verify');    
     }
 }

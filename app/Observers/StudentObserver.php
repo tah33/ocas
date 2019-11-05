@@ -2,9 +2,7 @@
 
 namespace App\Observers;
 
-use Illuminate\Http\Request;
 use App\Student;
-use Imagick;
 class StudentObserver
 {
 
@@ -12,7 +10,7 @@ class StudentObserver
     {
         //
     }
-    public function creating(Student $student)
+    /*public function creating(Student $student)
     {
         $request = app('request');
         if ($request->hasFile('image')) {
@@ -20,8 +18,9 @@ class StudentObserver
             $ext=$request->username. "." .$file->clientExtension();
             $path = public_path(). '/images/';
             $file->move($path,$ext);
+            $student->image=$ext;
         }
-    }
+    }*/
 
     public function updated(Student $student)
     {

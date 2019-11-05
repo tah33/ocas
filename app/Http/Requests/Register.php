@@ -21,7 +21,6 @@ class Register extends FormRequest
             'phone' => 'required',
             'gender' => 'required',
             'id' => 'required',
-            'image' => 'nullable',
         ];
 //        |regex:^(?:\+88|01)?\d{11}$^
 //        |regex:/^(?:\+88|01)?\d{11}$/
