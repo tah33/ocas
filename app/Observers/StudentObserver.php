@@ -7,22 +7,19 @@ use App\Student;
 use Imagick;
 class StudentObserver
 {
-    protected $request;
 
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
     public function created(Student $student)
     {
         //
     }
     public function creating(Student $student)
     {
-        if ($this->request->hasFile('image')) {
-            $filename= $student->username . '.' .$this->request->image->clientExtension();
-            $this->request->file('image')->storeAs('images',$filename);
-            $student->image=$filename;
+        $request = app('request');
+        if ($request->hasFile('image')) {
+            $file=$request->File('image');
+            $ext=$request->username. "." .$file->clientExtension();
+            $path = public_path(). '/images/';
+            $file->move($path,$ext);
         }
     }
 

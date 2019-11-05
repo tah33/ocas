@@ -12,8 +12,5 @@ Route::get('logout','HomeController@logout');
 Route::get('register','HomeController@registerForm');
 Route::post('save-account','HomeController@create');
 
-Route::get('password/verify', 'HomeController@showRequestForm');
-Route::get('password/reset', 'HomeController@showLinkRequestForm');
-Route::post('password/email', 'HomeController@sendResetLinkEmail');
-Route::get('password/reset/{token}', 'HomeController@showResetForm');
-Route::post('password/reset', 'HomePasswordController@reset');
+Route::get('/student/verify/{token}', 'HomeController@verifyStudent');
+

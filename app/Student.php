@@ -11,13 +11,18 @@ class Student extends Authenticatable implements MustVerifyEmail
 	use Notifiable;
 	protected $fillable=['name','username','phone','password','email','gender','image'];
 
-    public function students()
+    public function activities()
     {
         return $this->belongsTo(Activity::class);
     }
 
-    public function subjects()
+    public function departments()
     {
-        return $this->belongsToMany(Subject::class);
+        return $this->belongsToMany(Department::class);
+    }
+
+    public function verifyUser()
+    {
+        return $this->hasOne(VerifyStudent::class);
     }
 }

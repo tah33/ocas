@@ -17,14 +17,9 @@ class ActivityTableSeeder extends Seeder
         foreach ($stus as $key => $value) {
             $list[]=$value->id;
         }
-        $tests=Test::all();
-        foreach ($tests as $key => $test) {
-            $lists[]=$test->id;
-        }
     	for ($i=0; $i <=15 ; $i++) { 
     		Activity::create([
             'student_id'=>$list[array_rand($list, 1)],
-            'test_id'=>$lists[array_rand($lists, 1)],
         	'login_time'=>now(),
         	'logout_time'=>now(),
         	'no_of_exams'=>rand(1,10)

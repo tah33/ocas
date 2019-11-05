@@ -45,9 +45,9 @@
                     <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                <select class="myselect control-form" name="id[]" style="width:500px;" multiple="multiple" data-placeholder="Select Interest Subject/s">
-                        @foreach($subjects as $subject)
-                        <option value="{{$subject->id}}">{{$subject->name}}</option>
+                <select class="myselect control-form" name="id[]" style="width:500px;" multiple="multiple" data-placeholder="Select Your Interests Area">
+                        @foreach($departments as $department)
+                        <option value="{{$department->id}}">{{$department->name}}</option>
                         @endforeach
                 </select>
                 @error('id')

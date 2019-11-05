@@ -5,16 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Toastr;
-use App\Subject;
+use App\Department;
 use App\Student;
 use App\Http\Requests\Register;
-use Imagick;
+use App\verifyStudent;
 class HomeController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware(['auth','verified']);
-//    }
+
 	//For showing the login form
      public function loginForm()
      {
@@ -54,11 +51,12 @@ class HomeController extends Controller
      //Show RegistrationForm
     public function registerForm()
     {
-        $subjects=Subject::all();
-        return view('home.register',compact('subjects'));
+        $departments=Department::all();
+        return view('home.register',compact('departments'));
     }
     public function create(Register $request)
     {
+        //Registering Students
         $student=new Student;
         $student->name = $request->input('name');
         $student->username = $request->input('username');
@@ -67,12 +65,49 @@ class HomeController extends Controller
         $student->gender = $request->input('gender');
         $student->phone = $request->input('phone');
         $student->save();
-        $student->subjects()->attach($request->id);
-        return redirect('/login');
+
+        //Saving Departments to Students
+        $student->departments()->attach($request->id);
+
+        //Generating a Token for Student
+        $verifyUser = VerifyStudent::create([
+        'student_id' => $student->id,
+        'token' => sha1(time())
+            ]);
+        //Sending Mail to Student
+        \Mail::to($student->email)->send(new VerifyMail($student));
+        return $student;
     }
-    public function showRequestForm()
+    public function verifyStudent($token)
     {
-        $subjects=Subject::all();
-        return view('home.register',compact('subjects'));
+        $verifyStudent = VerifyStudent::where('token', $token)->first();
+  if(isset($verifyStudent) )
+  {
+    $student = $verifyStudent->student;
+    if(!$student->verified)
+    {
+      $verifyStudent->student->verified = 1;
+      $verifyStudent->student->save();
+      $status = "Your e-mail is verified. You can now login.";
+    } 
+    else
+    {
+      $status = "Your e-mail is already verified. You can now login.";
     }
+  }
+   else
+   {
+    return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+   }
+  return redirect('/login')->with('status', $status);
+}
+public function authenticated(Request $request, $student)
+{
+  if (!$student->verified) {
+    auth()->logout();
+    return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+  }
+  return redirect()->intended($this->redirectPath());
+}
+
 }

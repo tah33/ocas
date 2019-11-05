@@ -22,7 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('phone');
             $table->string('gender');
             $table->string('image')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }
