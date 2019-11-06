@@ -7,7 +7,7 @@ use Auth;
 use Toastr;
 use App\Department;
 use App\Student;
-use App\Http\Requests\Register;
+use App\Http\Requests\Login;
 use App\verifyStudent;
 use App\Mail\VerifyMail;
 
@@ -20,7 +20,7 @@ class HomeController extends Controller
      	return view('home.login');
      }
      //For verifying the login
-     public function verify(Request $request)
+     public function verifyLogin(Login $request)
      {
      	$username=Auth::guard('admin')->attempt(['email' => $request->input('login'), 'password' => $request->input('password')]);
      	$email=Auth::guard('admin')->attempt(['username' => $request->input('login'), 'password' => $request->input('password')]);
@@ -56,44 +56,7 @@ class HomeController extends Controller
      	Auth::guard('admin')->logout();
      	return redirect('/login');
      }
-     //Show RegistrationForm
-    public function registerForm()
-    {
-        $departments=Department::all();
-        return view('home.register',compact('departments'));
-    }
-    public function create(Register $request)
-    {
-        //Registering Students
-        $student=new Student;
-        $student->name = $request->name;
-        $student->username = $request->username;
-        $student->email = $request->email;
-        $student->password = bcrypt($request->password);
-        $student->gender = $request->gender;
-        $student->phone = $request->phone;
-        if ($request->image) {
-            $file=$request->File('image');
-            $ext=$student->username. "." .$file->clientExtension();
-            $path = public_path(). '/images/';
-            // $file->storeAs('images/',$ext);
-            $file->move('images',$ext);
-            $student->image = $ext;
-        }
-        $student->save();
-
-        //Saving Departments to Students
-        $student->departments()->attach($request->id);
-
-        //Generating a Token for Student
-        $verifyUser = VerifyStudent::create([
-        'student_id' => $student->id,
-        'token' => sha1(time())
-            ]);
-        //Sending Mail to Student
-        \Mail::to($student->email)->send(new VerifyMail($student));
-        return redirect('/login')->with('info', "Email Verification Link was Sent, Please Verfiy Your mail Before Login.");
-    }
+ 
     public function verifyStudent($token)
     {
         $verifyStudent = VerifyStudent::where('token', $token)->first();
@@ -117,4 +80,5 @@ class HomeController extends Controller
         }
         return redirect('/login')->with('status', $status);
     }
+    
 }

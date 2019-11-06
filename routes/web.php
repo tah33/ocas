@@ -6,11 +6,11 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 //HomeController
 Route::get('login','HomeController@loginForm');
-Route::post('verify','HomeController@verify');
+Route::post('verify-login','HomeController@verifyLogin');
 Route::get('home','HomeController@home')->middleware('auth:admin,student');
 Route::get('logout','HomeController@logout');
-Route::get('register','HomeController@registerForm');
-Route::post('save-account','HomeController@create');
-
 Route::get('/student/verify/{token}', 'HomeController@verifyStudent');
+Route::resource('students', 'StudentController');
+Route::get('blocked-users','StudentController@blockedUsers');
+Route::get('unblock/{id}','StudentController@unblock');
 

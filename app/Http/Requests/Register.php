@@ -18,12 +18,11 @@ class Register extends FormRequest
             'username' => 'required|unique:admins,username|unique:students,username',
             'email' => 'required|unique:admins,email|unique:students,email',
             'password' => 'required|confirmed|min:8',
-            'phone' => 'required',
+            'phone' => 'required|regex:/\+?(880)?01[3456789][0-9]{8}\b/|max:14|min:11|unique:students,phone',
             'gender' => 'required',
             'id' => 'required',
+            'address' => 'required',
         ];
-//        |regex:^(?:\+88|01)?\d{11}$^
-//        |regex:/^(?:\+88|01)?\d{11}$/
     }
     public function messages()
     {
@@ -39,6 +38,7 @@ class Register extends FormRequest
             'password.min'  => 'Password should be Minimum of 8 Characters',
             'gender.required'  => 'Please Choose a Gender',
             'phone.required'  => 'Enter your phone number',
+            'address.required'  => 'Enter your Address',
             'id.required'  => 'Please Choose at Least one subject',
         ];
     }

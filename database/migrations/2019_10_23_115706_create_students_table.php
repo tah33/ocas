@@ -21,8 +21,10 @@ class CreateStudentsTable extends Migration
             $table->string('password');
             $table->string('phone');
             $table->string('gender');
+            $table->string('address');
             $table->string('image')->nullable();
-            $table->boolean('verified')->default(false);
+            $table->boolean('verified')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('style.css')}}">
+    <title>Online Counselling</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <section id="menu">
         <div class="container">
             <div class="row">
+              <div class="col-md-12">
                     <nav class="navbar navbar-default">
                             <div class="container-fluid">
                               <!-- Brand and toggle get grouped for better mobile display -->
@@ -36,77 +37,89 @@
                                   <li class=""><a href="#">Home<span class="sr-only">(current)</span></a></li>
                                   <li><a href="#">services</a></li>
                                   <li class="About us">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                      <li><a href="#">Action</a></li>
-                                      <li><a href="#">Another action</a></li>
-                                      <li><a href="#">Something else here</a></li>
-                                      <li role="separator" class="divider"></li>
-                                      <li><a href="#">Separated link</a></li>
-                                      <li role="separator" class="divider"></li>
-                                      <li><a href="#">One more separated link</a></li>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departments <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" id="slider">
+                                      <li><a href="#">CSE</a></li>
+                                      <li><a href="#">EEE</a></li>
+                                      <li><a href="#">CE</a></li>
+                                      <li><a href="#">ME</a></li>
+                                      <li><a href="#">BBA</a></li>
+                                      <li><a href="#">OTHERS</a></li>
+                                      
                                     </ul>
                                   </li>
-                                  <li><a href="#">contuct</a></li>
-                                  <li><a href="#">Gellary</a></li>
-                                  <li><a href="#">portfolio</a></li>
+                                  <li><a href="{{url('login')}}">Sign in</a></li>
+                                  <li><a href="{{url('register')}}">Sign up</a></li>
+                        
                                 </ul>
-                                
+                                <form class="navbar-form navbar-left" >
+                                  <div class="form-group">
+                                    <input type="text" style="padding-right: 100px" class="form-control" placeholder="Search">
+                                  </div>
+                                  <button type="submit" class="btn btn-default">Submit</button>
+                                </form>
                               </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
                           </nav>
             </div>
+            </div>
         </div>
     </section>
     <section id="slider" class="text-center">
+        <div class="slider-overlay">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                      <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                    </ol>
+                
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                      <div class="item active">
+                            <h3>Are You Capable to Do?</h3>
+                            <a href=""><h2>CSE</h2> </a>
+                            <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+                      <div class="item">
+                            <h3>Are You Capable to Do?</h3>
+                            <a href=""><h2>EEE</h2> </a>
+                            <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+                      <div class="item">
+                            <h3>Are You Capable to Do?</h3>
+                            <a href=""><h2>CE</h2> </a>
+                            <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+                      <div class="item">
+                            <h3>Are You Capable to Do?</h3>
+                           <a href=""><h2>ME</h2> </a>
+                            <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+                      <div class="item">
+                            <h3>Are You Capable to Do?</h3>
+                           <a href=""><h2>BBA</h2> </a>
+                           <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+                      <div class="item">
+                            <h3>If You Are Confused</h3>
+                            <a href=""><h2>Let Us Help</h2> </a>
+                            <a href=""><h4>Test Yourself</h4> </a>
+                      </div>
+
+
+
+                    </div>
+                </div>    
+            </div>
     </section>
-   <section> @yield('login')
-    <a href="{{url('register')}}" class="btn btn-primary">Register</a></section>
     <section class="about-area text-center">
         <div class="container">
-                <div class="about">
-                    <h2>About us</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem officiis, quo rerum quisquam laborum ut maiores ipsam laboriosam similique eaque accusamus sequi, aperiam perspiciatis ratione quaerat. Quidem numquam vel perspiciatis?</p>
-                </div>
-             <div class="row">
-                 <div class="col-md-3">
-                        <div class="about-content">
-                            <div class="about-icon">
-                                 <a href=""><i class="fa fa-desktop"></i></a>
-                                 <h3>web Design</h3>
-                            </div>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, veritatis quisquam aspernatur optio perferendis reprehenderit hic</p>
-                        </div>
-                 </div>
-                 <div class="col-md-3">
-                        <div class="about-content">
-                            <div class="about-icon">
-                                <a href=""><i class="fa fa-book"></i></a>
-                                <h3>web Design</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, veritatis quisquam aspernatur optio perferendis reprehenderit hic</p>
-                        </div>
-                 </div>
-                 <div class="col-md-3">
-                        <div class="about-content">
-                            <div class="about-icon">
-                                <a href=""><i class="fa fa-clipboard"></i></a>
-                                <h3>web Design</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, veritatis quisquam aspernatur optio perferendis reprehenderit hic</p>
-                        </div>
-                 </div>
-                 <div class="col-md-3">
-                        <div class="about-content">
-                            <div class="about-icon">
-                                <a href=""><i class="fa fa-windows"></i></a>
-                                 <h3>web Design</h3>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, veritatis quisquam aspernatur optio perferendis reprehenderit hic</p>
-                        </div>
-                 </div>
-             </div>   
-        </div>
+                @yield('content')
     </section>
     <section class="about-servic text-center">
             <div class="container">
@@ -114,188 +127,68 @@
                             <h2>About Services</h2>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem officiis, quo rerum quisquam laborum ut maiores ipsam laboriosam similique eaque accusamus sequi, aperiam perspiciatis ratione quaerat. Quidem numquam vel perspiciatis?</p>
                         </div>
+
+                        <div class="row">
+                         <div class="col-md-3">
+                                <div class="service-item">
+                                    <img src="image/cse.jpg" alt="">
+                                    <div class="service-overlay"></div>
+                                    <div class="service-icon">
+                                        <button>Sign in</button>
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="col-md-3">
+                                <div class="service-item">
+                                   <img src="image/eee.jpg" alt="">
+                                   <div class="service-overlay"></div>
+                                   <div class="service-icon">
+                                        <button>Sign in</button>
+
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="col-md-3">
+                                <div class="service-item">
+                                    <img src="image/ce.jpg" alt="">
+                                    <div class="service-overlay"></div>
+                                    <div class="service-icon">
+                    <button>Sign in</button>
+                                    </div>
+                                </div>
+                         </div>
+                         <div class="col-md-3">
+                                <div class="service-item">
+                                   <img src="image/me.jpg" alt="">
+                                   <div class="service-overlay"></div>
+                                   <div class="service-icon">
+                                        <button>Sign in</button>
+
+                                    </div>
+                                </div>
+                         </div>
+                     </div> 
                      <div class="row">
                          <div class="col-md-3">
                                 <div class="service-item">
-                                    <img src="images/servic.jpeg" alt="">
+                                    <img src="image/bba.png" alt="">
                                     <div class="service-overlay"></div>
                                     <div class="service-icon">
-                                        <i class="fa fa-google-plus"></i>
-                                        <i class="fa fa-facebook"></i>
+                                        <button>Sign in</button>
                                     </div>
                                 </div>
                          </div>
                          <div class="col-md-3">
                                 <div class="service-item">
-                                   <img src="images/service-6.jpeg" alt="">
+                                   <img src="image/other.png" alt="">
                                    <div class="service-overlay"></div>
                                    <div class="service-icon">
-                                        <i class="fa fa-google-plus"></i>
-                                        <i class="fa fa-facebook"></i>
+                                       <button>Sign in</button>
                                     </div>
                                 </div>
-                         </div>
-                         <div class="col-md-3">
-                                <div class="service-item">
-                                    <img src="images/service-5.jpeg" alt="">
-                                    <div class="service-overlay"></div>
-                                    <div class="service-icon">
-                                        <i class="fa fa-google-plus"></i>
-                                        <i class="fa fa-facebook"></i>
-                                    </div>
-                                </div>
-                         </div>
-                         <div class="col-md-3">
-                                <div class="service-item">
-                                   <img src="images/service-4.jpeg" alt="">
-                                   <div class="service-overlay"></div>
-                                   <div class="service-icon">
-                                        <i class="fa fa-google-plus"></i>
-                                        <i class="fa fa-facebook"></i>
-                                    </div>
-                                </div>
-                         </div>
+                         
                      </div>  
-            </div>
-        </section>
-        <section id="portfolio" class="text-center">
-            <div class="container">
-                <div class="about text-center">
-                    <h2>Our portfolio</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem officiis, quo rerum quisquam laborum ut maiores ipsam laboriosam similique eaque accusamus sequi, aperiam perspiciatis</p>
-                </div>
-                <div id="filters" class="button-group">  <button class="button is-checked" data-filter="*">All works</button>
-                  <button class="button" data-filter=".metal">web Design</button>
-                  <button class="button" data-filter=".transition">Logo Desing</button>
-                  <button class="button" data-filter=".alkali, .alkaline-earth">illstrator</button>
-                  <button class="button" data-filter=":not(.transition)">Photoshope</button>
-                  <button class="button" data-filter=".metal:not(.transition)">Theme Devlopment</button>
-                </div>
-                <div class="grid">
-                  <div class="element-item transition metal " data-category="transition">
-                       <img src="images/service-6.jpeg" alt="">
-                  </div>
-                  <div class="element-item metalloid " data-category="metalloid">
-                      <img src="images/service-6.jpeg" alt="">
-                  </div>
-                  <div class="element-item post-transition metal " data-category="post-transition">
-                     <img src="images/service-6.jpeg" alt="">
-                  </div>
-                  <div class="element-item post-transition metal " data-category="post-transition">
-                     <img src="images/service-6.jpeg" alt="">
-                  </div>
-                  <div class="element-item transition metal " data-category="transition">
-                    <img src="images/service-6.jpeg" alt="">
-                  </div>
-                  <div class="element-item alkali metal " data-category="alkali">
-                     <img src="images/service-6.jpeg" alt="">
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <section id="" class="text-center ">
-            <div class="container">
-                <div class="about text-center">
-                    <h2>Our Priceing</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem officiis, quo rerum quisquam laborum ut maiores ipsam laboriosam similique eaque accusamus sequi, aperiam perspiciatis</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="priceing">
-                            <div class="priceing-top">
-                                <p><sup>$</sup><em>55</em>/ mo</p>
-                                <span>Basic</span>
-                            </div>
-                            <ul>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                            </ul>
-                            <div class="btn">Order Now</div>
-                        </div>
-                   </div>
-                    <div class="col-md-3">
-                        <div class="priceing">
-                            <div class="priceing-top">
-                                <p><sup>$</sup><em>55</em>/ mo</p>
-                                <span>Basic</span>
-                            </div>
-                            <ul>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                            </ul>
-                            <div class="btn">Order Now</div>
-                        </div>
-                   </div>
-                    <div class="col-md-3">
-                        <div class="priceing">
-                            <div class="priceing-top">
-                                <p><sup>$</sup><em>55</em>/ mo</p>
-                                <span>Basic</span>
-                            </div>
-                            <ul>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                            </ul>
-                            <div class="btn">Order Now</div>
-                        </div>
-                   </div>
-                    <div class="col-md-3">
-                        <div class="priceing">
-                            <div class="priceing-top">
-                                <p><sup>$</sup><em>55</em>/mo</p>
-                                <span>Basic</span>
-                            </div>
-                            <ul>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                                <li><a href="">GB hand width</a></li>
-                            </ul>
-                            <div class="btn">Order Now</div>
-                        </div>
-                   </div>
-                </div>
-            </div>
-        </section>
-        <section id="counterup-area" class="text-center">
-           <div class="counter-overlay">
-                <div class="container">
-                    <div class="counterup">
-                        <div class="row">
-                           <div class="col-md-3">
-                                <div class="count">
-                                    <span class="counter">12345</span>
-                                    <h3>Happy coustomer</h3>
-                                </div>
-                            </div>
-                             <div class="col-md-3">
-                                <div class="count">
-                                    <span class="counter">12345</span>
-                                    <h3>Happy coustomer</h3>
-                                </div>
-                            </div> 
-                             <div class="col-md-3">
-                                <div class="count">
-                                    <span class="counter">12345</span>
-                                    <h3>Happy coustomer</h3>
-                                </div>
-                            </div> 
-                             <div class="col-md-3">
-                                <div class="count">
-                                    <span class="counter">12345</span>
-                                    <h3>Happy coustomer</h3>
-                                </div>
-                            </div>     
-                        </div>
-                    </div>
-                </div>
+                     
             </div>
         </section>
         <section class="Contuct-area text-center">
@@ -344,7 +237,7 @@
              </div>   
         </div>
     </section>
-    <section id="Contruct-form">
+   <!-- <section id="Contruct-form">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -362,7 +255,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assets/js/isotope.min.js"></script>

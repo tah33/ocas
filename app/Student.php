@@ -5,10 +5,13 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Authenticatable implements MustVerifyEmail
 {
-	use Notifiable;
+	use Notifiable,SoftDeletes;
+    protected $guard='student';
+
 	protected $fillable=['name','username','phone','password','email','gender','image'];
 
     public function activities()
@@ -24,5 +27,9 @@ class Student extends Authenticatable implements MustVerifyEmail
     public function verifyStudent()
     {
         return $this->hasOne(VerifyStudent::class);
+    }
+    public function getGenderNameattribute()
+    {
+        return ucfirst($this->gender);
     }
 }
