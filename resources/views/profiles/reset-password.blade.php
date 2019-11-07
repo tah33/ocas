@@ -1,35 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
-    @if(Auth::user()->hasRole('member'))
-@section('sidebar')
-    <ul class="sidebar-menu" data-widget="tree">
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-share"></i> <span>Member</span>
-                <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="{{url('add-members',Auth::user()->teams->first()->id)}}"><i class="fa fa-user-plus"></i> Add Member</a></li>
-                <li>
-                    <a href="{{url('team-members',Auth::user()->teams->first()->id)}}"><i class="fa fa-users"></i> View Members</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="{{url('team-task',Auth::user()->teams->first()->id)}}"><i class="fa fa-users"></i> View Tasks</a></li>
-        </li>
-    </ul>
-    <!-- /.col -->
-@stop
-@endif
+@if (session('success'))
+  <div class="alert alert-success">
+    {{ session('success') }}
+  </div>
+  @endif
+ 
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title">Update Password</h3>
             </div>
             <div class="box-body">
-                <form method="post" action="{{url('change-password',Auth::id())}}">
+                <form method="post" action="{{url('reset-password',$user->id)}}">
                     @csrf
 <div class="form-group">
     <input  type="password" class="form-control" name="old" placeholder="Old Password...">

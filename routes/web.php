@@ -15,3 +15,7 @@ Route::get('blocked-users','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
 
 Route::resource('profiles', 'ProfileController');
+Route::get('change-password','ProfileController@password');
+Route::post('reset-password/{id}','ProfileController@resetpassword');
+Route::resource('departments', 'DepartmentController');
+

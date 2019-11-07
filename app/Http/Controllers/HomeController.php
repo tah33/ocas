@@ -40,7 +40,11 @@ class HomeController extends Controller
      public function home(Request $request)
      {
      	if(Auth::guard('admin')->check())
-     		return view('admin.home');
+        {
+            $students=Student::all();
+            $departments=Department::all();
+     		return view('admin.home',compact('students','departments'));
+        }
      	elseif(Auth::guard('student')->check() && Auth::user()->verified == 1)
      		return view('student.home');
         else

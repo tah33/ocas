@@ -23,6 +23,7 @@
                 @if($user->phone)<li class="list-group-item">Phone : {{$user->phone}}</li>@endif
                 @if($user->gender)<li class="list-group-item">gender : {{$user->gender}}</li>@endif
                 @if($user->address)<li class="list-group-item">addrees : {{$user->addrees}}</li>@endif
+                </li>
             </ul>
                 <div class="card-body">
                     <a href="{{url('profiles/'.$user->id.'/edit')}}" class="btn btn-primary">Edit Profile</a>

@@ -124,7 +124,7 @@
                                 </li>
                         </ul>
                         </li>
-                        <li><a href="{{url('tasks')}}"><i class="glyphicon glyphicon-tasks"></i> <span>Tasks</span></a>
+                        <li><a href="{{url('students')}}"><i class="glyphicon glyphicon-user"></i> <span>Students</span></a>
                         </li>
 
             </ul>

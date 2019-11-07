@@ -23,7 +23,19 @@
                 <li class="list-group-item">Phone : {{$student->phone}}</li>
                 <li class="list-group-item">Gender : {{$student->gendername}}</li>
                 <li class="list-group-item">Address : {{$student->address}}</li>
+                <li class="list-group-item">Interested Department : <br>@foreach($student->departments as $key=> $department)
+                    
+                            {{$key+1}} : {{$department->name}} <br>  
+                        
+                        @endforeach
+                </li>
+                
             </ul>
+            <div >
+                <ul>
+                    
+                </ul>
+            </div>
             @if($student->id == Auth::id())
             <div class="card-body">
                 <a href="{{url('edit-profile',$student->id)}}" class="btn btn-primary">Edit Profile</a>
