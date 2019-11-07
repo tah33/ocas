@@ -14,13 +14,13 @@
     {{ session('info') }}
   </div>
   @endif
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
+<div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Login</h3>
+            </div>
+            <div class="box-body">
+    
                     <form method="POST" action="{{url('verify-login')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
@@ -60,5 +60,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>

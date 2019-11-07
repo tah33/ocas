@@ -1,13 +1,11 @@
 @extends('layouts.header')
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{url('save-account')}}" enctype="multipart/form-data">
+<div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Register</h3>
+            </div>
+            <div class="box-body">
+                        <form method="POST" action="{{url('save-account')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -85,7 +83,6 @@
                                 @endif
                             </div>
                         </div>
-                        </div>
                             <div class="form-group row">
                             <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
@@ -149,5 +146,3 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>

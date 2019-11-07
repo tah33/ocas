@@ -14,3 +14,4 @@ Route::resource('students', 'StudentController');
 Route::get('blocked-users','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
 
+Route::resource('profiles', 'ProfileController');

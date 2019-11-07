@@ -1,8 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<center><a href="{{url('blocked-users')}}" class="btn btn-info">Blocked Users</a></center>
     <div class="row"> 
         <div class="box">
+<a href="{{url('blocked-users')}}" class="btn btn-info">Blocked Users</a>
+
             <div class="box-body">
                 <table class="table table-hover table-bordered">
                     <thead>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TMS</title>
+    <title>OCASUS</title>
     <link rel="shortcut icon" href="{{ asset('public/favicon.jpg') }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -36,72 +36,114 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
-    <div class="wrapper">
-    <header id="dt-Head" class="main-header">
-    <!-- Logo -->
-    <a href="{{ url('/') }}" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini">HRM</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>HR & Payroll</b></span>
-    </a>
-    <!-- Header Navbar -->
-   <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="javascript:;" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{{url('home')}}" class="logo">
+            <!-- mini logo for siiiidebar mini 50x50 pixels -->
+            <span class="logo-mini">{{Auth::guard('admin')->user()->name}}</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Dashboard</span>
         </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
 
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav navbar-left hidden-xs">
-                <li id="dt-DateTime">
-                    <a href="{{url('logout')}}">Logout
-                   
-                    </a>
-                </li>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu">
+                        <ul class="dropdown-menu">
+                            <ul class="menu">
+                                </li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            @if(Auth::guard('admin')->user()->image == "")
+                                <img src="{{asset('public/images/avatar.png')}}" class="user-image">
+                            @else
+                                <img src="{{asset('public/images/'.Auth::guard('admin')->user()->image)}}" class="user-image">
+                            @endif
+                            <span class="hidden-xs">{{Auth::guard('admin')->user()->name}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                @if(Auth::guard('admin')->user()->image =='')
+                                    <img src="{{asset('public/images/avatar.png')}}" class="img-circle">
+                                @else
+                                    <img src="{{asset('public/images/'.Auth::guard('admin')->user()->image)}}" class="img-circle">
+                                @endif
+                                <p>
+                                    <br> {{Auth::guard('admin')->user()->name}}
+                                    <small>Member since {{Auth::guard('admin')->user()->created_at->diffForHumans()}}</small>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="{{url('profiles',Auth::guard('admin')->user()->id)}}" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{url('logout')}}" class="btn btn-default btn-flat">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            >
+            <li class="header" style="color: white"><span>Users Settings</span></li>
+            <ul class="sidebar-menu" data-widget="tree">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-share"></i> <span>Settings</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{url('profiles',Auth::guard('admin')->user()->id)}}"><i class="fa fa-user-plus"></i>Update Profile</a></li>
+                                <li>
+                                    <a href="{{url('change-password')}}"><i class="fa fa-users"></i> Change Password</a>
+                                </li>
+                        </ul>
+                        </li>
+                        <li><a href="{{url('tasks')}}"><i class="glyphicon glyphicon-tasks"></i> <span>Tasks</span></a>
+                        </li>
+
             </ul>
-            
-        </div>
-    </nav>
-</header>
-<aside id="dt-Nav" class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">NAVIGATION</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li>
-                <a href="{{ url('home') }}">
-                    <i class="fa fa-dashboard"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="header">Students</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li>
-                <a href="{{ url('students') }}">
-                    <i class="fa fa-user"></i>
-                    <span>Students</span>
-                </a>
-            </li>
+            @yield('sidebar')
+        </section>
+        <!-- /.sidebar -->
+    </aside>
 
-        </ul>
-        <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
         </section>
+
         <section class="content">
             @yield('content')
         </section>
-    </div>
         <!-- /.content -->
+    </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -112,15 +154,20 @@
         reserved.
     </footer>
 
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
 <!-- jQuery 3 -->
-<script src="{{asset('public/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="{{asset('public/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('public/dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('public/dist/js/demo.js')}}"></script>
-<script src="{{asset('public/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="sweetalert2.all.min.js"></script>
 @stack('script-file');
