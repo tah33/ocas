@@ -18,7 +18,6 @@ class CreateSubjectsTable extends Migration
             $table->unsignedBigInteger('department_id')->nullable();
             $table->string('name')->unique();
             $table->timestamps();
-
             $table->foreign('department_id')
                 ->references('id')->on('departments')
                 ->onDelete('cascade')

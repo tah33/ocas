@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Department;
-use Illuminate\Http\Request;
-
+use App\Subject;
+use App\Rule;
+use App\Http\Requests\DepartmentRequest;
+use Toastr;
 class DepartmentController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments=Department::all();
+        $departments=Department::paginate(10);
         return view('departments.index',compact('departments'));
     }
 
@@ -25,7 +27,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $subjects=Subject::all();
+        return view('departments.create',compact('subjects'));
     }
 
     /**
@@ -34,9 +37,39 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
-        //
+        $department=new Department;
+        $department->name=$request->name;
+        $department->minimum=$request->minimum;
+        $department->slug=$request->slug;
+        if ($request->range && $request->total) {
+            $exceed=$request->range + $request->total;
+            if ($exceed > 100) {
+                Toastr::error('Total Number Cannot Exceed 100 Marks','Error!');
+                return back();
+            }
+        }
+        if($request->subject_id && $request->range)
+        {
+            $department->save();
+            $rule = new Rule;
+            $rule->subject_id=$request->subject_id;
+            $rule->department_id=$department->id;
+            $rule->range=$request->range;
+            $rule->save();
+        }
+        // elseif($request->id && $request->total)
+        // {
+        //     $rule = new Rule;
+        //     $a=$request->id;
+        //     $rule->subject_id=$a;
+        //     $rule->department_id=$department->id;
+        //     $rule->range=$request->total;
+        //     $rule->save();
+        // }
+        Toastr::success('Department Created Successfully with its Conditions',"Success!");
+        return redirect('departments');
     }
 
     /**

@@ -8,6 +8,8 @@ class rule extends Model
 {
     protected $fillable=['subject_id','department_id','range'];
 
+    protected $casts=['subject_id' => 'array'];
+    
     public function department()
     {
     	return $this->belongsTo(Department::class);

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
 use App\Department;
-use Illuminate\Http\Request;
 use App\Http\Requests\Register;
-use App\verifyStudent;
 use App\Mail\VerifyMail;
+use App\Student;
+use App\verifyStudent;
+use Illuminate\Http\Request;
 use Toastr;
+
 class StudentController extends Controller
 {
     /**
@@ -29,8 +30,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $departments=Department::all();
-        return view('student.create',compact('departments'));
+        $departments = Department::all();
+        return view('student.create', compact('departments'));
     }
 
     /**
@@ -39,23 +40,23 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-       public function store(Register $request)
+    public function store(Register $request)
     {
         //Registering Students
-        $student=new Student;
-        $student->name = $request->name;
+        $student           = new Student;
+        $student->name     = $request->name;
         $student->username = $request->username;
-        $student->email = $request->email;
+        $student->email    = $request->email;
         $student->password = bcrypt($request->password);
-        $student->gender = $request->gender;
-        $student->phone = $request->phone;
-        $student->address = $request->address;
+        $student->gender   = $request->gender;
+        $student->phone    = $request->phone;
+        $student->address  = $request->address;
         if ($request->image) {
-            $file=$request->File('image');
-            $ext=$student->username. "." .$file->clientExtension();
-            $path = public_path(). '/images/';
+            $file = $request->File('image');
+            $ext  = $student->username . "." . $file->clientExtension();
+            $path = public_path() . '/images/';
             // $file->storeAs('images/',$ext);
-            $file->storeAs('images/',$ext);
+            $file->storeAs('images/', $ext);
             $student->image = $ext;
         }
         $student->save();
@@ -63,14 +64,13 @@ class StudentController extends Controller
         $student->departments()->attach($request->id);
         //Generating a Token for Student
         $verifyUser = VerifyStudent::create([
-        'student_id' => $student->id,
-        'token' => sha1(time())
-            ]);
+            'student_id' => $student->id,
+            'token'      => sha1(time()),
+        ]);
         //Sending Mail to Student
         \Mail::to($student->email)->send(new VerifyMail($student));
         return redirect('/login')->with('info', "Email Verification Link was Sent, Please Verfiy Your mail Before Login.");
     }
- 
 
     /**
      * Display the specified resource.
@@ -80,7 +80,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('student.show',compact('student'));
+        return view('student.show', compact('student'));
     }
 
     /**
@@ -115,21 +115,21 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        Toastr::success('Students Blocked Successfully',"Success");
+        Toastr::success('Students Blocked Successfully', "Success");
         return back();
     }
 
     public function blockedUsers()
     {
         $students = Student::onlyTrashed()->paginate(10);
-        return view('student.blockedusers',compact('students'));
+        return view('student.blockedusers', compact('students'));
     }
     public function unblock($id)
     {
         $student = Student::withTrashed()
-        ->where('id', $id)->first();
+            ->where('id', $id)->first();
         $student->restore();
-        Toastr::success('Students Unblocked Successfully',"Success");
+        Toastr::success('Students Unblocked Successfully', "Success");
         return redirect('students');
     }
 }

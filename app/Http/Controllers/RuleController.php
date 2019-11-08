@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\rule;
+use App\Department;
+use App\Subject;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\RuleRequest;
+use Toastr;
 class RuleController extends Controller
 {
     /**
@@ -14,7 +17,8 @@ class RuleController extends Controller
      */
     public function index()
     {
-        //
+        $rules=Rule::all();
+        return view('rules.index',compact('rules'));
     }
 
     /**
@@ -24,7 +28,9 @@ class RuleController extends Controller
      */
     public function create()
     {
-        //
+        $departments = Department::all();
+        $subjects = Subject::all();
+        return view('rules.create',compact('departments','subjects'));
     }
 
     /**
@@ -33,9 +39,15 @@ class RuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RuleRequest $request)
     {
-        //
+        $rule=new Rule;
+        $rule->subject_id=$request->subject_id;        
+        $rule->department_id=$request->department_id;        
+        $rule->range=$request->range;        
+        $rule->save();
+        Toastr::success('Minimum Range is Set For this Subject to acquire this Department');
+        return redirect('rules');
     }
 
     /**
