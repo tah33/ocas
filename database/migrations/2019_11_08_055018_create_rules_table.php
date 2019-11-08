@@ -15,7 +15,7 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('subject_id');
+            $table->json('subject_id');
             $table->unsignedBigInteger('department_id');
             $table->integer('range');
             $table->timestamps();

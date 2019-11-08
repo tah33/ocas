@@ -31,6 +31,7 @@
                         </tr>
                     @endforeach
                     </tbody>
+                    {{$departments->links()}}
                 </table>
             </div>
         </div>

@@ -16,6 +16,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        $rule=Rule::find(1);
         $departments=Department::paginate(10);
         return view('departments.index',compact('departments'));
     }
@@ -39,37 +40,38 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
+     
         $department=new Department;
         $department->name=$request->name;
         $department->minimum=$request->minimum;
         $department->slug=$request->slug;
-        if ($request->range && $request->total) {
-            $exceed=$request->range + $request->total;
+        $department->save();
+        if ($request->range && $request->tot) {
+            $exceed=$request->range + $request->tot;
             if ($exceed > 100) {
-                Toastr::error('Total Number Cannot Exceed 100 Marks','Error!');
                 return back();
             }
         }
         if($request->subject_id && $request->range)
         {
-            $department->save();
-            $rule = new Rule;
-            $rule->subject_id=$request->subject_id;
+            $rule = new Rule();
+            $arr_tojson = json_encode($request->subject_id); 
             $rule->department_id=$department->id;
+            $rule->subject_id=$arr_tojson;
             $rule->range=$request->range;
             $rule->save();
         }
-        // elseif($request->id && $request->total)
-        // {
-        //     $rule = new Rule;
-        //     $a=$request->id;
-        //     $rule->subject_id=$a;
-        //     $rule->department_id=$department->id;
-        //     $rule->range=$request->total;
-        //     $rule->save();
-        // }
-        Toastr::success('Department Created Successfully with its Conditions',"Success!");
+        if($request->id)
+        {   
+            $rule = new Rule;
+            $arr2_tojson = json_encode($request->id); 
+            $rule->subject_id=$arr2_tojson;            
+            $rule->department_id=$department->id;
+            $rule->range=50;
+            $rule->save();
+        }
         return redirect('departments');
+        
     }
 
     /**
