@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Register;
 use App\verifyStudent;
 use App\Mail\VerifyMail;
+use Toastr;
 class StudentController extends Controller
 {
     /**
@@ -58,10 +59,8 @@ class StudentController extends Controller
             $student->image = $ext;
         }
         $student->save();
-
         //Saving Departments to Students
         $student->departments()->attach($request->id);
-
         //Generating a Token for Student
         $verifyUser = VerifyStudent::create([
         'student_id' => $student->id,
@@ -116,6 +115,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
+        Toastr::success('Students Blocked Successfully',"Success");
         return back();
     }
 
@@ -129,6 +129,7 @@ class StudentController extends Controller
         $student = Student::withTrashed()
         ->where('id', $id)->first();
         $student->restore();
+        Toastr::success('Students Unblocked Successfully',"Success");
         return redirect('students');
     }
 }

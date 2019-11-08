@@ -17,4 +17,8 @@ class Department extends Model
     {
         return $this->hasMany(Subject::class);
     }
+    public function rules()
+    {
+        return $this->hasMany(Rule::class);
+    }
 }

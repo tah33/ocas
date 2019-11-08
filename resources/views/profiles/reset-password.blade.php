@@ -1,11 +1,5 @@
 @extends('layouts.master')
 @section('content')
-@if (session('success'))
-  <div class="alert alert-success">
-    {{ session('success') }}
-  </div>
-  @endif
- 
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header">

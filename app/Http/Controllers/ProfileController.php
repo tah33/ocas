@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Password;
 use App\Admin;
 use App\Student;
 use Auth;
 use Hash;
+use Toastr;
 class ProfileController extends Controller
 {
     public function show($id)
@@ -67,6 +69,7 @@ class ProfileController extends Controller
         	$user->departments()->attach($request->id);	
 		}
         $user->save();
+        Toastr::success('Your Profile is Updated successfully','Success!');
         return redirect('home');
     }
     public function password()
@@ -77,25 +80,23 @@ class ProfileController extends Controller
             $user=Auth::guard('student')->user();
         return view('profiles.reset-password',compact('user'));   
     }
-    public function resetpassword(Request $request,$id)
+    public function resetpassword(Password $request,$id)
     {
-        $request->validate([
-            'old' =>'required',
-            'password' =>'required|confirmed|min:8',
-        ]);
         if(Auth::guard('admin')->check())
             $user=Admin::find($id);
         else
             $user=Student::find($id);
         if($request->password){
-            // $password=$request->old;
             if (Hash::check($request->old, $user->password)) {
                 $user->password = bcrypt($request->password);
                 $user->save();
-                return back()->with("success","your Passwor is chenged Succesfully");;
+                Toastr::success('Your Password is changed successfully','Success!');
+                return back();
             }
             else
+            {
                 return back()->with("error","your current password does not match with the password you provided. please try again.");
+            }
         }
     }
 }

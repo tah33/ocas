@@ -16,4 +16,8 @@ class Subject extends Model
     {
         return $this->belongsToMany(Student::class);
     }
+    public function subject()
+    {
+        return $this->hasOne(Rule::class);
+    }
 }

@@ -11,28 +11,16 @@
     <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet"
-          href="{{asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet"
-          href="{{asset('bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css')}}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{asset('bower_components/select2/dist/css/select2.min.css')}}">
+    <!-- Toastr Notification -->
+    <link rel="stylesheet" href="{{asset('bower_components/toastr/toastr.min.css')}}">
     <!-- Theme style -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="{{asset('https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')}}"></script>
-    <script src="{{asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
-    <![endif]-->
-    <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -67,9 +55,9 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             @if(Auth::guard('admin')->user()->image == "")
-                                <img src="{{asset('public/images/avatar.png')}}" class="user-image">
+                                <img src="{{asset('images/avatar.png')}}" class="user-image">
                             @else
-                                <img src="{{asset('public/images/'.Auth::guard('admin')->user()->image)}}" class="user-image">
+                                <img src="{{asset('images/'.Auth::guard('admin')->user()->image)}}" class="user-image">
                             @endif
                             <span class="hidden-xs">{{Auth::guard('admin')->user()->name}}</span>
                         </a>
@@ -77,12 +65,12 @@
                             <!-- User image -->
                             <li class="user-header">
                                 @if(Auth::guard('admin')->user()->image =='')
-                                    <img src="{{asset('public/images/avatar.png')}}" class="img-circle">
+                                    <img src="{{asset('images/avatar.png')}}" class="img-circle">
                                 @else
-                                    <img src="{{asset('public/images/'.Auth::guard('admin')->user()->image)}}" class="img-circle">
+                                    <img src="{{asset('images/'.Auth::guard('admin')->user()->image)}}" class="img-circle">
                                 @endif
                                 <p>
-                                    <br> {{Auth::guard('admin')->user()->name}}
+                                     {{Auth::guard('admin')->user()->name}}
                                     <small>Member since {{Auth::guard('admin')->user()->created_at->diffForHumans()}}</small>
                                 </p>
                             </li>
@@ -107,25 +95,40 @@
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar user panel -->
-            >
-            <li class="header" style="color: white"><span>Users Settings</span></li>
             <ul class="sidebar-menu" data-widget="tree">
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-share"></i> <span>Settings</span>
-                            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{url('profiles',Auth::guard('admin')->user()->id)}}"><i class="fa fa-user-plus"></i>Update Profile</a></li>
-                                <li>
-                                    <a href="{{url('change-password')}}"><i class="fa fa-users"></i> Change Password</a>
-                                </li>
-                        </ul>
-                        </li>
-                        <li><a href="{{url('students')}}"><i class="glyphicon glyphicon-user"></i> <span>Students</span></a>
-                        </li>
+            <li class="header" style="color: white"><span>Users Settings</span></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-share"></i><span>Settings</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('profiles',Auth::guard('admin')->user()->id)}}"><i class="fa fa-user-plus"></i>Update Profile</a></li>
+                            <li>
+                                <a href="{{url('change-password')}}"><i class="fa fa-users"></i> Change Password</a>
+                            </li>
+                    </ul>
+                </li>
+            <li class="header" style="color: white"><span>Students Info</span></li>
+                <li><a href="{{url('students')}}"><i class="glyphicon glyphicon-user"></i> <span>Students</span></a>
+                </li>
+            <li class="header" style="color: white"><span>Dept Rules</span></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-share"></i><span>Rules</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('rules/create')}}"><i class="fa fa-user-plus"></i>Create Rule</a></li>
+                            <li>
+                                <a href="{{url('rules')}}"><i class="fa fa-users"></i>Rules</a>
+                            </li>
+                    </ul>
+                </li>
 
             </ul>
             @yield('sidebar')
@@ -165,32 +168,17 @@
 <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
+<!-- Select2 -->
 <script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-<script src="sweetalert2.all.min.js"></script>
+<!-- Toastr -->
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+        {!! Toastr::message() !!}
 @stack('script-file');
 <script>
     $(function () {
-        $(".select2").select2();
-        $(".btn-success").click(function () {
-            var html = $(".clone").html();
-            $(".increment").after(html);
-        });
-
-        $("body").on("click", ".btn-danger", function () {
-            $(this).parents(".control-group").remove();
-        });
-
-
-    })
-
-    $(document).ready(function () {
-        $("#formButton").click(function () {
-            $("#form1").toggle();
-        });
-    });
+        $(".select2").select2()
+  })
 </script>
 
 </body>
