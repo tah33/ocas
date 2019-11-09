@@ -12,12 +12,14 @@ class Subject extends Model
     {
         return $this->belongsTo(Department::class);
     }
-    public function students()
-    {
-        return $this->belongsToMany(Student::class);
-    }
+    
     public function subject()
     {
         return $this->hasOne(Rule::class);
+    }
+
+    public function condition()
+    {
+        return $this->hasOne(Condition::class);
     }
 }

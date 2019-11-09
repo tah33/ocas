@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRulesTable extends Migration
+class CreateConditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateRulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rules', function (Blueprint $table) {
+        Schema::create('conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->json('subject_id');
             $table->unsignedBigInteger('department_id');
-            $table->integer('range');
+            $table->integer('total');
             $table->timestamps();
             $table->foreign('department_id')
                 ->references('id')->on('departments')
@@ -33,6 +33,6 @@ class CreateRulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rules');
+        Schema::dropIfExists('conditions');
     }
 }

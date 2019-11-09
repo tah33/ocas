@@ -9,7 +9,8 @@
                         <th style="text-align: center">No.</th>
                         <th style="text-align: center">Name</th>
                         <th style="text-align: center">Minimum Marks Required</th>
-                        <th style="text-align: center">Conditions</th>
+                        <th style="text-align: center">Condition 1</th>
+                        <th style="text-align: center">Condition 2</th>
                         <th style="text-align: center">Action</th>
                     </tr>
                     </thead>
@@ -19,10 +20,12 @@
                             <td style="text-align: center">{{ $key+1 }}</td>
                             <td style="text-align: left">{{ $department->name }}</td>
                             <td style="text-align: center">{{ $department->minimum }}</td>
-                            <td style="text-align: center;">@if($department->conditions)
-                                @foreach ($department->conditions as $condition)
-                                 <b>{{ $condition['key'] }}</b>: {{ $condition['value'] }}<br>
+                            <td style="text-align: center">@if($department->subject_id){{$subject->name}} >= {{$department->range}}@endif</td>
+                            <td style="text-align: center;">@if($department->condition && $subjects)
+                                @foreach ($subjects as $serial => $subject)
+                                  {{ $subject->name }},
                                 @endforeach
+                                ={{$department->condition->total}}
                                 @endif
                             </td>
                             <td style="text-align: center">
@@ -31,7 +34,6 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    {{$departments->links()}}
                 </table>
             </div>
         </div>

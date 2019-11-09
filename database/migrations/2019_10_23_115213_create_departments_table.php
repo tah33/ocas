@@ -18,7 +18,8 @@ class CreateDepartmentsTable extends Migration
             $table->string('slug')->unique();
             $table->string('name')->unique();
             $table->integer('minimum');
-            $table->json('conditions')->nullable();
+            $table->integer('subject_id')->nullable();
+            $table->integer('range')->nullable();
             $table->timestamps();
         });
     }

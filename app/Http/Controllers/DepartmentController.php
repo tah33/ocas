@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Subject;
-use App\Rule;
+use App\Condition ;
 use App\Http\Requests\DepartmentRequest;
 use Toastr;
 class DepartmentController extends Controller
@@ -16,9 +16,14 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $rule=Rule::find(1);
-        $departments=Department::paginate(10);
-        return view('departments.index',compact('departments'));
+        $departments=Department::get();
+        foreach ($departments as $key => $dept) {
+            if ($dept->condition) {
+            $subjects=Subject::whereIn('id',$dept->condition->subject_id)->get();
+            $subject=Subject::where('id',$dept->subject_id)->first();
+}
+        }            
+        return view('departments.index',compact('departments','subjects','subject'));
     }
 
     /**
@@ -40,35 +45,31 @@ class DepartmentController extends Controller
      */
     public function store(DepartmentRequest $request)
     {
-     
         $department=new Department;
         $department->name=$request->name;
         $department->minimum=$request->minimum;
         $department->slug=$request->slug;
-        $department->save();
-        if ($request->range && $request->tot) {
-            $exceed=$request->range + $request->tot;
+        if ($request->range && $request->total) {
+            $exceed=$request->range + $request->total;
             if ($exceed > 100) {
                 return back();
             }
         }
-        if($request->subject_id && $request->range)
+        if($request->id && $request->range)
         {
-            $rule = new Rule();
-            $arr_tojson = json_encode($request->subject_id); 
-            $rule->department_id=$department->id;
-            $rule->subject_id=$arr_tojson;
-            $rule->range=$request->range;
-            $rule->save();
+            $department->subject_id=$request->id;
+            $department->range=$request->range;
+
         }
-        if($request->id)
+            $department->save();
+
+        if($department->save() && $request->subject_id && $request->total)
         {   
-            $rule = new Rule;
-            $arr2_tojson = json_encode($request->id); 
-            $rule->subject_id=$arr2_tojson;            
-            $rule->department_id=$department->id;
-            $rule->range=50;
-            $rule->save();
+            $condition = new Condition;
+            $condition->subject_id=$request->subject_id;             
+            $condition->department_id=$department->id;
+            $condition->total=$request->total;
+            $condition->save();
         }
         return redirect('departments');
         

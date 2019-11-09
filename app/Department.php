@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 	protected $fillable = [
-        'name','slug','minimum','conditions'
+        'name','slug','minimum','subject_id','range'
     ];
     protected $casts = [
         'conditions' => 'array'
@@ -20,8 +20,9 @@ class Department extends Model
     {
         return $this->hasMany(Subject::class);
     }
-    public function rules()
+    public function condition()
     {
-        return $this->hasMany(Rule::class);
+        return $this->hasOne(Condition::class);
     }
+   
 }

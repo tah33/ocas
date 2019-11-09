@@ -33,7 +33,9 @@
     <button type="submit" class="btn btn-success" style="margin-top:10px">Update</button>
     <a class="btn btn-warning" style="margin-top:10px" href="{{url('home')}}">Cancel</a>
 </form>
+
 </div>
 </div>
 </div>
+
 @stop
