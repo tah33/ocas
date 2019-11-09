@@ -16,14 +16,14 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $departments=Department::get();
-        foreach ($departments as $key => $dept) {
+        $departments=Department::paginate(15);
+  /*      foreach ($departments as $key => $dept) {
             if ($dept->condition) {
             $subjects=Subject::whereIn('id',$dept->condition->subject_id)->get();
             $subject=Subject::where('id',$dept->subject_id)->first();
 }
-        }            
-        return view('departments.index',compact('departments','subjects','subject'));
+        }   */         
+        return view('departments.index',compact('departments'));
     }
 
     /**
@@ -81,9 +81,15 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show($id)
     {
-        //
+        $subjects=$subject='';
+        $department=Department::find($id);
+        if ($department->condition)
+            $subjects=Subject::whereIn('id',$department->condition->subject_id)->get();
+        if($department->subject_id)
+            $subject=Subject::where('id',$department->subject_id)->first();
+        return view('departments.show',compact('department','subjects','subject'));
     }
 
     /**

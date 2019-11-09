@@ -24,5 +24,5 @@ class Department extends Model
     {
         return $this->hasOne(Condition::class);
     }
-   
+    
 }
