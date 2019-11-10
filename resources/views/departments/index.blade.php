@@ -23,7 +23,13 @@
                             
                             <td style="text-align: center">
                                 <a href="{{url('departments',$department->id)}}" style="float: left;" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                                <a href="{{url('departments',$department->id)}}" style="float: left;" class="btn btn-info"><i class="fa fa-pencil"></i></a></td>
+                                <a href="{{url('departments/'.$department->id.'/edit')}}" style="float: left;" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <form style="float: left;" action="{{url('departments',$department->id)}}" method="post" onsubmit="return confirm('Are you sure you want to Remove This Department?');">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></button>                                     
+                                   </form>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Subject;
-use App\Condition ;
 use App\Http\Requests\DepartmentRequest;
 use Toastr;
 class DepartmentController extends Controller
@@ -100,7 +99,14 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        $subject=$selectedsubjects='';
+        $multiplesubjects=Subject::all();
+        if ($department->subject_id)
+            $subject=Subject::where('id',$department->subject_id)->first();
+        if ($department->condition)
+            $selectedsubjects=Subject::whereIn('id',$department->condition->subject_id)->get();
+        $subjects=Subject::all();
+        return view('departments.edit',compact('department','subjects','multiplesubjects','subject','selectedsubjects'));
     }
 
     /**
@@ -110,9 +116,33 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(DepartmentRequest $request, Department $department)
     {
-        //
+        $department->name=$request->name;
+        $department->minimum=$request->minimum;
+        $department->slug=$request->slug;
+        if ($request->range && $request->total) {
+            $exceed=$request->range + $request->total;
+            if ($exceed > 100) {
+                return back()->with('error',"Total Marks Cannot be exceed 100");
+            }
+        }
+        if($request->id && $request->range)
+        {
+            $department->subject_id=$request->id;
+            $department->range=$request->range;
+
+        }
+            $department->save();
+
+        if($department->save() && $request->subject_id && $request->total)
+        {   
+            $condition = new Condition;
+            $condition->subject_id=$request->subject_id;             
+            $condition->department_id=$department->id;
+            $condition->total=$request->total;
+            $condition->save();
+        }
     }
 
     /**
@@ -123,6 +153,7 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        return back();
     }
 }

@@ -1,7 +1,11 @@
 @extends('layouts.master')
 @section('content')
-    <center>
-        <div class="card" style="width: 18rem;">
+<div class="col-md-6">
+        <div class="box box-primary">
+                <caption>User Profile</caption>
+<center>
+
+        <div class="card" style="width: 30rem;">
             @if($user->image =='')
                 <img class="card-img-top" width="100%" src="{{asset('images/avatar.png')}}" class="img-circle">
             @else
@@ -10,12 +14,6 @@
             <div class="card-body">
                 <h5 class="card-title">{{$user->name}} Profile</h5>
             </div>
-            <style>
-                .ul{
-                    width: 300px;
-                    margin-left: -60px;
-                }
-            </style>
             <ul class="list-group list-group-flush ul">
                 <li class="list-group-item">Name : {{$user->name}}</li>
                 <li class="list-group-item">Email : {{$user->email}}</li>
@@ -28,6 +26,26 @@
                 <div class="card-body">
                     <a href="{{url('profiles/'.$user->id.'/edit')}}" class="btn btn-primary">Edit Profile</a>
                 </div>
+            </div>
+</center>
+
+    </div>
+        @if(Auth::guard('student')->check())
+<div class="box box-success">
+                <caption>Interested Department</caption>
+            <div class="box-body">
+                 <div class="card" style="width: 30rem;">
+                <div class="card-body">
+                <h5 class="card-title">Interested Department</h5>
+                </div>
+            <ul class="list-group list-group-flush ul">
+                @foreach($user->departments as $department)
+                <li class="list-group-item">{{$department->name}}</li>
+                   @endforeach     
+            </ul>
+                 
+            </div>
         </div>
-    </center>
-@endsection
+        @endif
+</div>
+@stop

@@ -12,7 +12,7 @@
                 <p>Total Students</p>
               </div>
               <div class="icon">
-                <img src="{{asset('group.png')}}" width="70px" height="70px">
+                <img src="{{asset('icons/group.png')}}" width="70px" height="70px">
               </div>
               <a href="{{url('students')}}" class="small-box-footer">More info <i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
@@ -26,7 +26,7 @@
                 <p>Total Departments</p>
               </div>
               <div class="icon">
-                <img src="{{asset('roles.svg')}}" width="70px" height="70px">
+                <img src="{{asset('icons/dept.svg')}}" width="70px" height="70px">
               </div>
               <a href="{{url('departments')}}" class="small-box-footer">More info <i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>

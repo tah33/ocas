@@ -43,5 +43,5 @@
         </div>
         @endif
 </div>
-
+<a href="{{url('departments/'.$department->id.'/edit')}}" class="btn btn-primary">Edit Info</a>
 @stop
