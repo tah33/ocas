@@ -1,62 +1,52 @@
-@extends('layouts.header')
-@if (session('status'))
-  <div class="alert alert-success">
-    {{ session('status') }}
-  </div>
-@endif
-@if (session('warning'))
-  <div class="alert alert-warning">
-    {{ session('warning') }}
-  </div>
-@endif
-@if (session('info'))
-  <div class="alert alert-info">
-    {{ session('info') }}
-  </div>
-  @endif
-<div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">Login</h3>
-            </div>
-            <div class="box-body">
-    
-                    <form method="POST" action="{{url('verify-login')}}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Email/UserName') }}</label>
+<!DOCTYPE html>
+<html>
+<head>
+   <title>login</title>
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
 
-                            <div class="col-md-6">
-                                <input id="login" type="text" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" name="login" value="{{ old('login') }}" placeholder="Enter Email/UserName">
-
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2>Application<br> Login Page</h2>
+            <p>Login or register from here to access.</p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-7">
+            <div id='frame'>
+               <div class='search'><h1>Sign In Here</h1>
+                  <form method="POST" action="{{url('verify-login')}}">
+                    @csrf
+                     <div class="content"> 
+                      <div class="col-md-8">
+                                <input id="login" type="text" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" value="{{old('login')}}" name="login" placeholder="Enter UserName/Email">
                                 @if ($errors->has('login'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('login') }}</strong>
-                                    </span>
+                                    </span>                               
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter Password">
-
+                       <div class="col-md-8">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter password">
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    </span>                               
                                 @endif
                             </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('Login') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+                      
+                      </div>
+                  </form>
+               </div>
+            </div>  
+                                
+         </div> 
+      </div>
+      </body>
+</html>

@@ -22,10 +22,10 @@ class HomeController extends Controller
      //For verifying the login
      public function verifyLogin(Login $request)
      {
-     	$username=Auth::guard('admin')->attempt(['email' => $request->input('login'), 'password' => $request->input('password')]);
-     	$email=Auth::guard('admin')->attempt(['username' => $request->input('login'), 'password' => $request->input('password')]);
-     	$username2=Auth::guard('student')->attempt(['email' => $request->input('login'), 'password' => $request->input('password')]);
-     	$email2=Auth::guard('student')->attempt(['username' => $request->input('login'), 'password' => $request->input('password')]);
+     	$username=Auth::guard('admin')->attempt(['email' => $request->login, 'password' => $request->input('password')]);
+     	$email=Auth::guard('admin')->attempt(['username' => $request->login, 'password' => $request->input('password')]);
+     	$username2=Auth::guard('student')->attempt(['email' => $request->login, 'password' => $request->input('password')]);
+     	$email2=Auth::guard('student')->attempt(['username' => $request->login, 'password' => $request->input('password')]);
      	if ($username || $email || $username2 || $email2) {
 
      		   return redirect()->intended(url('home'));

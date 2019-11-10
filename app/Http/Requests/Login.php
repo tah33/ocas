@@ -33,7 +33,7 @@ class Login extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'Please Enter Email/Username',
+            'login.required' => 'Please Enter Email/Username',
             'password.required'  => 'Please Enter Your Password',
             ];
     }

@@ -20,5 +20,5 @@ Route::get('change-password','ProfileController@password');
 Route::post('reset-password/{id}','ProfileController@resetpassword');
 //DepartmentController
 Route::resource('departments', 'DepartmentController');
-//RuleController
-//Route::resource('rules', 'RuleController');
+//QuestionController
+Route::resource('questions', 'QuestionController');

@@ -47,5 +47,5 @@ class DepartmentRequest extends FormRequest
             'total' => 'Please select a mark for the subjects',
         ];
     }
-    
+
 }

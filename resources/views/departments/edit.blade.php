@@ -11,8 +11,9 @@
                 <h3 class="box-title">Edit DEpartment Info</h3>
             </div>
             <div class="box-body">
-<form method="post" action="{{url('departments')}}" enctype="multipart/form-data">
+<form method="post" action="{{url('departments',$department->id)}}">
  @csrf
+ @method('put')
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
 
@@ -59,10 +60,20 @@
                                     <option value="{{$sub->id}}">{{$sub->name}}</option>
                                     @endforeach
                                     </select>
+                                       @if ($errors->has('id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('id') }}</strong>
+                                    </span>                               
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range" 
                                 value="{{ $department->range ?$department->range : '' }}" placeholder="Enter Minimum Marks for Enroll">
+                                   @if ($errors->has('range'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('range') }}</strong>
+                                    </span>                               
+                                @endif
                             </div>
                             <div class="form-group row">
                             <label for="minimum" class="col-md-8 col-form-label text-md-right">{{ __('Choose Another Conitions for Multiple Subjects') }}</label>
@@ -78,9 +89,19 @@
                                     <option value="{{$subject->id}}">{{$subject->name}}</option>
                                     @endforeach
                                 </select>
+                                   @if ($errors->has('subject_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('subject_id') }}</strong>
+                                    </span>                               
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <input id="total" type="number" class="form-control{{ $errors->has('total') ? ' is-invalid' : '' }}" name="total" value="{{ $department->condition->total ?$department->condition->total : ''  }}" placeholder="Enter Minimum Marks for Enroll">
+                                <input id="total" type="number" class="form-control{{ $errors->has('total') ? ' is-invalid' : '' }}" name="total" value="{{ $department->condition ? $department->condition->total : ''  }}" placeholder="Enter Minimum Marks for Enroll">
+                                   @if ($errors->has('total'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('total') }}</strong>
+                                    </span>                               
+                                @endif
                             </div>
         <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 

@@ -26,7 +26,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="{{url('home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -45,17 +45,17 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{Auth::guard('admin') ? Auth::guard('admin')->id() : Auth::guard('student')->id()}}</span>
+              <img src="{{asset('images/avatar.png')}}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{Auth::guard('admin') ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  {{Auth::guard('admin') ? Auth::guard('admin')->id() : Auth::guard('student')->id()}}
-                  <small>Member since {{Auth::guard('admin') ? Auth::guard('admin')->user()->created_at : Auth::guard('student')->user()->created_at}}</small>
+                  {{Auth::guard('admin') ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}
+                  <small>Member since {{Auth::guard('admin') ? Auth::guard('admin')->user()->created_at : Auth::guard('student')->user()->created_at->diffForhumans}}</small>
                 </p>
               </li>
               
@@ -139,6 +139,15 @@
             <li><a href="{{url('departments/create')}}"><img src="{{asset('icons/dept.svg')}}" height="21" width="21"></i>Create Department</a></li>
             <li><a href="{{url('departments')}}"><i class="glyphicon glyphicon-education"></i>Departments Info</a></li>
           </ul>
+        </li>
+        <!-- Question -->
+        <li class="header">Set Questions</li>
+        <li>
+          <a href="{{url('questions')}}">
+            <i class="glyphicon glyphicon-question-sign"></i> <span>Questions</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
         </li>
       </ul>
     </section>

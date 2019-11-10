@@ -7,9 +7,9 @@
 
         <div class="card" style="width: 30rem;">
             @if($user->image =='')
-                <img class="card-img-top" width="100%" src="{{asset('images/avatar.png')}}" class="img-circle">
+                <img class="card-img-top" width="50%" src="{{asset('images/avatar.png')}}" class="img-circle">
             @else
-                <img class="card-img-top" width="100%" src="{{asset('images/'.$user->image)}}" class="img-circle">
+                <img class="card-img-top" width="50%" src="{{asset('images/'.$user->image)}}" class="img-circle">
             @endif
             <div class="card-body">
                 <h5 class="card-title">{{$user->name}} Profile</h5>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Subject;
+use App\Condition;
 use App\Http\Requests\DepartmentRequest;
+use Illuminate\Http\Request;
 use Toastr;
 class DepartmentController extends Controller
 {
@@ -116,8 +118,18 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(DepartmentRequest $request, Department $department)
+    public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|unique:departments,name,'.$id,
+            'minimum' => 'required|integer|between:1,100',
+            'slug' => 'nullable|string|unique:departments,slug,'.$id,
+            'id' => 'nullable|required_with:range',
+            'range' => 'nullable|integer|between:1,100|required_with:id',
+            'subject_id' => 'nullable|required_with:total',
+            'total' => 'nullable|integer|between:1,100|required_with:subject_id',
+        ]);
+        $department=Department::find($id);
         $department->name=$request->name;
         $department->minimum=$request->minimum;
         $department->slug=$request->slug;
@@ -131,18 +143,20 @@ class DepartmentController extends Controller
         {
             $department->subject_id=$request->id;
             $department->range=$request->range;
-
         }
-            $department->save();
-
+        $department->save();
         if($department->save() && $request->subject_id && $request->total)
         {   
-            $condition = new Condition;
+            if($department->condition)
+                $condition =Condition::find($department->condition->id);
+            else
+                $condition = new Condition;
             $condition->subject_id=$request->subject_id;             
             $condition->department_id=$department->id;
             $condition->total=$request->total;
             $condition->save();
         }
+        return redirect('departments');
     }
 
     /**

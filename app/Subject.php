@@ -22,4 +22,8 @@ class Subject extends Model
     {
         return $this->hasOne(Condition::class);
     }
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

@@ -17,7 +17,8 @@
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>                               @endif
+                                    </span>                               
+                                @endif
                             </div>
                         </div>
                         <div class="form-group row">
