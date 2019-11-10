@@ -17,9 +17,9 @@
                             <td style="text-align: center">{{ $key+1 }}</td>
                             <td style="text-align: left">{{ $subject->name }}</td>                            
                             <td style="text-align: center">
-                            	<a href="{{url('questions/view',$subject->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
+                            	<a href="{{url('questions',$subject->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
                                 <a href="{{url('questions/create',$subject->id)}}" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a>
-                                <a href="{{url('questions/edit',$subject->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                <a href="{{url('questions/'.$subject->id.'/edit')}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -24,10 +24,10 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $subjects=Subject::paginate(15);
-        return view('questions.create',compact('subjects'));
+        $subject=Subject::find($id);
+        return view('questions.create',compact('subject'));
     }
 
     /**
@@ -47,9 +47,10 @@ class QuestionController extends Controller
      * @param  \App\Question  $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Question $question)
+    public function show($id)
     {
-        //
+        $subject=Subject::find($id);
+        return view('questions.show',compact('subject'));
     }
 
     /**
@@ -60,7 +61,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit',compact('question'));
     }
 
     /**

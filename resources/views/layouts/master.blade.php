@@ -149,6 +149,15 @@
             </span>
           </a>
         </li>
+        <!-- Exam Setting -->
+        <li class="header">Exam Setting</li>
+        <li>
+          <a href="{{url('exams')}}">
+            <i class="glyphicon glyphicon-book"></i> <span>Set Exam Rules</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -190,12 +199,20 @@
 <script>
     $(function () {
         $(".select2").select2();
+        $(".btn-success").click(function () {
+            var html = $(".clone").html();
+            $(".increment").before(html);
+        });
 
+        $("body").on("click", ".btn-danger", function () {
+            $(this).parents(".control-group").remove();
+        });
     });
     $(document).ready(function () {
         $("#formButton").click(function () {
             $("#form1").toggle();
         });
+
     });
 </script>
 </body>
