@@ -1,14 +1,13 @@
 @extends('layouts.master')
-@section('content')
+@section('master.content')
 <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
-            <!-- small box -->
+            <!-- Card for Students -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{count($students)}}</h3>
-
                 <p>Total Students</p>
               </div>
               <div class="icon">
@@ -18,7 +17,7 @@
             </div>
           </div>
             <div class="col-lg-3 col-6">
-            <!-- small box -->
+            <!-- Card for Departments -->
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{count($departments)}}</h3>
@@ -31,8 +30,7 @@
               <a href="{{url('departments')}}" class="small-box-footer">More info <i class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
           </div>
-          
+
         </div>
       </div>
-
 @stop

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content')
+@section('master.content')
 <div id="ams-class">
         <div class="row">
             <div class="col-md-3">

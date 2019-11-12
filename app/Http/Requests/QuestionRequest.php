@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class QuestiontRequest extends FormRequest
+class QuestionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class QuestiontRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -36,10 +36,6 @@ class QuestiontRequest extends FormRequest
     {
         return [
             'question.required' => "Please Enter The Question",
-            'option1.required_without_all' => "Please Enter at Least Two Option",
-            'option2.required_without_all' => "Please Enter at Least Two Option",
-            'option3.required_without_all' => "Please Enter at Least Two Option",
-            'option4.required_without_all' => "Please Enter at Least Two Option",
-        ]
+        ];
     }
 }

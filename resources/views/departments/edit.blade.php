@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content')
+@section('master.content')
 @if (session('error'))
   <div class="alert alert-info">
     {{ session('error') }}

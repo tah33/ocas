@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content')
+@section('master.content')
     <div class="row"> 
         <div class="box">
             <div class="box-body">

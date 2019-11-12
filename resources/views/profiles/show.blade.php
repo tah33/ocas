@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content')
+@section('master.content')
 <div class="col-md-6">
         <div class="box box-primary">
                 <caption>User Profile</caption>

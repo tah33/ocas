@@ -1,13 +1,12 @@
 @extends('layouts.master')
-@section('content')
-
+@section('master.content')
         <div class="col-md-10">
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Register</h3>
+                    <h3 class="box-title">Add Question</h3>
                 </div>
                 <div class="box-body">
-                    <form method="post" action="{{url('questions/store',$subject->id)}}">
+                    <form method="post" action="{{url('question/store',$subject->id)}}">
                     @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Question') }}</label>
