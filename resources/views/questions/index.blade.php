@@ -4,6 +4,7 @@
         <div class="box">
             <div class="box-body">
                 <table class="table table-hover table-bordered">
+                    <caption>Subjects List</caption>
                     <thead>
                     <tr>
                         <th style="text-align: center">No.</th>
@@ -18,8 +19,6 @@
                             <td style="text-align: left">{{ $subject->name }}</td>                            
                             <td style="text-align: center">
                             	<a href="{{url('questions',$subject->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                <a href="{{url('questions/create',$subject->id)}}" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a>
-                                <a href="{{url('questions/'.$subject->id.'/edit')}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -29,4 +28,19 @@
             </div>
         </div>
     </div>
+<!-- @foreach($subjects as $key=> $subject)
+         <div class="col-md-3">
+        <div class="box box-succes">
+            <div class="box-body">
+                    <div class="card shadow" style="width: 18rem;">
+                          <div class="card-body text-center">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-success">Go somewhere</a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endforeach -->
 @stop

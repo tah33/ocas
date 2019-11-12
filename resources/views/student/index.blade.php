@@ -2,8 +2,9 @@
 @section('content')
     <div class="row"> 
         <div class="box">
-        <a href="{{url('blocked-users')}}" class="btn btn-info">Blocked Users</a>
             <div class="box-body">
+        <a href="{{url('blocked-users')}}" class="btn btn-info btn-sm">Blocked Students</a>
+
                 <table class="table table-hover table-bordered" id="example2">
                     <thead>
                     <tr>

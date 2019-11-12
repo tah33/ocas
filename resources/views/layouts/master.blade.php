@@ -126,19 +126,14 @@
             </span>
           </a>
         </li>
-        <!-- Settings Area -->
-        <li class="header">Dept Navigation</li>
-        <li class="treeview">
-          <a href="#">
-            <i class="glyphicon glyphicon-education"></i> <span>Department</span>
+        <!--Dept Settings-->
+        <li class="header">Departments</li>
+        <li>
+          <a href="{{url('departments')}}">
+            <i class="glyphicon glyphicon-education"></i> <span>Departments</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('departments/create')}}"><img src="{{asset('icons/dept.svg')}}" height="21" width="21"></i>Create Department</a></li>
-            <li><a href="{{url('departments')}}"><i class="glyphicon glyphicon-education"></i>Departments Info</a></li>
-          </ul>
         </li>
         <!-- Question -->
         <li class="header">Set Questions</li>

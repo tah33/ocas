@@ -21,7 +21,8 @@ Route::post('reset-password/{id}','ProfileController@resetpassword');
 //DepartmentController
 Route::resource('departments', 'DepartmentController');
 //QuestionController
-Route::resource('questions', 'QuestionController')->except('create');
-Route::get('questions/create/{id}', 'QuestionController@create');
+Route::resource('questions', 'QuestionController')->except('create','store');
+Route::get('question/create/{id}', 'QuestionController@create');
+Route::post('question/store/{id}', 'QuestionController@store');
 //ExamController
 Route::resource('exams', 'ExamController');

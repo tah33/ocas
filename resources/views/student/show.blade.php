@@ -1,45 +1,68 @@
 @extends('layouts.master')
 @section('content')
-<div class="col-md-6">
-        <div class="box box-primary" style="float: right">
-                <caption>User Profile</caption>
-<center>
+<div id="ams-class">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Profile Image -->
+                <div class="box box-primary">
+                    <div class="box-body box-profile">
+                        @if(!empty($student->image))
+                        <img class="profile-user-img img-responsive img-circle" src="{{asset('images/'.$student->image)}}">
+                        @else
+                        <img class="profile-user-img img-responsive img-circle" src="{{asset('images/avatar.png')}}">
+                        @endif
+                        <h3 class="profile-username text-center">{{ $student->name }}</h3>
 
-        <div class="card" style="width: 30rem;">
-            @if($student->image =='')
-                <img class="card-img-top" width="100%" src="{{asset('images/avatar.png')}}" class="img-circle">
-            @else
-                <img class="card-img-top" width="100%" src="{{asset('images/'.$student->image)}}" class="img-circle">
-            @endif
-            <div class="card-body">
-                <h5 class="card-title">{{$student->name}} Profile</h5>
-            </div>
-            <ul class="list-group list-group-flush ul">
-                <li class="list-group-item">Name : {{$student->name}}</li>
-                <li class="list-group-item">Email : {{$student->email}}</li>
-                <li class="list-group-item">UserName : {{$student->username}}</li>
-                <li class="list-group-item">Phone : {{$student->phone}}</li>
-                <li class="list-group-item">gender : {{$student->gender}}</li><li class="list-group-item">addrees : {{$student->addrees}}</li>
-                </li>
-            </ul>
-                <div class="card-body">
-                    <a href="{{url('profiles/'.$student->id.'/edit')}}" class="btn btn-primary">Edit Profile</a>
+                        <p class="text-muted text-center">{{ $student->email }}</p>
+
+                        <ul class="list-group list-group-unbordered">
+                            <li class="list-group-item">
+                                <b>Username</b> <a class="pull-right">{{ $student->username }}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Phone</b> <a class="pull-right">{{ $student->phone }}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Gender</b> <a class="pull-right">{{ $student->gender }}</a>
+                            </li>
+                            <li class="list-group-item">
+                                <b>Address</b> <a class="pull-right">{{ $student->address }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                            </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#settings" data-toggle="tab">Interested Department</a></li>
+                    </ul>
+
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-4">
+                                        <div class="card">
+
+                                            <div class="card-body">
+                                              <ul class="list-group list-group-unbordered">
+                                                @foreach($student->departments as $key => $department)
+                                                <li class="list-group-item">
+                                <b>{{$key+1}}</b> <a class="pull-right">{{ $department->name }}</a>
+                            </li>
+                            @endforeach
+                        </ul>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
                 </div>
             </div>
-</center>
-
-    </div>
-<div class="box box-success" style="float: right">
-                <caption>Interested Department</caption>
-            <div class="box-body">
-                 <div class="card" style="width: 30rem;">
-            <ul class="list-group list-group-flush ul">
-                @foreach($student->departments as $department)
-                <li class="list-group-item">{{$department->name}}</li>
-                   @endforeach     
-            </ul>
-                 
-            </div>
         </div>
-</div>
+                       
 @stop

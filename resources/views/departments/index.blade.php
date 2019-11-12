@@ -3,7 +3,9 @@
     <div class="row"> 
         <div class="box">
             <div class="box-body">
+                <a href="{{url('departments/create')}}" style="margin-right: 10px" class="btn btn-success btn-sm">Add Department</a>
                 <table class="table table-hover table-bordered">
+                    <caption>Departments List</caption>
                     <thead>
                     <tr>
                         <th style="text-align: center">No.</th>

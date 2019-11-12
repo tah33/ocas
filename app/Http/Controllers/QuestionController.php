@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\Subject;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 
 class QuestionController extends Controller
 {
@@ -18,7 +19,6 @@ class QuestionController extends Controller
         $subjects=Subject::paginate(15);
         return view('questions.index',compact('subjects'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,9 +36,22 @@ class QuestionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionRequest $request,$id)
     {
-        //
+        $question=new Question;
+        $question->subject_id = $id;
+        $question->question = $request->question;
+        if($request->option1)
+            $question->option1 = $request->option1;
+        if($request->option2)
+            $question->option2 = $request->option2;
+        if($request->option3)
+            $question->option3 = $request->option3;
+        if($request->option4)
+            $question->option4 = $request->option4;
+        $question->correct_ans = $request->correct_ans;
+        $question->save();
+        return back();
     }
 
     /**
@@ -52,7 +65,6 @@ class QuestionController extends Controller
         $subject=Subject::find($id);
         return view('questions.show',compact('subject'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,7 +85,18 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->question = $request->question;
+        if($request->option1)
+            $question->option1 = $request->option1;
+        if($request->option2)
+            $question->option2 = $request->option2;
+        if($request->option3)
+            $question->option3 = $request->option3;
+        if($request->option4)
+            $question->option4 = $request->option4;
+        $question->correct_ans = $request->correct_ans;
+        $question->save();
+        return redirect('questions/'.$question->subject_id);
     }
 
     /**
@@ -84,6 +107,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return back();
     }
 }
