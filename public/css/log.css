@@ -1,47 +1,64 @@
-body {
+body 
+{
     font-family: "Lato", sans-serif;
+	background: gray;
+
 }
-
-
-
-.main-head{
+.overflow
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.marin-login
+{
+    position: relative;
+    background: url(../../../../../image/slider.jpg);
+}
+.main-head
+{
     height: 150px;
     background: #FFF;
    
 }
-
-.sidenav {
+.sidenav
+{
     height: 100%;
-    background-color: #000;
-    overflow-x: hidden;
     padding-top: 20px;
 }
 
-
-.main {
+.main
+{
     padding: 0px 10px;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 450px)
+{
     .sidenav {padding-top: 15px;}
 }
 
-@media screen and (max-width: 450px) {
-    .login-form{
-        margin-top: 10%;
+@media screen and (max-width: 450px)
+{
+    .login-form
+    {
+    margin-top: 10%;
     }
 
-    .register-form{
+    .register-form
+    {
         margin-top: 10%;
     }
 }
 
-@media screen and (min-width: 768px){
-    .main{
+@media screen and (min-width: 768px)
+{
+    .main
+    {
         margin-left: 40%; 
     }
 
-    .sidenav{
+    .sidenav
+    {
         width: 40%;
         position: fixed;
         z-index: 1;
@@ -49,7 +66,8 @@ body {
         left: 0;
     }
 
-    .login-form{
+    .login-form
+    {
         margin-top: 80%;
     }
 
@@ -59,21 +77,25 @@ body {
 }
 
 
-.login-main-text{
+.login-main-text
+{
     margin-top: 20%;
     padding: 60px;
     color: #fff;
 }
 
-.login-main-text h2{
+.login-main-text h2
+{
     font-weight: 300;
 }
 
-.btn-black{
+.btn-black
+{
     background-color: #000 !important;
     color: #fff;
 }
-#frame {
+#frame
+{
             width: 500px;
             margin: auto;
             margin-top: 125px;
@@ -86,37 +108,42 @@ body {
             -khtml-border-radius: 5px;
             border-radius: 5px;
             background-color: #FFF;
-        }
-  #frame h1 {
-            text-align: center;
-        }
-          #frame form {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+}
+#frame h1 
+{
+    text-align: center;
+}
+#frame form 
+{
+    text-align: center;
+    margin-bottom: 30px;
+}
     
-input[type=submit] {
-    width: 30%;
+button[type=submit]
+{
+    width: 50%;
     background-color: #4CAF50;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 180px;
+    padding:  20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-input[type=submit]:hover {
-    background-color: #45a049;
-}.content {
-max-width:500px;
-margin: auto;
-margin-top: 15%;
-
+button[type=submit]:hover
+{
+    background-color: red;
+}
+.content
+{
+    max-width:500px;
+    margin: auto;
+    margin-top: 15%;
 }
 
 /* Full-width input fields */
-  input[type=text], input[type=password] {
+input[type=text], input[type=password] 
+{
   width: 71%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -124,22 +151,8 @@ margin-top: 15%;
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus
+{
   background-color: #ddd;
   outline: none;
-}
-
-/* Set a style for the submit button */
-.btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
 }

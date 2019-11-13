@@ -1,12 +1,17 @@
 @extends('layouts.master')
 @section('master.content')
     <div class="row"> 
+        <div class="box-body">
         <div class="box">
-            <div class="box-body">
-        <a href="{{url('blocked-users')}}" class="btn btn-info btn-sm">Blocked Students</a>
-
+            <a href="" class="btn btn-success btn-sm">Blocked Students</a>
+   <div class="form-group">
+    <input type="text" name="name" id="name" class="form-control input-sm" style=" width: 400px; float: right;" placeholder="Enter Name/Email/Username" />
+    <div id="countryList">
+    </div>
+   </div>
+   {{ csrf_field() }}
                 <table class="table table-hover table-bordered">
-                    <caption>Students List</caption>
+                    <caption>Blocked Users List</caption>
                     <thead>
                     <tr>
                         <th style="text-align: center">No.</th>
@@ -30,13 +35,7 @@
                             <td style="text-align: center">{{ $student->gender }}</td>
                             <td style="text-align: center"><img src="{{asset('images/'.$student->image)}}" width="80px" height="42px"></td>
                             <td style="text-align: center">
-                                <a href="{{url('students',$student->id)}}" style="float: left;" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                                   <form style="float: left;" action="{{url('students',$student->id)}}" method="post" onsubmit="return confirm('Are you sure you want to Block This Stuednt?');">
-                                   	@csrf
-                                   	@method('delete')
-									<button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove-circle"></i></button>                                    	
-                                   </form>
-                            </td>
+                                <a href="{{url('unblock',$student->id)}}" class="btn btn-success" onclick="return confirm('Are you sure you want to unblock This Student?');"><i class="glyphicon glyphicon-ok"></i></a>
                         </tr>
                     @endforeach
                     </tbody>
@@ -47,3 +46,5 @@
         </div>
     </div>
     @stop
+
+

@@ -9,7 +9,7 @@ use App\Student;
 use App\verifyStudent;
 use Illuminate\Http\Request;
 use Toastr;
-
+use DB;
 class StudentController extends Controller
 {
     /**
@@ -19,7 +19,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::paginate(10);
+        $students = Student::paginate(15);
         return view('student.index', compact('students'));
     }
 
@@ -89,11 +89,27 @@ class StudentController extends Controller
      * @param  \App\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function search(Request $request)
     {
-        //
+   if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = DB::table('students')
+        ->where('name', 'LIKE', "%{$query}%")
+        ->orwhere('username', 'LIKE', "%{$query}%")
+        ->orwhere('email', 'LIKE', "%{$query}%")
+        ->get();
+      $output = '<ul class="dropdown-menu" style="display:block; position:relative; width : 100% >';
+      foreach($data as $row)
+      {
+       $output .= '
+       <li><a href="#" >'.$row->email.'</a></li>
+       ';
+      }
+      $output .= '</ul>';
+      return $output;
+     }
     }
-
     /**
      * Update the specified resource in storage.
      *

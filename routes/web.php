@@ -14,6 +14,7 @@ Route::get('/student/verify/{token}', 'HomeController@verifyStudent');
 Route::resource('students', 'StudentController');
 Route::get('blocked-users','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
+Route::post('students/search','StudentController@search');
 //ProfileController
 Route::resource('profiles', 'ProfileController');
 Route::get('change-password','ProfileController@password');

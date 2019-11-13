@@ -65,15 +65,7 @@
             </span>
                 </a>
             </li>
-            <!-- Exam Setting -->
-            <li class="header">Exam Setting</li>
-            <li>
-                <a href="{{url('exams/create')}}">
-                    <i class="glyphicon glyphicon-book"></i> <span>Set Exam Time</span>
-                    <span class="pull-right-container">
-            </span>
-                </a>
-            </li>
+
         </ul>
     </section>
     <!-- /.sidebar -->

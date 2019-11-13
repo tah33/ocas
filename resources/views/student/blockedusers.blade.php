@@ -3,7 +3,6 @@
     <div class="row"> 
         <div class="box">
             <div class="box-body">
-            <a href="{{url('blocked-users')}}" class="btn btn-info btn-sm">Blocked Users</a>
                 <table class="table table-hover table-bordered">
                     <caption>Blocked Users List</caption>
                     <thead>

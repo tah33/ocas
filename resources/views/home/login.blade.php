@@ -2,16 +2,16 @@
 <html>
 <head>
    <title>login</title>
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="/maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="/code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
 
-<div class="sidenav">
-         <div class="login-main-text">
+<div class="overflow">
+<div class="sidenav" marin-login>
+         <div class="login-main-text ">
             <h2>Application<br> Login Page</h2>
             <p>Login or register from here to access.</p>
          </div>
@@ -47,6 +47,7 @@
             </div>  
                                 
          </div> 
+      </div>
       </div>
       </body>
 </html>
