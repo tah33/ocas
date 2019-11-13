@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('master.content')
+@if ($message= Session::get('success'))
+<div class="alert alert-success alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+        <strong>{{ $message }}</strong>
+</div>
+@endif
     <div class="row"> 
         <div class="box">
             <div class="box-body">
@@ -22,7 +28,6 @@
                             <td style="text-align: center">{{ $key+1 }}</td>
                             <td style="text-align: left">{{ $department->name }}</td>
                             <td style="text-align: center">{{ $department->minimum }}</td>
-                            
                             <td style="text-align: center">
                                 <a href="{{url('departments',$department->id)}}" style="float: left;" class="btn btn-success"><i class="fa fa-eye"></i></a>
                                 <a href="{{url('departments/'.$department->id.'/edit')}}" style="float: left;" class="btn btn-info"><i class="fa fa-pencil"></i></a>

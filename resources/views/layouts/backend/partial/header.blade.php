@@ -30,7 +30,7 @@
 
                             <p>
                                 {{Auth::guard('admin') ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}
-                                <small>Member since {{Auth::guard('admin') ? Auth::guard('admin')->user()->created_at : Auth::guard('student')->user()->created_at->diffForhumans}}</small>
+                                <small>Member since {{Auth::guard('admin') ? Auth::guard('admin')->user()->created_at->diffForHumans() : Auth::guard('student')->user()->created_at->diffForHumans()}}</small>
                             </p>
                         </li>
 

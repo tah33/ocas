@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('master.content')
+<div class="row">
 <div class="col-md-6">
         <div class="box box-primary">
             	<caption>Department Info</caption>
@@ -44,7 +45,8 @@
         </div>
     </div>
         @endif
- 
+ <a href="{{url('departments/'.$department->id.'/edit')}}" class="btn btn-primary">Edit Info</a>
 </div>
-<a href="{{url('departments/'.$department->id.'/edit')}}" class="btn btn-primary">Edit Info</a>
+</div>
+</div>
 @stop

@@ -45,13 +45,13 @@ class HomeController extends Controller
             $departments=Department::all();
      		return view('admin.home',compact('students','departments'));
         }
-     	elseif(Auth::guard('student')->check() && Auth::user()->verified == 1)
+     	elseif(Auth::guard('student')->check() && Auth::guard('student')->user()->verified == 1)
      		return view('student.home');
         else
         {
             Auth::logout();
         return redirect('login')
-        ->with('warning', "Sorry your email cannot be identified,Please verify your email First");
+        ->with('info', "Sorry your email cannot be identified,Please verify your email First");
         }
      }
      //For Logging Out The User

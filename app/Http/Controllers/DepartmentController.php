@@ -7,7 +7,6 @@ use App\Subject;
 use App\Condition;
 use App\Http\Requests\DepartmentRequest;
 use Illuminate\Http\Request;
-use Toastr;
 class DepartmentController extends Controller
 {
     /**
@@ -72,7 +71,7 @@ class DepartmentController extends Controller
             $condition->total=$request->total;
             $condition->save();
         }
-        return redirect('departments');
+        return redirect('departments')->with('success','Department is Succesfully Created');
         
     }
 
@@ -156,7 +155,7 @@ class DepartmentController extends Controller
             $condition->total=$request->total;
             $condition->save();
         }
-        return redirect('departments');
+        return redirect('departments')->with('success','Department is Succesfully Updated');
     }
 
     /**
@@ -168,6 +167,6 @@ class DepartmentController extends Controller
     public function destroy(Department $department)
     {
         $department->delete();
-        return back();
+        return back()->with('success','Department is Succesfully Deleted');
     }
 }

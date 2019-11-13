@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('master.content')
     <div class="row"> 
-        <div class="box-body">
         <div class="box">
+        <div class="box-body">
             <a href="" class="btn btn-success btn-sm">Blocked Students</a>
    <div class="form-group">
-    <input type="text" name="name" id="name" class="form-control input-sm" style=" width: 400px; float: right;" placeholder="Enter Name/Email/Username" />
+    <input type="text" name="name" id="name" class="form-control input-sm" style=" width: 400px; float: right; margin-top: -30px" placeholder="Enter Name/Email/Username" />
     <div id="countryList">
     </div>
    </div>

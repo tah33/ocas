@@ -5,6 +5,23 @@
     {{ session('error') }}
   </div>
   @endif
+  <style>
+.hl {
+  border-bottom:  1px solid red;
+  height: 100px;
+}
+.hl2 {
+  border-bottom:  1px solid red;
+  height: 180px;
+}
+</style>
+@if ($message= Session::get('success'))
+<div class="alert alert-danger alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+        <strong>{{ $message }}</strong>
+</div>
+@endif
+<div class="row">
   <div class="col-md-8">
         <div class="box box-primary">
             <div class="box-header">
@@ -14,6 +31,7 @@
 <form method="post" action="{{url('departments',$department->id)}}">
  @csrf
  @method('put')
+                        <div class="hl2">
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
 
@@ -47,6 +65,8 @@
                                 @endif
                             </div>
                         </div>
+                        </div>
+                        <div class="hl">
                        <div class="form-group row">
                             <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Add Conitions') }}</label>
                         </div>
@@ -103,11 +123,12 @@
                                     </span>                               
                                 @endif
                             </div>
+                        </div>
         <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 
   </form>        
   </div>
 </div>
 </div>
-
+</div>
 @stop
