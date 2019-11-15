@@ -54,7 +54,7 @@
                                 @endif
                             </div>
                         </div>
-                        </div>
+                    </div>
                         <div class="hl">
                        <div class="form-group row">
                             <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Add Conitions') }}</label>
@@ -70,6 +70,7 @@
                             <div class="col-md-6">
                                 <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range" value="{{ old('range') }}" placeholder="Enter Minimum Marks for Enroll">
                             </div>
+                        </div>
                             <div class="form-group row">
                             <label for="minimum" class="col-md-8 col-form-label text-md-right">{{ __('Choose Another Conitions for Multiple Subjects') }}</label>
                         </div>

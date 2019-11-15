@@ -12,7 +12,7 @@ Route::get('logout','HomeController@logout');
 Route::get('/student/verify/{token}', 'HomeController@verifyStudent');
 //StudentController
 Route::resource('students', 'StudentController');
-Route::get('blocked-users','StudentController@blockedUsers');
+Route::get('blocked-students','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
 Route::post('students/search','StudentController@search');
 //ProfileController

@@ -3,8 +3,9 @@
 <div class="row"> 
         <div class="box">
             <div class="box-body">
-                <a href="{{url('question/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a>
-                <table class="table table-hover table-bordered">
+                <center>
+                <a href="{{url('question/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a></center>
+                <table id="search" class="table table-hover table-bordered">
                     <caption>Questions for {{$subject->name}}</caption>
                     <thead>
                     <tr>

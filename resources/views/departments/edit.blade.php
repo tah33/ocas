@@ -95,6 +95,7 @@
                                     </span>                               
                                 @endif
                             </div>
+                        </div>
                             <div class="form-group row">
                             <label for="minimum" class="col-md-8 col-form-label text-md-right">{{ __('Choose Another Conitions for Multiple Subjects') }}</label>
                         </div>
