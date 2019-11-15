@@ -31,7 +31,7 @@
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Options') }}</label>
 
                             <div class="col-md-2">
-                                <input type="checkbox" name="correct_ans[]" value="1">
+                                <input type="radio" name="correct_ans" value="1">
                                 <input id="options" type="text" class="form-control{{ $errors->has('option1') ? ' is-invalid' : '' }}" name="option1" value="{{ old('options') }}" placeholder="Option1">
                                 @if ($errors->has('option1'))
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                                 @endif
                             </div>
                             <div class="col-md-2">
-                                <input type="checkbox" name="correct_ans[]" value="2">
+                                <input type="radio" name="correct_ans" value="2">
                                 <input id="options" type="text" class="form-control{{ $errors->has('option') ? ' is-invalid' : '' }}" name="option2" value="{{ old('option2') }}" placeholder="option2">
                                 @if ($errors->has('option2'))
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                 @endif
                             </div>
                             <div class="col-md-2">
-                                <input type="checkbox" name="correct_ans[]" value="3">
+                                <input type="radio" name="correct_ans" value="3">
                                 <input id="options" type="text" class="form-control{{ $errors->has('option3') ? ' is-invalid' : '' }}" name="option3" value="{{ old('option3') }}" placeholder="option3">
                                 @if ($errors->has('option3'))
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                                 @endif
                             </div>
                             <div class="col-md-2">
-                                <input type="checkbox" name="correct_ans[]" value="4">
+                                <input type="radio" name="correct_ans" value="4">
                                 <input id="options" type="text" class="form-control{{ $errors->has('option4') ? ' is-invalid' : '' }}" name="option4" value="{{ old('option4') }}" placeholder="option4">
                                 @if ($errors->has('options'))
                                     <span class="invalid-feedback" role="alert">

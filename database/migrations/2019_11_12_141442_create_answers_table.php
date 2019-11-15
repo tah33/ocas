@@ -16,7 +16,7 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
-            $table->json('given_ans')->nullable();
+            $table->string('given_ans')->nullable();
             $table->timestamps();
             $table->foreign('student_id')
                 ->references('id')->on('students')

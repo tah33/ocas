@@ -7,12 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
 	protected $fillable = [
-        'subject_id','question','options','correct_ans',
-    ];
-    protected $casts = [
-        'correct_ans' => 'array',
-        'options'=> 'array',
-
+        'subject_id','question','option1','option2','option3','option4','correct_ans',
     ];
     
     public function exams()
