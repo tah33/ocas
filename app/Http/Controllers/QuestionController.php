@@ -16,7 +16,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $subjects=Subject::paginate(15);
+        $subjects=Subject::all();
         return view('questions.index',compact('subjects'));
     }
     /**
@@ -51,7 +51,7 @@ class QuestionController extends Controller
             $question->option4 = $request->option4;
         $question->correct_ans = $request->correct_ans;
         $question->save();
-        return back();
+        return back()->with('success','Question Created Succesfully');
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Carbon\Carbon;
 class Register extends FormRequest
 {
     public function authorize()
@@ -13,6 +13,7 @@ class Register extends FormRequest
 
     public function rules()
     {
+        $min=Carbon::now()->subYear(12);
         return [
             'name' => 'required',
             'username' => 'required|unique:admins,username|unique:students,username',
@@ -22,6 +23,7 @@ class Register extends FormRequest
             'gender' => 'required',
             'id' => 'required',
             'address' => 'required',
+            'dob' => "required|before:$min",
         ];
     }
     public function messages()
@@ -40,6 +42,8 @@ class Register extends FormRequest
             'phone.required'  => 'Enter your phone number',
             'address.required'  => 'Enter your Address',
             'id.required'  => 'Please Choose at Least one subject',
+            'dob.required'  => 'Please Enter You Date of Birth',
+            'dob.before'  => 'Your Age should be at least 12 Years to registration',
         ];
     }
 }

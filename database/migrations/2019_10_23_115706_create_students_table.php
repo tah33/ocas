@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('phone');
+            $table->date('dob');
             $table->string('gender');
             $table->string('address');
             $table->string('image')->nullable();

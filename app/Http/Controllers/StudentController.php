@@ -8,7 +8,6 @@ use App\Mail\VerifyMail;
 use App\Student;
 use App\verifyStudent;
 use Illuminate\Http\Request;
-use Toastr;
 use DB;
 class StudentController extends Controller
 {
@@ -17,9 +16,10 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        $students = Student::paginate(15);
+        $students = Student::all();
         return view('student.index', compact('students'));
     }
 
@@ -50,13 +50,14 @@ class StudentController extends Controller
         $student->password = bcrypt($request->password);
         $student->gender   = $request->gender;
         $student->phone    = $request->phone;
-        $student->address  = $request->address;
+        $student->address    = $request->address;
+        $student->dob      = $request->dob;
         if ($request->image) {
             $file = $request->File('image');
             $ext  = $student->username . "." . $file->clientExtension();
             $path = public_path() . '/images/';
             // $file->storeAs('images/',$ext);
-            $file->storeAs('images/', $ext);
+            $file->storeAs('students/', $ext);
             $student->image = $ext;
         }
         $student->save();
@@ -131,7 +132,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        Toastr::success('Students Blocked Successfully', "Success");
         return back();
     }
 
@@ -145,7 +145,6 @@ class StudentController extends Controller
         $student = Student::withTrashed()
             ->where('id', $id)->first();
         $student->restore();
-        Toastr::success('Students Unblocked Successfully', "Success");
         return redirect('students');
     }
 }

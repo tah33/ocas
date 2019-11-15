@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-   <title>login</title>
-<link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
-<script src="/maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="/code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-</head>
-<body>
-
+@extends('layouts.header')
 @if ($message= Session::get('error'))
 <div class="alert alert-danger alert-block">
   <button type="button" class="close" data-dismiss="alert">×</button> 
@@ -35,7 +25,7 @@
          </div>
       </div>
       <div class="main">
-         <div class="col-md-7">
+         <div class="col-md-8">
             <div id='frame'>
                <div class='search'><h1>Sign In Here</h1>
                   <form method="POST" action="{{url('verify-login')}}">

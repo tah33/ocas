@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('master.content')
+@if ($message= Session::get('success'))
+<div class="alert alert-success alert-block">
+  <button type="button" class="close" data-dismiss="alert">×</button> 
+        <strong>{{ $message }}</strong>
+</div>
+@endif
         <div class="col-md-10">
             <div class="box box-primary">
                 <div class="box-header">
@@ -12,7 +18,7 @@
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Question') }}</label>
 
                             <div class="col-md-6">
-                                <input id="question" type="text" class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" value="{{ old('question') }}" placeholder="Enter Question Here">
+                                <textarea class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" value="{{ old('question') }}" placeholder="Enter Question Here"></textarea>
                                 @if ($errors->has('question'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('question') }}</strong>

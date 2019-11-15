@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('master.content')
-<div class="row">
-<div class="col-md-6">
+<div class="col-md-6" style="margin-top: 100px;">
         <div class="box box-primary">
             	<caption>Department Info</caption>
             <div class="box-body" >
@@ -14,7 +13,9 @@
             </div>
         </div>
 </div>
-       @if(!empty($subject))
+</div>
+@if(!empty($subject))
+<div class="col-md-6">
 <div class="box box-warning">
                 <caption>Condition To Enroll</caption>
             <div class="box-body">
@@ -27,8 +28,10 @@
             </div>
         </div>
     </div>
+</div>
         @endif
 @if(!empty($subjects))
+<div class="col-md-6" style="float: right;">
 <div class="box box-info">
             	<caption>Condition To Enroll</caption>
             <div class="box-body">
@@ -44,9 +47,9 @@
             </div>
         </div>
     </div>
+</div>
         @endif
- <a href="{{url('departments/'.$department->id.'/edit')}}" class="btn btn-primary">Edit Info</a>
-</div>
-</div>
+        <div class="row">
+     <center><a href="{{url('departments/'.$department->id.'/edit')}}" class="btn btn-primary">Edit Info</a></center>
 </div>
 @stop

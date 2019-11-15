@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
     <!-- Datatable -->
     <link rel="stylesheet" href="{{asset('bower_components/datatables/css/dataTables.bootstrap.min.css')}}">
-
+<link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

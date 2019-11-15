@@ -17,7 +17,7 @@
                 <center> <a href="{{url('departments/create')}}" style="margin: 10" class="btn btn-success btn-sm">Add Department</a>
                     <a href="#" class="btn btn-primary btn-sm">PDF </a>
                 </center>
-                <table id="search" class="able table-hover table-bordered">           
+                <table id="search" class="table table-hover">           
                     <caption>Departments List</caption>
                     <thead>
                     <tr>

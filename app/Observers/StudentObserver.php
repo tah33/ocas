@@ -10,17 +10,10 @@ class StudentObserver
     {
         //
     }
-    /*public function creating(Student $student)
+    public function creating(Student $student)
     {
-        $request = app('request');
-        if ($request->hasFile('image')) {
-            $file=$request->File('image');
-            $ext=$request->username. "." .$file->clientExtension();
-            $path = public_path(). '/images/';
-            $file->move($path,$ext);
-            $student->image=$ext;
-        }
-    }*/
+
+    }
 
     public function updated(Student $student)
     {

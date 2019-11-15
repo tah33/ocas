@@ -142,16 +142,27 @@ button[type=submit]:hover
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] 
+input[type=text], input[type=password],input[type=tel],
+input[type=date],input[type=file] 
 {
-  width: 71%;
-  padding: 15px;
+  width: 150%;
+  padding: 20px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
 }
+.select 
+{
+  width: 150%;
+  padding: 20px;
+  margin: 5px 0 22px 0;
+  border: none;
+  border-radius: 5px; 
+  background: #f1f1f1;
+}
 
-input[type=text]:focus, input[type=password]:focus
+input[type=text]:focus, input[type=password]:focus,input[type=tel]:focus,
+input[type=date]:focus,input[type=file]:focus, select 
 {
   background-color: #ddd;
   outline: none;
