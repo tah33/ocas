@@ -6,16 +6,22 @@
         <strong>{{ $message }}</strong>
 </div>
 @endif
+<style>
+        div.dataTables_wrapper div.dataTables_filter input{
+            width: 238px;
+        }
+    </style>
     <div class="row"> 
         <div class="box">
             <div class="box-body">
-                <a href="{{url('departments/create')}}" style="margin-right: 10px" class="btn btn-success btn-sm">Add Department</a>
-                <table class="table table-hover table-bordered">
+                <!-- <a href="{{url('departments/create')}}" style="margin-right: 10px" class="btn btn-success btn-sm">Add Department</a> -->
+                <table id="search" class="table table-striped" style="width:100%">           
                     <caption>Departments List</caption>
                     <thead>
-                    <tr>
+                    <tr >
                         <th style="text-align: center">No.</th>
                         <th style="text-align: center">Name</th>
+                        <th style="text-align: center">Short Name</th>
                         <th style="text-align: center">Minimum Marks Required</th>
                         <!-- <th style="text-align: center">Condition 1</th> -->
                         <!-- <th style="text-align: center">Condition 2</th> -->
@@ -27,6 +33,7 @@
                         <tr>
                             <td style="text-align: center">{{ $key+1 }}</td>
                             <td style="text-align: left">{{ $department->name }}</td>
+                            <td style="text-align: left">{{ $department->slug }}</td>
                             <td style="text-align: center">{{ $department->minimum }}</td>
                             <td style="text-align: center">
                                 <a href="{{url('departments',$department->id)}}" style="float: left;" class="btn btn-success"><i class="fa fa-eye"></i></a>
