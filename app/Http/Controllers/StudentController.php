@@ -11,11 +11,10 @@ use Illuminate\Http\Request;
 use DB;
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin,student')->except('create','store');
+    }
     
     public function index()
     {
@@ -55,9 +54,7 @@ class StudentController extends Controller
         if ($request->image) {
             $file = $request->File('image');
             $ext  = $student->username . "." . $file->clientExtension();
-            $path = public_path() . '/images/';
-            // $file->storeAs('images/',$ext);
-            $file->storeAs('students/', $ext);
+            $file->storeAs('images/', $ext);
             $student->image = $ext;
         }
         $student->save();

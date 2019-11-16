@@ -12,7 +12,8 @@ class StudentObserver
     }
     public function creating(Student $student)
     {
-
+        $request=app('request');
+        
     }
 
     public function updated(Student $student)

@@ -9,11 +9,11 @@ use App\Http\Requests\QuestionRequest;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin,student');
+    }
+    
     public function index()
     {
         $subjects=Subject::all();
