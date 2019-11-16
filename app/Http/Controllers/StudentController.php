@@ -51,12 +51,7 @@ class StudentController extends Controller
         $student->phone    = $request->phone;
         $student->address    = $request->address;
         $student->dob      = $request->dob;
-        if ($request->image) {
-            $file = $request->File('image');
-            $ext  = $student->username . "." . $file->clientExtension();
-            $file->storeAs('images/', $ext);
-            $student->image = $ext;
-        }
+        
         $student->save();
         //Saving Departments to Students
         $student->departments()->attach($request->id);
