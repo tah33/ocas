@@ -11,6 +11,11 @@ use Hash;
 use Toastr;
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin,student');
+    }
+    
     public function show($id)
     {
     	if(Auth::guard('admin')->check())

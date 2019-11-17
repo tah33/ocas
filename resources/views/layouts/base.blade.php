@@ -39,7 +39,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
-@stack('script-file');
+
 <script>
     $(function () {
             //Datatable

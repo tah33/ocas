@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('master.content')
 <div class="container-fluid">
         <!-- Small boxes (Stat box) -->

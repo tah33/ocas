@@ -1,4 +1,8 @@
-@extends('layouts.header')
+@extends('layouts.base')
+@push('backend.css')
+<link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
+@endpush
+@section('backend.base.content')
 <div class="overflow">
 <div class="sidenav" marin-login>
          <div class="login-main-text ">
@@ -110,5 +114,5 @@
          </div> 
       </div>
       </div>
-      </body>
-</html>
+@stop
+

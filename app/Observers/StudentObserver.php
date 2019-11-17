@@ -12,7 +12,13 @@ class StudentObserver
     }
     public function creating(Student $student)
     {
-
+        $request=app('request');
+        if ($request->image) {
+            $file = $request->File('image');
+            $ext  = $student->username . "." . $file->clientExtension();
+            $file->storeAs('images/', $ext);
+            $student->image = $ext;
+        }
     }
 
     public function updated(Student $student)

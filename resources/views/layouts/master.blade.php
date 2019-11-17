@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('backend.title', 'OCASUS')
-
+@section('backend.base.content')
 <div class="wrapper">
 
     @include('layouts.backend.partial.header')
@@ -18,4 +18,4 @@
     @include('layouts.backend.partial.footer')
 
 </div>
-
+@stop

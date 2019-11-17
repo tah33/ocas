@@ -1,4 +1,10 @@
-@extends('layouts.header')
+@extends('layouts.base')
+@push('backend.css')
+<link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
+@endpush
+
+@section('backend.base.content')
+  
 @if ($message= Session::get('error'))
 <div class="alert alert-danger alert-block">
   <button type="button" class="close" data-dismiss="alert">×</button> 
@@ -57,5 +63,4 @@
          </div> 
       </div>
       </div>
-      </body>
-</html>
+@stop
