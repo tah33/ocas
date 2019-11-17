@@ -13,7 +13,7 @@ class Chemistryseeder extends Seeder
     {
         $chemistry = array(
             array('subject_id'=>2,'question'=> 'Bond created by overlapping of one modified orbit on another orbit is known as', 'option1' => 'Sigma bond (σ-bond)','option2' => 'Pi bond (π-bond)','option3' => 'Covalent bond','option4' => 'Dative bond','correct_ans' =>"a"),
-            array('subject_id'=>2,'question'=> 'Only one 'benzene ring' is present in compounds of', 'option1' => 'aryl','option2' => 'acryl','option3' => 'carboxylic','option4' => 'ketone','correct_ans' => "a"),
+            array('subject_id'=>2,'question'=> "Only one 'benzene ring' is present in compounds of", 'option1' => 'aryl','option2' => 'acryl','option3' => 'carboxylic','option4' => 'ketone','correct_ans' => "a"),
             array('subject_id'=>2,'question'=> ' Elements which are good catalysts and have ability to change their oxidation number are', 'option1' => 'transition elements','option2' => 'Nobel gases','option3' => 'alkalis','option4' => 'all of them','correct_ans' => "a"),
             array('subject_id'=>2,'question'=> "Salting' is last stage in manufacturing of", 'option1' => 'plastic','option2' => 'soap','option3' => 'detergent','option4' => 'all of them','correct_ans' => 'b'),
             array('subject_id'=>2,'question'=> 'When heated, metal that results in change of state to gas is', 'option1' => 'Si(s)','option2' => 'Al(s)','option3' => 'S(s)','option4' => 'P(s)','correct_ans' => 'c'),
