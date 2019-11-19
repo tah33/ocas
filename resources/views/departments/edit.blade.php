@@ -1,11 +1,6 @@
 @extends('layouts.master')
 @section('master.content')
-@if (session('error'))
-  <div class="alert alert-info">
-    {{ session('error') }}
-  </div>
-  @endif
-  <style>
+<style>
 .hl {
   border-bottom:  1px solid red;
   height: 100px;
@@ -15,12 +10,6 @@
   height: 180px;
 }
 </style>
-@if ($message= Session::get('success'))
-<div class="alert alert-danger alert-block">
-  <button type="button" class="close" data-dismiss="alert">×</button> 
-        <strong>{{ $message }}</strong>
-</div>
-@endif
 <div class="row">
   <div class="col-md-8">
         <div class="box box-primary">

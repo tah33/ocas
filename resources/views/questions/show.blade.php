@@ -29,13 +29,7 @@
                             <td style="text-align: left">{{ $question->option2 }}</td>    
                             <td style="text-align: left">{{ $question->option3 ? $question->option3 : ""}}</td>
                             <td style="text-align: left">{{ $question->option4 ? $question->option4 : ""}}</td>
-                            <td style="text-align: left">
-                                @if(is_array($question->correct_ans))
-                                @foreach($question->correct_ans as $key => $ans)
-                                <b>{{$key+1}}</b>:{{$ans}}<br>
-                                @endforeach
-                                @endif
-                            </td>
+                            <td style="text-align: left">{{ $question->correct_ans ? $question->correct_ans : "" }}</td>
                             <td style="text-align: center">
                                 <a href="{{url('questions/'.$question->id.'/edit')}}" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
                                 

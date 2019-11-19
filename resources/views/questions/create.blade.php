@@ -1,11 +1,5 @@
 @extends('layouts.master')
 @section('master.content')
-@if ($message= Session::get('success'))
-<div class="alert alert-success alert-block">
-  <button type="button" class="close" data-dismiss="alert">×</button> 
-        <strong>{{ $message }}</strong>
-</div>
-@endif
         <div class="col-md-10">
             <div class="box box-primary">
                 <div class="box-header">

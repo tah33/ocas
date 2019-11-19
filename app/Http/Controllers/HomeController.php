@@ -28,6 +28,7 @@ class HomeController extends Controller
      	$email2=Auth::guard('student')->attempt(['username' => $request->login, 'password' => $request->input('password')]);
      	if ($username || $email || $username2 || $email2) {
 
+                Toastr::success('LoggedIn Sucessfully','Success!');
      		   return redirect()->intended(url('home'));
      	}
      	else
@@ -45,14 +46,8 @@ class HomeController extends Controller
             $departments=Department::all();
      		return view('admin.home',compact('students','departments'));
         }
-     	elseif(Auth::guard('student')->check() && Auth::guard('student')->user()->verified == 1)
+     	else
      		return view('student.home');
-        else
-        {
-            Auth::logout();
-        return redirect('login')
-        ->with('info', "Sorry your email cannot be identified,Please verify your email First");
-        }
      }
      //For Logging Out The User
      public function logout()

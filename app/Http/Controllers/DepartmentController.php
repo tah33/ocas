@@ -7,6 +7,7 @@ use App\Subject;
 use App\Condition;
 use App\Http\Requests\DepartmentRequest;
 use Illuminate\Http\Request;
+use Toastr;
 class DepartmentController extends Controller
 {
     public function __construct()
@@ -16,13 +17,7 @@ class DepartmentController extends Controller
     
     public function index()
     {
-        $departments=Department::paginate(15);
-  /*      foreach ($departments as $key => $dept) {
-            if ($dept->condition) {
-            $subjects=Subject::whereIn('id',$dept->condition->subject_id)->get();
-            $subject=Subject::where('id',$dept->subject_id)->first();
-}
-        }   */         
+        $departments=Department::all();        
         return view('departments.index',compact('departments'));
     }
 
@@ -52,26 +47,24 @@ class DepartmentController extends Controller
         if ($request->range && $request->total) {
             $exceed=$request->range + $request->total;
             if ($exceed > 100) {
+                Toastr::error('Total Number Cannot Exceed 100','Error!');
                 return back();
             }
         }
-        if($request->id && $request->range)
-        {
+        else{
             $department->subject_id=$request->id;
             $department->range=$request->range;
-
-        }
             $department->save();
-
-        if($department->save() && $request->subject_id && $request->total)
-        {   
+  
             $condition = new Condition;
             $condition->subject_id=$request->subject_id;             
             $condition->department_id=$department->id;
             $condition->total=$request->total;
             $condition->save();
-        }
-        return redirect('departments')->with('success','Department is Succesfully Created');
+
+        Toastr::success('Department is Succesfully Added','Success!');
+        return back();
+    }
         
     }
 

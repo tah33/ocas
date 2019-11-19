@@ -1,16 +1,10 @@
 @extends('layouts.master')
 @section('master.content')
-@if ($message= Session::get('success'))
-<div class="alert alert-success alert-block">
-  <button type="button" class="close" data-dismiss="alert">×</button> 
-        <strong>{{ $message }}</strong>
-</div>
-@endif
 <style>
-       div.dataTables_filter input{
-            width: 250px;
+       div.dataTables_wrapper div.dataTables_filter input{
+            width: 200px;
         }
-    </style>
+</style>
     <div class="row"> 
         <div class="box">
             <div class="box-body">

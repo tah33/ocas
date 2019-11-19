@@ -25,4 +25,4 @@ Route::resource('questions', 'QuestionController')->except('create','store');
 Route::get('question/create/{id}', 'QuestionController@create');
 Route::post('question/store/{id}', 'QuestionController@store');
 //ExamController
-Route::resource('exams', 'ExamController');
+Route::resource('subjects', 'SubjectController');

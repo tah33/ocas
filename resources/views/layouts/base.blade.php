@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>@yield('backend.title')</title>
-    <link rel="shortcut icon" href="{{ asset('public/favicon.jpg') }}">
+    <link rel="shortcut icon" href="{{ asset('icons/career.svg') }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -17,12 +17,11 @@
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
     <!-- Datatable -->
     <link rel="stylesheet" href="{{asset('bower_components/datatables/css/dataTables.bootstrap.min.css')}}">
-
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <!-- <link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}"> -->
-
     @stack('backend.css')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -39,13 +38,15 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <script src="{{asset('bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
 
 <script>
     $(function () {
             //Datatable
             $('#search').DataTable({
                 language: {
-                    searchPlaceholder: "Search By ID/Email/Name"
+                    searchPlaceholder: "Type Something to Search"
                 }
             });
             //Select2

@@ -91,17 +91,26 @@ class ProfileController extends Controller
             $user=Admin::find($id);
         else
             $user=Student::find($id);
+
+        if (! Hash::check($request->old, $user->password))
+            {
+                Toastr::error("your current password does not match with the password you provided. please try again.","Error");
+                return back();
+            }
+
         if($request->password){
+            if (Hash::check($request->password, $user->password)) {
+                Toastr::error('Your new password is similar to your current password. Please try another password.','Error!');
+                return back();
+            }
+
             if (Hash::check($request->old, $user->password)) {
                 $user->password = bcrypt($request->password);
                 $user->save();
                 Toastr::success('Your Password is changed successfully','Success!');
                 return back();
             }
-            else
-            {
-                return back()->with("error","your current password does not match with the password you provided. please try again.");
-            }
+            
         }
     }
 }

@@ -55,14 +55,15 @@ class StudentController extends Controller
         $student->save();
         //Saving Departments to Students
         $student->departments()->attach($request->id);
-        //Generating a Token for Student
-        $verifyUser = VerifyStudent::create([
-            'student_id' => $student->id,
-            'token'      => sha1(time()),
-        ]);
-        //Sending Mail to Student
-        \Mail::to($student->email)->send(new VerifyMail($student));
-        return redirect('/login')->with('info', "Email Verification Link was Sent, Please Verfiy Your mail Before Login.");
+        // //Generating a Token for Student
+        // $verifyUser = VerifyStudent::create([
+        //     'student_id' => $student->id,
+        //     'token'      => sha1(time()),
+        // ]);
+        // //Sending Mail to Student
+        // \Mail::to($student->email)->send(new VerifyMail($student));
+        Toastr::succees('Account Created Succesfully','Success!');
+        return redirect('/login');
     }
 
     /**
@@ -74,34 +75,6 @@ class StudentController extends Controller
     public function show(Student $student)
     {
         return view('student.show', compact('student'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Student  $student
-     * @return \Illuminate\Http\Response
-     */
-    public function search(Request $request)
-    {
-   if($request->get('query'))
-     {
-      $query = $request->get('query');
-      $data = DB::table('students')
-        ->where('name', 'LIKE', "%{$query}%")
-        ->orwhere('username', 'LIKE', "%{$query}%")
-        ->orwhere('email', 'LIKE', "%{$query}%")
-        ->get();
-      $output = '<ul class="dropdown-menu" style="display:block; position:relative; width : 100% >';
-      foreach($data as $row)
-      {
-       $output .= '
-       <li><a href="#" >'.$row->email.'</a></li>
-       ';
-      }
-      $output .= '</ul>';
-      return $output;
-     }
     }
     /**
      * Update the specified resource in storage.
@@ -124,12 +97,13 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
+        Toastr::succees('Students deleted Succesfully','Success!');
         return back();
     }
 
     public function blockedUsers()
     {
-        $students = Student::onlyTrashed()->paginate(10);
+        $students = Student::onlyTrashed()->all();
         return view('student.blockedusers', compact('students'));
     }
     public function unblock($id)
@@ -137,6 +111,7 @@ class StudentController extends Controller
         $student = Student::withTrashed()
             ->where('id', $id)->first();
         $student->restore();
+        Toastr::succees('Students Unblocked Succesfully','Success!');
         return redirect('students');
     }
 }

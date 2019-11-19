@@ -6,7 +6,7 @@ use App\Question;
 use App\Subject;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
-
+use Toastr;
 class QuestionController extends Controller
 {
     public function __construct()
@@ -51,7 +51,8 @@ class QuestionController extends Controller
             $question->option4 = $request->option4;
         $question->correct_ans = $request->correct_ans;
         $question->save();
-        return back()->with('success','Question Created Succesfully');
+        Toastr::success('Questions Created Succesfully','Success!');
+        return back();
     }
 
     /**
@@ -85,6 +86,13 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
+        $request->validate([
+            'question' =>  'required',
+            'option1'  =>  'required_without_all:option2,option3,option4',
+            'option2'  =>  'required_without_all:option1,option3,option4',
+            'option3'  =>  'required_without_all:option1,option2,option4',
+            'option4'  =>  'required_without_all:option1,option3,option2',
+        ]);
         $question->question = $request->question;
         if($request->option1)
             $question->option1 = $request->option1;
@@ -96,6 +104,7 @@ class QuestionController extends Controller
             $question->option4 = $request->option4;
         $question->correct_ans = $request->correct_ans;
         $question->save();
+        Toastr::success('Question Updated Succesfully','Success!');
         return redirect('questions/'.$question->subject_id);
     }
 
@@ -108,6 +117,7 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         $question->delete();
+        Toastr::success('Question deleted Succesfully','Success!');
         return back();
     }
 }

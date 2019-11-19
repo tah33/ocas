@@ -1,12 +1,17 @@
 @extends('layouts.master')
 @section('master.content')
+<style>
+       div.dataTables_wrapper div.dataTables_filter input{
+            width: 200px;
+        }
+</style>
     <div class="row"> 
         <div class="box">
         <div class="box-body">
             <center>
             <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a></center>
                 <table id="search" class="table table-hover">
-                    <caption>Blocked Users List</caption>
+                    <caption>Students List</caption>
                     <thead>
                     <tr>
                         <th style="text-align: center">No.</th>
