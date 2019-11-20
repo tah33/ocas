@@ -25,6 +25,7 @@
                 </a>
             </li>
             <!-- Settings Area -->
+            @if(Auth::guard('admin')->check())
             <li class="header">User Settings</li>
             <li class="treeview">
                 <a href="#">
@@ -84,7 +85,16 @@
             </span>
                 </a>
             </li>
+            @endif
+            <li class="header">Tests</li>
 
+                <li>
+                <a href="{{url('tests/create')}}">
+                    <i class="glyphicon glyphicon-question-sign"></i> <span>Test</span>
+                    <span class="pull-right-container">
+            </span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

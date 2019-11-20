@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Test;
+use App\Student;
+use App\Question;
+use Auth;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -24,7 +27,16 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        $questions='';
+        $student=Student::find(Auth::id());
+        $majorSubjects=[];
+        foreach ($student->departments as $key => $department){
+                $majorSubjects[] =$department->subject_id; 
+            }
+        if (!empty($majorSubjects)) {
+            $questions=Question::whereIn('subject_id',$majorSubjects)->pluck('question')->random();
+        }
+        return view('tests.create',compact('questions'));
     }
 
     /**

@@ -21,7 +21,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{asset('images/avatar.png')}}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">{{Auth::guard('admin') ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}</span>
+                        <span class="hidden-xs">{{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -29,15 +29,15 @@
                             <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
 
                             <p>
-                                {{Auth::guard('admin') ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}
-                                <small>Member since {{Auth::guard('admin') ? Auth::guard('admin')->user()->created_at->diffForHumans() : Auth::guard('student')->user()->created_at->diffForHumans()}}</small>
+                                {{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}
+                                <small>Member since {{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->created_at->diffForHumans() : Auth::guard('student')->user()->created_at->diffForHumans()}}</small>
                             </p>
                         </li>
 
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{url('profiles',Auth::guard('admin') ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{url('logout')}}" class="btn btn-default btn-flat">Sign out</a>

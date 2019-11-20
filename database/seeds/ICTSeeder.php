@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\Question;
 class ICTSeeder extends Seeder
 {
     /**
@@ -42,11 +42,11 @@ class ICTSeeder extends Seeder
             array('subject_id'=>4,'question'=> 'BCD stands for', 'option1' => 'Binary Coded Decimal','option2' => 'Binary Coded Digitals','option3' => 'Binary Characters Decimals','option4' => 'Binary Conducting Decimals','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> " 'megabytes' of computer storage capacity consists of", 'option1' => 'one million bytes','option2' => 'two million bytes','option3' => 'three million bytes','option4' => 'four million bytes','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> " Method of representing numbers such as '0s' and '1s' is called", 'option1' => 'binary notation','option2' => 'primary notation','option3' => 'secondary notation','option4' => 'variable notation','correct_ans' => "a"),
-            array('subject_id'=>4,'question'=> 'Number of bits in 'EBCDIC' code for computing are', 'option1' => 'eight bits','option2' => 'eighteen bits','option3' => 'twenty eight bits','option4' => 'seven bits','correct_ans' => "a"),
+            array('subject_id'=>4,'question'=> "Number of bits in 'EBCDIC' code for computing are", 'option1' => 'eight bits','option2' => 'eighteen bits','option3' => 'twenty eight bits','option4' => 'seven bits','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'Numbers that are written with base 16 are classified as', 'option1' => 'whole numbers','option2' => 'hexadecimal','option3' => 'exponential integers','option4' => 'mantissa','correct_ans' => "b"),
             array('subject_id'=>4,'question'=> 'Binary strings which are formed by replacing 0s by 1s and 1s by 0s is referred as', 'option1' => 'ones complement','option2' => 'twos complement','option3' => 'ones string','option4' => 'twos string','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'In American Standard Code (ASCII), maximum possible characters set size can be', 'option1' => 'character set of 128','option2' => 'character set of 138','option3' => 'character set of 148','option4' => 'character set of 158','correct_ans' => "a"),
-            array('subject_id'=>4,'question'=> 'Code 'EBCDIC' which is used in computing stands for', 'option1' => 'extended BCD interchange code','option2' => 'extension of BCD information code','option3' => 'extension of BCD interchange conduct','option4' => 'extended BCD information conduct','correct_ans' => "a"),
+            array('subject_id'=>4,'question'=> "Code 'EBCDIC' which is used in computing stands for", 'option1' => 'extended BCD interchange code','option2' => 'extension of BCD information code','option3' => 'extension of BCD interchange conduct','option4' => 'extended BCD information conduct','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'Number of bits in American Standard Code (ASCII) used in computing are', 'option1' => 'five bits','option2' => 'six bits','option3' => 'twenty bits','option4' => 'ten bits','correct_ans' => "c"),
             array('subject_id'=>4,'question'=> 'Symbols such as letters or any digit are called', 'option1' => 'characters','option2' => 'small bits','option3' => 'small bytes','option4' => 'output characters','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'Sequence of grouped binary digits is represented', 'option1' => 'bit string','option2' => 'byte string','option3' => 'binary string','option4' => 'input string','correct_ans' => "c"),
@@ -64,7 +64,7 @@ class ICTSeeder extends Seeder
             array('subject_id'=>4,'question'=> 'In flow chart, diamond shaped symbol is used to represent', 'option1' => 'decision box','option2' => 'statement box','option3' => 'error box','option4' => 'if-statement box','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'To write a program function i.e. program for sum of four integers, program refinement first level includes', 'option1' => 'input four numbers','option2' => 'calculate sum','option3' => 'print the values','option4' => 'display the values','correct_ans' => "a"),
             array('subject_id'=>4,'question'=> 'Part of algorithm which is repeated for fixed number of times is classified as', 'option1' => 'iteration','option2' => 'selection','option3' => 'sequence','option4' => 'reverse action','correct_ans' => "a"),
-            array('subject_id'=>4,'question'=> 'Diagram that represents steps or operations involved in any kind of process is called,', 'option1' => 'system diagram' => 'management hierarchy','option3' => 'flowcharts','option4' => 'convenience diagrams','correct_ans' => "c"),
+            array('subject_id'=>4,'question'=> 'Diagram that represents steps or operations involved in any kind of process is called,', 'option1' => 'system diagram', 'option2' => 'management hierarchy','option3' => 'flowcharts','option4' => 'convenience diagrams','correct_ans' => "c"),
          );     
          Question::insert($ict);
     }

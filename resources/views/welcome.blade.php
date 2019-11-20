@@ -92,7 +92,7 @@
                       </div>
                       <div class="item">
                             <h3>Are You Capable to Do?</h3>
-                            <a href=""><h2>CE</h2> </a>
+                            <a href=""><h2>SCE</h2> </a>
                             <a href=""><h4>Test Yourself</h4> </a>
                       </div>
                       <div class="item">

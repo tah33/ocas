@@ -15,15 +15,10 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('exam_id')->nullable();
             $table->unsignedBigInteger('student_id')->nullable();
             $table->integer('marks');
             $table->time('time');
             $table->timestamps();
-            $table->foreign('exam_id')
-                ->references('id')->on('exams')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
                 $table->foreign('student_id')
                 ->references('id')->on('students')
                 ->onDelete('cascade')

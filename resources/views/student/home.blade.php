@@ -1,3 +1,10 @@
-@extends('layouts.header')
-<a href="{{url('logout')}}" class="btn btn-danger">Logout</a>
-<h1>Student</h1>
+@extends('layouts.master')
+@section('backend.title','Dashboard')
+@section('master.content')
+<div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+
+        </div>
+      </div>
+@stop

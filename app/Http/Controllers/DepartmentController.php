@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Subject;
 use App\Condition;
+use App\Question;
 use App\Http\Requests\DepartmentRequest;
 use Illuminate\Http\Request;
 use Toastr;
@@ -51,21 +52,22 @@ class DepartmentController extends Controller
                 return back();
             }
         }
-        else{
             $department->subject_id=$request->id;
             $department->range=$request->range;
+
+            $questions=Question::where('subject_id',$request->id)->get();
+            if (count($questions) < $request->range)
+              {
+                Toastr::error('Please Add Some Questions Before Enterirng Marks','Error!');
+                return back();
+              }  
+
+            $department->subjects=$request->subject_id;             
+            $department->total=$request->total;
             $department->save();
-  
-            $condition = new Condition;
-            $condition->subject_id=$request->subject_id;             
-            $condition->department_id=$department->id;
-            $condition->total=$request->total;
-            $condition->save();
 
         Toastr::success('Department is Succesfully Added','Success!');
-        return back();
-    }
-        
+        return back(); 
     }
 
     /**
@@ -78,8 +80,8 @@ class DepartmentController extends Controller
     {
         $subjects=$subject='';
         $department=Department::find($id);
-        if ($department->condition)
-            $subjects=Subject::whereIn('id',$department->condition->subject_id)->get();
+        if ($department->subjects)
+            $subjects=Subject::whereIn('id',$department->subjects)->get();
         if($department->subject_id)
             $subject=Subject::where('id',$department->subject_id)->first();
         return view('departments.show',compact('department','subjects','subject'));
@@ -97,8 +99,8 @@ class DepartmentController extends Controller
         $multiplesubjects=Subject::all();
         if ($department->subject_id)
             $subject=Subject::where('id',$department->subject_id)->first();
-        if ($department->condition)
-            $selectedsubjects=Subject::whereIn('id',$department->condition->subject_id)->get();
+        if ($department->subjects)
+            $selectedsubjects=Subject::whereIn('id',$department->subjects)->get();
         $subjects=Subject::all();
         return view('departments.edit',compact('department','subjects','multiplesubjects','subject','selectedsubjects'));
     }
@@ -131,24 +133,20 @@ class DepartmentController extends Controller
                 return back()->with('error',"Total Marks Cannot be exceed 100");
             }
         }
-        if($request->id && $request->range)
-        {
             $department->subject_id=$request->id;
             $department->range=$request->range;
-        }
-        $department->save();
-        if($department->save() && $request->subject_id && $request->total)
-        {   
-            if($department->condition)
-                $condition =Condition::find($department->condition->id);
-            else
-                $condition = new Condition;
-            $condition->subject_id=$request->subject_id;             
-            $condition->department_id=$department->id;
-            $condition->total=$request->total;
-            $condition->save();
-        }
-        return redirect('departments')->with('success','Department is Succesfully Updated');
+            $questions=Question::where('subject_id',$request->id)->get();
+            if (count($questions) < $request->range)
+              {
+                Toastr::error('Please Add Some Questions Before Enterirng Marks','Error!');
+                return back();
+              }  
+
+            $department->subjects=$request->subject_id;             
+            $department->total=$request->total;
+            $department->save();
+        Toastr::success('Department is Succesfully Updated','Success!');
+        return redirect('departments');
     }
 
     /**

@@ -24,9 +24,7 @@ class Controller extends BaseController
     {
         // Default variables
         $this->data = [
-            'page_title' => 'Dashboard :: Restaurant Management',
-            'page_header' => 'Restaurant Management',
-            'page_desc' => '',
+            'page_title' => 'Dashboard :: OCASUS',
         ];
 
     }

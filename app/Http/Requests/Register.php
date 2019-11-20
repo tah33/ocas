@@ -13,7 +13,7 @@ class Register extends FormRequest
 
     public function rules()
     {
-        $min=Carbon::now()->subYear(12);
+        $min=Carbon::now()->subYear(15);
         return [
             'name' => 'required',
             'username' => 'required|unique:admins,username|unique:students,username',

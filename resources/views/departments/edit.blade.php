@@ -1,15 +1,5 @@
 @extends('layouts.master')
 @section('master.content')
-<style>
-.hl {
-  border-bottom:  1px solid red;
-  height: 100px;
-}
-.hl2 {
-  border-bottom:  1px solid red;
-  height: 180px;
-}
-</style>
 <div class="row">
   <div class="col-md-8">
         <div class="box box-primary">
@@ -20,7 +10,8 @@
 <form method="post" action="{{url('departments',$department->id)}}">
  @csrf
  @method('put')
-                        <div class="hl2">
+                        <div class="panel panel-primary" style="padding: 10px">
+                        
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
 
@@ -55,12 +46,12 @@
                             </div>
                         </div>
                         </div>
-                        <div class="hl">
+                       <div class="panel panel-danger" style="padding:  10px">
+                    <div class="panel-heading">Add Conditions</div>
                        <div class="form-group row">
                             <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Add Conitions') }}</label>
-                        </div>
                             <div class="col-md-6">
-                                <select class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id">
+                                <select style="margin-top: 10px" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id">
                                 @if ($department->subject_id)
                                 <option value="{{$subject->id}}">{{$subject->name}}</option>
                                     @endif
@@ -75,6 +66,9 @@
                                     </span>                               
                                 @endif
                             </div>
+                        </div>
+                            <div class="form-group row">
+                            <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Enter Number') }}</label>
                             <div class="col-md-6">
                                 <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range" 
                                 value="{{ $department->range ?$department->range : '' }}" placeholder="Enter Minimum Marks for Enroll">
@@ -85,9 +79,11 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="panel panel-danger" style="padding:  10px">
+                    <div class="panel-heading">Choose Another Conitions for Multiple Subjects</div>
+
                             <div class="form-group row">
                             <label for="minimum" class="col-md-8 col-form-label text-md-right">{{ __('Choose Another Conitions for Multiple Subjects') }}</label>
-                        </div>
                             <div class="col-md-6">
                                 <select class="form-control{{ $errors->has('subject_id') ? ' is-invalid' : '' }} select2" name="subject_id[]" multiple="multiple" data-placeholder="Choose Multiple Subjects" selected="selected">
                                     @if(!empty($selectedsubjects))
@@ -105,8 +101,11 @@
                                     </span>                               
                                 @endif
                             </div>
+                        </div>
+                            <div class="form-group row">
+                            <label for="minimum" class="col-md-8 col-form-label text-md-right">{{ __('Choose Another Conitions for Multiple Subjects') }}</label>
                             <div class="col-md-6">
-                                <input id="total" type="number" class="form-control{{ $errors->has('total') ? ' is-invalid' : '' }}" name="total" value="{{ $department->condition ? $department->condition->total : ''  }}" placeholder="Enter Minimum Marks for Enroll">
+                                <input id="total" type="number" class="form-control{{ $errors->has('total') ? ' is-invalid' : '' }}" name="total" value="{{ $department->total ? $department->total : ''  }}" placeholder="Enter Minimum Marks for Enroll">
                                    @if ($errors->has('total'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('total') }}</strong>
@@ -114,6 +113,8 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+
         <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 
   </form>        

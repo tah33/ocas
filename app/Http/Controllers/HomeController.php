@@ -7,6 +7,7 @@ use Auth;
 use Toastr;
 use App\Department;
 use App\Student;
+use App\Subject;
 use App\Http\Requests\Login;
 use App\verifyStudent;
 use App\Mail\VerifyMail;
@@ -42,9 +43,14 @@ class HomeController extends Controller
      {
      	if(Auth::guard('admin')->check())
         {
-            $students=Student::all();
-            $departments=Department::all();
-     		return view('admin.home',compact('students','departments'));
+            
+            $data=[
+                'page_title' => 'Dashboard :: OCASUS',
+                'departments' => Department::all(),
+                'subjects' => Subject::all(),
+                'students' =>Student::all()  
+            ];
+     		return view('admin.home')->with(array_merge($this->data, $data));
         }
      	else
      		return view('student.home');

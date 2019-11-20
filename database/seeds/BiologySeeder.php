@@ -64,7 +64,7 @@ class BiologySeeder extends Seeder
             array('subject_id'=>11,'question'=> 'A pentose, nitrogen and phosphate are combined to form', 'option1' => 'Peptide bond','option2' => 'Nucleotide','option3' => 'Nucleoside','option4' => 'Lipid','correct_ans' => "b"),
             array('subject_id'=>11,'question'=> 'An Auxin is produced in', 'option1' => 'Growing root tips','option2' => 'Growing shoot tips','option3' => 'Old roots','option4' => 'Both A and B','correct_ans' => "d"),
             array('subject_id'=>11,'question'=> ' Combination of glucose and fructose results in', 'option1' => 'Sucrose','option2' => 'Galactose','option3' => 'Fructose','option4' => 'Maltose','correct_ans' => "a"),
-            array('subject_id'=>11,'question'=> 'Blood Plasma and glomerular filtrate are different in concentrations of,', 'option1' => 'Uric acid' => 'Proteins','option3' => 'Creatinine','option4' => 'Urea','correct_ans' => "b"),
+            array('subject_id'=>11,'question'=> 'Blood Plasma and glomerular filtrate are different in concentrations of,', 'option1' => 'Uric acid','option2' => 'Proteins','option3' => 'Creatinine','option4' => 'Urea','correct_ans' => "b"),
          );     
          Question::insert($biology);
     }

@@ -26,3 +26,5 @@ Route::get('question/create/{id}', 'QuestionController@create');
 Route::post('question/store/{id}', 'QuestionController@store');
 //ExamController
 Route::resource('subjects', 'SubjectController');
+//TestController
+Route::resource('tests', 'TestController');

@@ -41,7 +41,7 @@
                 <li class="list-group-item"><b>{{$key+1}}</b>.	{{$subject->name}}
                 </li>
                 @endforeach
-                <li class="list-group-item"><b>Mimimum Marks Required</b> : {{$department->condition->total}}</li> 
+                <li class="list-group-item"><b>Mimimum Marks Required</b> : {{$department->total}}</li> 
             </ul>
       			 
             </div>

@@ -24,7 +24,12 @@
                                         <strong>{{ $errors->first('login') }}</strong>
                                     </span>                               
                                 @endif
+                                @if ($message = Session::get('msg'))
+                                <strong>{{ $message }}</strong>
+                                @endif
                             </div>
+                                
+
                        <div class="col-md-8">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter password">
                                 @if ($errors->has('password'))

@@ -15,11 +15,13 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('name');
             $table->integer('minimum');
             $table->integer('subject_id')->nullable();
             $table->integer('range')->nullable();
+            $table->json('subjects')->nullable();
+            $table->integer('total')->nullable();
             $table->timestamps();
         });
     }

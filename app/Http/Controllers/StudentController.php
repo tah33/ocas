@@ -8,7 +8,7 @@ use App\Mail\VerifyMail;
 use App\Student;
 use App\verifyStudent;
 use Illuminate\Http\Request;
-use DB;
+use Toastr;
 class StudentController extends Controller
 {
     public function __construct()
@@ -49,9 +49,8 @@ class StudentController extends Controller
         $student->password = bcrypt($request->password);
         $student->gender   = $request->gender;
         $student->phone    = $request->phone;
-        $student->address    = $request->address;
+        $student->address  = $request->address;
         $student->dob      = $request->dob;
-        
         $student->save();
         //Saving Departments to Students
         $student->departments()->attach($request->id);
@@ -62,7 +61,7 @@ class StudentController extends Controller
         // ]);
         // //Sending Mail to Student
         // \Mail::to($student->email)->send(new VerifyMail($student));
-        Toastr::succees('Account Created Succesfully','Success!');
+        Toastr::success('Registration Succesfull, You can now Login','Succes!');
         return redirect('/login');
     }
 

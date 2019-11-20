@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 	protected $fillable = [
-        'name','slug','minimum','subject_id','range'
+        'name','slug','minimum','subject_id','range','subjects','total'
     ];
     protected $casts = [
-        'conditions' => 'array'
+        'subjects' => 'array'
     ];
     public function students()
     {

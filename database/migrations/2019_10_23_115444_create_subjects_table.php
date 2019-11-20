@@ -15,13 +15,9 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('department_id')->nullable();
             $table->string('name')->unique();
             $table->timestamps();
-            $table->foreign('department_id')
-                ->references('id')->on('departments')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+        
         });
     }
 

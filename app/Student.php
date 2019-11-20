@@ -24,10 +24,11 @@ class Student extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Department::class);
     }
 
-    public function verifyStudent()
+    public function tests()
     {
-        return $this->hasOne(VerifyStudent::class);
+        return $this->hasMany(Test::class);
     }
+    
     public function getGenderNameattribute()
     {
         return ucfirst($this->gender);

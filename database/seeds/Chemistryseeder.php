@@ -64,7 +64,7 @@ class Chemistryseeder extends Seeder
             array('subject_id'=>2,'question'=> ' Scrubbers are composed of', 'option1' => 'calcium hydroxide','option2' => 'calcium carbonate','option3' => 'both A and B','option4' => 'calcium hydroxide','correct_ans' => "c"),
             array('subject_id'=>2,'question'=> ' Diamond form of Carbon do not conduct electricity due to absence of', 'option1' => 'spectators electrons','option2' => 'delocalized electrons','option3' => 'free electrons','option4' => 'ions','correct_ans' => "b"),
             array('subject_id'=>2,'question'=> 'Chemical elements are represented by Greek or Latin', 'option1' => 'alphabets','option2' => 'symbols','option3' => 'gods','option4' => 'illusions','correct_ans' => "b"),
-            array('subject_id'=>2,'question'=> 'In process of oxidation, 20% of iron and steel is destroyed because of,', 'option1' => 'rusting' => 'molting','option3' => 'global warming','option4' => 'All of Above','correct_ans' => "a"),
+            array('subject_id'=>2,'question'=> 'In process of oxidation, 20% of iron and steel is destroyed because of,', 'option1' => 'rusting','option2' => 'molting','option3' => 'global warming','option4' => 'All of Above','correct_ans' => "a"),
          );     
          Question::insert($chemistry);
     }
