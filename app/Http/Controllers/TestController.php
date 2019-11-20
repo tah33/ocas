@@ -34,7 +34,7 @@ class TestController extends Controller
                 $majorSubjects[] =$department->subject_id; 
             }
         if (!empty($majorSubjects)) {
-            $questions=Question::whereIn('subject_id',$majorSubjects)->pluck('question')->random();
+            $questions=Question::whereIn('subject_id',$majorSubjects)->get()->random();
         }
         return view('tests.create',compact('questions'));
     }
