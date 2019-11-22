@@ -25,7 +25,6 @@
                 </a>
             </li>
             <!-- Settings Area -->
-            @if(Auth::guard('admin')->check())
             <li class="header">User Settings</li>
             <li class="treeview">
                 <a href="#">
@@ -35,10 +34,12 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('profiles',Auth::guard('admin') ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
+                    <li><a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
                     <li><a href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change Password</a></li>
                 </ul>
             </li>
+            @if(Auth::guard('admin')->check())
+
             <!-- Students Info -->
             <li class="header">Students</li>
             <li>

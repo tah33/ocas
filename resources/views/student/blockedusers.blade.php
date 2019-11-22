@@ -3,6 +3,8 @@
     <div class="row"> 
         <div class="box">
             <div class="box-body">
+                <center>
+            <a href="{{url('students')}}" class="btn btn-success btn-sm">Students</a></center>
                 <table id="search" class="table table-hover table-bordered">
                     <caption>Blocked Users List</caption>
                     <thead>
@@ -31,7 +33,6 @@
                     @endforeach
                     </tbody>
                 </table>
-                    {{$students->links()}}
 
             </div>
         </div>

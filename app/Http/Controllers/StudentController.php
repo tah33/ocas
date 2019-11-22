@@ -96,13 +96,13 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        Toastr::succees('Students deleted Succesfully','Success!');
+        Toastr::success('Students blocked Succesfully','Success!');
         return back();
     }
 
     public function blockedUsers()
     {
-        $students = Student::onlyTrashed()->all();
+        $students = Student::onlyTrashed()->get();
         return view('student.blockedusers', compact('students'));
     }
     public function unblock($id)
@@ -110,7 +110,7 @@ class StudentController extends Controller
         $student = Student::withTrashed()
             ->where('id', $id)->first();
         $student->restore();
-        Toastr::succees('Students Unblocked Succesfully','Success!');
+        Toastr::success('Students Unblocked Succesfully','Success!');
         return redirect('students');
     }
 }

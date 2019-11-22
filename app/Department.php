@@ -16,9 +16,9 @@ class Department extends Model
     {
         return $this->belongsToMany(Student::class);
     }
-    public function subjects()
+    public function subject()
     {
-        return $this->hasMany(Subject::class);
+        return $this->belongsTo(Subject::class);
     }
     public function condition()
     {

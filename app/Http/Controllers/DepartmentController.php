@@ -78,13 +78,11 @@ class DepartmentController extends Controller
      */
     public function show($id)
     {
-        $subjects=$subject='';
+        $subjects = '';
         $department=Department::find($id);
         if ($department->subjects)
             $subjects=Subject::whereIn('id',$department->subjects)->get();
-        if($department->subject_id)
-            $subject=Subject::where('id',$department->subject_id)->first();
-        return view('departments.show',compact('department','subjects','subject'));
+        return view('departments.show',compact('department','subjects'));
     }
 
     /**

@@ -6,9 +6,9 @@
                     <h3 class="box-title">Update Profile Info</h3>
                 </div>
                 <div class="box-body">
-                    <form method='post' action="{{url('profiles',$user->id)}}">
+                    <form method="post" action="{{url('profiles',$user->id)}}" enctype="multipart/form-data">
                         @csrf
-        @method('put')
+                     @method('put')
                         <div class="form-group">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                    name="name" value="{{ $user->name }}" autocomplete="name" autofocus>
@@ -67,6 +67,16 @@
                                    class="form-control @error('address') is-invalid @enderror"
                                    name="address" value="{{ $user->address }}" autocomplete="requirements">
                             @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong><font color="red">{{ $message }}</font></strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input id="dob" type="date"
+                                   class="form-control @error('dob') is-invalid @enderror"
+                                   name="dob" value="{{ $user->dob }}" autocomplete="requirements">
+                            @error('dob')
                             <span class="invalid-feedback" role="alert">
                                         <strong><font color="red">{{ $message }}</font></strong>
                                     </span>
