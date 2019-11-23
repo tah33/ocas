@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('master.content')
+<div class="row">
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header">
@@ -82,7 +83,17 @@
                                     </span>
                             @enderror
                         </div>
-                        <div class="col-lg-12 input-group control-group increment">
+                        <div class="form-group">
+                        <select name="id[]" class="form-control @error('dob') is-invalid @enderror select2" multiple="multiple">
+                            @foreach(Auth::guard('student')->user()->departments as $department)
+                            <option value="{{$department->id}}" selected="selected">{{$department->name}}</option>
+                            @endforeach
+                            @foreach($departments as $department)
+                            <option value="{{$department->id}}">{{$department->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                        <div class="col-lg-12 input-group control-group">
                             <input type="file" name="image"
                                    class="form-control @error('image') is-invalid @enderror" accept="image/*">
 
@@ -99,4 +110,5 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection

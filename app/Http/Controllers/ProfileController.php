@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Password;
 use App\Admin;
 use App\Student;
+use App\Department;
 use Auth;
 use Hash;
 use Toastr;
@@ -27,11 +28,16 @@ class ProfileController extends Controller
     }
     public function edit($id)
     {
+        $departments='';
         if(Auth::guard('admin')->check())
         	$user=Admin::find($id);
-        else
+        else{
         	$user=Student::find($id);
-        return view('profiles.edit',compact('user'));
+            foreach ($user->departments as $key => $department)
+                $ids[]=$department->id;
+            $departments=Department::whereNotIn('id',$ids)->get();
+        }
+        return view('profiles.edit',compact('user','departments'));
     }
     public function update(Request $request, $id)
     {
@@ -60,9 +66,10 @@ class ProfileController extends Controller
             ]);
     	}
 
+        $user=Auth::guard('admin')->check() ? Admin::find($id) : Student::find($id);
+
         if(Auth::guard('admin')->check())
         {
-            $user=Admin::find($id);
         $user->name = $request->name;
         $user->username = $request->username;
         $user->email = $request->email;
@@ -70,7 +77,6 @@ class ProfileController extends Controller
         }
         else
         {
-            $user=Student::find($id);
             $user->name = $request->name;
             $user->username = $request->username;
             $user->email = $request->email;
@@ -86,7 +92,7 @@ class ProfileController extends Controller
             }
         $user->save();
 
-        	$user->departments()->attach($request->id);	
+        	$user->departments()->sync($request->id);	
 		}
         Toastr::success('Your Profile is Updated successfully','Success!');
         return redirect('home');

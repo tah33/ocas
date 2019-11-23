@@ -20,13 +20,21 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        @if(empty(Auth::user()->image))
                         <img src="{{asset('images/avatar.png')}}" class="user-image" alt="User Image">
+                        @else
+                        <img src="{{asset('images/'.Auth::guard('student')->user()->image)}}" class="user-image" alt="User Image">
+                        @endif
                         <span class="hidden-xs">{{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="{{asset('images/avatar.png')}}" class="img-circle" alt="User Image">
+                            @if(empty(Auth::user()->image))
+                        <img src="{{asset('images/avatar.png')}}" class="image-circle" alt="User Image">
+                        @else
+                        <img src="{{asset('images/'.Auth::guard('student')->user()->image)}}" class="image-circle" alt="User Image">
+                        @endif
 
                             <p>
                                 {{Auth::guard('admin')->check() ? Auth::guard('admin')->user()->name : Auth::guard('student')->user()->name}}
