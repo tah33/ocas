@@ -33,14 +33,13 @@ class TestController extends Controller
         $majorSubjects=[];
         foreach ($student->departments as $key => $department){
                 $majorSubjects[] =$department->subject_id; 
-                $names[] =$department->name; 
+                $ranges[] =$department->range; 
             }
-        $departments=Department::where('subject_id','=',null)->whereHas('students',function($student){
-            $student->where('students.id',Auth::id());
-        })->get();
-        if (!empty($majorSubjects)) {
-            $question=Question::whereIn('subject_id',$majorSubjects)->get()->random(25);
-        }
+        if (count($majorSubjects) > 0)
+            $div = array_sum($ranges)/count($majorSubjects);
+        else
+            $div=array_sum($ranges);
+        $questions=Question::whereIn('subject_id',$majorSubjects)->get()->random($div);
         return view('tests.create',compact('questions'));
     }
 

@@ -9,11 +9,12 @@
                 <div class="box-body">
                     <form method="post" action="{{url('tests')}}">
                     @csrf
-                    @foreach($questions as $question)
+                    @foreach($questions as $key => $question)
+                    <br>
                         <div class="form-group row">
                             <div class="col-md-6">
-                                <textarea style="border: none" class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" 
-                                     placeholder="Enter Question Here">{{$question->question}}</textarea>
+                              <label>Quesion{{$key+1}}</label>
+                                <textarea style="border: none" class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" placeholder="Enter Question Here" disabled="disabled">{{$question->question}}</textarea>
                                 @if ($errors->has('question'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('question') }}</strong>
@@ -22,19 +23,22 @@
                       
                             </div>
                         </div>
-                        <div style="display: block; padding: 20px" >
-                  <p>
-                    <input type="radio" name= "q" id="option1" style="w">{{$question->option1}}
-                  </p>
-                  <p>
-                    <input type="radio" name= "q" id="option1" style="w">{{$question->option2}}
-                  </p>
-                  <p>
-                    <input type="radio" name= "q" id="option1" style="w">{{$question->option3}}
-                  </p>
-<p>                    <input type="radio" name= "q" id="option1" style="w">{{$question->option4}}
-                  </p>
-   </div>
+                 <div class="form-check">
+            <input type="radio" class="form-check-input" name="q" id="option1">
+            <label class="form-check-label" for="option1">{{$question->option1}}</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" name="q" id="option2">
+            <label class="form-check-label" for="option2">{{$question->option2}}</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="q" id="option3" class="form-check-input">
+            <label class="form-check-label" for="option3">{{$question->option3}}</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="q" id="option4" class="form-check-input">
+            <label class="form-check-label" for="option4">{{$question->option4}}</label>
+          </div>
    @endforeach
                       <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>
                     </form>
