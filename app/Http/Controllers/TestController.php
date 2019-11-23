@@ -39,7 +39,7 @@ class TestController extends Controller
             $div = array_sum($ranges)/count($majorSubjects);
         else
             $div=array_sum($ranges);
-        $questions=Question::whereIn('subject_id',$majorSubjects)->get()->random($div);
+        $questions=Question::where('subject_id',$student->departments->latest()->first()->subject_id)->get()->random($div);
         return view('tests.create',compact('questions'));
     }
 
