@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Test;
 use App\Student;
 use App\Question;
+use App\Subject;
 use App\Department;
 use Auth;
 use Illuminate\Http\Request;
@@ -39,8 +40,8 @@ class TestController extends Controller
             $div = array_sum($ranges)/count($majorSubjects);
         else
             $div=array_sum($ranges);
-        $questions=Question::where('subject_id',$student->departments->latest()->first()->subject_id)->get()->random($div);
-        return view('tests.create',compact('questions'));
+        $subjects=Subject::whereIn('id',$majorSubjects)->get();
+        return view('tests.create',compact('subjects'));
     }
 
     /**
