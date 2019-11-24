@@ -53,7 +53,7 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd(count($request->ans));
     }
 
     /**

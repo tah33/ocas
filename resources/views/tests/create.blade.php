@@ -11,6 +11,9 @@
             </script>
 @endpush
  -->
+ @php
+ $request=app('request');
+ @endphp
 <div class="row">
         <div class="col-md-10">
             <div class="box box-primary">
@@ -40,23 +43,23 @@
                             </div>
                         </div>
                  <div class="form-check">
-            <input type="radio" class="form-check-input"  name="{{$question->id}}">
+            <input type="radio" class="form-check-input"  name="ans[{{$question->id}}]">
             <label class="form-check-label" for="option1">{{$question->option1}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" name="{{$question->id}}">
+            <input type="radio" class="form-check-input" name="ans[{{$question->id}}]">
             <label class="form-check-label" for="option2">{{$question->option2}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" name="{{$question->id}}" class="form-check-input">
+            <input type="radio" name="ans[{{$question->id}}]" class="form-check-input">
             <label class="form-check-label" for="option3">{{$question->option3}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" name="{{$question->id}}" class="form-check-input">
+            <input type="radio" name="ans[{{$question->id}}]" class="form-check-input">
             <label class="form-check-label" for="option4">{{$question->option4}}</label>
           </div>
    @endforeach
-   {{$subjects->links()}}
+   {{ $subjects->links() }}
    @endforeach
    @endif
                       <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>
