@@ -29,19 +29,20 @@ class TestController extends Controller
      */
     public function create()
     {
-        $questions='';
+        $subjects='';
         $student=Student::find(Auth::id());
         $majorSubjects=[];
         foreach ($student->departments as $key => $department){
                 $majorSubjects[] =$department->subject_id; 
                 $ranges[] =$department->range; 
             }
-        if (count($majorSubjects) > 0)
+        if (count($majorSubjects) > 0){
             $div = array_sum($ranges)/count($majorSubjects);
+            $subjects=Subject::whereIn('id',$majorSubjects)->paginate(1);
+            }
         else
             $div=array_sum($ranges);
-        $subjects=Subject::whereIn('id',$majorSubjects)->get();
-        return view('tests.create',compact('subjects'));
+        return view('tests.create',compact('subjects','div'));
     }
 
     /**
