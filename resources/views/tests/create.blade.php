@@ -1,19 +1,5 @@
 @extends('layouts.master')
 @section('master.content')
-<!-- @push('backend.css')
-<script type="text/javascript">
-            function createRadioButton()
-            {
-               var newRadioButton
-                 = document.createElement(input(type='radio',name='ans',value='1st'));
-               document.body.insertBefore(newRadioButton);
-            }
-            </script>
-@endpush
- -->
- @php
- $request=app('request');
- @endphp
 <div class="row">
         <div class="col-md-10">
             <div class="box box-primary">
@@ -28,7 +14,7 @@
                     <div class="panel panel-danger" style="width: 50%">
                       <div class="panel-heading" >Question from {{$subject->name}}</div>
                     </div>
-                    @foreach($subject->questions->random($div) as $num=>$question)
+                    @foreach($subject->questions->take($div) as $num=>$question)
                     <br>
                         <div class="form-group row">
                             <div class="col-md-6">

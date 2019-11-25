@@ -43,7 +43,7 @@ class Register extends FormRequest
             'address.required'  => 'Enter your Address',
             'id.required'  => 'Please Choose at Least one subject',
             'dob.required'  => 'Please Enter You Date of Birth',
-            'dob.before'  => 'Your Age should be at least 12 Years to registration',
+            'dob.before'  => 'Your Age should be at least 15 Years to registration',
         ];
     }
 }

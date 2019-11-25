@@ -18,11 +18,15 @@ class CreateDepartmentsTable extends Migration
             $table->string('slug')->nullable();
             $table->string('name');
             $table->integer('minimum');
-            $table->integer('subject_id')->nullable();
+            $table->unsignedBigInteger('subject_id')->nullable();
             $table->integer('range')->nullable();
             $table->json('subjects')->nullable();
             $table->integer('total')->nullable();
             $table->timestamps();
+            $table->foreign('subject_id')
+                ->references('id')->on('subjects')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

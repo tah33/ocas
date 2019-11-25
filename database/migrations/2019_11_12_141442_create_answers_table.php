@@ -17,7 +17,7 @@ class CreateAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('question_id');
-            $table->string('given_ans')->nullable();
+            $table->json('given_ans')->nullable();
             $table->timestamps();
             $table->foreign('student_id')
                 ->references('id')->on('students')

@@ -17,7 +17,6 @@ class TestsTableSeeder extends Seeder
         for($i=1;$i<=15;$i++)
         {
             $student=Test::create([
-                'exam_id' =>  rand(1,2),
                 'student_id' =>  rand(1,15),
                 'marks' =>  rand(1,15),
                 'time' =>  $mytime
