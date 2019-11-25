@@ -11,7 +11,7 @@
         @foreach ($elements as $element)
             {{-- "Three Dots" Separator --}}
             @if (is_string($element))
-                <a class="icon item disabled" aria-disabled="true">{{ $element }}</a>
+                <a class="icon item disabled"  aria-disabled="true">{{ $element }}</a>
             @endif
 
             {{-- Array Of Links --}}

@@ -50,8 +50,12 @@
             });
             //Select2
         $(".select2").select2();
-   
-    });
+   $('#form').submit(function(event) {
+    event.preventDefault();
+    $(this).submit();
+    }); 
+  });
+
 
 </script>
 @stack('backend.js')

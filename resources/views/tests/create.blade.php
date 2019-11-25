@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('master.content')
+
+
 <div class="row">
         <div class="col-md-10">
             <div class="box box-primary">
@@ -7,8 +9,9 @@
                     <h3 class="box-title">Question</h3>
                 </div>
                 <div class="box-body">
-                    <form method="post" action="{{url('tests')}}">
+                    <form method="post" id="form" action="{{url('tests')}}">
                     @csrf
+
                     @if($subjects)
                     @foreach($subjects as $key=>$subject)
                     <div class="panel panel-danger" style="width: 50%">
@@ -28,27 +31,30 @@
                     
                             </div>
                         </div>
+
                  <div class="form-check">
-            <input type="radio" class="form-check-input"  name="ans[{{$question->id}}]">
+            <input type="radio" class="form-check-input" id="option" name="ans[{{$question->id}}]" onchange='this.form.submit();'>
             <label class="form-check-label" for="option1">{{$question->option1}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" name="ans[{{$question->id}}]">
+            <input type="radio" class="form-check-input" id="option" name="ans[{{$question->id}}]" onchange='this.form.submit();'>
             <label class="form-check-label" for="option2">{{$question->option2}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" name="ans[{{$question->id}}]" class="form-check-input">
+            <input type="radio" class="form-check-input" id="option" name="ans[{{$question->id}}]" onchange='this.form.submit();'>
             <label class="form-check-label" for="option3">{{$question->option3}}</label>
           </div>
           <div class="form-check">
-            <input type="radio" name="ans[{{$question->id}}]" class="form-check-input">
+            <input type="radio" class="form-check-input" id="option" name="ans[{{$question->id}}]" onchange='this.form.submit();'>
             <label class="form-check-label" for="option4">{{$question->option4}}</label>
           </div>
    @endforeach
    {{ $subjects->links() }}
    @endforeach
-   @endif
-                      <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>
+   @endif 
+                    @if( $subjects->lastPage() == $subjects->currentPage())
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      @endif
                     </form>
 
                 </div>

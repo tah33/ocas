@@ -6,6 +6,7 @@ use App\Test;
 use App\Student;
 use App\Question;
 use App\Subject;
+use App\Answer;
 use App\Department;
 use Auth;
 use Illuminate\Http\Request;
@@ -27,9 +28,22 @@ class TestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $subjects='';
+        $subjects=$given='';
+        $ans = Answer::where('student_id',Auth::id())->latest()->first();
+        if ($ans && $request->ans) {
+             $ans->given_ans = $request->ans;
+             $ans->save();
+         } 
+         else{
+            if ($request->ans) {
+                $given = new Answer;
+                $given->student_id = Auth::id();
+                $given->given_ans = $request->ans;
+                $given->save();
+            }
+         }
         $student=Student::find(Auth::id());
         $majorSubjects=[];
         foreach ($student->departments as $key => $department){
@@ -42,7 +56,7 @@ class TestController extends Controller
             }
         else
             $div=array_sum($ranges);
-        return view('tests.create',compact('subjects','div'));
+        return view('tests.create',compact('subjects','div','given','majorSubjects'));
     }
 
     /**
@@ -53,7 +67,7 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        dd(count($request->ans));
+        dd($request->ans);
     }
 
     /**
