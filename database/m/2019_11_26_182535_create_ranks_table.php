@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswersTable extends Migration
+class CreateRanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,23 @@ class CreateAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('ranks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('student_id')->nullable();
-            $table->unsignedBigInteger('question_id')->nullable();
-            $table->string('given_ans')->nullable();
+            $table->unsignedBigInteger('subject_id');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('test_id');
+            $table->integer('marks');
             $table->timestamps();
+            $table->foreign('subject_id')
+                ->references('id')->on('subjects')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->foreign('student_id')
                 ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreign('question_id')
-                ->references('id')->on('questions')
+            $table->foreign('test_id')
+                ->references('id')->on('tests')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -37,6 +42,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('ranks');
     }
 }

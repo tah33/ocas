@@ -16,7 +16,7 @@
                @foreach($subjects as $key => $subject)
               <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $subject->id }}">
                 
-                @foreach($subject->questions->take($div) as $num => $question)
+                @foreach($subject->questions->random($div) as $num => $question)
                 <p style="font-size: 16px"><b>Quesion{{$num+1}} : </b>{{$question->question}}</p>
 
                  <div class="form-check">
