@@ -31,7 +31,7 @@ class TestController extends Controller
     public function create(Request $request)
     {
         $subjects=$given='';
-        $ans = Answer::where('student_id',Auth::id())->latest()->first();
+       /* $ans = Answer::where('student_id',Auth::id())->latest()->first();
         if ($ans && $request->ans) {
              $ans->given_ans = $request->ans;
              $ans->save();
@@ -43,16 +43,18 @@ class TestController extends Controller
                 $given->given_ans = $request->ans;
                 $given->save();
             }
-         }
+         }*/
         $student=Student::find(Auth::id());
         $majorSubjects=[];
         foreach ($student->departments as $key => $department){
-                $majorSubjects[] =$department->subject_id; 
-                $ranges[] =$department->range; 
+                $majorSubjects[] =$department->subject_id; //1,4
+                $ranges[] =$department->range;//EG.ICT=40,MATH=50 
             }
         if (count($majorSubjects) > 0){
-            $div = array_sum($ranges)/count($majorSubjects);
-            $subjects=Subject::whereIn('id',$majorSubjects)->paginate(1);
+            $div = array_sum($ranges)/count($majorSubjects);//45
+            $count=$div/100;//0.45*50
+            $result=$count*$department->range;//22.5
+            $subjects=Subject::whereIn('id',$majorSubjects)->get();
             }
         else
             $div=array_sum($ranges);
