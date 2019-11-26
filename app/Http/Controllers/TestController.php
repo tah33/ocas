@@ -6,11 +6,10 @@ use App\Test;
 use App\Student;
 use App\Question;
 use App\Subject;
-use App\Answer;
 use App\Department;
 use Auth;
 use Illuminate\Http\Request;
-
+use Toastr;
 class TestController extends Controller
 {
     public function __construct()
@@ -31,34 +30,24 @@ class TestController extends Controller
     public function create(Request $request)
     {
         $subjects=$given='';
-       /* $ans = Answer::where('student_id',Auth::id())->latest()->first();
-        if ($ans && $request->ans) {
-             $ans->given_ans = $request->ans;
-             $ans->save();
-         } 
-         else{
-            if ($request->ans) {
-                $given = new Answer;
-                $given->student_id = Auth::id();
-                $given->given_ans = $request->ans;
-                $given->save();
-            }
-         }*/
         $student=Student::find(Auth::id());
         $majorSubjects=[];
+
         foreach ($student->departments as $key => $department){
-                $majorSubjects[] =$department->subject_id; //1,4
-                $ranges[] =$department->range;//EG.ICT=40,MATH=50 
+                $majorSubjects[] =$department->subject_id;
             }
-        if (count($majorSubjects) > 0){
-            $div = array_sum($ranges)/count($majorSubjects);//45
-            $count=$div/100;//0.45*50
-            $result=$count*$department->range;//22.5
+
+        $no_of_questions =100;
+
+        if (count($majorSubjects) > 1){
+            $uniqueSubjects=array_unique($majorSubjects);
+            $div= ceil($no_of_questions/count($uniqueSubjects));
             $subjects=Subject::whereIn('id',$majorSubjects)->get();
             }
         else
-            $div=array_sum($ranges);
-        return view('tests.create',compact('subjects','div','given','majorSubjects'));
+            $div=$no_of_questions;
+
+        return view('tests.create',compact('subjects','div'));
     }
 
     /**
@@ -69,7 +58,19 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->ans);
+        $count=0;
+        foreach ($request->ans as $key => $ans) {
+            $question = Question::where('id',$key)->where('correct_ans',$ans)->first();
+            if ($question)
+                $count++;
+        }
+        $test = new Test;
+        $test->student_id = Auth::id();
+        $test->ans = $request->ans;
+        $test->marks = $count;
+        $test->save();
+        Toastr::success('Your answer was succesfully submitted','Success!');
+        return back();
     }
 
     /**
@@ -116,4 +117,5 @@ class TestController extends Controller
     {
         //
     }
+
 }

@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ActivityTableSeeder::class);
         $this->call(BiologySeeder::class);
         $this->call(Chemistryseeder::class);
-        $this->call(ICTSeeder::class);
+        //$this->call(ICTSeeder::class);
         $this->call(Mathseeder::class);
         $this->call(QuestionsTableSeeder::class);
 
