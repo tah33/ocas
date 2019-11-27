@@ -18,6 +18,8 @@ class CreateTestsTable extends Migration
             $table->unsignedBigInteger('student_id')->nullable();
             $table->json('ans')->nullable();
             $table->integer('marks');
+            $table->json('common')->nullable();
+            $table->json('common_marks')->nullable();
             $table->time('time')->nullable();
             $table->timestamps();
                 $table->foreign('student_id')
