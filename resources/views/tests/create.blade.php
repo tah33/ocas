@@ -15,8 +15,8 @@
               @if(!empty($subjects))
                @foreach($subjects as $key => $subject)
               <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $subject->id }}">
-                
-                @foreach($subject->questions->random($div) as $num => $question)
+               
+                @foreach($subject->questions->random($div-$sub) as $num => $question)
                 <p style="font-size: 16px"><b>Quesion{{$num+1}} : </b>{{$question->question}}</p>
 
                  <div class="form-check">
@@ -35,9 +35,12 @@
             <input type="radio" class="form-check-input" id="option" value="d" name="ans[{{$question->id}}]">
             <label class="form-check-label" for="option4">{{$question->option4}}</label>
           </div>
+          
                 @endforeach
               </div>
-
+              @php
+              $sub = 0 ;
+              @endphp
               @endforeach
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>

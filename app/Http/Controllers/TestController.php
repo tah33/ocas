@@ -29,25 +29,32 @@ class TestController extends Controller
      */
     public function create(Request $request)
     {
-        $subjects=$given='';
+        $subjects='';
         $student=Student::find(Auth::id());
         $majorSubjects=[];
 
         foreach ($student->departments as $key => $department){
                 $majorSubjects[] =$department->subject_id;
             }
+        $filter=array_filter($majorSubjects);
 
-        $no_of_questions =100;
+        $sub=0;
+        $no_of_questions = 100;
 
-        if (count($majorSubjects) > 1){
-            $uniqueSubjects=array_unique($majorSubjects);
-            $div= ceil($no_of_questions/count($uniqueSubjects));
-            $subjects=Subject::whereIn('id',$majorSubjects)->get();
+        if (count($filter) > 1){
+            $uniqueSubjects=array_unique($filter);
+            $div = ceil($no_of_questions/count($uniqueSubjects));
+            $mul = $div*count($uniqueSubjects);
+
+            if ($mul > $no_of_questions) {
+                $sub = $mul - $no_of_questions; 
+            }
+            $subjects=Subject::whereIn('id',$filter)->get();
             }
         else
-            $div=$no_of_questions;
+            $div=$no_of_questions/2;
 
-        return view('tests.create',compact('subjects','div'));
+        return view('tests.create',compact('subjects','div','sub'));
     }
 
     /**
