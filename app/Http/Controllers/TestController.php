@@ -88,9 +88,29 @@ class TestController extends Controller
 
           $student=Student::find(Auth::id());
           $mark=0;
+           foreach ($student->departments as $key => $department){
+                $majorSubjects[] =$department->subject_id;
+            }
+        $filter=array_filter($majorSubjects);
+
+        $sub=$add=0;
+        
+        $no_of_questions = 100;
+        if (count($filter) > 1){
+            $uniqueSubjects=array_unique($filter);
+            $div = ceil($no_of_questions/count($uniqueSubjects));//34
+            $mul = $div*count($uniqueSubjects);//34*3 = 102
+
+            if ($mul > $no_of_questions) 
+                $sub = $mul - $no_of_questions; //102-100
+                else
+                    $add = $no_of_questions - $mul; //100-96 = 4
+            }
+        else
+            $div=$no_of_questions;
+
         foreach ($student->departments as $key => $department){
                 $rank = new Rank;
-                $rank->student_id = Auth::id();
                 $rank->subject_id = $department->subject_id;
                 foreach ($request->major as $key => $value) {
                 $correct = Question::where('id',$key)->where('correct_ans',$value)->first();
@@ -98,10 +118,13 @@ class TestController extends Controller
                     $mark++;
                 }
             }
+                $markpercentage = ($mark*100)/($add == 0 ? $div-$sub : $div+$add) ;
                 $rank->test_id = $test->id;
-                $rank->marks = $mark;
+                $rank->marks = $markpercentage;
                 $rank->save();
                 $mark=0;
+                $add = 0;
+                $sub =0 ;
                 }
          
         Toastr::success('Your answer was succesfully submitted','Success!');

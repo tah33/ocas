@@ -16,7 +16,6 @@ class CreateRanksTable extends Migration
         Schema::create('ranks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('subject_id');
-            $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('test_id');
             $table->integer('marks');
             $table->timestamps();
@@ -24,10 +23,7 @@ class CreateRanksTable extends Migration
                 ->references('id')->on('subjects')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->foreign('student_id')
-                ->references('id')->on('students')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+        
             $table->foreign('test_id')
                 ->references('id')->on('tests')
                 ->onDelete('cascade')

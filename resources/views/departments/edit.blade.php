@@ -35,9 +35,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Minimum Marks') }}</label>
+                            <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Enter Minimum Percentage') }}</label>
                             <div class="col-md-6">
-                                <input id="minimum" type="number" class="form-control{{ $errors->has('minimum') ? ' is-invalid' : '' }}" name="minimum" value="{{ $department->minimum }}" placeholder="Enter Minimum Marks for Enroll">
+                                <input id="minimum" type="number" class="form-control{{ $errors->has('minimum') ? ' is-invalid' : '' }}" name="minimum" value="{{ $department->minimum }}" placeholder="Enter Minimum Percentage for Enroll">
                                 @if ($errors->has('minimum'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('minimum') }}</strong>
@@ -68,10 +68,10 @@
                             </div>
                         </div>
                             <div class="form-group row">
-                            <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Enter Number') }}</label>
+                            <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Enter Percentage') }}</label>
                             <div class="col-md-6">
                                 <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range" 
-                                value="{{ $department->range ?$department->range : '' }}" placeholder="Enter Minimum Marks for Enroll">
+                                value="{{ $department->range ?$department->range : '' }}" placeholder="Enter Minimum percentage for Enroll">
                                    @if ($errors->has('range'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('range') }}</strong>

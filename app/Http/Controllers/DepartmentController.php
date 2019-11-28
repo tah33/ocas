@@ -52,18 +52,10 @@ class DepartmentController extends Controller
                 return back();
             }
         }
-            $department->subject_id=$request->id;
-            $department->range=$request->range;
-
-            $questions=Question::where('subject_id',$request->id)->get();
-            if (count($questions) < $request->range)
-              {
-                Toastr::error('Please Add Some Questions Before Enterirng Marks','Error!');
-                return back();
-              }  
-
-            $department->subjects=$request->subject_id;             
-            $department->total=$request->total;
+            $department->subject_id  =$request->id;
+            $department->range       =$request->range;
+            $department->subjects    =$request->subject_id;             
+            $department->total       =$request->total;
             $department->save();
 
         Toastr::success('Department is Succesfully Added','Success!');
@@ -133,13 +125,6 @@ class DepartmentController extends Controller
         }
             $department->subject_id=$request->id;
             $department->range=$request->range;
-            $questions=Question::where('subject_id',$request->id)->get();
-            if (count($questions) < $request->range)
-              {
-                Toastr::error('Please Add Some Questions Before Enterirng Marks','Error!');
-                return back();
-              }  
-
             $department->subjects=$request->subject_id;             
             $department->total=$request->total;
             $department->save();
