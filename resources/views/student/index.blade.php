@@ -34,11 +34,11 @@
                             <td style="text-align: center">{{ $student->gendername }}</td>
                             
                             <td style="text-align: center">
-                                <a href="{{url('students',$student->id)}}" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i></a>
-                                <form action="{{url('students',$student->id)}}" style="float:right;" method="post" onsubmit="return confirm('Are you sure you want to block this students')">
+                                <a href="{{url('students',$student->id)}}" style="float: left" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                <form action="{{url('students',$student->id)}}"  method="post" onsubmit="return confirm('Are you sure you want to block this students')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove-sign"></i></button>
                                 </form>
                         </tr>
                     @endforeach

@@ -45,17 +45,17 @@ class DepartmentController extends Controller
         $department->name=$request->name;
         $department->minimum=$request->minimum;
         $department->slug=$request->slug;
-        if ($request->range && $request->total) {
+      /*  if ($request->range && $request->total) {
             $exceed=$request->range + $request->total;
             if ($exceed > 100) {
                 Toastr::error('Total Number Cannot Exceed 100','Error!');
                 return back();
             }
-        }
-            $department->subject_id  =$request->id;
+        }*/
+            $department->subject_id  =$request->subject_id;
             $department->range       =$request->range;
-            $department->subjects    =$request->subject_id;             
-            $department->total       =$request->total;
+            // $department->subjects    =$request->subject_id;             
+            // $department->total       =$request->total;
             $department->save();
 
         Toastr::success('Department is Succesfully Added','Success!');
@@ -68,13 +68,11 @@ class DepartmentController extends Controller
      * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        $subjects = '';
-        $department=Department::find($id);
-        if ($department->subjects)
-            $subjects=Subject::whereIn('id',$department->subjects)->get();
-        return view('departments.show',compact('department','subjects'));
+       /* if ($department->subjects)
+            $subjects=Subject::whereIn('id',$department->subjects)->get();*/
+        return view('departments.show',compact('department'));
     }
 
     /**
@@ -85,14 +83,11 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        $subject=$selectedsubjects='';
         $multiplesubjects=Subject::all();
-        if ($department->subject_id)
-            $subject=Subject::where('id',$department->subject_id)->first();
-        if ($department->subjects)
-            $selectedsubjects=Subject::whereIn('id',$department->subjects)->get();
+       /* if ($department->subjects)
+            $selectedsubjects=Subject::whereIn('id',$department->subjects)->get();*/
         $subjects=Subject::all();
-        return view('departments.edit',compact('department','subjects','multiplesubjects','subject','selectedsubjects'));
+        return view('departments.edit',compact('department','multiplesubjects','subjects'));
     }
 
     /**
@@ -108,25 +103,25 @@ class DepartmentController extends Controller
             'name' => 'required|unique:departments,name,'.$id,
             'minimum' => 'required|integer|between:1,100',
             'slug' => 'nullable|string|unique:departments,slug,'.$id,
-            'id' => 'nullable|required_with:range',
-            'range' => 'nullable|integer|between:1,100|required_with:id',
-            'subject_id' => 'nullable|required_with:total',
-            'total' => 'nullable|integer|between:1,100|required_with:subject_id',
+            // 'id' => 'nullable|required_with:range',
+            'range' => 'nullable|integer|between:1,100|required_with:subject_id',
+            'subject_id' => 'nullable|required_with:range',
+            // 'total' => 'nullable|integer|between:1,100|required_with:subject_id',
         ]);
         $department=Department::find($id);
         $department->name=$request->name;
         $department->minimum=$request->minimum;
         $department->slug=$request->slug;
-        if ($request->range && $request->total) {
+      /*  if ($request->range && $request->total) {
             $exceed=$request->range + $request->total;
             if ($exceed > 100) {
                 return back()->with('error',"Total Marks Cannot be exceed 100");
             }
-        }
-            $department->subject_id=$request->id;
+        }*/
+            $department->subject_id=$request->subject_id;
             $department->range=$request->range;
-            $department->subjects=$request->subject_id;             
-            $department->total=$request->total;
+        /*    $department->subjects=$request->subject_id;             
+            $department->total=$request->total;*/
             $department->save();
         Toastr::success('Department is Succesfully Updated','Success!');
         return redirect('departments');

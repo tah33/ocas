@@ -21,12 +21,12 @@
                             <td style="text-align: left">{{ $subject->name }}</td>
                           
                             <td style="text-align: center">
-                                <a style="float: left;" href="{{url('subjects/'.$subject->id.'/edit')}}" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
+                                <a style="float: left;" href="{{url('subjects/'.$subject->id.'/edit')}}" class="btn btn-success btn-sm" ><i class="glyphicon glyphicon-pencil"></i></a>
                                 
                                 <form method="post" action="{{url('subjects',$subject->id)}}" style="float: left;" onsubmit="return confirm('Are You sure? You want to delete this question ')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

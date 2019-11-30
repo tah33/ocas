@@ -30,13 +30,13 @@
                             <td style="text-align: left">{{ $question->option3 ? $question->option3 : ""}}</td>
                             <td style="text-align: left">{{ $question->option4 ? $question->option4 : ""}}</td>
                             <td style="text-align: left">{{ $question->correct_ans ? $question->correct_ans : "" }}</td>
-                            <td style="text-align: center">
-                                <a href="{{url('questions/'.$question->id.'/edit')}}" class="btn btn-success"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <td>
+                                <a href="{{url('questions/'.$question->id.'/edit')}}" class="btn btn-success btn-sm" style="float: left;"><i class="glyphicon glyphicon-pencil"></i></a>
                                 
-                                <form method="post" action="{{url('questions',$question->id)}}" style="float: right;" onsubmit="return confirm('Are You sure? You want to delete this question ')">
+                                <form method="post" style="float: left" action="{{url('questions',$question->id)}}"  onsubmit="return confirm('Are You sure? You want to delete this question ')">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></button>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

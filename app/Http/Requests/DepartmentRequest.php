@@ -24,13 +24,11 @@ class DepartmentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:departments',
             'minimum' => 'required|integer|between:1,100',
             'slug' => 'nullable|string',
-            'id' => 'nullable|required_with:range',
-            'range' => 'nullable|integer|between:1,100|required_with:id',
-            'subject_id' => 'nullable|required_with:total',
-            'total' => 'nullable|integer|between:1,100|required_with:subject_id',
+            'subject_id' => 'nullable|required_with:range',
+            'range' => 'nullable|integer|between:1,100|required_with:subject_id',
         ];
     }
     public function messages()
@@ -38,13 +36,11 @@ class DepartmentRequest extends FormRequest
         return [
             'name.required' => 'Please Enter a Name',
             'minimum.required' => 'Enter a Minimum Number for enroll',
-            'minimum.between' => 'Range should be between 1 to 100',
+            'minimum.between' => 'Percentage should be between 1 to 100',
             'slug.string' => 'Enter a short name that is suitable for identify',
-            'id.required_with' => 'Please select a subject before entering marks',
+            'subject_id.required_with' => 'Please select a subjects before entering Percentage',
             'range.required_with' => 'Please select a number for the subject',
-            'range.between' => 'Range should be between 1 to 100',
-            'subject_id.required_with' => 'Please select a subjects before entering marks',
-            'total' => 'Please select a mark for the subjects',
+            'range.between' => 'Percentage should be between 1 to 100',
         ];
     }
 
