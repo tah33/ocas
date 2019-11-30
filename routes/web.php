@@ -28,3 +28,5 @@ Route::post('question/store/{id}', 'QuestionController@store');
 Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
+//CommonController
+Route::resource('commons', 'CommonController');

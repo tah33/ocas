@@ -26,4 +26,9 @@ class Subject extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    public function commons()
+    {
+        return $this->hasMany(Common::class);
+    }
 }

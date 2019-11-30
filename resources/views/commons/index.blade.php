@@ -3,8 +3,11 @@
 <div class="row"> 
         <div class="box">
             <div class="box-body" >
-                <center>
-                <a href="{{url('subjects/create')}}" class="btn btn-success btn-sm">Add Subject</a></center>
+
+              <center>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-common">
+                Add Subject
+              </button></center>
                 <table id="search" class="table table-hover">
                     <caption>Subject List</caption>
                     <thead>
@@ -15,23 +18,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($subjects as $key => $subject)
+                    @foreach ($commons as $key => $common)
                         <tr>
                             <td style="text-align: center">{{ $key+1 }}</td>
-                            <td style="text-align: left">{{ $subject->name }}</td>
+                            <td style="text-align: center">{{ $common->subject->name }}</td>
                           
                             <td style="text-align: center">
-                                <a style="float: left;" href="{{url('subjects/'.$subject->id.'/edit')}}" class="btn btn-success btn-sm" ><i class="glyphicon glyphicon-pencil"></i></a>
-                                
-                                <form method="post" action="{{url('subjects',$subject->id)}}" style="float: left;" onsubmit="return confirm('Are You sure? You want to delete this question ')">
+                                <form method="post" action="{{url('commons',$common->id)}}" onsubmit="return confirm('Are You sure? You want to delete this subject ')">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
-                                </form>
-                                <form method="post" action="{{url('commons/',$subject->id)}}">
-                                    @csrf
-                                    @method('put')
-                                    <input type="checkbox" name="subject_id">Keep Common
                                 </form>
                             </td>
                         </tr>
@@ -41,4 +37,6 @@
             </div>
         </div>
     </div>
+@include('commons.modal')
+    
 @stop

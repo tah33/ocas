@@ -86,14 +86,26 @@
             </span>
                 </a>
             </li>
+            <li class="header">Common Subjects</li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-education"></i> <span>Common Subject</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{url('commons/create')}}"><i class="glyphicon glyphicon-user"></i>Choose Subject</a></li>
+                    <li><a href="{{url('commons')}}"><i class="glyphicon glyphicon-eye-close"></i>Subjects</a></li>
+                </ul>
+            </li>
             @endif
             <li class="header">Tests</li>
 
                 <li>
                 <a href="{{url('tests/create')}}">
                     <i class="glyphicon glyphicon-question-sign"></i> <span>Test</span>
-                    <span class="pull-right-container">
-            </span>
+                    <span class="pull-right-container"></span>
                 </a>
             </li>
         </ul>
