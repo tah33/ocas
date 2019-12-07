@@ -11,6 +11,7 @@
  @csrf
                         <div class="panel panel-primary" style="padding: 10px">
                         <div class="form-group row">
+                            
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
 
                             <div class="col-md-6">

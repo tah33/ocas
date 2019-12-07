@@ -13,7 +13,7 @@
                         <div class="form-group">
                             <div class="input-group">
                   <div class="input-group-addon">
-                    <i class="fa fa-eye-slash"></i>
+                    <i class="fa fa-info"></i>
                   </div>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                    name="name" value="{{ $user->name }}" autocomplete="name" autofocus>
@@ -27,7 +27,6 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-
                             <div class="input-group-addon">
                     <i class="fa fa-envelope"></i>
                   </div>
@@ -43,6 +42,11 @@
                         </div>
                     </div>
                         <div class="form-group">
+
+                            <div class="input-group">
+                            <div class="input-group-addon">
+                    <i class="fa fa-user"></i>
+                  </div>
                             <input id="username" type="text"
                                    class="form-control @error('username') is-invalid @enderror"
                                    name="username" value="{{ $user->username }}" autocomplete="requirements">
@@ -52,6 +56,7 @@
                                     </span>
                             @enderror
                         </div>
+                    </div>
                         @if(Auth::guard('student')->check())
                         <div class="form-group">
                             <input id="phone" type="text"
