@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('master.content')
+    @push('backend.css')
+        <link rel="stylesheet" href="{{URL::to('assets/custom.css')}}">
+        @endpush
 <div class="row">
   <div class="col-md-8">
         <div class="box box-primary">
@@ -7,11 +10,11 @@
                 <h3 class="box-title">Edit DEpartment Info</h3>
             </div>
             <div class="box-body">
-<form method="post" action="{{url('departments',$department->id)}}">
+<form method="post" action="{{url('departments',$department->id)}}" enctype="multipart/form-data">
  @csrf
  @method('put')
                         <div class="panel panel-primary" style="padding: 10px">
-                        
+
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
 
@@ -30,7 +33,7 @@
                                 @if ($errors->has('slug'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('slug') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -41,10 +44,21 @@
                                 @if ($errors->has('minimum'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('minimum') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
+                            <div class="form-group row">
+                                <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Logo') }}</label>
+                                <div class="col-md-6">
+                                    <input id="logo" type="file" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" name="logo" value="{{ old('logo') }}">
+                                    @if ($errors->has('logo'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('logo') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                        <div class="panel panel-danger" style="padding:  10px">
                     <div class="panel-heading">Add Conditions</div>
@@ -63,25 +77,25 @@
                                        @if ($errors->has('subject_id'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('subject_id') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
                             <div class="form-group row">
                             <label for="minimum" class="col-md-2 col-form-label text-md-right">{{ __('Enter Percentage') }}</label>
                             <div class="col-md-6">
-                                <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range" 
+                                <input id="range" type="number" class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}" name="range"
                                 value="{{ $department->range ?$department->range : '' }}" placeholder="Enter Minimum percentage for Enroll">
                                    @if ($errors->has('range'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('range') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
         <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 
-  </form>        
+  </form>
   </div>
 </div>
 </div>

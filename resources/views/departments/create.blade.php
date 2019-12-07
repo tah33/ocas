@@ -8,7 +8,7 @@
             </div>
             <div class="box-body">
 <form method="post" action="{{url('departments')}}" enctype="multipart/form-data">
- @csrf  
+ @csrf
                         <div class="panel panel-primary" style="padding: 10px">
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
@@ -18,7 +18,7 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                 @if ($errors->has('slug'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('slug') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -40,10 +40,21 @@
                                 @if ($errors->has('minimum'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('minimum') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
+                            <div class="form-group row">
+                                <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Logo') }}</label>
+                                <div class="col-md-6">
+                                    <input id="logo" type="file" class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}" name="logo" value="{{ old('logo') }}">
+                                    @if ($errors->has('logo'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('logo') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                     </div>
                         <div class="panel panel-danger" style="padding:  10px">
                     <div class="panel-heading">Add Conditions</div>
@@ -59,7 +70,7 @@
                                 @if ($errors->has('subject_id'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('subject_id') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -70,15 +81,15 @@
                                 @if ($errors->has('range'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('range') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
                     </div>
-                       
+
         <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
 
-  </form>        
+  </form>
   </div>
 </div>
 </div>

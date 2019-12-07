@@ -1,10 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Auth::routes(['verify' => true]);
 //HomeController
+Route::get('/', 'HomeController@welcome');
 Route::get('login','HomeController@loginForm');
 Route::post('verify-login','HomeController@verifyLogin');
 Route::get('home','HomeController@home');
