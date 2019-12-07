@@ -16,36 +16,36 @@
                <div class='search'><h1>Sign In Here</h1>
                   <form method="POST" action="{{url('verify-login')}}">
                     @csrf
-                     <div class="content"> 
+                     <div class="content">
                       <div class="col-md-8">
                                 <input id="login" type="text" class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}" value="{{old('login')}}" name="login" placeholder="Enter UserName/Email">
                                 @if ($errors->has('login'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('login') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                                 @if ($message = Session::get('msg'))
                                 <strong>{{ $message }}</strong>
                                 @endif
                             </div>
-                                
+
 
                        <div class="col-md-8">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Enter password">
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-                      
+
                       </div>
                   </form>
                </div>
-            </div>  
-                                
-         </div> 
+            </div>
+
+         </div>
       </div>
       </div>
 @stop

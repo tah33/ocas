@@ -1,8 +1,6 @@
-body 
+body
 {
     font-family: "Lato", sans-serif;
-	background: gray;
-
 }
 .overflow
 {
@@ -13,13 +11,13 @@ body
 .marin-login
 {
     position: relative;
-    background: url(../../../../../image/slider.jpg);
+    background: url('image/slider.jpg');
 }
 .main-head
 {
     height: 150px;
     background: #FFF;
-   
+
 }
 .sidenav
 {
@@ -54,7 +52,7 @@ body
 {
     .main
     {
-        margin-left: 40%; 
+        margin-left: 40%;
     }
 
     .sidenav
@@ -96,35 +94,35 @@ body
 }
 #frame
 {
-            width: 500px;
+            width: 600px;
             margin: auto;
             margin-top: 125px;
             border: solid 1px #CCC; /* SOME CSS3 DIV SHADOW */
-            -webkit-box-shadow: 0px 0px 10px #CCC;
-            -moz-box-shadow: 0px 0px 10px #CCC;
-            box-shadow: 0px 0px 10px #CCC; /* CSS3 ROUNDED CORNERS */
+            -webkit-box-shadow: 0 0 10px #CCC;
+            -moz-box-shadow: 0 0 10px #CCC;
+            box-shadow: 0 0 10px #CCC; /* CSS3 ROUNDED CORNERS */
             -moz-border-radius: 5px;
             -webkit-border-radius: 5px;
             -khtml-border-radius: 5px;
             border-radius: 5px;
             background-color: #FFF;
 }
-#frame h1 
+#frame h1
 {
     text-align: center;
 }
-#frame form 
+#frame form
 {
     text-align: center;
     margin-bottom: 30px;
 }
-    
+
 button[type=submit]
 {
     width: 50%;
     background-color: #4CAF50;
     color: white;
-    padding:  20px;
+    padding:  10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -143,27 +141,36 @@ button[type=submit]:hover
 
 /* Full-width input fields */
 input[type=text], input[type=password],input[type=tel],
-input[type=date],input[type=file] 
+input[type=date],input[type=file]
 {
-  width: 150%;
   padding: 20px;
   margin: 5px 0 22px 0;
   border: none;
   background: #f1f1f1;
 }
-.select 
+.select
 {
   width: 150%;
   padding: 20px;
   margin: 5px 0 22px 0;
   border: none;
-  border-radius: 5px; 
+  border-radius: 5px;
   background: #f1f1f1;
 }
 
 input[type=text]:focus, input[type=password]:focus,input[type=tel]:focus,
-input[type=date]:focus,input[type=file]:focus, select 
+input[type=date]:focus,input[type=file]:focus, select
 {
   background-color: #ddd;
   outline: none;
+}
+ul {
+    list-style: none;
+}
+
+.tick:before {
+    content: '✓';
+}
+h3{
+    text-transform: uppercase;
 }
