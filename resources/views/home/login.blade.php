@@ -1,6 +1,8 @@
 @extends('layouts.base')
 @push('backend.css')
 <link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
+    <link rel="shortcut icon" href="{{ asset('icons/login.png') }}"/>
+
 @endpush
 @section('backend.base.content')
 <div class="overflow">

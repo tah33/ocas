@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Online Counselling</title>
+    <title>Online Advising</title>
     <link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/style.css')}}">
     <link rel="stylesheet" href="{{URL::asset('assets/custom.css')}}">
+    <link rel="shortcut icon" href="{{ asset('icons/favicon.png') }}"/>
+
 </head>
 <body>
 <section id="menu">

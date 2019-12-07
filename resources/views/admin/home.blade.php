@@ -1,5 +1,8 @@
 @extends('layouts.master')
 @section('backend.title', $page_title)
+@push('backend.css')
+
+@endpush
 @section('master.content')
 <div class="container-fluid">
         <!-- Small boxes (Stat box) -->

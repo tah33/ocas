@@ -11,6 +11,10 @@
                         @csrf
                      @method('put')
                         <div class="form-group">
+                            <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="fa fa-eye-slash"></i>
+                  </div>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
                                    name="name" value="{{ $user->name }}" autocomplete="name" autofocus>
 
@@ -20,8 +24,13 @@
                                     </span>
                             @enderror
                         </div>
-
+                        </div>
                         <div class="form-group">
+                            <div class="input-group">
+
+                            <div class="input-group-addon">
+                    <i class="fa fa-envelope"></i>
+                  </div>
                             <input id="email" type="text"
                                    class="form-control @error('email') is-invalid @enderror"
                                    name="email" value="{{ $user->email }}" autocomplete="requirements">
@@ -32,6 +41,7 @@
                                     </span>
                             @enderror
                         </div>
+                    </div>
                         <div class="form-group">
                             <input id="username" type="text"
                                    class="form-control @error('username') is-invalid @enderror"

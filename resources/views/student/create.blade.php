@@ -84,7 +84,28 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div class="col-md-6 float:left">
+
+                                <div class="col-md-6">
+                                    <input id="dob" type="date"
+                                           class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob"
+                                           placeholder="Enter password">
+                                    @if ($errors->has('dob'))
+                                        <span style="color : red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dob') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6">
+                                    <input id="address" type="text"
+                                           class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                           name="address" placeholder="Enter Address">
+                                    @if ($errors->has('address'))
+                                        <span style="color : red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                                                <div class="col-md-6 float:left">
                                     <select name="id[]"
                                             class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }} select2"
                                             data-placeholder="Select Departments" multiple="multiple">
@@ -113,27 +134,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-6">
-                                    <input id="dob" type="date"
-                                           class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob"
-                                           placeholder="Enter password">
-                                    @if ($errors->has('dob'))
-                                        <span style="color : red" class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dob') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <input id="address" type="text"
-                                           class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
-                                           name="address" placeholder="Enter Address">
-                                    @if ($errors->has('address'))
-                                        <span style="color : red" class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <input type="file" name="image">
                                 </div>
                             </div>
