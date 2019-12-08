@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-	protected $fillable=['name'];
+	protected $fillable=['name','slug'];
 
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
-    
+
     public function subject()
     {
         return $this->hasOne(Rule::class);

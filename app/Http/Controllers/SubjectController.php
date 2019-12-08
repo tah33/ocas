@@ -11,29 +11,18 @@ class SubjectController extends Controller
     {
         $this->middleware('auth:admin,student');
     }
-    
+
     public function index()
     {
         $subjects = Subject::all();
         return view('subjects.index',compact('subjects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('subjects.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,52 +33,28 @@ class SubjectController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
     public function show(Subject $subject)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Subject $subject)
     {
         return view('subjects.edit',compact('subject'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Subject $subject)
     {
         $request->validate([
             'name' => 'required|alpha|unique:subjects,name,'.$subject->id
         ]);
         $subject->name = $request->name ;
+        $subject->slug = $request->slug ;
         $subject->save();
         Toastr::success('Info Updated Succesfully','Success!');
         return redirect('subjects');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Subject  $subject
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Subject $subject)
     {
         $subject->delete();
