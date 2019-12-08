@@ -27,8 +27,8 @@ class DepartmentRequest extends FormRequest
             'name' => 'required|unique:departments',
             'minimum' => 'required|integer|between:1,100',
             'slug' => 'nullable|string',
-            'subject_id' => 'nullable|required_with:range',
-            'range' => 'nullable|integer|between:1,100|required_with:subject_id',
+            'subject_id' => 'nullable|required',
+            'range' => 'nullable|integer|between:1,100|required',
         ];
     }
     public function messages()

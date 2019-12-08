@@ -138,6 +138,7 @@
                                     <input type="file" name="image">
                                 </div>
                             </div>
+                                <p>Already Registered ? <a href="{{url('login')}}">Sing In here</a></p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
                             </div>

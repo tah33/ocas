@@ -13,17 +13,18 @@
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $subject->name }}" placeholder="Enter Subject Name"> 
+                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $subject->name }}" placeholder="Enter Subject Name">
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
-                      
+
                             </div>
                         </div>
 
                       <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                        <a class="btn btn-warning btn-sm"  href="{{url('subjects')}}">Cancel</a>
                     </form>
 
                 </div>

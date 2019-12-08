@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('master.content')
-    <div class="row"> 
+    <div class="row">
         <div class="box">
             <div class="box-body">
                 <center>
-            <a href="{{url('students')}}" class="btn btn-success btn-sm">Students</a></center>
+                    <a href="{{url('students')}}" class="btn btn-success btn-sm">Students</a></center>
                 <table id="search" class="table table-hover table-bordered">
                     <caption>Blocked Users List</caption>
                     <thead>
@@ -28,7 +28,9 @@
                             <td style="text-align: center">{{ $student->phone }}</td>
                             <td style="text-align: center">{{ $student->gendername }}</td>
                             <td style="text-align: center">
-                                <a href="{{url('unblock',$student->id)}}" class="btn btn-success" onclick="return confirm('Are you sure you want to unblock This Student?');"><i class="glyphicon glyphicon-ok"></i></a>
+                                <a href="{{url('unblock',$student->id)}}" class="btn btn-success btn-sm"
+                                   onclick="return confirm('Are you sure you want to unblock This Student?');"><i
+                                        class="fa fa-check"></i></a>
                         </tr>
                     @endforeach
                     </tbody>
@@ -37,4 +39,4 @@
             </div>
         </div>
     </div>
-    @stop
+@stop

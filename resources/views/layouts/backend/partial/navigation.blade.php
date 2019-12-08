@@ -34,75 +34,82 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
-                    <li><a href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change Password</a></li>
+                    <li>
+                        <a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i
+                                class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
+                    <li><a href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change
+                            Password</a></li>
                 </ul>
             </li>
-            @if(Auth::guard('admin')->check())
+        @if(Auth::guard('admin')->check())
 
             <!-- Students Info -->
-            <li class="header">Students</li>
-            <li>
-                <a href="{{url('students')}}">
-                    <i class="glyphicon glyphicon-user"></i> <span>Students</span>
-                    <span class="pull-right-container">
+                <li class="header">Students</li>
+                <li>
+                    <a href="{{url('students')}}">
+                        <i class="glyphicon glyphicon-user"></i> <span>Students</span>
+                        <span class="pull-right-container">
             </span>
-                </a>
-            </li>
-            <!-- Dept Settings -->
-            <li class="header">Departments</li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="glyphicon glyphicon-education"></i> <span>Department Setting</span>
-                    <span class="pull-right-container">
+                    </a>
+                </li>
+                <!-- Dept Settings -->
+                <li class="header">Departments</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-education"></i> <span>Department Setting</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{url('departments/create')}}"><i class="glyphicon glyphicon-user"></i>Create Department</a></li>
-                    <li><a href="{{url('departments')}}"><i class="glyphicon glyphicon-eye-close"></i>Departments</a></li>
-                </ul>
-            </li>
-            <!-- Question -->
-            <li class="header">Subjects</li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="glyphicon glyphicon-book"></i> <span>Subject Setting</span>
-                    <span class="pull-right-container">
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('departments/create')}}"><i class="fa fa-plus-circle"></i>Create
+                                Department</a></li>
+                        <li><a href="{{url('departments')}}"><i
+                                    class="fa fa-university"></i>Departments</a></li>
+                    </ul>
+                </li>
+                <!-- Question -->
+                <li class="header">Subjects</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-book"></i> <span>Subject Setting</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{url('subjects/create')}}"><i class="glyphicon glyphicon-user"></i>Create Subject</a></li>
-                    <li><a href="{{url('subjects')}}"><i class="glyphicon glyphicon-eye-close"></i>Subjects</a></li>
-                </ul>
-            </li>
-             <!-- Students Info -->
-            <li class="header">Questions Setting</li>
-            <li>
-                <a href="{{url('questions')}}">
-                    <i class="glyphicon glyphicon-question-sign"></i> <span>Questions</span>
-                    <span class="pull-right-container">
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('subjects/create')}}"><i class="fa fa-plus"></i>Create Subject</a>
+                        </li>
+                        <li><a href="{{url('subjects')}}"><i class="fa fa-book"></i>Subjects</a></li>
+                    </ul>
+                </li>
+                <!-- Students Info -->
+                <li class="header">Questions Setting</li>
+                <li>
+                    <a href="{{url('questions')}}">
+                        <i class="glyphicon glyphicon-question-sign"></i> <span>Questions</span>
+                        <span class="pull-right-container">
             </span>
-                </a>
-            </li>
-            <li class="header">Common Subjects</li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="glyphicon glyphicon-education"></i> <span>Common Subject</span>
-                    <span class="pull-right-container">
+                    </a>
+                </li>
+                <li class="header">Common Subjects</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-education"></i> <span>Common Subject</span>
+                        <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{url('commons/create')}}"><i class="glyphicon glyphicon-user"></i>Choose Subject</a></li>
-                    <li><a href="{{url('commons')}}"><i class="glyphicon glyphicon-eye-close"></i>Subjects</a></li>
-                </ul>
-            </li>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('commons/create')}}"><i class="glyphicon glyphicon-user"></i>Choose
+                                Subject</a></li>
+                        <li><a href="{{url('commons')}}"><i class="glyphicon glyphicon-eye-close"></i>Subjects</a></li>
+                    </ul>
+                </li>
             @endif
             <li class="header">Tests</li>
 
-                <li>
+            <li>
                 <a href="{{url('tests/create')}}">
                     <i class="glyphicon glyphicon-question-sign"></i> <span>Test</span>
                     <span class="pull-right-container"></span>
