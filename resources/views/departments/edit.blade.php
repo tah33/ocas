@@ -18,7 +18,7 @@
                             <div class="form-group row">
                                 <label for="name"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-info-circle"></i>
@@ -27,17 +27,17 @@
                                                class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                name="name" value="{{ $department->name }}"
                                                placeholder="Enter Department Name">
-                                        @if ($errors->has('name'))
-                                            <span class="invalid-feedback" role="alert">
+                                    </div>
+                                @if ($errors->has('name'))
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>                               @endif
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="slug"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Short Name') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa  fa-tag"></i>
@@ -46,18 +46,18 @@
                                                class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}"
                                                name="slug" value="{{ $department->slug }}"
                                                placeholder="Enter Short Name">
-                                        @if ($errors->has('slug'))
-                                            <span class="invalid-feedback" role="alert">
+                                    </div>
+                                @if ($errors->has('slug'))
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('slug') }}</strong>
                                     </span>
                                         @endif
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="minimum"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Enter Percentage') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa  fa-plus"></i>
@@ -66,17 +66,17 @@
                                                class="form-control{{ $errors->has('minimum') ? ' is-invalid' : '' }}"
                                                name="minimum" value="{{ $department->minimum }}"
                                                placeholder="Enter Minimum Percentage for Enroll">
-                                        @if ($errors->has('minimum'))
-                                            <span class="invalid-feedback" role="alert">
+                                    </div>
+                                @if ($errors->has('minimum'))
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('minimum') }}</strong>
                                     </span>
                                         @endif
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Logo') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-file-photo-o"></i>
@@ -84,12 +84,12 @@
                                         <input id="logo" type="file"
                                                class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}"
                                                name="logo" value="{{ old('logo') }}">
-                                        @if ($errors->has('logo'))
-                                            <span class="help-block">
+                                    </div>
+                                @if ($errors->has('logo'))
+                                            <span style="color: red" class="help-block">
                                         <strong>{{ $errors->first('logo') }}</strong>
                                     </span>
                                         @endif
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                             <div class="form-group row">
                                 <label for="minimum"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Add Conitions') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <select style="margin-top: 10px"
                                             class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}"
                                             name="subject_id">
@@ -114,7 +114,7 @@
                                         @endforeach
                                     </select>
                                     @if ($errors->has('subject_id'))
-                                        <span class="invalid-feedback" role="alert">
+                                        <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('subject_id') }}</strong>
                                     </span>
                                     @endif
@@ -123,7 +123,7 @@
                             <div class="form-group row">
                                 <label for="minimum"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Enter Percentage') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa  fa-plus"></i>
@@ -133,12 +133,12 @@
                                                name="range"
                                                value="{{ $department->range ?$department->range : '' }}"
                                                placeholder="Enter Minimum percentage for Enroll">
-                                        @if ($errors->has('range'))
-                                            <span class="invalid-feedback" role="alert">
+                                    </div>
+                                @if ($errors->has('range'))
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('range') }}</strong>
                                     </span>
                                         @endif
-                                    </div>
                                 </div>
                             </div>
                             </div>

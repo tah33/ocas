@@ -7,6 +7,7 @@
     <div class="overflow">
         <div class="sidenav marin-login" style="background-color:black;">
             <div class="login-main-text">
+                <a href="{{url('/')}}"><img src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
                 <ul>
                     <h3>
                         <li class="tick">To find out a suitable career</li>
@@ -43,7 +44,7 @@
                                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                            value="{{old('email')}}" name="email" placeholder="Enter Email">
                                     @if ($errors->has('email'))
-                                        <span class="invalid-feedback" style="font-color : red" role="alert">
+                                        <span class="invalid-feedback" style="color : red" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
@@ -79,7 +80,7 @@
                                            class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                            name="phone" placeholder="Enter Phone">
                                     @if ($errors->has('phone'))
-                                        <span style="color : red" class="invalid-feedback" role="alert">
+                                        <span style="color : red;" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                     @endif
@@ -123,12 +124,12 @@
                                 <div class="col-md-6">
                                     <select name="gender"
                                             class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}">
-                                        <option>Select Gender</option>
+                                        <option value=''>Select Gender</option>
                                         <option value='male'>Male</option>
                                         <option value='female'>Female</option>
                                     </select>
                                     @if ($errors->has('gender'))
-                                        <span style="font-color : red" class="invalid-feedback" role="alert">
+                                        <span style="color : red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
                                     @endif

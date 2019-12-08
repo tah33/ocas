@@ -5,7 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Student;
+use App\Department;
 use App\Observers\StudentObserver;
+use App\Observers\DepartmentObserver;
 class AppServiceProvider extends ServiceProvider
 {
 
@@ -17,5 +19,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Student::observe(StudentObserver::class);
+        Department::observe(DepartmentObserver::class);
     }
 }

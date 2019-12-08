@@ -10,55 +10,93 @@
                     @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Question') }}</label>
-
                             <div class="col-md-6">
-                                <textarea class="form-control{{ $errors->has('question') ? ' is-invalid' : '' }}" name="question" value="{{ old('question') }}" placeholder="Enter Question Here"></textarea>
-                                @if ($errors->has('question'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('question') }}</strong>
-                                    </span>                               
-                                @endif
-                      
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa  fa-question-circle"></i>
+                                    </div>
+                                    <textarea id="question"
+                                           class="form-control @error('question') is-invalid @enderror"
+                                           name="question"  autocomplete="requirements">{{old('question')}}
+                                    </textarea>
+                                </div>
+                                @error('question')
+                                    <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Options') }}</label>
-
-                            <div class="col-md-2">
-                                <input type="radio" name="correct_ans" value="1">
-                                <input id="options" type="text" class="form-control{{ $errors->has('option1') ? ' is-invalid' : '' }}" name="option1" value="{{ old('options') }}" placeholder="Option1">
-                                @if ($errors->has('option1'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('option1') }}</strong>
-                                    </span>                               
-                                @endif
+                            <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Option1') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="radio" value="a" name="correct_ans">
+                                    </div>
+                                    <input id="option1" type="text"
+                                           class="form-control @error('option1') is-invalid @enderror"
+                                           name="option1" value="{{ old('option1') }}" autocomplete="requirements">
+                                </div>
+                                @error('option1')
+                                    <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                             </div>
-                            <div class="col-md-2">
-                                <input type="radio" name="correct_ans" value="2">
-                                <input id="options" type="text" class="form-control{{ $errors->has('option') ? ' is-invalid' : '' }}" name="option2" value="{{ old('option2') }}" placeholder="option2">
-                                @if ($errors->has('option2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('option2') }}</strong>
-                                    </span>                               
-                                @endif
+                        </div>
+                        <div class="form-group row">
+                            <label for="option2" class="col-md-2 col-form-label text-md-right">{{ __('Option2') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="radio" value="b" name="correct_ans">
+                                    </div>
+                                    <input id="option2" type="text"
+                                           class="form-control @error('option2') is-invalid @enderror"
+                                           name="option2" value="{{ old('option2') }}" autocomplete="requirements">
+                                </div>
+                                @error('option2')
+                                    <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="option3" class="col-md-2 col-form-label text-md-right">{{ __('Option3') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="radio" value="c" name="correct_ans">
+                                    </div>
+                                    <input id="option3" type="text"
+                                           class="form-control @error('option3') is-invalid @enderror"
+                                           name="option3" value="{{ old('option3') }}" autocomplete="requirements">
+                                </div>
+                                @error('option3')
+                                    <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                             </div>
-                            <div class="col-md-2">
-                                <input type="radio" name="correct_ans" value="3">
-                                <input id="options" type="text" class="form-control{{ $errors->has('option3') ? ' is-invalid' : '' }}" name="option3" value="{{ old('option3') }}" placeholder="option3">
-                                @if ($errors->has('option3'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('option3') }}</strong>
-                                    </span>                               
-                                @endif
-                            </div>
-                            <div class="col-md-2">
-                                <input type="radio" name="correct_ans" value="4">
-                                <input id="options" type="text" class="form-control{{ $errors->has('option4') ? ' is-invalid' : '' }}" name="option4" value="{{ old('option4') }}" placeholder="option4">
-                                @if ($errors->has('options'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('options') }}</strong>
-                                    </span>                               
-                                @endif
+                        </div>
+                        <div class="form-group row">
+                            <label for="option4" class="col-md-2 col-form-label text-md-right">{{ __('Option4') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <input type="radio" value="d" name="correct_ans">
+                                    </div>
+                                    <input id="option4" type="text"
+                                           class="form-control @error('option4') is-invalid @enderror"
+                                           name="option4" value="{{ old('option4') }}" autocomplete="requirements">
+                                </div>
+                                @error('option4')
+                                    <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                             </div>
                         </div>
                       <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>

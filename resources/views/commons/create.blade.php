@@ -8,7 +8,7 @@
             </div>
             <div class="box-body">
 <form method="post" action="{{url('commons')}}">
- @csrf  
+ @csrf
   <div class="form-group row">
                             <label for="minimum" class="col-md-2 col-form-label text-md-right s">{{ __('Subjects') }}</label>
                             <div class="col-md-6">
@@ -19,13 +19,13 @@
                                     @endforeach
                                 </select>
                                 @if ($errors->has('subject_id'))
-                                    <span class="help-block">
+                                    <span style="color: red" class="help-block">
                                         <strong>{{ $errors->first('subject_id') }}</strong>
-                                    </span>                               
+                                    </span>
                                 @endif
                             </div>
                         </div>
-        <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
+        <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px">Submit</button>
     </form>
 </div>
 </div>

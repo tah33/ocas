@@ -1,12 +1,11 @@
 @extends('layouts.base')
 @push('backend.css')
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/log.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/login.css')}}">
     <link rel="shortcut icon" href="{{ asset('icons/login.png') }}"/>
-
 @endpush
 @section('backend.base.content')
     <div class="overflow">
-        <div class="sidenav" marin-login>
+        <div class="sidenav marin-login">
             <div class="login-main-text ">
                 <h2>Application<br> Login Page</h2>
                 <p>Login or register from here to access.</p>
@@ -20,35 +19,35 @@
                             @csrf
                             <div class="content">
                                 <div class="form-group row">
-                                <div class="col-md-8">
-                                    <input id="login" type="text"
-                                           class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}"
-                                           value="{{old('login')}}" name="login" placeholder="Enter UserName/Email">
-                                    @if ($errors->has('login'))
-                                        <span class="invalid-feedback" role="alert">
+                                    <div class="col-md-8">
+                                        <input id="login" type="text"
+                                               class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}"
+                                               value="{{old('login')}}" name="login" placeholder="Enter UserName/Email">
+                                        @if ($errors->has('login'))
+                                            <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('login') }}</strong>
                                     </span>
-                                    @endif
-                                    @if ($message = Session::get('msg'))
-                                        <strong>{{ $message }}</strong>
-                                    @endif
-                                </div>
+                                        @endif
+                                        @if ($message = Session::get('msg'))
+                                            <strong>{{ $message }}</strong>
+                                        @endif
+                                    </div>
 
 
-                                <div class="col-md-8">
-                                    <input id="password" type="password"
-                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                           name="password" placeholder="Enter password">
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
+                                    <div class="col-md-8">
+                                        <input id="password" type="password"
+                                               class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                               name="password" placeholder="Enter password">
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                    @endif
-                                </div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <p>Forgot Password? <a href="#">Click Here</a></p>
+                                <p>Not Registered? <a href="{{url('students/create')}}">Register Now</a></p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
-
                             </div>
                         </form>
                     </div>

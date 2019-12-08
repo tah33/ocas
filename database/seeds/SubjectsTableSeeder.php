@@ -10,19 +10,19 @@ class SubjectsTableSeeder extends Seeder
     public function run()
     {
         $subjects = array(
-            array('name' => 'Math'),
-            array('name' => 'Chemistry'),
-            array('name' => 'Physics'),
-            array('name' => 'ICT'),
-            array('name' => 'English'),
-            array('name' => 'General Knowledge'),
-            array('name' => 'Marketting'),
-            array('name' => 'Finance'),
-            array('name' => 'Management'),
-            array('name' => 'Accounting'),
-            array('name' => 'Biology'),
-            array('name' => 'HomoScience'),
-            array('name' => 'Agriculture'),
+            array('name' => 'Mathematics','slug'=>'Math'),
+            array('name' => 'Chemistry','slug' => 'Chemistry'),
+            array('name' => 'Physics','slug' => 'Physics'),
+            array('name' => 'Information Communication & Technology','slug' => 'ICT'),
+            array('name' => 'English','slug' => 'English'),
+            array('name' => 'General Knowledge','slug' => 'GK'),
+            array('name' => 'Marketing','slug' => 'Marketing'),
+            array('name' => 'Finance','slug' => 'Finance'),
+            array('name' => 'Management','slug' => 'Management'),
+            array('name' => 'Accounting','slug' => 'Accounting'),
+            array('name' => 'Biology','slug' => 'Biology'),
+            array('name' => 'HomoScience','slug' => 'HomoScience'),
+            array('name' => 'Agriculture','slug' => 'Agriculture'),
         );
         Subject::insert($subjects);
     }

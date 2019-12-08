@@ -101,9 +101,9 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('commons/create')}}"><i class="glyphicon glyphicon-user"></i>Choose
+                        <li><a href="{{url('commons/create')}}"><i class="fa fa-check"></i>Choose
                                 Subject</a></li>
-                        <li><a href="{{url('commons')}}"><i class="glyphicon glyphicon-eye-close"></i>Subjects</a></li>
+                        <li><a href="{{url('commons')}}"><i class="fa fa-book"></i>Subjects</a></li>
                     </ul>
                 </li>
             @endif

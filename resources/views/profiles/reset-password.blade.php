@@ -16,13 +16,13 @@
                                     <i class="fa fa-eye-slash"></i>
                                 </div>
                                 <input type="password" class="form-control" name="old" placeholder="Old Password...">
-                                @error('old')
+                            </div>
+                            @error('old')
                                 <span class="invalid-feedback" role="alert">
                                         <strong><font color="red">{{ $message }}</font></strong>
                                     </span>
                                 @enderror
-                                <font color="red">{{Session::get('error')}}</font>
-                            </div>
+                                <div style="color: red">{{Session::get('error')}}</div>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -35,12 +35,12 @@
                                 <input id="password" type="password"
                                        class="form-control @error('password') is-invalid @enderror"
                                        name="password" placeholder="Change Password">
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong><font color="red">{{ $message }}</font></strong>
+                            </div>
+                            @error('password')
+                                <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
                         </div>
                     </div>
                     <div class="form-group row">

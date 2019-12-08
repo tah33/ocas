@@ -14,27 +14,27 @@
 
                                 <label for="name"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-info-circle"></i>
+                                            <i class="fa  fa-book"></i>
                                         </div>
                                         <input id="name" type="text"
                                                class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                                name="name" value="{{ old('name') }}"
                                                placeholder="Enter Department Name">
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        @error('name')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="slug"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Short Name') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa  fa-tag"></i>
@@ -42,18 +42,18 @@
                                         <input id="slug" type="text"
                                                class="form-control{{ $errors->has('slug') ? ' is-invalid' : '' }}"
                                                name="slug" value="{{ old('slug') }}" placeholder="Enter Short Name">
-                                        @if ($errors->has('slug'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('slug') }}</strong>
+                                        @error('slug')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="minimum"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Minimum Percentage') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa  fa-plus"></i>
@@ -62,17 +62,17 @@
                                                class="form-control{{ $errors->has('minimum') ? ' is-invalid' : '' }}"
                                                name="minimum" value="{{ old('minimum') }}"
                                                placeholder="Enter Minimum Percentage for Enroll">
-                                        @if ($errors->has('minimum'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('minimum') }}</strong>
+                                        @error('minimum')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Logo') }}</label>
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
                                             <i class="fa fa-file-photo-o"></i>
@@ -80,11 +80,11 @@
                                         <input id="logo" type="file"
                                                class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}"
                                                name="logo" value="{{ old('logo') }}">
-                                        @if ($errors->has('logo'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('logo') }}</strong>
+                                        @error('logo')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                                 <div class="form-group row">
                                     <label for="minimum" class="col-md-2 col-form-label text-md-right"
                                            style="margin-top: 10px">{{ __('Choose Major Subject') }}</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <select style="margin-top: 10px"
                                                 class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}"
                                                 name="subject_id">
@@ -103,31 +103,31 @@
                                                     value="{{$subject->id}}" {{ old('id') == $subject->id ? 'selected' : ''}}>{{$subject->name}}</option>
                                             @endforeach
                                         </select>
-                                        @if ($errors->has('subject_id'))
-                                            <span class="help-block">
-                                        <strong>{{ $errors->first('subject_id') }}</strong>
+                                        @error('subject_id')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
                                     </span>
-                                        @endif
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="minimum"
                                            class="col-md-2 col-form-label text-md-right">{{ __('Enter Percentage') }}</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="input-group">
                                             <div class="input-group-addon">
                                                 <i class="fa  fa-plus"></i>
                                             </div>
                                             <input id="range" type="number"
-                                                   class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}"
+                                                   class="form-control @error('range') is-invalid @enderror"
                                                    name="range" value="{{ old('range') }}"
                                                    placeholder="Enter Minimum Percentage for Enroll">
-                                            @if ($errors->has('range'))
-                                                <span class="help-block">
-                                        <strong>{{ $errors->first('range') }}</strong>
-                                    </span>
-                                            @endif
                                         </div>
+                                        @error('range')
+                                            <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                            @enderror
                                     </div>
                                 </div>
 

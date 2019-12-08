@@ -17,3 +17,18 @@
     padding: 15px;
 }
 
+.subjects {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.subject {
+    width: 250px;
+    height: 20%;
+    text-align: center;
+    background: #fff;
+    margin: 1%;
+    padding: 10px;
+}
+

@@ -23,8 +23,7 @@
                         </div>
                     </div>
                 </center>
-                @endif
-                @if(Auth::guard('student')->check())
+                @else
                     <div id="ams-class">
 
                         <div class="row">
@@ -113,7 +112,8 @@
                             </div>
                             <!-- /.col -->
                         </div>
-
                     </div>
+                    </div>
+        </div>
     @endif
 @stop

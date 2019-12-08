@@ -23,23 +23,12 @@ class DepartmentController extends Controller
         return view('departments.index', compact('departments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $subjects = Subject::all();
         return view('departments.create', compact('subjects'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(DepartmentRequest $request)
     {
         $department = new Department;
@@ -48,35 +37,17 @@ class DepartmentController extends Controller
         $department->slug = $request->slug;
         $department->subject_id = $request->subject_id;
         $department->range = $request->range;
-        if ($request->logo) {
-            $file = $request->File('logo');
-            $ext = ($department->slug ? $department->slug : $department->name) . "." . ($file->clientExtension());
-            $file->storeAs('images/department', $ext);
-            $department->logo = $ext;
-        }
         $department->save();
 
         Toastr::success('Department is Succesfully Added', 'Success!');
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Department $department
-     * @return \Illuminate\Http\Response
-     */
     public function show(Department $department)
     {
         return view('departments.show', compact('department'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Department $department
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Department $department)
     {
         $multiplesubjects = Subject::all();
@@ -84,13 +55,6 @@ class DepartmentController extends Controller
         return view('departments.edit', compact('department', 'multiplesubjects', 'subjects'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Department $department
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -117,12 +81,6 @@ class DepartmentController extends Controller
         return redirect('departments');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Department $department
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Department $department)
     {
         $department->delete();
