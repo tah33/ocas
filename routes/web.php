@@ -22,9 +22,11 @@ Route::resource('departments', 'DepartmentController');
 Route::resource('questions', 'QuestionController')->except('create','store');
 Route::get('question/create/{id}', 'QuestionController@create');
 Route::post('question/store/{id}', 'QuestionController@store');
-//ExamController
+//SubjectController
 Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
 //CommonController
 Route::resource('commons', 'CommonController');
+//ExamController
+Route::resource('exams', 'ExamController');

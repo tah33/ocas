@@ -11,9 +11,15 @@ class Test extends Model
 	protected $casts = ['ans' => 'array',
 		'common' => 'array'
 		];
+
 	public function student()
 	{
 		return $this->belongsto(Student::class);
+	}
+
+	public function ranks()
+	{
+		return $this->hasMany(Rank::class);
 	}
     
 }

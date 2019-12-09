@@ -9,11 +9,7 @@ use Illuminate\Http\Request;
 use Toastr;
 class CommonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $commons = Common::all();
@@ -21,27 +17,16 @@ class CommonController extends Controller
         return view('commons.index',compact('commons','subjects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $subjects = Subject::all();
         return view('commons.create',compact('subjects'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate( [
-            'subject_id' => 'required',
+            'subject_id' => 'required|uniques:commons,subject_id',
         ],
             ['subject_id.required' => "Select at least one Subject"],
     );

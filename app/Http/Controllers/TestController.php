@@ -8,6 +8,7 @@ use App\Question;
 use App\Subject;
 use App\Common;
 use App\Rank;
+use App\Exam;
 use App\Department;
 use Auth;
 use Illuminate\Http\Request;
@@ -57,20 +58,30 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        $count=0;
+        $count=$common=0;
+
+        $exam = Exam::first();
+
         foreach ($request->major as $key => $major) {
             $question = Question::where('id',$key)->where('correct_ans',$major)->first();
             if ($question){
                 $count++;
             }
         }
-        $percentage = ($count/100)*100 ;
+
+        foreach ($request->common as $key => $common) {
+            $question = Question::where('id',$key)->where('correct_ans',$common)->first();
+            if ($question){
+                $common++;
+            }
+        }
+
         $test = new Test;
         $test->student_id = Auth::id();
         $test->ans = $request->major;
-        $test->marks = $percentage;
+        $test->marks = ($count/$exam->major)*100;
         $test->common = $request->common;
-        $test->common_marks = 20;
+        $test->common_marks = ($common/$exam->common)*100;
         $test->save();
 
         $student=Student::find(Auth::id());
@@ -82,20 +93,19 @@ class TestController extends Controller
 
         $sub=$add=0;
 
-        $no_of_questions = 100;
         if (count($filter) > 1){
             $uniqueSubjects=array_unique($filter);
-            $div = ceil($no_of_questions/count($uniqueSubjects));//34
-            $mul = $div*count($uniqueSubjects);//102
+            $div = ceil($exam->major/count($uniqueSubjects));
+            $mul = $div*count($uniqueSubjects);
 
-            if ($mul > $no_of_questions)
-                $sub = $mul - $no_of_questions;//2
+            if ($mul > $exam->major)
+                $sub = $mul - $exam->major;
 
                 else
-                    $add = $no_of_questions - $mul;//4
+                    $add = $exam->major - $mul;
             }
         else
-            $div=$no_of_questions;
+            $div=$exam->major;
 
         foreach ($student->departments as $key => $department){
                 $rank = new Rank;
@@ -115,6 +125,25 @@ class TestController extends Controller
                 $add = 0;
                 $sub =0 ;
                 }
+        $commons = Common::all();
+        foreach ($commons as $key => $common){
+                $rank = new Rank;
+                $rank->subject_id = $common->subject_id;
+                    foreach ($request->common as $key => $value) {
+                    $correct = Question::where('id',$key)->where('correct_ans',$value)->first();
+                    if ($correct && $correct->subject_id == $common->subject_id){
+                        $correct_ans++;
+                    }
+                }
+    
+                    $markpercentage = ($mark* ($add == 0 ? $div-$sub : $div+$add))/100 ;
+                    $rank->test_id = $test->id;
+                    $rank->marks = ($correct_ans * )100;
+                    $rank->save();
+                    $mark=0;
+                    $add = 0;
+                    $sub =0 ;
+                    }
 
         Toastr::success('Your answer was succesfully submitted','Success!');
         return back();

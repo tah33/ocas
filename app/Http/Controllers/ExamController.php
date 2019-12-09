@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exam;
+use Toastr;;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -17,66 +18,44 @@ class ExamController extends Controller
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        return view('exams.create');
+        $exam = Exam::first();
+        return view('exams.create',compact('exam'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        $request->validate([
+            'major' => 'required',
+            'common' => 'required',
+            'time' => 'required'
+        ]);
+
+        $exam = new Exam;
+        $exam->major    = $request->major;
+        $exam->common   = $request->common;
+        $exam->time     = $request->time;
+        $exam->save();
+        Toastr::success('success','Rule was Created Successfully');
+        return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Exam  $exam
-     * @return \Illuminate\Http\Response
-     */
     public function show(Exam $exam)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Exam  $exam
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Exam $exam)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Exam  $exam
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Exam $exam)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Exam  $exam
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Exam $exam)
     {
         //

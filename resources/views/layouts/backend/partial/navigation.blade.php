@@ -92,6 +92,14 @@
             </span>
                     </a>
                 </li>
+                <li class="header">Exam Setting</li>
+                <li>
+                    <a href="{{url('exams/create')}}">
+                        <i class="fa fa-pencil"></i> <span>Set Exam Rule</span>
+                        <span class="pull-right-container">
+            </span>
+                    </a>
+                </li>
                 <li class="header">Common Subjects</li>
                 <li class="treeview">
                     <a href="#">
