@@ -9,7 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Authenticatable implements MustVerifyEmail
 {
-	use Notifiable,SoftDeletes;
+    use Notifiable,SoftDeletes;
+    
     protected $guard='student';
 
 	protected $fillable=['name','username','phone','password','email','gender','image'];

@@ -45,9 +45,9 @@
                                         @endif
                                     </div>
                                 </div>
-                                <p>Forgot Password? <a href="#">Click Here</a></p>
+                                <p>Forgot Password? <a href="#" data-toggle="modal" data-target="#modal-reset">Click Here</a></p>
                                 <p>Not Registered? <a href="{{url('students/create')}}">Register Now</a></p>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit"  class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -56,4 +56,5 @@
             </div>
         </div>
     </div>
+    @include('email.create')
 @stop

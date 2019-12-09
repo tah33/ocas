@@ -6,8 +6,9 @@
                 <h3 class="box-title">Add Question</h3>
             </div>
             <div class="box-body">
-                <form method="post" action="{{url('question/'.'edit/'.$question->id)}}">
+                <form method="post" action="{{url('question/'.$question->id)}}">
                     @csrf
+                    @method('put')
                     <div class="form-group row">
                         <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Question') }}</label>
                         <div class="col-md-6">
@@ -99,8 +100,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>
-                    <a href="{{url('questions')}}" class="btn btn-warning btn-sm">Go Back</a>
+                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    <a href="{{url('questions')}}" class="btn btn-warning btn-sm">Cancel</a>
                 </form>
 
             </div>

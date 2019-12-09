@@ -7,7 +7,6 @@ Route::get('login','HomeController@loginForm');
 Route::post('verify-login','HomeController@verifyLogin');
 Route::get('home','HomeController@home');
 Route::get('logout','HomeController@logout');
-Route::get('/student/verify/{token}', 'HomeController@verifyStudent');
 //StudentController
 Route::resource('students', 'StudentController');
 Route::get('blocked-students','StudentController@blockedUsers');
@@ -30,3 +29,5 @@ Route::resource('tests', 'TestController');
 Route::resource('commons', 'CommonController');
 //ExamController
 Route::resource('exams', 'ExamController');
+//EmailController
+Route::resource('emails', 'EmailController');

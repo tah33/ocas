@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Http\Requests\Register;
-use App\Mail\VerifyMail;
 use App\Student;
-use App\verifyStudent;
 use Illuminate\Http\Request;
 use Toastr;
 class StudentController extends Controller
@@ -43,13 +41,7 @@ class StudentController extends Controller
         $student->save();
         //Saving Departments to Students
         $student->departments()->attach($request->id);
-        // //Generating a Token for Student
-        // $verifyUser = VerifyStudent::create([
-        //     'student_id' => $student->id,
-        //     'token'      => sha1(time()),
-        // ]);
-        // //Sending Mail to Student
-        // \Mail::to($student->email)->send(new VerifyMail($student));
+        
         Toastr::success('Registration Succesfull, You can now Login','Succes!');
         return redirect('/login');
     }
