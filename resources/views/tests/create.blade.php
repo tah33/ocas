@@ -57,7 +57,7 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs ">
               @foreach($commons as $key => $common)
-              <li class="{{$key == 0 ? 'active' : ''}}"><a href="#tab_1-1" data-toggle="tab">{{$common->subject->name}}</a></li>
+              <li class="{{$key == 0 ? 'active' : ''}}"><a href="#tab_{{ $common->id }}" data-toggle="tab">{{$common->subject->name}}</a></li>
               @endforeach
                 </ul>
               </li>
@@ -66,11 +66,11 @@
             <div class="tab-content">
                @if(!empty($commons))
                @foreach($commons as $key => $common)
-              <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $subject->id }}">
+              <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $common->id }}">
 
-                @foreach($common->questions->take(20) as $num => $question)
+                @foreach($common->questions->random($greater == 0 ? $divide-$less : $divide+$greater) as $key => $question)
               <div class="tab-pane active" id="tab_1-1">
-               <p style="font-size: 16px"><b>Quesion{{$num+1}} : </b>{{$question->question}}</p>
+               <p style="font-size: 16px"><b>Quesion{{$key+1}} : </b>{{$question->question}}</p>
 
                  <div class="form-check">
             <input type="radio" class="form-check-input" id="option" value="a" name="common[{{$question->id}}]">
