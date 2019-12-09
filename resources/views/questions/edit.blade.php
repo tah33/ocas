@@ -6,7 +6,7 @@
                 <h3 class="box-title">Add Question</h3>
             </div>
             <div class="box-body">
-                <form method="post" action="{{url('question/'.$question->id)}}">
+                <form method="post" action="{{url('questions/'.$question->id)}}">
                     @csrf
                     @method('put')
                     <div class="form-group row">
