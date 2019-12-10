@@ -9,16 +9,22 @@ use Illuminate\Http\Request;
 use Toastr;
 class CommonController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin,student');
+    }
 
     public function index()
     {
-        $commons = Common::all();
-        $subjects = Subject::all();
+        $commons    = Common::all();
+        $subjects   = Subject::all();
         return view('commons.index',compact('commons','subjects'));
     }
 
     public function create()
     {
+        $this->authorize('create',Common::class);
+
         $subjects = Subject::all();
         return view('commons.create',compact('subjects'));
     }
@@ -28,58 +34,33 @@ class CommonController extends Controller
         $request->validate( [
             'subject_id' => 'required|uniques:commons,subject_id',
         ],
-            ['subject_id.required' => "Select at least one Subject"],
+            ['subject_id.required' => "Select at least one Subject"]
     );
 
         foreach ($request->subject_id as $key => $subject) {
-            $common = new Common;
-            $common->subject_id = $subject;
+            $common                 = new Common;
+            $common->subject_id     = $subject;
             $common->save();
         }
         Toastr::success('Subjects are selected as Common Subjects');
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Common  $common
-     * @return \Illuminate\Http\Response
-     */
     public function show(Common $common)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Common  $common
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Common $common)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Common  $common
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Common $common)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Common  $common
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Common $common)
     {
         $common->delete();
