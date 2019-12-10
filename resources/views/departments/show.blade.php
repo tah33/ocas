@@ -7,7 +7,7 @@
                 <!-- Profile Image -->
                 <div class="box box-primary">
                     <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" src="{{url('images/'.'tanvir.jpg')}}" alt="Department Logo">
+                        <img class="profile-user-img img-responsive img-circle" src="{{url('images/department',$department->logo)}}" alt="Department Logo">
                         <br><br>
                         <ul class="list-group list-group-unbordered">
                             <li class="list-group-item">
@@ -38,5 +38,5 @@
                                 </div>
                             </div>
 
-                
+
 @stop

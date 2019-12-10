@@ -11,7 +11,6 @@
                         @csrf
                         <div class="panel panel-primary" style="padding: 10px">
                             <div class="form-group row">
-
                                 <label for="name"
                                        class="col-md-2 col-form-label text-md-right">{{ __('Department Name') }}</label>
                                 <div class="col-md-8">
@@ -124,15 +123,16 @@
                                                    placeholder="Enter Minimum Percentage for Enroll">
                                         </div>
                                         @error('range')
-                                            <span style="color: red" class="invalid-feedback" role="alert">
+                                        <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                            @enderror
+                                        @enderror
                                     </div>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
-
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('master.content')
-<style>
-       div.dataTables_wrapper div.dataTables_filter input{
+    <style>
+        div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
-</style>
-    <div class="row">
-        <div class="box">
+    </style>
+        <div class="box box-primary">
             <div class="box-body">
-                <center> <a href="{{url('departments/create')}}" style="margin: 10" class="btn btn-success btn-sm">Add Department</a>
+                <center><a href="{{url('departments/create')}}" style="margin: 10" class="btn btn-success btn-sm">Add
+                        Department</a>
                     <a href="#" class="btn btn-primary btn-sm">PDF </a>
                 </center>
                 <table id="search" class="table table-hover">
@@ -30,13 +30,18 @@
                             <td style="text-align: left">{{ $department->slug }}</td>
                             <td style="text-align: center">{{ $department->minimum }}</td>
                             <td style="text-align: center">
-                                <a href="{{url('departments',$department->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
-                                <a href="{{url('departments/'.$department->id.'/edit')}}"  class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                                <form style="float: right; margin-left: -15px" action="{{url('departments',$department->id)}}" method="post" onsubmit="return confirm('Are you sure you want to Remove This Department?');">
+                                <a href="{{url('departments',$department->id)}}" class="btn btn-success btn-sm"><i
+                                        class="fa fa-eye"></i></a>
+                                <a href="{{url('departments/'.$department->id.'/edit')}}"
+                                   class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                <form style="float: right; margin-left: -15px"
+                                      action="{{url('departments',$department->id)}}" method="post"
+                                      onsubmit="return confirm('Are you sure you want to Remove This Department?');">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-                                   </form>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
@@ -44,5 +49,4 @@
                 </table>
             </div>
         </div>
-    </div>
 @stop

@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('master.content')
-    <div class="row">
-        <div class="box">
+        <div class="box box-primary">
             <div class="box-body">
                 <center>
                     <a href="{{url('question/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a>
@@ -16,8 +15,8 @@
                         <th style="text-align: center">Option2</th>
                         <th style="text-align: center">Option3</th>
                         <th style="text-align: center">Option4</th>
-                        <th style="text-align: center">Ans</th>
-                        <th style="text-align: center">Action</th>
+                        <th style="text-align: center;">Ans</th>
+                        <th style="text-align: center;width: 9%">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,11 +30,11 @@
                                 <td style="text-align: left">{{ $question->option3 ? $question->option3 : ""}}</td>
                                 <td style="text-align: left">{{ $question->option4 ? $question->option4 : ""}}</td>
                                 <td style="text-align: left">{{ $question->correct_ans ? $question->correct_ans : "" }}</td>
-                                <td>
+                                <td style="text-align: center">
                                     <a href="{{url('questions/'.$question->id.'/edit')}}" class="btn btn-warning btn-sm"
                                        style="float: left;"><i class="fa fa-edit"></i></a>
 
-                                    <form method="post"  action="{{url('questions',$question->id)}}"
+                                    <form style="float: right;" method="post" action="{{url('questions',$question->id)}}"
                                           onsubmit="return confirm('Are You sure? You want to delete this question ')">
                                         @csrf
                                         @method('delete')
@@ -50,5 +49,4 @@
                 </table>
             </div>
         </div>
-    </div>
 @stop

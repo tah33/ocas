@@ -5,8 +5,8 @@
             width: 200px;
         }
 </style>
-    <div class="row"> 
-        <div class="box">
+
+        <div class="box box-primary">
         <div class="box-body">
             <center>
             <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a></center>
@@ -32,7 +32,7 @@
                             <td style="text-align: center">{{ $student->email }}</td>
                             <td style="text-align: center">{{ $student->phone }}</td>
                             <td style="text-align: center">{{ $student->gendername }}</td>
-                            
+
                             <td style="text-align: center">
                                 <a href="{{url('students',$student->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
                                 <form action="{{url('students',$student->id)}}"  style="float: right; margin-left: -20px" method="post" onsubmit="return confirm('Are you sure you want to block this students')">
@@ -46,7 +46,7 @@
                 </table>
             </div>
         </div>
-    </div>
+
     @stop
 
 

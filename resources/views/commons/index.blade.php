@@ -1,13 +1,8 @@
 @extends('layouts.master')
 @section('master.content')
-<div class="row"> 
-        <div class="box">
+        <div class="box box-primary" style="width: 800px">
             <div class="box-body" >
-
-              <center>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-common">
-                Add Subject
-              </button></center>
+              <center><a href="{{url('commons/create')}}" class="btn btn-primary btn-sm">Add Subject</a></center>
                 <table id="search" class="table table-hover">
                     <caption>Subject List</caption>
                     <thead>
@@ -22,7 +17,7 @@
                         <tr>
                             <td style="text-align: center">{{ $key+1 }}</td>
                             <td style="text-align: center">{{ $common->subject->name }}</td>
-                          
+
                             <td style="text-align: center">
                                 <form method="post" action="{{url('commons',$common->id)}}" onsubmit="return confirm('Are You sure? You want to delete this subject ')">
                                     @csrf
@@ -36,7 +31,4 @@
                 </table>
             </div>
         </div>
-    </div>
-@include('commons.modal')
-    
 @stop
