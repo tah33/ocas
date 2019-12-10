@@ -63,10 +63,13 @@ class HomeController extends Controller
                 'subjects'      => Subject::all(),
                 'students'      => Student::all(),
             ];
-            $activity = new Activity();
-            $activity->student_id  = Auth::guard('student')->id();
-            $activity->login_time   = Carbon::now('Asia/Dhaka');
-            $activity->save();
+            $activity = Activity::where('student_id',Auth::guard('student')->id())->latest()->first();
+            if ($activity && !empty($activity->logout_time)) {
+                $activity = new Activity();
+                $activity->student_id = Auth::guard('student')->id();
+                $activity->login_time = Carbon::now('Asia/Dhaka');
+                $activity->save();
+            }
             return view('student.home');
         }
     }
