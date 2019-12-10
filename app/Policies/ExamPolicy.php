@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Activity;
+use App\Exam;
 use App\User;
 use Auth;
-class ActivityPolicy
+class ExamPolicy
 {
     use HandlesAuthorization;
 
@@ -23,7 +23,7 @@ class ActivityPolicy
         //
     }
 
-    public function view(User $user, Activity $activity)
+    public function view(User $user, Exam $exam)
     {
         //
     }
@@ -33,22 +33,22 @@ class ActivityPolicy
         //
     }
 
-    public function update(User $user, Activity $activity)
+    public function update(User $user, Exam $exam)
     {
         //
     }
 
-    public function delete(User $user, Activity $activity)
+    public function delete(User $user, Exam $exam)
     {
         //
     }
 
-    public function restore(User $user, Activity $activity)
+    public function restore(User $user, Exam $exam)
     {
         //
     }
 
-    public function forceDelete(User $user, Activity $activity)
+    public function forceDelete(User $user, Exam $exam)
     {
         //
     }

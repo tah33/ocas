@@ -10,12 +10,12 @@ class ExamController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin,student');
+        $this->middleware(['auth:admin,student','can:before,App\Exam']);
     }
-    
+
     public function index()
     {
-        
+
     }
 
     public function create()
