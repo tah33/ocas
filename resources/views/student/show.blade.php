@@ -34,9 +34,7 @@
                                 <b>Address</b> <a class="pull-right">{{ $student->address }}</a>
                             </li>
                         </ul>
-                        @if(Auth::id() == $student->id)
-                        <a href="{{'students/'.$student->id.'/edit'}}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
-                        @endif
+
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -64,7 +62,7 @@
                             </li>
                             @endforeach
                         </ul>
-                                           
+
                                         </div>
                                     </div>
                                 </div>
@@ -79,5 +77,5 @@
             <!-- /.col -->
         </div>
 
-    </div>                
+    </div>
 @stop

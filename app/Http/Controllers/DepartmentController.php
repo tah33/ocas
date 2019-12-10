@@ -25,6 +25,8 @@ class DepartmentController extends Controller
 
     public function create()
     {
+        $this->authorize('create',Department::class);
+
         $subjects = Subject::all();
         return view('departments.create', compact('subjects'));
     }
@@ -45,11 +47,15 @@ class DepartmentController extends Controller
 
     public function show(Department $department)
     {
+        $this->authorize('view',Department::class);
+
         return view('departments.show', compact('department'));
     }
 
     public function edit(Department $department)
     {
+        $this->authorize('update',Department::class);
+
         $multiplesubjects = Subject::all();
         $subjects = Subject::all();
         return view('departments.edit', compact('department', 'multiplesubjects', 'subjects'));
