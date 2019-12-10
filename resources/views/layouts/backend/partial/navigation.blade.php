@@ -115,6 +115,8 @@
                     </ul>
                 </li>
             @endif
+
+            @if(Auth::guard('student')->check())
             <li class="header">Tests</li>
 
             <li>
@@ -123,6 +125,7 @@
                     <span class="pull-right-container"></span>
                 </a>
             </li>
+                @endif
         </ul>
     </section>
     <!-- /.sidebar -->

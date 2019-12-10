@@ -19,19 +19,16 @@ class StudentPolicy
     }
     public function viewAny()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function block()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function unblock()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 }

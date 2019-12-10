@@ -33,12 +33,12 @@ class DepartmentController extends Controller
 
     public function store(DepartmentRequest $request)
     {
-        $department = new Department;
-        $department->name = $request->name;
-        $department->minimum = $request->minimum;
-        $department->slug = $request->slug;
+        $department             = new Department;
+        $department->name       = $request->name;
+        $department->minimum    = $request->minimum;
+        $department->slug       = $request->slug;
         $department->subject_id = $request->subject_id;
-        $department->range = $request->range;
+        $department->range      = $request->range;
         $department->save();
 
         Toastr::success('Department is Succesfully Added', 'Success!');

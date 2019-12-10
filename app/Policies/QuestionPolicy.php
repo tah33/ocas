@@ -19,27 +19,23 @@ class QuestionPolicy
     }
     public function viewAny()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function view()
     {
-        $access = $this->admin();
-        return $access;
+        return  $this->admin();
     }
 
     public function create()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
 
     public function update()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function delete(User $user, Question $question)

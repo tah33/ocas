@@ -24,20 +24,18 @@ class DepartmentPolicy
 
     public function view()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
+
     }
 
     public function create()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function update()
     {
-        $access = $this->admin();
-        return $access;
+        return $this->admin();
     }
 
     public function delete(User $user, Department $department)

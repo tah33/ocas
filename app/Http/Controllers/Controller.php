@@ -11,15 +11,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /**
-     * Default data variable for views
-     */
     protected $data = [];
-    
-    /**
-     * Class Constructor
-     * @author DataTrix Team
-     */
+
     public function __construct()
     {
         // Default variables
