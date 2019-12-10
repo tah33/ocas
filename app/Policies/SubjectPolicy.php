@@ -30,14 +30,14 @@ class SubjectPolicy
 
     public function create()
     {
-        $a = $this->admin();
-        return $a;
+        $access = $this->admin();
+        return $access;
     }
 
     public function update()
     {
-        $a = $this->admin();
-        return $a;
+        $access = $this->admin();
+        return $access;
     }
 
     public function delete(User $user, Subject $subject)

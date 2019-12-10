@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Student;
+use App\Question;
 use App\User;
 use Auth;
-class StudentPolicy
+class QuestionPolicy
 {
     use HandlesAuthorization;
 
@@ -23,15 +23,37 @@ class StudentPolicy
         return $access;
     }
 
-    public function block()
+    public function view()
     {
         $access = $this->admin();
         return $access;
     }
 
-    public function unblock()
+    public function create()
     {
         $access = $this->admin();
         return $access;
+    }
+
+
+    public function update()
+    {
+        $access = $this->admin();
+        return $access;
+    }
+
+    public function delete(User $user, Question $question)
+    {
+        //
+    }
+
+    public function restore(User $user, Question $question)
+    {
+        //
+    }
+
+    public function forceDelete(User $user, Question $question)
+    {
+        //
     }
 }

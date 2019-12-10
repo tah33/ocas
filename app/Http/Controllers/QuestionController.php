@@ -13,77 +13,57 @@ class QuestionController extends Controller
     {
         $this->middleware('auth:admin,student');
     }
-    
+
     public function index()
     {
+        $this->authorize('viewAny',Question::class);
+
         $subjects=Subject::all();
         return view('questions.index',compact('subjects'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create($id)
     {
+        $this->authorize('create',Question::class);
+
         $subject=Subject::find($id);
         return view('questions.create',compact('subject'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(QuestionRequest $request,$id)
     {
         $question=new Question;
-        $question->subject_id = $id;
-        $question->question = $request->question;
+        $question->subject_id   = $id;
+        $question->question     = $request->question;
         if($request->option1)
-            $question->option1 = $request->option1;
+            $question->option1  = $request->option1;
         if($request->option2)
-            $question->option2 = $request->option2;
+            $question->option2  = $request->option2;
         if($request->option3)
-            $question->option3 = $request->option3;
+            $question->option3  = $request->option3;
         if($request->option4)
-            $question->option4 = $request->option4;
-        $question->correct_ans = $request->correct_ans;
+            $question->option4  = $request->option4;
+        $question->correct_ans  = $request->correct_ans;
         $question->save();
         Toastr::success('Questions Created Succesfully','Success!');
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
+        $this->authorize('view',Question::class);
+
         $subject=Subject::find($id);
         return view('questions.show',compact('subject'));
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Question $question)
     {
+        $this->authorize('update',Question::class);
+
         return view('questions.edit',compact('question'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Question $question)
     {
         $request->validate([
@@ -108,12 +88,6 @@ class QuestionController extends Controller
         return redirect('questions/'.$question->subject_id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Question $question)
     {
         $question->delete();
