@@ -27,7 +27,10 @@ class TestController extends Controller
 
     public function create(Request $request)
     {
-        $subjects='';$majorSubjects=[];
+        $this->authorize('create',Test::class);
+
+        $subjects='';
+        $majorSubjects=[];
 
         $exam = Exam::first();
 
@@ -35,6 +38,7 @@ class TestController extends Controller
                 $majorSubjects[] =$department->subject_id;
             }
         $filter=array_filter($majorSubjects);
+        $majors=Subject::whereIn('id',$filter)->get();
 
         $sub=$add=0;
 
@@ -50,8 +54,6 @@ class TestController extends Controller
             }
         else
             $div=$exam->major;
-
-        $majors=Subject::whereIn('id',$filter)->get();
 
         $less=$greater=0;
 
@@ -135,7 +137,7 @@ class TestController extends Controller
             $sub                = 0 ;
             }
 
-        $greater=$less=0;
+        $greater=$less=$correct_ans=0;
         $commons = Common::all();
         if(count($commons) > 1)
         {
@@ -148,7 +150,7 @@ class TestController extends Controller
                 $greater    = $exam->common - $multiple;
         }
         else
-            $divide = $exam->common ; 
+            $divide = $exam->common ;
         foreach ($commons as $key => $common){
             foreach ($request->common as $key => $value) {
                 $correct = Question::where('id',$key)->where('correct_ans',$value)->first();
