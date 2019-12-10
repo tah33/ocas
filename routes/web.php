@@ -31,3 +31,5 @@ Route::resource('commons', 'CommonController');
 Route::resource('exams', 'ExamController');
 //EmailController
 Route::resource('emails', 'EmailController');
+//EmailController
+Route::resource('activities', 'ActivityController');

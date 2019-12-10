@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
 	protected $fillable = [
-        'student_id', 'test_id', 'login_time','logout_time','no_of_tests'
+        'student_id', 'test_id', 'login_time','logout_time'
     ];
-    public function students()
+    public function student()
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsTo(Student::class);
     }
     public function exams()
     {

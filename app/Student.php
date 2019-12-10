@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Student extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable,SoftDeletes;
-    
+
     protected $guard='student';
 
 	protected $fillable=['name','username','phone','password','email','gender','image'];
 
     public function activities()
     {
-        return $this->belongsTo(Activity::class);
+        return $this->hasMany(Activity::class);
     }
 
     public function departments()
@@ -29,7 +29,7 @@ class Student extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Test::class);
     }
-    
+
     public function getGenderNameattribute()
     {
         return ucfirst($this->gender);

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Activity;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Auth;
 use Toastr;
@@ -9,8 +11,6 @@ use App\Department;
 use App\Student;
 use App\Subject;
 use App\Http\Requests\Login;
-use App\verifyStudent;
-use App\Mail\VerifyMail;
 
 class HomeController extends Controller
 {
@@ -42,28 +42,48 @@ class HomeController extends Controller
 
     }
 
-    //Redirecting the user After Sucessfully LoggedIn
+    //Redirecting the user After Successfully LoggedIn
     public function home(Request $request)
     {
         if (Auth::guard('admin')->check()) {
 
             $data = [
-                'page_title' => 'Dashboard :: OCASUS',
-                'departments' => Department::all(),
-                'subjects' => Subject::all(),
-                'students' => Student::all()
+                'page_title'    => 'Dashboard :: Admin',
+                'departments'   => Department::all(),
+                'subjects'      => Subject::all(),
+                'students'      => Student::all(),
+                'activities'    => Activity::orderBy('id','desc')->take(10)->get(),
             ];
             return view('admin.home')->with(array_merge($this->data, $data));
-        } else
+        }
+        else {
+            $data = [
+                'page_title'    => 'Dashboard :: Student',
+                'departments'   => Department::all(),
+                'subjects'      => Subject::all(),
+                'students'      => Student::all(),
+            ];
+            $activity = new Activity();
+            $activity->student_id  = Auth::guard('student')->id();
+            $activity->login_time   = Carbon::now('Asia/Dhaka');
+            $activity->save();
             return view('student.home');
+        }
     }
 
     //For Logging Out The User
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        if(Auth::guard('student')->check())
+        {
+            $activity =Activity::where('student_id',Auth::guard('student')->id())->latest()->first();
+            $activity->logout_time   = Carbon::now('Asia/Dhaka');
+            $activity->save();
+            Auth::guard('student')->logout();
+        }
+        else
+            Auth::guard('admin')->logout();
+
         return redirect('/login');
     }
-
-
 }

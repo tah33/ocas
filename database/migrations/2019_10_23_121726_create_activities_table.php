@@ -17,14 +17,13 @@ class CreateActivitiesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id')->nullable();
             $table->time('login_time');
-            $table->time('logout_time');
-            $table->integer('no_of_exams');
+            $table->time('logout_time')->nullable();
             $table->timestamps();
             $table->foreign('student_id')
                 ->references('id')->on('students')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-        
+
         });
     }
 

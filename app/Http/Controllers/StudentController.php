@@ -41,8 +41,8 @@ class StudentController extends Controller
         $student->save();
         //Saving Departments to Students
         $student->departments()->attach($request->id);
-        
-        Toastr::success('Registration Succesfull, You can now Login','Succes!');
+
+        Toastr::success('Registration Successfull, You can now Login','Succes!');
         return redirect('/login');
     }
 
@@ -59,6 +59,7 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
+
         Toastr::success('Students blocked Succesfully','Success!');
         return back();
     }
@@ -70,9 +71,9 @@ class StudentController extends Controller
     }
     public function unblock($id)
     {
-        $student = Student::withTrashed()
-            ->where('id', $id)->first();
+        $student = Student::withTrashed()->where('id', $id)->first();
         $student->restore();
+
         Toastr::success('Students Unblocked Succesfully','Success!');
         return redirect('students');
     }
