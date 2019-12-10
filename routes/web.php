@@ -33,3 +33,6 @@ Route::resource('exams', 'ExamController');
 Route::resource('emails', 'EmailController');
 //EmailController
 Route::resource('activities', 'ActivityController');
+//PdfController
+Route::get('students-view','PdfController@viewStudents');
+Route::get('students-download','PdfController@downloadStudents');
