@@ -16,6 +16,7 @@ class StudentController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny',Student::class);
         $students = Student::all();
         return view('student.index', compact('students'));
     }
@@ -66,11 +67,15 @@ class StudentController extends Controller
 
     public function blockedUsers()
     {
+        $this->authorize('block',Student::class);
+
         $students = Student::onlyTrashed()->get();
         return view('student.blockedusers', compact('students'));
     }
     public function unblock($id)
     {
+        $this->authorize('unblock',Student::class);
+
         $student = Student::withTrashed()->where('id', $id)->first();
         $student->restore();
 

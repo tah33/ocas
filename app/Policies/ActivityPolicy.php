@@ -12,8 +12,8 @@ class ActivityPolicy
 
     public function before($user, $ability)
     {
-        $user = Auth::guard('admin')->check();
-        if ($user)
+        $admin = Auth::guard('admin')->check();
+        if ($admin)
             return true;
         return false;
     }
