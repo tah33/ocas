@@ -20,6 +20,8 @@ class SubjectController extends Controller
 
     public function create()
     {
+        $this->authorize('update',Subject::class);
+
         return view('subjects.create');
     }
 
@@ -40,6 +42,8 @@ class SubjectController extends Controller
 
     public function edit(Subject $subject)
     {
+        $this->authorize('update',Subject::class);
+
         return view('subjects.edit',compact('subject'));
     }
 
