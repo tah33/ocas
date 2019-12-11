@@ -4,6 +4,7 @@
         div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
+
         .center {
             margin: auto;
             width: 50%;
@@ -15,7 +16,9 @@
         <div class="box-body">
             <div class="center">
                 <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a>
-                <div class="input-group margin" style="margin: -30px 0 0 130px">
+                <a href="{{url('students-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
+
+                <div class="input-group margin" style="margin: -30px 0 0 190px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>
@@ -27,6 +30,7 @@
                     </div>
                 </div>
             </div>
+
             <table id="search" class="table table-hover">
                 <caption>Students List</caption>
                 <thead>
@@ -67,7 +71,7 @@
             </table>
         </div>
     </div>
-    @include('student.students-modal')
+    @include('excel.upload')
 @stop
 
 

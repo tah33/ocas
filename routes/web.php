@@ -44,4 +44,9 @@ Route::get('subject-view','PdfController@viewSubject');
 Route::get('subject-download','PdfController@downloadSubject');
 Route::get('question-view/{id}','PdfController@viewQuestion');
 Route::get('question-download/{id}','PdfController@downloadQuestion');
-
+//ExcelController
+Route::get('students-export','ExcelController@studentsExport');
+Route::get('departments-export','ExcelController@departmentsExport');
+Route::get('subjects-export','ExcelController@subjectsExport');
+Route::get('question-export/{id}','ExcelController@questionExport');
+Route::get('questions-export','ExcelController@questionsExport');

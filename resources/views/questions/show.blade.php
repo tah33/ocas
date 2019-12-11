@@ -14,7 +14,18 @@
         <div class="box-body">
             <div class="center">
                 <a href="{{url('questions/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a>
-                <div class="input-group margin" style="margin: -30px 0 0 130px">
+                <div class="input-group margin" style="margin: -30px 0 0 100px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Get Excel
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('questions-export')}}">All</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url('question-export',$subject->id)}}">{{$subject->name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group margin" style="margin: -30px 0 0 185px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>

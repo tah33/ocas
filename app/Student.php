@@ -13,7 +13,7 @@ class Student extends Authenticatable implements MustVerifyEmail
 
     protected $guard='student';
 
-	protected $fillable=['name','username','phone','password','email','gender','image'];
+	protected $fillable=['name','username','phone','password','email','gender','image','dob','address'];
 
     public function activities()
     {

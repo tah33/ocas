@@ -14,7 +14,8 @@
             <div class="box-body">
                 <div class="center">
                     <a href="{{url('departments/create')}}" class="btn btn-success btn-sm">Add Department</a>
-                    <div class="input-group margin" style="margin: -30px 0 0 130px">
+                    <a href="{{url('departments-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
+                    <div class="input-group margin" style="margin: -30px 0 0 180px">
                         <div class="input-group-btn">
                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                                 <span class="fa fa-caret-down"></span></button>
