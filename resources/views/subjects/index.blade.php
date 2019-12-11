@@ -1,9 +1,31 @@
 @extends('layouts.master')
 @section('master.content')
+    <style>
+        div.dataTables_wrapper div.dataTables_filter input {
+            width: 200px;
+        }
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+    </style>
     <div class="box box-primary" style="width: 800px">
         <div class="box-body">
-            <center>
-                <a href="{{url('subjects/create')}}" class="btn btn-success btn-sm">Add Subject</a></center>
+            <div class="center">
+                <a href="{{url('departments/create')}}" class="btn btn-success btn-sm">Add Department</a>
+                <div class="input-group margin" style="margin: -30px 0 0 130px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('subject-view')}}" target="_blank">View</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url('subject-download')}}">Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <table id="search" class="table table-hover">
                 <caption>Subject List</caption>
                 <thead>

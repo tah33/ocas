@@ -36,3 +36,12 @@ Route::resource('activities', 'ActivityController');
 //PdfController
 Route::get('students-view','PdfController@viewStudents');
 Route::get('students-download','PdfController@downloadStudents');
+Route::get('block-view','PdfController@viewBlockedStudents');
+Route::get('block-download','PdfController@downloadBlockedStudents');
+Route::get('department-view','PdfController@viewdepartment');
+Route::get('department-download','PdfController@downloaddepartment');
+Route::get('subject-view','PdfController@viewSubject');
+Route::get('subject-download','PdfController@downloadSubject');
+Route::get('question-view/{id}','PdfController@viewQuestion');
+Route::get('question-download/{id}','PdfController@downloadQuestion');
+

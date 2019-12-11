@@ -4,15 +4,29 @@
         div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
     </style>
 
     <div class="box box-primary">
         <div class="box-body">
-            <center>
+            <div class="center">
                 <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a>
-                <a href="#" data-toggle="modal" data-target="#students-modal" class="btn btn-primary btn-sm"><i
-                        class="fa fa-file-pdf-o"></i> PDF</a>
-            </center>
+                <div class="input-group margin" style="margin: -30px 0 0 130px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url('students-download')}}">Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <table id="search" class="table table-hover">
                 <caption>Students List</caption>
                 <thead>
