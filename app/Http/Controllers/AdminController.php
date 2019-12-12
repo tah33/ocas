@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Question;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,9 +13,10 @@ class AdminController extends Controller
         $this->middleware('auth:admin,student');
     }
 
-    public function index()
+    public function questions()
     {
-        //
+        $questions = Question::all();
+        return view('admin.questions',compact('questions'));
     }
 
     public function create()

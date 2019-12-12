@@ -14,7 +14,7 @@
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
@@ -27,7 +27,7 @@
                                 <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" >
 
                                 @if ($errors->has('username'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
@@ -42,7 +42,7 @@
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" >
 
                                 @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
@@ -56,7 +56,7 @@
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" >
 
                                 @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
@@ -77,7 +77,7 @@
                                 <input id="phone" type="number" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" >
 
                                 @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('phone') }}</strong>
                                     </span>
                                 @endif
@@ -90,7 +90,7 @@
                                 <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" >
 
                                 @if ($errors->has('address'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>
                                 @endif
@@ -107,7 +107,7 @@
                                 </select>
 
                                 @if ($errors->has('gender'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('gender') }}</strong>
                                     </span>
                                 @endif
@@ -122,7 +122,7 @@
                         @endforeach
                 </select>
                 @if ($errors->has('id'))
-                                    <span class="invalid-feedback" role="alert">
+                                    <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('id') }}</strong>
                                     </span>
                                 @endif

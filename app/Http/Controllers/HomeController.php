@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Question;
+use App\Test;
 use Carbon\Carbon;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Auth;
 use Toastr;
@@ -34,6 +37,12 @@ class HomeController extends Controller
         $username2 = Auth::guard('student')->attempt(['email' => $request->login, 'password' => $request->input('password')]);
         $email2 = Auth::guard('student')->attempt(['username' => $request->login, 'password' => $request->input('password')]);
         if ($username || $email || $username2 || $email2) {
+            if (Auth::guard('student')->check()) {
+                $activity = new Activity();
+                $activity->student_id = Auth::guard('student')->id();
+                $activity->login_time = Carbon::now('Asia/Dhaka');
+                $activity->save();
+            }
             Toastr::success('LoggedIn Sucessfully', 'Success!');
             return redirect()->intended(url('home'));
         } else {
@@ -52,6 +61,8 @@ class HomeController extends Controller
                 'departments'   => Department::all(),
                 'subjects'      => Subject::all(),
                 'students'      => Student::all(),
+                'questions'      => Question::all(),
+                'blocked'      => Student::onlyTrashed()->get(),
                 'activities'    => Activity::orderBy('id','desc')->take(10)->get(),
             ];
             return view('admin.home')->with(array_merge($this->data, $data));
@@ -62,15 +73,9 @@ class HomeController extends Controller
                 'departments'   => Department::all(),
                 'subjects'      => Subject::all(),
                 'students'      => Student::all(),
+                'tests'      => Test::where('student_id',Auth::guard('student')->id())->get(),
             ];
-            $activity = Activity::where('student_id',Auth::guard('student')->id())->latest()->first();
-            if ($activity && !empty($activity->logout_time)) {
-                $activity = new Activity();
-                $activity->student_id = Auth::guard('student')->id();
-                $activity->login_time = Carbon::now('Asia/Dhaka');
-                $activity->save();
-            }
-            return view('student.home');
+            return view('student.home')->with(array_merge($this->data, $data));
         }
     }
 

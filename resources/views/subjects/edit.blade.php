@@ -6,7 +6,7 @@
                 <h3 class="box-title">Edit Subject Name</h3>
             </div>
             <div class="box-body">
-                <form method="post" action="{{url('subjects',$subject->id)}}">
+                <form method="post" action="{{url('subjects',$subject->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group row">
@@ -43,6 +43,24 @@
                                         <strong>{{ $errors->first('slug') }}</strong>
                                     </span>
                             @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Logo') }}</label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-file-photo-o"></i>
+                                </div>
+                                <input id="logo" type="file"
+                                       class="form-control{{ $errors->has('logo') ? ' is-invalid' : '' }}"
+                                       name="logo">
+                                @error('logo')
+                                <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Save</button>

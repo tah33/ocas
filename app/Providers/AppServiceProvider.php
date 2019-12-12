@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Observers\SubjectObserver;
+use App\Subject;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use App\Student;
@@ -20,5 +22,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Student::observe(StudentObserver::class);
         Department::observe(DepartmentObserver::class);
+        Subject::observe(SubjectObserver::class);
     }
 }

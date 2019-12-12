@@ -67,8 +67,8 @@ class DepartmentController extends Controller
             'name' => 'required|unique:departments,name,' . $id,
             'minimum' => 'required|integer|between:1,100',
             'slug' => 'nullable|string|unique:departments,slug,' . $id,
-            'range' => 'nullable|integer|between:1,100|required_with:subject_id',
-            'subject_id' => 'nullable|required_with:range',
+            'range' => 'required',
+            'subject_id' => 'required',
         ]);
         $department                 = Department::find($id);
         $department->name           = $request->name;

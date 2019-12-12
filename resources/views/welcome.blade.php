@@ -58,46 +58,44 @@
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 @foreach($departments as $key => $department)
-                <li data-target="#carousel-example-generic" data-slide-to="{{$key}}" class="{{$key == 0 ? 'active' : ''}}"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="{{$key}}"
+                        class="{{$key == 0 ? 'active' : ''}}"></li>
                 @endforeach
-
-                <li data-target="#carousel-example-generic" data-slide-to="{{$key+1}}"></li>
             </ol>
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 @foreach($departments as $key => $department)
-                <div class="item {{$key == 0 ? 'active' : ''}}">
-                    <h3>Are You Capable to Do?</h3>
-                    <a href=""><h2>{{$department->slug}}</h2></a>
-                    <a href=""><h4>Test Yourself</h4></a>
-                </div>
+                    <div class="item {{$key == 0 ? 'active' : ''}}">
+                        <h3>Are You Capable to Do?</h3>
+                        <a href=""><h2>{{$department->slug}}</h2></a>
+                        <a href=""><h4>Test Yourself</h4></a>
+                    </div>
                 @endforeach
-                <div class="item">
-                    <h3>If You Are Confused</h3>
-                    <a href=""><h2>Let Us Help</h2></a>
-                    <a href=""><h4>Test Yourself</h4></a>
-                </div>
             </div>
         </div>
     </div>
 </section>
-<section class="about-area text-center" class="section-padding" id="about_us" >
+<section class="about-area text-center" class="section-padding" id="about_us">
     <div class="container">
         <div class="about">
             <h2>About us</h2>
             <img src="{{URL::asset('icons/about.png')}}" alt="about image" width="100px" height="100px">
             <p class="text-justify">At OCAS, we follow a very unique method towards providing Online Career Advising.
-               We believe that the most important step towards finding ones' BEST SUITED career or course is to first find the Real Inherent Strength pattern in the individual.
-               This Real Inherent Strength pattern is mapped in terms of ones' Aptitude, Personality and Interest profile using our proprietary MyTalent Psychometric Assessment.
-               This Assessment is an outcome of extensive Standadization and Validation process done on a large population Students across
-               different economic conditions and geographies.
-               They then give their recommendations (which are there on their dashboard as well as in the form of comprehensive reports) and
+                We believe that the most important step towards finding ones' BEST SUITED career or course is to first
+                find the Real Inherent Strength pattern in the individual.
+                This Real Inherent Strength pattern is mapped in terms of ones' Aptitude, Personality and Interest
+                profile using our proprietary MyTalent Psychometric Assessment.
+                This Assessment is an outcome of extensive Standadization and Validation process done on a large
+                population Students across
+                different economic conditions and geographies.
+                They then give their recommendations (which are there on their dashboard as well as in the form of
+                comprehensive reports) and
                 provide them with very comprehensive Online Career Advising.
             </p>
         </div>
     </div>
 </section>
-<section class="about-area text-center section-padding departments" id="departments" >
+<section class="about-area text-center section-padding departments" id="departments" style="background-color:grey;">
     <div class="container">
         <div class="about">
             <h2>Departments</h2>
@@ -106,13 +104,14 @@
         <div class="row">
             @foreach($departments as $department)
                 <a href="">
-                <div class="card" style="width: 25rem;">
-                    <img class="rounded-circle" src="{{URL::asset('images/department/'.$department->logo)}}" alt="Card image cap" height="50px" width="50px">
-                    <div class="card-body">
-                        <h5 class="card-title"><b>{{$department->name}}</b></h5><br>
-                        <h5 class="card-body"><b>({{$department->slug}})</b></h5>
+                    <div class="card" style="width: 25rem;">
+                        <img class="rounded-circle" src="{{URL::asset('images/department/'.$department->logo)}}"
+                             alt="Card image cap" height="50px" width="50px">
+                        <div class="card-body">
+                            <h5 class="card-title"><b>{{$department->name}}</b></h5><br>
+                            <h5 class="card-body"><b>({{$department->slug}})</b></h5>
+                        </div>
                     </div>
-                </div>
                 </a>
             @endforeach
         </div>
@@ -149,7 +148,7 @@
                         <a href=""><i class="fa fa-envelope"></i></a>
                         <h3>Email</h3>
                     </div>
-                    <p>info@datatrixsoft.com</p>
+                    <p>info@ocas.com</p>
                 </div>
             </div>
 

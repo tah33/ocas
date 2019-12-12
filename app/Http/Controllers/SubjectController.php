@@ -29,9 +29,12 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|alpha|unique:subjects'
+            'name' => 'required|unique:subjects'
         ]);
-        Subject::create($request->all());
+        $subject       = new  Subject;
+        $subject->name = $request->name;
+        $subject->slug = $request->slug;
+        $subject->save();
         Toastr::success('Subject Added Successfully', 'Success!');
         return back();
     }
@@ -51,10 +54,16 @@ class SubjectController extends Controller
     public function update(Request $request, Subject $subject)
     {
         $request->validate([
-            'name' => 'required|alpha|unique:subjects,name,' . $subject->id
+            'name' => 'required|unique:subjects,name,' . $subject->id
         ]);
         $subject->name = $request->name;
         $subject->slug = $request->slug;
+        if ($request->logo) {
+            $file = $request->File('logo');
+            $ext  = ($subject->slug ? $subject->slug : $subject->name) . "." . $file->clientExtension();
+            $file->storeAs('images/subjects', $ext);
+            $subject->logo = $ext;
+        }
         $subject->save();
         Toastr::success('Info Updated Succesfully', 'Success!');
         return redirect('subjects');

@@ -24,12 +24,12 @@
                                                class="form-control{{ $errors->has('login') ? ' is-invalid' : '' }}"
                                                value="{{old('login')}}" name="login" placeholder="Enter UserName/Email">
                                         @if ($errors->has('login'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('login') }}</strong>
                                     </span>
                                         @endif
                                         @if ($message = Session::get('msg'))
-                                            <strong>{{ $message }}</strong>
+                                            <strong style="color: red">{{ $message }}</strong>
                                         @endif
                                     </div>
 
@@ -39,7 +39,7 @@
                                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                                name="password" placeholder="Enter password">
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span style="color: red" class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                         @endif

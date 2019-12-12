@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use DB;
 class QuestionExport implements FromCollection, WithHeadings
 {
-    private $id;
+    public $id;
 
     public function __construct($id){
         $this->id = $id;
@@ -16,13 +16,13 @@ class QuestionExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $questions = DB::table('questions')->select('question','option1','option2','option3','option4','correct_ans')
+        $questions = DB::table('questions')->select('subject_id','question','option1','option2','option3','option4','correct_ans')
             ->where('subject_id',$this->id)->get();
         return $questions;
     }
 
     public function headings(): array
     {
-        return ["Question", "option1","option2","option3","option4",'Correct Answer'];
+        return ['Subject_id',"Question", "option1","option2","option3","option4",'Correct Answer'];
     }
 }

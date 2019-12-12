@@ -4,6 +4,7 @@
         div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
+
         .center {
             margin: auto;
             width: 50%;
@@ -13,8 +14,8 @@
     <div class="box box-primary" style="width: 800px">
         <div class="box-body">
             <div class="center">
-                <a href="{{url('departments/create')}}" class="btn btn-success btn-sm">Add Department</a>
-               <div class="input-group margin" style="margin: -30px 0 0 180px">
+                <a href="{{url('subjects/create')}}" class="btn btn-success btn-sm">Add Subject</a>
+                <div class="input-group margin" style="margin: -30px 0 0 180px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>
@@ -31,7 +32,8 @@
                 <thead>
                 <tr>
                     <th style="text-align: center">No.</th>
-                    <th style="text-align: center">Name</th>
+                    <th style="text-align: left">Name</th>
+                    <th style="text-align: center">Logo</th>
                     <th style="text-align: center; width: 15%">Action</th>
                 </tr>
                 </thead>
@@ -40,6 +42,8 @@
                     <tr>
                         <td style="text-align: center">{{ $key+1 }}</td>
                         <td style="text-align: left">{{ $subject->name }}</td>
+                        <td style="text-align: center"><img src="{{url('images/subjects/'.$subject->logo)}}"
+                                                     alt="Subject Logo" height="50px" width="50px"></td>
 
                         <td style="text-align: center">
                             <a href="{{url('subjects/'.$subject->id.'/edit')}}"

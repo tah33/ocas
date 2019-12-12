@@ -16,7 +16,7 @@ class StudentsImport implements ToModel
         $student->name = $row[0];
         $student->username = $row[1];
         $student->email = $row[2];
-        $student->password = Hash::make('12345678');
+        $student->password = Hash::make('1234');
         $student->phone = $row[3];
         $student->dob = $row[4];
         $student->gender = $row[5];

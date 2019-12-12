@@ -14,14 +14,16 @@
         <div class="box-body">
             <div class="center">
                 <a href="{{url('questions/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a>
-                <div class="input-group margin" style="margin: -30px 0 0 100px">
+                <div class="input-group margin" style="margin: -30px 0 0 120px">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Get Excel
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel
                             <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{url('questions-export')}}">All</a></li>
+                            <li><a href="{{url('questions-export')}}">Export (All Question)</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{url('question-export',$subject->id)}}">{{$subject->name}}</a></li>
+                            <li><a href="{{url('question-export',$subject->id)}}">Export ({{$subject->name}} Question)</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#modal-upload">Import ({{$subject->name}} Question)</a></li>
                         </ul>
                     </div>
                 </div>
@@ -81,4 +83,5 @@
                 </table>
             </div>
         </div>
+    @include('excel.upload')
 @stop

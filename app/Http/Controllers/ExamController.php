@@ -31,14 +31,25 @@ class ExamController extends Controller
             'common' => 'required',
             'time' => 'required'
         ]);
-
-        $exam = new Exam;
-        $exam->major    = $request->major;
-        $exam->common   = $request->common;
-        $exam->time     = $request->time;
-        $exam->save();
-        Toastr::success('success','Rule was Created Successfully');
-        return back();
+        $exam = Exam::first();
+        if($exam)
+        {
+            $exam->major    = $request->major;
+            $exam->common   = $request->common;
+            $exam->time     = $request->time;
+            $exam->save();
+            Toastr::success('success','Exam Rule was Updated Successfully');
+            return back();
+        }
+       else {
+           $exam = new Exam;
+           $exam->major = $request->major;
+           $exam->common = $request->common;
+           $exam->time = $request->time;
+           $exam->save();
+           Toastr::success('success', 'Rule was Created Successfully');
+           return back();
+       }
     }
 
     public function show(Exam $exam)

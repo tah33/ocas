@@ -121,11 +121,20 @@
 
             <li>
                 <a href="{{url('tests/create')}}">
-                    <i class="glyphicon glyphicon-question-sign"></i> <span>Test</span>
+                    <i class="fa fa-question-circle"></i> <span>Test</span>
                     <span class="pull-right-container"></span>
                 </a>
             </li>
                 @endif
+            @if(Auth::guard('admin')->check())
+            <li class="header">Exam Inspect</li>
+                <li>
+                    <a href="{{url('tests')}}">
+                        <i class="fa fa-question-circle"></i> <span>Test</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </section>
     <!-- /.sidebar -->

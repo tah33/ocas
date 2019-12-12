@@ -23,7 +23,8 @@ class TestController extends Controller
 
     public function index()
     {
-        //
+        $tests = Test::all();
+        return view('tests.index',compact('tests'));
     }
 
     public function create(Request $request)
@@ -66,7 +67,7 @@ class TestController extends Controller
         else
             $greater = $exam->common - $multiple;
 
-        return view('tests.create', compact('majors', 'div', 'sub', 'add', 'commons', 'less', 'greater'));
+        return view('tests.create', compact('majors', 'div', 'sub', 'add', 'commons', 'less', 'greater','divide'));
     }
 
     public function store(Request $request)
@@ -74,20 +75,22 @@ class TestController extends Controller
         $count = $common = 0;
 
         $exam = Exam::first();
-
-        foreach ($request->major as $key => $major) {
-            $question = Question::where('id', $key)->where('correct_ans', $major)->first();
-            if ($question) {
-                $count++;
+        if($request->major) {
+            foreach ($request->major as $key => $major) {
+                $question = Question::where('id', $key)->where('correct_ans', $major)->first();
+                if ($question) {
+                    $count++;
+                }
             }
         }
-        foreach ($request->common as $key => $common) {
-            $question = Question::where('id', $key)->where('correct_ans', $common)->first();
-            if ($question) {
-                $common++;
+        if($request->common) {
+            foreach ($request->common as $key => $common) {
+                $question = Question::where('id', $key)->where('correct_ans', $common)->first();
+                if ($question) {
+                    $common++;
+                }
             }
         }
-
         $test               = new Test;
         $test->student_id   = Auth::id();
         $test->ans          = $request->major;
@@ -120,10 +123,12 @@ class TestController extends Controller
             $div = $exam->major;
 
         foreach ($student->departments as $key => $department) {
-            foreach ($request->major as $key => $value) {
-                $correct = Question::where('id', $key)->where('correct_ans', $value)->first();
-                if ($correct && $correct->subject_id == $department->subject_id) {
-                    $mark++;
+            if ($request->major) {
+                foreach ($request->major as $key => $value) {
+                    $correct = Question::where('id', $key)->where('correct_ans', $value)->first();
+                    if ($correct && $correct->subject_id == $department->subject_id) {
+                        $mark++;
+                    }
                 }
             }
             $rank               = new Rank;
@@ -131,16 +136,16 @@ class TestController extends Controller
             $rank->test_id      = $test->id;
             $rank->marks        = ($mark * ($add == 0 ? $div - $sub : $div + $add)) / 100;
             $rank->save();
-            $mark   = 0;
-            $add    = 0;
-            $sub    = 0;
+            $mark               = 0;
+            $add                = 0;
+            $sub                = 0;
         }
 
         $greater = $less = $correct_ans = 0;
         $commons = Common::all();
         if (count($commons) > 1) {
-            $divide     = ceil($exam->common / count($commons));
-            $multiple   = $divide * count($commons);
+            $divide         = ceil($exam->common / count($commons));
+            $multiple       = $divide * count($commons);
 
             if ($multiple > $exam->common)
                 $less       = $multiple - $exam->common;
@@ -149,10 +154,12 @@ class TestController extends Controller
         } else
             $divide = $exam->common;
         foreach ($commons as $key => $common) {
-            foreach ($request->common as $key => $value) {
-                $correct = Question::where('id', $key)->where('correct_ans', $value)->first();
-                if ($correct && $correct->subject_id == $common->subject_id) {
-                    $correct_ans++;
+            if ($request->common) {
+                foreach ($request->common as $key => $value) {
+                    $correct = Question::where('id', $key)->where('correct_ans', $value)->first();
+                    if ($correct && $correct->subject_id == $common->subject_id) {
+                        $correct_ans++;
+                    }
                 }
             }
             $rank               = new Rank;
@@ -160,9 +167,9 @@ class TestController extends Controller
             $rank->test_id      = $test->id;
             $rank->marks        = ($correct_ans * ($greater == 0 ? $divide - $less : $divide + $greater)) / 100;
             $rank->save();
-            $correct_ans    = 0;
-            $greater        = 0;
-            $less           = 0;
+            $correct_ans        = 0;
+            $greater            = 0;
+            $less               = 0;
         }
 
         Toastr::success('Your answer was succesfully submitted', 'Success!');
@@ -171,7 +178,7 @@ class TestController extends Controller
 
     public function show(Test $test)
     {
-        //
+        return view('tests.show',compact('test'));
     }
 
     public function edit(Test $test)

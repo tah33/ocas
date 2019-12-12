@@ -32,7 +32,7 @@ class CommonController extends Controller
     public function store(Request $request)
     {
         $request->validate( [
-            'subject_id' => 'required|uniques:commons,subject_id',
+            'subject_id' => 'required|unique:commons,subject_id',
         ],
             ['subject_id.required' => "Select at least one Subject"]
     );
