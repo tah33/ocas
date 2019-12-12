@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2019 at 06:34 PM
+-- Generation Time: Dec 12, 2019 at 02:01 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -32,8 +32,7 @@ CREATE TABLE `activities` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `student_id` bigint(20) UNSIGNED DEFAULT NULL,
   `login_time` time NOT NULL,
-  `logout_time` time NOT NULL,
-  `no_of_exams` int(11) NOT NULL,
+  `logout_time` time DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,23 +41,11 @@ CREATE TABLE `activities` (
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `student_id`, `login_time`, `logout_time`, `no_of_exams`, `created_at`, `updated_at`) VALUES
-(1, 15, '16:11:30', '16:11:30', 3, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(2, 5, '16:11:30', '16:11:30', 2, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(3, 2, '16:11:30', '16:11:30', 1, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(4, 15, '16:11:31', '16:11:31', 6, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(5, 9, '16:11:31', '16:11:31', 1, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(6, 2, '16:11:31', '16:11:31', 9, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(7, 12, '16:11:31', '16:11:31', 6, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(8, 5, '16:11:31', '16:11:31', 7, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(9, 3, '16:11:31', '16:11:31', 10, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(10, 6, '16:11:31', '16:11:31', 6, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(11, 4, '16:11:31', '16:11:31', 3, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(12, 8, '16:11:31', '16:11:31', 6, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(13, 4, '16:11:31', '16:11:31', 2, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(14, 12, '16:11:31', '16:11:31', 1, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(15, 4, '16:11:31', '16:11:31', 6, '2019-12-08 10:11:31', '2019-12-08 10:11:31'),
-(16, 8, '16:11:31', '16:11:31', 9, '2019-12-08 10:11:31', '2019-12-08 10:11:31');
+INSERT INTO `activities` (`id`, `student_id`, `login_time`, `logout_time`, `created_at`, `updated_at`) VALUES
+(1, 1, '15:55:45', '15:55:54', '2019-12-12 03:55:45', '2019-12-12 03:55:54'),
+(2, 1, '15:56:20', '16:02:46', '2019-12-12 03:56:20', '2019-12-12 04:02:46'),
+(3, 1, '16:37:40', '18:21:05', '2019-12-12 04:37:40', '2019-12-12 06:21:05'),
+(4, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58');
 
 -- --------------------------------------------------------
 
@@ -96,6 +83,14 @@ CREATE TABLE `commons` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `commons`
+--
+
+INSERT INTO `commons` (`id`, `subject_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2019-12-11 23:25:44', '2019-12-11 23:25:44'),
+(2, 5, '2019-12-11 23:25:44', '2019-12-11 23:25:44');
+
 -- --------------------------------------------------------
 
 --
@@ -119,15 +114,15 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `range`, `created_at`, `updated_at`) VALUES
-(1, 'BBA', 'Bachelor of Business Administration', 50, NULL, NULL, NULL, NULL, NULL),
-(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, NULL, NULL, NULL, NULL, NULL),
-(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, NULL, NULL, NULL, NULL, NULL),
-(4, 'SME', 'Bachelor of Science in Mechanical Engineering', 60, NULL, NULL, NULL, NULL, NULL),
-(5, 'EEE', 'Bachelor of Electrical & Electronics Engineering', 60, NULL, NULL, NULL, NULL, NULL),
-(6, 'BSN', 'Bachelor of Science in Nursing', 40, NULL, NULL, NULL, NULL, NULL),
-(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, NULL, NULL, NULL, NULL, NULL),
-(8, 'BAG', 'Bachelor of Science in Agriculture', 45, NULL, NULL, NULL, NULL, NULL),
-(9, 'BAE', 'Bachelor of Arts in Economics', 40, NULL, NULL, NULL, NULL, NULL);
+(1, 'BBA', 'Bachelor of Business Administration', 50, 'BBA.jpg', 10, 60, NULL, '2019-12-11 23:19:55'),
+(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, NULL, '2019-12-11 23:20:19'),
+(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 1, 70, NULL, '2019-12-11 23:20:33'),
+(4, 'SME', 'Bachelor of Science in Mechanical Engineering', 60, 'SME.jpg', 3, 60, NULL, '2019-12-11 23:20:58'),
+(5, 'EEE', 'Bachelor of Electrical & Electronics Engineering', 60, 'EEE.jpg', 3, 70, NULL, '2019-12-11 23:21:12'),
+(6, 'BSN', 'Bachelor of Science in Nursing', 40, 'BSN.jpg', 11, 60, NULL, '2019-12-11 23:21:22'),
+(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, 'BATHM.jpg', 5, 80, NULL, '2019-12-11 23:22:10'),
+(8, 'BAG', 'Bachelor of Science in Agriculture', 45, 'BAG.png', 13, 70, NULL, '2019-12-11 23:22:33'),
+(9, 'BAE', 'Bachelor of Arts in Economics', 40, 'BAE.png', 14, 80, NULL, '2019-12-11 23:22:49');
 
 -- --------------------------------------------------------
 
@@ -142,6 +137,39 @@ CREATE TABLE `department_student` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `department_student`
+--
+
+INSERT INTO `department_student` (`id`, `student_id`, `department_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, NULL, NULL),
+(2, 1, 3, NULL, NULL),
+(3, 1, 6, NULL, NULL),
+(4, 1, 7, NULL, NULL),
+(5, 1, 8, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exams`
+--
+
+CREATE TABLE `exams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `major` int(11) NOT NULL,
+  `common` int(11) NOT NULL,
+  `time` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `exams`
+--
+
+INSERT INTO `exams` (`id`, `major`, `common`, `time`, `created_at`, `updated_at`) VALUES
+(1, 100, 40, 140, '2019-12-12 03:30:06', '2019-12-12 03:30:19');
 
 -- --------------------------------------------------------
 
@@ -167,24 +195,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2019_10_23_115706_create_students_table', 1),
 (6, '2019_10_23_120322_create_questions_table', 1),
 (7, '2019_10_23_121530_create_tests_table', 1),
-(8, '2019_10_23_121726_create_activities_table', 1),
 (9, '2019_11_01_085006_create_student_subject_table', 1),
 (10, '2019_11_05_145819_create_department_student_table', 1),
 (11, '2019_11_05_152350_create_verify_students_table', 1),
 (12, '2019_11_26_182535_create_ranks_table', 1),
-(13, '2019_11_30_160419_create_commons_table', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(13, '2019_11_30_160419_create_commons_table', 1),
+(14, '2019_12_09_121128_create_exams_table', 2),
+(15, '2019_10_23_121726_create_activities_table', 3);
 
 -- --------------------------------------------------------
 
@@ -825,7 +842,59 @@ INSERT INTO `questions` (`id`, `subject_id`, `question`, `option1`, `option2`, `
 (622, 5, 'How many adolescents are in Bangladesh ?', '28 million', '30 million', '20 million', '19 million', 'a', '2019-12-11 11:11:24', '2019-12-11 11:11:24'),
 (623, 5, 'how many girls adolescent in Bangladesh?', '13 million', '13.5 million', '13.6 million', '13.7 million', 'd', '2019-12-11 11:12:27', '2019-12-11 11:12:27'),
 (624, 5, 'How many boys   adolescents in Bangladesh/', '14 million', '14.2 million', '14. 3 million', '14.4 million', 'c', '2019-12-11 11:14:18', '2019-12-11 11:14:18'),
-(625, 5, 'What does NGO stands for?', 'Non Government Organization', 'Nation government organization', 'National Government Organization', 'None government Organization', 'a', '2019-12-11 11:18:13', '2019-12-11 11:18:13');
+(625, 5, 'What does NGO stands for?', 'Non Government Organization', 'Nation government organization', 'National Government Organization', 'None government Organization', 'a', '2019-12-11 11:18:13', '2019-12-11 11:18:13'),
+(779, 23, 'Question', 'option1', 'option2', 'option3', 'option4', 'Correct Answer', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(780, 23, 'What is the medium of production?', 'Industry', 'capital', 'land', 'organization', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(781, 23, 'How many kinds os Trade?', '2', '3', '4', '5', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(782, 23, 'Which word is \" Business\"?', 'English', 'French', 'Italic', 'Russian', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(783, 23, 'Which is the initial work of Business?', 'Production', 'Sevices', 'Supply', 'Distribute', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(784, 23, 'How many kinds of business environment?', '1', '2', '3', '4', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(785, 23, 'How many kinds of Business according to ownership?', '4', '6', '7', '5', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(786, 23, 'Where did 1st company Act passed?', 'England', 'America', 'Britten', 'Thailand', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(787, 23, 'When did company Act passed in England?', '1844', '1845', '1842', '1846', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(788, 23, 'Which is the most popular oldest business ?', 'sole proprietorship', 'partnership business', 'joint stock company', 'governtment state', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(789, 23, 'Who supply capital in sole proprietorship  business?', 'Bank', 'owner', 'partner', 'money lander', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(790, 23, 'Which Partnership business Act going on in Bangladesh?', '1930', '1935', '1932', '1934', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(791, 23, 'How many members were there in partnership business?', '21', '20', '15', '16', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(792, 23, 'How many members were there in Banking partnership business?', '15', '10', '12', '14', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(793, 23, 'How many kinds of contractual relation?', '2', '3', '4', '5', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(794, 23, 'What is  the base of partnership business?', 'Share', 'contractual relation', 'money', 'Belief', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(795, 23, 'When did Industrial revolution occured in Europe?', '1750 -1850', '1780 -1850', '1850 -1950', '1650 -1750', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(796, 23, 'How many members were there in private limited company?', '2 -50', '2 - 30', '2 - 40', '2 - 45', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(797, 23, 'When did company act passed in India under British?', '1650', '1750', '1850', '1855', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(798, 23, 'When did new company act passed in India', '1915', '1916', '1914', '1913', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(799, 23, 'When did company   Act passed in Bangladesh?', '1994', '1993', '1992', '1996', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(800, 23, 'When did The Joint Stock Company Act passed in Britten?', '1944', '1844', '1945', '1845', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(801, 23, 'When did Dhaka Stock Exchange organized?', '1966', '1967', '165', '1964', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(802, 23, 'When did Chittagong stock exchange organized?', '1990', '1995', '1965', '1960', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(803, 23, 'When did Bengal co - operative federation organized in Calcutta?', '1915', '1916', '1917', '1918', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(804, 23, 'When did International Co - operative Society started?', '1795', '1895', '1995', '1990', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(805, 23, 'When did Co -operative Act passed in Subcontinent?', '1902', '1903', '1904', '1905', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(806, 23, 'When did PARD organized?', '1956', '1957', '1958', '1959', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(807, 23, 'Whose leadership did PARD organized?', 'Dr. Hamid Khan', 'King', 'Buchez', 'Plockboy', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(808, 23, 'How many certified Co - operative society are in Bangladesh?', '1,76,442', '1,76,440', '1,75,440', '1,75,446', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(809, 23, 'Which Co - operative Act going on in Bangladesh?', '2000', '2001', '2002', '2003', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(810, 23, 'How many members were  there initial Co -operative society?', '10', '15', '20', '25', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(811, 23, 'How many members were there in national co - operative society?', '20', '10', '15', '14', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(812, 23, 'Which organization is called  \"The Citadel of the exploited\"?', 'Partnership Business', 'Joint stock company', 'Sole proprietorship', 'Co - operative society', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(813, 23, '\"Unity is strength\"_ which organization\"s motto?', 'Co -operative society', 'partnership business', 'private limited company', 'public limited company', NULL, '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(814, 23, 'When did Bangladesh Chemical  Industries corporation organized in Bangladesh?', '1975', '1976', '1974', '1977', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(815, 23, 'When did Bangladesh Parjatan Corporation organized?', '1971', '1972', '1973', '1974', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(816, 23, 'How many  share of Government state were in hold of Government?', '50%', '51%', '52%', '53%', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(817, 23, 'When did WASA organized?', '1963', '1964', '1965', '1966', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(818, 23, 'When did PPP principles effective in Bangladesh?', '2006', '2007', '2009', '2010', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(819, 23, 'When did Chemical Industrial organization organized  in Bangladesh?', '1975', '1976', '1977', '1974', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(820, 23, 'What is the changing name of BTTB?', 'BTLC', 'BTCL', 'BCLT', 'BLTC', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(821, 23, 'How many railway line going in Bangladesh?', '1', '2', '3', '4', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(822, 23, 'Which Patent & Design Act on going in Bangladesh?', '1910', '1911', '1912', '1913', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(823, 23, 'What is the period of Patent?', '10 years', '12 years', '14 years', '16 years', 'd', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(824, 23, 'What is the period of patent in USA?', '15 years', '16 years', '17 years', '18 years', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(825, 23, 'What is the period of Trademark?', '6 years', '7 years', '5 years', '4 years', 'b', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(826, 23, 'When did Trademark Act passed in French?', '1854', '1856', '1857', '1858', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22');
+INSERT INTO `questions` (`id`, `subject_id`, `question`, `option1`, `option2`, `option3`, `option4`, `correct_ans`, `created_at`, `updated_at`) VALUES
+(827, 23, 'When did Trademark Act passed in UK?', '1860', '1861', '1862', '1863', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(828, 23, 'When did The Press Act passed in Britten?', '1660', '1661', '1662', '1663', 'c', '2019-12-12 03:20:22', '2019-12-12 03:20:22'),
+(829, 23, 'Which copy right Act on going in Bangladesh?', '2000', '2005', '2006', '2009', 'a', '2019-12-12 03:20:22', '2019-12-12 03:20:22');
 
 -- --------------------------------------------------------
 
@@ -842,6 +911,24 @@ CREATE TABLE `ranks` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `ranks`
+--
+
+INSERT INTO `ranks` (`id`, `subject_id`, `test_id`, `marks`, `created_at`, `updated_at`) VALUES
+(1, 4, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(2, 1, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(3, 11, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(4, 5, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(5, 13, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(6, 4, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(7, 1, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(8, 11, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(9, 5, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(10, 13, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(11, 1, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
+(12, 5, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05');
+
 -- --------------------------------------------------------
 
 --
@@ -855,7 +942,7 @@ CREATE TABLE `students` (
   `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dob` date NOT NULL,
+  `dob` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -870,35 +957,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `name`, `email`, `username`, `password`, `phone`, `dob`, `gender`, `address`, `image`, `verified`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, '69Hre9', 'ogTjGn@gmail.com', 'KpbtRL', '$2y$10$7cENnvmqY6mBTAmh7zjG9OK5IkN/pzaLDXeN6w9s5fsjZfVTmDzCa', '6UvI9X', '2019-12-08', 'male', 'aGX1yG', 'vbqATi.jpg', 0, NULL, '2019-12-08 10:11:28', '2019-12-08 10:11:28'),
-(2, 'xzWiGW', 'V8fg3P@gmail.com', 'ceQ9Dk', '$2y$10$zS/sXYH.ZwPE6n2hK5PPlO/UttgGsVLUeWJc.E7gdTaeDF2G67tLy', 'RN1veX', '2019-12-08', 'female', 'THQArG', 'fCHwMg.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(3, 'LlpKB3', 'RnD9gL@gmail.com', 'nOLL35', '$2y$10$6Ax/aylYLiXdj9sjS6pkQuRudsQycrh1ArzNOhv1aCZdMQpq4CRVK', '1x235H', '2019-12-08', 'male', '5eNxdO', 'FNqIx9.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(4, 'YxcFSp', '4ASVkd@gmail.com', 'N6Yvkk', '$2y$10$.OWpaJzDsdnZljGRconjVeKNyaawn8rD4qGqwptJdYvX9DwBBGx.y', 'pTb5qp', '2019-12-08', 'female', 'dLzRyG', 'WL0wZZ.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(5, 'BVZDgB', 'YK8h8e@gmail.com', 'pTbtvf', '$2y$10$FOB5ROkh4vAES8BeMy55QOMhI/YTYaFNzhGkFe6Ki3foUMWWhkUdC', 'k0dXZh', '2019-12-08', 'male', 'i8J6dc', 'Y1a4Z0.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(6, 'TKzbVD', 'olbUD5@gmail.com', 'AOMI0n', '$2y$10$AiV84a9xats8AQsay0fXteQqIXTJnFeEbRpdoWwyLvVWwRLta3T9.', 'nwblk4', '2019-12-08', 'male', 'p17h5y', '0L7BJg.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(7, '0Agqla', 'cGli13@gmail.com', 'IAdrWU', '$2y$10$bBTs5skIH8lp8BkQ/0ZKR.eMYX1H2DN4OEugVtjTuMw1E9UbMweMe', 'VrKguQ', '2019-12-08', 'male', 'Haq9os', 'dEJ0WR.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(8, 'T8ETG9', 'jyvgQ9@gmail.com', 'kc4Wc6', '$2y$10$7F38MHW8zGcFSy3m414QOeBp9w/ZiV4JNNHLV7xG8dk20u2dc3/o2', 'CAl4JC', '2019-12-08', 'male', 'upKmz9', 'kCRP5O.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(9, '8kUK8l', 'AQ9NE0@gmail.com', 'wnJaoF', '$2y$10$tdBv49x6JikYevy9gpr0GOUvOXYuKlyPzWkIdMVpgnr.xAPh1wrYu', 'IW0AYx', '2019-12-08', 'female', 'fZ6rFs', 'tjkaMt.jpg', 0, NULL, '2019-12-08 10:11:29', '2019-12-08 10:11:29'),
-(10, 'OhMqcc', '2fzkbn@gmail.com', '0fiEDm', '$2y$10$WpKhG0J1CfTvbCsK9Fg/le7UShTHFen2grqThRqP7SG99FI6iDMV.', '51Ep7x', '2019-12-08', 'male', '1giGBO', 'esZf7g.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(11, 'uWx841', 'ge99JW@gmail.com', 'i1dtlD', '$2y$10$LC0MU4u2HcAV70/HjPdbs.XS9oyHAQ9lq4wJvqq46rK0wDFUKax9q', 'PzOEuV', '2019-12-08', 'male', 'iNkLnv', 'Kof6XJ.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(12, 'f1G4hC', 'JWT6Yz@gmail.com', 'ICvKBR', '$2y$10$/K0YstInlw.2YfEYaifFMuzuohybrMrCEZnkXmN7zQjUrovxI92Re', 'aEDEEV', '2019-12-08', 'female', '47w4JZ', 'HIErMo.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(13, 'rGKrGO', 'qej8vF@gmail.com', 'xaVRfy', '$2y$10$fQeIEhbG2G.24BvlqP5kQOnL9ZlFyZs0gfSOPuDCa3EwoyBt0fPyW', 'JQ0BPw', '2019-12-08', 'female', 'xDAnx9', '7zdvMQ.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(14, 'eJGjCw', 'Tmlz4X@gmail.com', 'VKs3pI', '$2y$10$zSWBhccEsiPwmmv2eg1Sc.OMNYO0vh0EMWPc2.bl3mylAVkgdJ2Ce', 'ekZ1L1', '2019-12-08', 'female', 'I8T9PT', 'DYjjlB.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30'),
-(15, 'RgKpBS', 'Zx5w62@gmail.com', 'NzUxic', '$2y$10$XXnpIdTlzVsFB/T4NU3oyu5IPFqx.tKNMkH/Ozy9yqUsnhwITjmBS', '0FnBUh', '2019-12-08', 'female', 'XH0roK', 'ISLMkj.jpg', 0, NULL, '2019-12-08 10:11:30', '2019-12-08 10:11:30');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student_subject`
---
-
-CREATE TABLE `student_subject` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `subject_id` bigint(20) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(1, 'John Little', 'tanvir59@outlook.com', 'tah', '$2y$10$9tBrHDtZ8vm9A4DtG8eJ9OufqLAJibOoKmAbLn2KdrFLoaU5LMDZe', '01631102838', '2000-03-28', 'male', 'Mirpur-11', 'tah.jpeg', 0, NULL, '2019-12-12 03:22:56', '2019-12-12 03:22:56');
 
 -- --------------------------------------------------------
 
@@ -910,7 +969,7 @@ CREATE TABLE `subjects` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `logo` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -920,20 +979,19 @@ CREATE TABLE `subjects` (
 --
 
 INSERT INTO `subjects` (`id`, `name`, `slug`, `logo`, `created_at`, `updated_at`) VALUES
-(1, 'Mathematics', 'Math', NULL, NULL, NULL),
-(2, 'Chemistry', 'Chemistry', NULL, NULL, NULL),
-(3, 'Physics', 'Physics', NULL, NULL, NULL),
-(4, 'Information Communication & Technology', 'ICT', NULL, NULL, NULL),
-(5, 'English', 'English', NULL, NULL, NULL),
-(6, 'General Knowledge', 'GK', NULL, NULL, NULL),
-(7, 'Marketing', 'Marketing', NULL, NULL, NULL),
-(8, 'Finance', 'Finance', NULL, NULL, NULL),
-(9, 'Management', 'Management', NULL, NULL, NULL),
-(10, 'Accounting', 'Accounting', NULL, NULL, NULL),
-(11, 'Biology', 'Biology', NULL, NULL, NULL),
-(12, 'HomoScience', 'HomoScience', NULL, NULL, NULL),
-(13, 'Agriculture', 'Agriculture', NULL, NULL, NULL),
-(14, 'Economics', 'Economics', NULL, '2019-12-08 10:13:13', '2019-12-08 10:13:13');
+(1, 'Mathematics', 'Math', 'Math.jpeg', NULL, '2019-12-12 00:00:11'),
+(2, 'Chemistry', 'Chemistry', 'Chemistry.jpeg', NULL, '2019-12-12 00:04:59'),
+(3, 'Physics', 'Physics', 'Physics.jpeg', NULL, '2019-12-12 00:05:53'),
+(4, 'Information Communication & Technology', 'ICT', 'ICT.jpeg', NULL, '2019-12-12 00:06:31'),
+(5, 'English', 'English', 'English.jpeg', NULL, '2019-12-12 00:07:29'),
+(7, 'Marketing', 'Marketing', 'Marketing.jpeg', NULL, '2019-12-12 00:08:31'),
+(8, 'Finance', 'Finance', 'Finance.jpeg', NULL, '2019-12-12 00:09:13'),
+(9, 'Management', 'Management', 'Management.jpeg', NULL, '2019-12-12 00:10:51'),
+(10, 'Accounting', 'Accounting', 'Accounting.jpeg', NULL, '2019-12-12 00:12:12'),
+(11, 'Biology', 'Biology', 'Biology.jpeg', NULL, '2019-12-12 00:13:02'),
+(13, 'Agriculture', 'Agriculture', 'Agriculture.png', NULL, '2019-12-12 00:14:09'),
+(14, 'Economics', 'Economics', 'Economics.jpeg', '2019-12-08 10:13:13', '2019-12-12 00:18:37'),
+(23, 'Homo-Science', 'Homoscience', 'Homoscience.png', '2019-12-12 03:10:46', '2019-12-12 03:10:46');
 
 -- --------------------------------------------------------
 
@@ -953,19 +1011,14 @@ CREATE TABLE `tests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `verify_students`
+-- Dumping data for table `tests`
 --
 
-CREATE TABLE `verify_students` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `student_id` bigint(20) UNSIGNED NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `tests` (`id`, `student_id`, `ans`, `marks`, `common`, `common_marks`, `time`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:28:29', '2019-12-12 06:28:29'),
+(2, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
+(3, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:31:05', '2019-12-12 06:31:05');
 
 --
 -- Indexes for dumped tables
@@ -1009,16 +1062,16 @@ ALTER TABLE `department_student`
   ADD KEY `department_student_department_id_foreign` (`department_id`);
 
 --
+-- Indexes for table `exams`
+--
+ALTER TABLE `exams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `questions`
@@ -1044,14 +1097,6 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `students_username_unique` (`username`);
 
 --
--- Indexes for table `student_subject`
---
-ALTER TABLE `student_subject`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `student_subject_student_id_foreign` (`student_id`),
-  ADD KEY `student_subject_subject_id_foreign` (`subject_id`);
-
---
 -- Indexes for table `subjects`
 --
 ALTER TABLE `subjects`
@@ -1066,13 +1111,6 @@ ALTER TABLE `tests`
   ADD KEY `tests_student_id_foreign` (`student_id`);
 
 --
--- Indexes for table `verify_students`
---
-ALTER TABLE `verify_students`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `verify_students_student_id_foreign` (`student_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -1080,7 +1118,7 @@ ALTER TABLE `verify_students`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1092,7 +1130,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `commons`
 --
 ALTER TABLE `commons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1104,55 +1142,49 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `department_student`
 --
 ALTER TABLE `department_student`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `exams`
+--
+ALTER TABLE `exams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=626;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=830;
 
 --
 -- AUTO_INCREMENT for table `ranks`
 --
 ALTER TABLE `ranks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `student_subject`
---
-ALTER TABLE `student_subject`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `verify_students`
---
-ALTER TABLE `verify_students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -1197,23 +1229,10 @@ ALTER TABLE `ranks`
   ADD CONSTRAINT `ranks_test_id_foreign` FOREIGN KEY (`test_id`) REFERENCES `tests` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `student_subject`
---
-ALTER TABLE `student_subject`
-  ADD CONSTRAINT `student_subject_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `student_subject_subject_id_foreign` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `tests`
 --
 ALTER TABLE `tests`
   ADD CONSTRAINT `tests_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `verify_students`
---
-ALTER TABLE `verify_students`
-  ADD CONSTRAINT `verify_students_student_id_foreign` FOREIGN KEY (`student_id`) REFERENCES `students` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
