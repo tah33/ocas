@@ -32,6 +32,9 @@
         <th style="text-align: left">Serial</th>
         <th style="text-align: left">Name</th>
         <th style="text-align: left">Short Name</th>
+        <th style="text-align: left">Minimum Marks</th>
+        <th style="text-align: left">Major Subject</th>
+        <th style="text-align: left">Marks</th>
     </tr>
     </thead>
     <tbody>
@@ -40,6 +43,9 @@
             <td style="text-align: left">{{$key+1}}</td>
             <td style="text-align: left">{{$department->name}}</td>
             <td style="text-align: left">{{$department->slug}}</td>
+            <td style="text-align: left">{{$department->minimum}}</td>
+            <td style="text-align: left">{{$department->subject->name}}</td>
+            <td style="text-align: left">{{$department->marks}}</td>
         </tr>
     @endforeach
     </tbody>

@@ -13,13 +13,17 @@ class DepartmentsExport implements FromCollection , WithHeadings
 {
     public function collection()
     {
-        $departments = DB::table('departments')->select('name','slug')->get();
+    	$subjects = [];
+        $departments = Department::selectRaw('name,slug,minimum,subject_id,marks')->get();
+        foreach ($departments as $key => $department) {
+        	$subjects[] = $department->subject->name;
+        }
         return $departments;
     }
 
     public function headings(): array
     {
-        return ["Name", "Short Name"];
+        return ["Name", "Short Name",'Minimum Marks Required','Major Subject','Require Marks'];
 
     }
 }

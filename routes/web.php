@@ -51,5 +51,6 @@ Route::get('subjects-export','ExcelController@subjectsExport');
 Route::get('question-export/{id}','ExcelController@questionExport');
 Route::get('questions-export','ExcelController@questionsExport');
 Route::post('questions-import/{id}','ExcelController@questionsImport');
+Route::post('departments-import','ExcelController@departmentsImport');
 //AdminController
 Route::get('all-questions','AdminController@questions');

@@ -7,6 +7,7 @@ use App\Exports\QuestionsExport;
 use App\Exports\SubjectsExport;
 use App\Imports\QuestionsImport;
 use App\Imports\StudentsImport;
+use App\Imports\DepartmentsImport;
 use App\Subject;
 use Carbon\Traits\Date;
 use Illuminate\Http\Request;
@@ -26,6 +27,14 @@ class ExcelController extends Controller
     {
         $date = Date('Y-m-d');
         return Excel::download(new DepartmentsExport, "departments-{$date}.xlsx");
+    }
+
+    public function departmentsImport()
+    {
+        $date = Date('Y-m-d');
+        Excel::import(new departmentsImport, request()->file('file'));
+        Toastr::success('departments Are Uploaded Successfully');
+        return back();
     }
 
     public function subjectsExport()
@@ -54,4 +63,6 @@ class ExcelController extends Controller
         Toastr::success('Questions Are Uploaded Successfully');
         return back();
     }
+
+
 }
