@@ -14,7 +14,20 @@
     <div class="box box-primary" style="width: 800px">
         <div class="box-body">
             <div class="center">
-                <a href="{{url('subjects/create')}}" class="btn btn-success btn-sm">Add Subject</a>
+                 @if(Auth::guard('admin')->check())
+                <a href="{{url('subjects/create')}}" style="margin-left: 20px" class="btn btn-success btn-sm">Add Subject</a>
+                   <div class="input-group margin"  style="margin: -30px 0 0 110px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('subjects-export')}}">Export</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle='modal' data-target="#subject-modal">Import</a></li>
+                        </ul>
+                    </div>
+                </div>
+                @endif
                 <div class="input-group margin" style="margin: -30px 0 0 180px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
@@ -64,4 +77,5 @@
             </table>
         </div>
     </div>
+    @include('excel.subject-modal')
 @stop

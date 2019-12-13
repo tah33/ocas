@@ -16,7 +16,17 @@
         <div class="box-body">
             <div class="center">
                 <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a>
-                <a href="{{url('students-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
+                <div class="input-group margin"  style="margin: -30px 0 0 120px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('students-export')}}">Export</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="input-group margin" style="margin: -30px 0 0 190px">
                     <div class="input-group-btn">
@@ -71,6 +81,7 @@
             </table>
         </div>
     </div>
+    @include('excel.students-import')
 @stop
 
 
