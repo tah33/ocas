@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Department;
 use App\Http\Requests\Register;
 use App\Student;
+use App\Activity;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -50,7 +51,9 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return view('student.show', compact('student'));
+        $activities =Activity::selectRaw('*, Date(created_at) as date')
+                    ->where('student_id',$student->id)->groupBy('date')->get();
+        return view('student.show', compact('student','activities'));
     }
 
     public function update(Request $request, Student $student)

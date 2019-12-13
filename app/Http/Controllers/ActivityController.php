@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Test;
 use Illuminate\Http\Request;
-
+use DB;
 class ActivityController extends Controller
 {
     public function __construct()
@@ -30,7 +31,11 @@ class ActivityController extends Controller
 
     public function show(Activity $activity)
     {
-        return view('activities.show',compact('activity'));
+        $activities = Activity::whereDate('created_at',$activity->created_at)->get();
+        $tests = Test::whereDate('created_at',$activity->created_at)
+                    ->where('student_id',$activity->student_id)->get();
+dd($tests);
+        return view('activities.show',compact('activities','tests'));
     }
 
     public function edit(Activity $activity)

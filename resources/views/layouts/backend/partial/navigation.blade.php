@@ -33,7 +33,7 @@
 
             <!-- Students Info -->
                 <li class="header">Students</li>
-                <li class=" {{ Request::is('students') ? 'active' : '' }}">
+                <li class=" {{ Request::is('students') || Request::is('students/*') ?  'active' : '' }}">
                     <a href="{{url('students')}}">
                         <i class="glyphicon glyphicon-user"></i> <span>Students</span>
                         <span class="pull-right-container">
