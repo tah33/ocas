@@ -134,7 +134,7 @@ class TestController extends Controller
             $rank               = new Rank;
             $rank->subject_id   = $department->subject_id;
             $rank->test_id      = $test->id;
-            $rank->marks        = ($mark * ($add == 0 ? $div - $sub : $div + $add)) / 100;
+            $rank->marks        = ($mark * 100) /($add == 0 ? $div - $sub : $div + $add);
             $rank->save();
             $mark               = 0;
             $add                = 0;
@@ -165,7 +165,7 @@ class TestController extends Controller
             $rank               = new Rank;
             $rank->subject_id   = $common->subject_id;
             $rank->test_id      = $test->id;
-            $rank->marks        = ($correct_ans * ($greater == 0 ? $divide - $less : $divide + $greater)) / 100;
+            $rank->marks        = (100 * $correct_ans)/ ($greater == 0 ? $divide - $less : $divide + $greater);
             $rank->save();
             $correct_ans        = 0;
             $greater            = 0;
@@ -178,12 +178,31 @@ class TestController extends Controller
 
     public function show(Test $test)
     {
+        if ($test->ans) {
+            foreach ($test->ans as $key => $ans) {
+                
+            }
+        }
         return view('tests.show',compact('test'));
     }
 
-    public function edit(Test $test)
+    public function edit($id)
     {
-        //
+        $questions =$answers= [];
+
+        $subject = Subject::find($id);
+        if ($subject->rank->test->ans) {
+            foreach ($subject->rank->test->ans as $key => $ans) {
+                $question = Question::where('subject_id',$id)
+                                ->where('id',$key)->first();
+                if(!empty($question)){
+                    $questions[]  =$question;
+                    $answers[] = $ans;
+                    } 
+            }
+        }
+        $questions = array_filter($questions);
+        return view('tests.edit',compact('questions','subject','answers'));
     }
 
     public function update(Request $request, Test $test)

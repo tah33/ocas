@@ -31,4 +31,9 @@ class Subject extends Model
     {
         return $this->hasMany(Common::class);
     }
+
+    public function rank()
+    {
+        return $this->hasOne(Rank::class);
+    }
 }

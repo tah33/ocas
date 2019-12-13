@@ -12,4 +12,9 @@ class Rank extends Model
     {
         return $this->belongsTo(Test::class);
     }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

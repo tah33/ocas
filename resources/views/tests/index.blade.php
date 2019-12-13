@@ -37,9 +37,8 @@
                 <tr>
                     <th style="text-align: left">No.</th>
                     <th style="text-align: left">Student Name</th>
-                    <th style="text-align: left">Marks (Major)</th>
-                    <th style="text-align: left">Marks (Common)</th>
-                    <th style="text-align: left;">Action</th>
+                    <th style="text-align: left">Total Marks</th>
+                    <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
                 @php $names = []; @endphp
@@ -53,9 +52,8 @@
                             @endphp
                         <td rowspan="{{count($test->student->tests)}}" style="text-align: left">{{ $test->student->name }}</td>
                         @endif
-                        <td style="text-align: left">{{ $test->marks }}</td>
-                        <td style="text-align: left">{{ $test->common_marks }}</td>
-                        <td style="text-align: left">
+                        <td style="text-align: left">{{ $test->marks + $test->common_marks }}</td>
+                        <td style="text-align: center">
                             <a href="{{url('tests',$test->id)}}" class="btn btn-success btn-sm"><i
                                     class="fa fa-eye"></i></a>
                         </td>

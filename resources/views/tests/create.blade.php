@@ -48,26 +48,26 @@
                             @foreach($majors as $key => $subject)
                                 <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $subject->id }}">
                                     @foreach($subject->questions->random($add == 0 ? $div-$sub : $div+$add) as $num => $question)
-                                        <p style="font-size: 16px"><b>Quesion{{$num+1}} : </b>{{$question->question}}
+                                        <p style="font-size: 16px"><b>Quesion{{$num+1}} : {{$question->question}}</b>
                                         </p>
 
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="option" value="a"
+                                            <input type="radio" class= "flat-red" id="option" value="a"
                                                    name="major[{{$question->id}}]">
                                             <label class="form-check-label" for="option1">{{$question->option1}}</label>
                                         </div>
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="option" value="b"
+                                            <input type="radio" class="flat-red" id="option" value="b"
                                                    name="major[{{$question->id}}]">
                                             <label class="form-check-label" for="option2">{{$question->option2}}</label>
                                         </div>
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="option" value="c"
+                                            <input type="radio" class="flat-red" id="option" value="c"
                                                    name="major[{{$question->id}}]">
                                             <label class="form-check-label" for="option3">{{$question->option3}}</label>
                                         </div>
                                         <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="option" value="d"
+                                            <input type="radio" class="flat-red" id="option" value="d"
                                                    name="major[{{$question->id}}]">
                                             <label class="form-check-label" for="option4">{{$question->option4}}</label>
                                         </div>
