@@ -14,6 +14,8 @@ use Carbon\Traits\Date;
 use Illuminate\Http\Request;
 use App\Exports\StudentsExport;
 use App\Exports\DepartmentsExport;
+use App\Exports\TestsExport;
+use App\Imports\TestsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Toastr;
 class ExcelController extends Controller
@@ -78,6 +80,20 @@ class ExcelController extends Controller
         $date = Date('Y-m-d');
         Excel::import(new StudentsImport(), request()->file('file'));
         Toastr::success('Students Info Are Uploaded Successfully');
+        return back();
+    }
+
+    public function testsExport()
+    {
+        $date = Date('Y-m-d');
+        return Excel::download(new TestsExport, "tests-{$date}.xlsx");
+    }
+
+    public function testsImport()
+    {
+        $date = Date('Y-m-d');
+        Excel::import(new TestsImport(), request()->file('file'));
+        Toastr::success('Test Results Are Uploaded Successfully');
         return back();
     }
 }

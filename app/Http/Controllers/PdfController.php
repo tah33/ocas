@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Question;
 use App\Student;
 use App\Subject;
+use App\Test;
 use PDF;
 use Illuminate\Http\Request;
 
@@ -98,5 +99,41 @@ class PdfController extends Controller
         $date = date('Y-M-d');
         $pdf = PDF::loadView('pdf.question',compact('subject'))->setPaper($customPaper, 'landscape');
         return $pdf->download("{$subject->name}-questions-{$date}.pdf");
+    }
+
+    public function viewTest()
+    {
+        $customPaper = array(0, 0, 792.00, 1300.00);
+        $tests = Test::all();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.tests',compact('tests'));
+        return $pdf->stream("tests-{$date}.pdf");
+    }
+
+    public function downloadTest()
+    {
+        $customPaper = array(0, 0, 792.00, 1300.00);
+        $tests = Test::all();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.tests',compact('tests'));
+        return $pdf->download("tests-{$date}.pdf");
+    }
+
+     public function viewRank()
+    {
+        $customPaper = array(0, 0, 792.00, 1300.00);
+        $tests = Test::all();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.tests',compact('tests'));
+        return $pdf->stream("tests-{$date}.pdf");
+    }
+
+    public function downloadRank()
+    {
+        $customPaper = array(0, 0, 792.00, 1300.00);
+        $tests = Test::all();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.tests',compact('tests'));
+        return $pdf->download("tests-{$date}.pdf");
     }
 }

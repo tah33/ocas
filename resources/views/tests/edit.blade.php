@@ -15,15 +15,14 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="center">
-                <a href="{{url('students-export')}}" style="margin-left: 100px" class="btn btn-danger btn-sm">Get Excel</a>
-                <div class="input-group margin" style="margin: -30px 0 0 190px">
+                <div class="input-group margin" style="margin: 0 0 0 190px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                            <li><a href="{{url('ranks-view')}}" target="_blank">View</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{url('students-download')}}">Download</a></li>
+                            <li><a href="{{url('ranks-download')}}">Download</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +52,11 @@
                         <td><a><i class="fa  fa-check-circle"></i></a></td>
                     </tr>    
                 @endforeach
-
+                <tr class="bg-gray">
+                    <th colspan="4">Total
+                    </th>
+                    <td width="25%"><b>25 out of {{count($questions)}}</b></td>
+                </tr>
 
                 </tbody>
             </table>

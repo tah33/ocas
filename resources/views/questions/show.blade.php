@@ -13,7 +13,7 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="center">
-                <a href="{{url('questions/create',$subject->id)}}" class="btn btn-success btn-sm">Add Question</a>
+                <a href="{{url('questions/create',$subject->id)}}" style="margin-left: 20px" class="btn btn-success btn-sm">Add Question</a>
                 <div class="input-group margin" style="margin: -30px 0 0 120px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel

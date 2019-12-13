@@ -14,19 +14,25 @@
     <div class="box box-primary">
         <div class="box-body">
             <div class="center">
-                @if(Auth::guard('admin')->check())
-                    <a href="{{url('departments/create')}}" class="btn btn-success btn-sm">Add Department</a>
-                @endif
-                <a href="{{url('departments-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
-                <div class="input-group margin"  @if(Auth::guard('admin')->check()) style="margin: -30px 0 0 180px" @else
-                style="margin: -30px 0 0 80px" @endif>
+                <div class="input-group margin" style="margin: 0 0 0 260px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('test-export')}}">Export</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#test-modal">Import</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group margin" style="margin: -30px 0 0 180px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{url('department-view')}}" target="_blank">View</a></li>
+                            <li><a href="{{url('tests-view')}}" target="_blank">View</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{url('department-download')}}">Download</a></li>
+                            <li><a href="{{url('tests-download')}}">Download</a></li>
                         </ul>
                     </div>
                 </div>
@@ -54,8 +60,7 @@
                         @endif
                         <td style="text-align: left">{{ $test->marks + $test->common_marks }}</td>
                         <td style="text-align: center">
-                            <a href="{{url('tests',$test->id)}}" class="btn btn-success btn-sm"><i
-                                    class="fa fa-eye"></i></a>
+                            <a href="{{url('tests',$test->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -63,4 +68,5 @@
             </table>
         </div>
     </div>
+    @include('excel.test-modal')
 @stop

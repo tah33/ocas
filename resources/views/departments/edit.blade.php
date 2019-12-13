@@ -130,7 +130,7 @@
                                                     <input id="range" type="number"
                                                            class="form-control{{ $errors->has('range') ? ' is-invalid' : '' }}"
                                                            name="range"
-                                                           value="{{ $department->range ?$department->range : '' }}"
+                                                           value="{{ $department->marks ?$department->marks : '' }}"
                                                            placeholder="Enter Minimum percentage for Enroll">
                                                 </div>
                                                 @if ($errors->has('range'))

@@ -24,7 +24,7 @@
                                 <b>Major Subject</b> <a class="pull-right">{{ $department->subject->name }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>Range</b> <a class="pull-right">{{ $department->range }}</a>
+                                <b>Range</b> <a class="pull-right">{{ $department->marks }}</a>
                             </li>
                             @endif
                         </ul>

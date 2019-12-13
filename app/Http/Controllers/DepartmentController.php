@@ -38,7 +38,7 @@ class DepartmentController extends Controller
         $department->minimum    = $request->minimum;
         $department->slug       = $request->slug;
         $department->subject_id = $request->subject_id;
-        $department->range      = $request->range;
+        $department->marks      = $request->range;
         $department->save();
 
         Toastr::success('Department is Succesfully Added', 'Success!');
@@ -75,7 +75,7 @@ class DepartmentController extends Controller
         $department->minimum        = $request->minimum;
         $department->slug           = $request->slug;
         $department->subject_id     = $request->subject_id;
-        $department->range          = $request->range;
+        $department->marks          = $request->range;
         if ($request->logo) {
             $file   = $request->File('logo');
             $ext    = ($department->slug ? $department->slug : $department->name).".".($file->getClientOriginalExtension());
