@@ -11,69 +11,124 @@
             padding: 10px;
         }
     </style>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+                    <li><a href="#test" data-toggle="tab">Tests</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <div class="center">
+                            <div class="input-group margin" style="margin: -30px 0 0 120px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
+                                            data-toggle="dropdown">Excel
+                                        <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('students-export')}}">Export</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
-    <div class="box box-primary">
-        <div class="box-body">
-            <div class="center">
-                <a href="{{url('blocked-students')}}" class="btn btn-success btn-sm">Blocked Students</a>
-                <div class="input-group margin"  style="margin: -30px 0 0 120px">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Excel
-                            <span class="fa fa-caret-down"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{url('students-export')}}">Export</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            <div class="input-group margin" style="margin: -30px 0 0 190px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                            data-toggle="dropdown">PDF
+                                        <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url('students-download')}}">Download</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="input-group margin" style="margin: -30px 0 0 190px">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
-                            <span class="fa fa-caret-down"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('students-download')}}">Download</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <table class="table table-hover">
-                 <thead>
+                        <table class="table table-hover">
+                            <thead>
                             <tr class="bg-gray">
                                 <th rowspan="2" class="text-center">SL</th>
                                 <th rowspan="2" class="text-center">Student Name</th>
                                 <th rowspan="2" class="text-center">Login Time</th>
                                 <th rowspan="2" class="text-center">LogOut Time</th>
-                                <th colspan="2" class="text-center">Tests</th>
                             </tr>
+                            </thead>
+                            @php $ids=[]; @endphp
+                            <tbody align="center">
+                            @foreach ($activities as $key => $activity)
+                                <tr>
+                                    <td class="text-center">{{ $key+1 }}</td>
+                                    @if(!in_array($activity->student_id,$ids))
+                                        @php $ids[]=$activity->student_id; @endphp
+                                    <td rowspan="{{count($activities)}}" class="text-center">{{ $activity->student->name }}</td>
+                                    @endif
+                                    <td class="text-center">{{ $activity->login_time }}</td>
+                                    <td class="text-center">{{ $activity->logout_time }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="test">
+                        <div class="center">
+                            <div class="input-group margin" style="margin: -30px 0 0 120px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
+                                            data-toggle="dropdown">Excel
+                                        <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('students-export')}}">Export</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="input-group margin" style="margin: -30px 0 0 190px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                            data-toggle="dropdown">PDF
+                                        <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{url('students-download')}}">Download</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
                             <tr class="bg-gray">
-                                <th>Serial</th>
-                                <th>Marks</th>
+                                <th rowspan="2" class="text-center">SL</th>
+                                <th rowspan="2" class="text-center">Total marks</th>
+                                <th rowspan="2" class="text-center">Action</th>
                             </tr>
-                        </thead>
-                <tbody align="center">
-                	@php 
-$userElections = [];
-$ids = [];
-$user_elections = [];
-$user = 1;
-@endphp
-                @foreach ($activities as $key => $activity)
-                    <tr>
-                        <td style="text-align: center">{{ $key+1 }}</td>
-                        <td style="text-align: left">{{ $activity->student->name }}</td>
-                        <td style="text-align: left;">{{ $activity->login_time }}</td>
-                        <td style="text-align: left;">{{ $activity->logout_time }}</td>
-                    </tr>   
-                @endforeach
-                </tbody>
-            </table>
+                            </thead>
+                            <tbody align="center">
+                            @foreach ($tests as $key => $test)
+                                <tr>
+                                    <td class="text-center">{{ $key+1 }}</td>
+                                    <td class="text-center">{{$test->marks + $test->common_marks }}</td>
+                                    <td class="text-center"><a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
         </div>
     </div>
+
     @include('excel.students-import')
 @stop
 
