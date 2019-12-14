@@ -75,6 +75,7 @@ class HomeController extends Controller
                 'departments'   => Department::all(),
                 'subjects'      => Subject::all(),
                 'students'      => Student::all(),
+                'activities'    => Activity::where('student_id',Auth::guard('student')->id())->get(),
                 'tests'      => Test::where('student_id',Auth::guard('student')->id())->get(),
             ];
             return view('student.home')->with(array_merge($this->data, $data));

@@ -6,6 +6,7 @@ use App\Department;
 use App\Http\Requests\Register;
 use App\Student;
 use App\Activity;
+use App\Test;
 use Illuminate\Http\Request;
 use Toastr;
 
@@ -89,6 +90,12 @@ class StudentController extends Controller
         $student->restore();
 
         Toastr::success('Students Unblocked Succesfully', 'Success!');
+        return redirect('students');
+    }
+
+    public function test($id)
+    {
+        $tests = Test::where('student_id',$id)->get();
         return redirect('students');
     }
 }

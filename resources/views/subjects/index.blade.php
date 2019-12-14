@@ -29,7 +29,6 @@
                         </ul>
                     </div>
                 </div>
-                @endif
                 <div class="input-group margin" style="margin: -30px 0 0 180px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
@@ -41,6 +40,20 @@
                         </ul>
                     </div>
                 </div>
+                @else
+                <div class="input-group margin"  style="margin: -10px 0 0 110px">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
+                            <span class="fa fa-caret-down"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{url('subject-view')}}" target="_blank">View</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{url('subject-download')}}">Download</a></li>
+                        </ul>
+                    </div>
+                </div>
+                @endif
+
             </div>
             <table id="search" class="table table-hover">
                 <caption>Subject List</caption>

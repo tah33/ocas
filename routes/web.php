@@ -9,6 +9,7 @@ Route::get('home','HomeController@home');
 Route::get('logout','HomeController@logout');
 //StudentController
 Route::resource('students', 'StudentController');
+Route::get('test/{id}','StudentController@test');
 Route::get('blocked-students','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
 //ProfileController
