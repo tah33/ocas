@@ -6,7 +6,6 @@
         }
 
         .center {
-            margin: auto;
             width: 50%;
             padding: 10px;
         }
@@ -21,28 +20,28 @@
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
                         <div class="center">
-                            <div class="input-group margin" style="margin: -30px 0 0 120px">
+                            <div class="input-group margin">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
                                             data-toggle="dropdown">Excel
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('students-export')}}">Export</a></li>
+                                        <li><a href="{{url('activities-export')}}">Export</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
+                                        <li><a href="#" data-toggle='modal' data-target="#activity-modal">Import</a></li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="input-group margin" style="margin: -30px 0 0 190px">
+                            <div class="input-group margin" style="margin: -40px  0 0 70px">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                             data-toggle="dropdown">PDF
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                                        <li><a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}" target="_blank">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url('students-download')}}">Download</a></li>
+                                        <li><a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -76,28 +75,28 @@
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="test">
                         <div class="center">
-                            <div class="input-group margin" style="margin: -30px 0 0 120px">
+                            <div class="input-group margin">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
                                             data-toggle="dropdown">Excel
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('students-export')}}">Export</a></li>
+                                        <li><a href="{{url('activity-export')}}">Export</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#" data-toggle='modal' data-target="#student-modal">Import</a></li>
+                                        <li><a href="#" data-toggle='modal' data-target="#activity-modal">Import</a></li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="input-group margin" style="margin: -30px 0 0 190px">
+                            <div class="input-group margin" style="margin: -40px 0 0 70px">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                             data-toggle="dropdown">PDF
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('students-view')}}" target="_blank">View</a></li>
+                                        <li><a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}" target="_blank">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url('students-download')}}">Download</a></li>
+                                        <li><a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a></li>
                                     </ul>
                                 </div>
                             </div>

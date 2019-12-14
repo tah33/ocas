@@ -50,6 +50,8 @@ Route::get('tests-view','PdfController@viewTest');
 Route::get('tests-download','PdfController@downloadTest');
 Route::get('ranks-view','PdfController@viewRank');
 Route::get('ranks-download','PdfController@downloadRank');
+Route::get('activity-view/{student_id}/{created_at}','PdfController@viewActivity');
+Route::get('activity-download/{student_id}/{created_at}','PdfController@downloadActivity');
 //ExcelController
 Route::get('students-export','ExcelController@studentsExport');
 Route::get('departments-export','ExcelController@departmentsExport');

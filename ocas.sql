@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2019 at 02:01 PM
+-- Generation Time: Dec 14, 2019 at 02:13 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -45,7 +45,9 @@ INSERT INTO `activities` (`id`, `student_id`, `login_time`, `logout_time`, `crea
 (1, 1, '15:55:45', '15:55:54', '2019-12-12 03:55:45', '2019-12-12 03:55:54'),
 (2, 1, '15:56:20', '16:02:46', '2019-12-12 03:56:20', '2019-12-12 04:02:46'),
 (3, 1, '16:37:40', '18:21:05', '2019-12-12 04:37:40', '2019-12-12 06:21:05'),
-(4, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58');
+(4, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58'),
+(5, 1, '10:47:53', '10:50:27', '2019-12-13 22:47:53', '2019-12-13 22:50:27'),
+(6, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58');
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,7 @@ CREATE TABLE `departments` (
   `minimum` int(11) NOT NULL,
   `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `range` int(11) DEFAULT NULL,
+  `marks` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -113,7 +115,7 @@ CREATE TABLE `departments` (
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `range`, `created_at`, `updated_at`) VALUES
+INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `marks`, `created_at`, `updated_at`) VALUES
 (1, 'BBA', 'Bachelor of Business Administration', 50, 'BBA.jpg', 10, 60, NULL, '2019-12-11 23:19:55'),
 (2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, NULL, '2019-12-11 23:20:19'),
 (3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 1, 70, NULL, '2019-12-11 23:20:33'),
@@ -916,18 +918,13 @@ CREATE TABLE `ranks` (
 --
 
 INSERT INTO `ranks` (`id`, `subject_id`, `test_id`, `marks`, `created_at`, `updated_at`) VALUES
-(1, 4, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(2, 1, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(3, 11, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(4, 5, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(5, 13, 2, 0, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(6, 4, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(7, 1, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(8, 11, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(9, 5, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(10, 13, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(11, 1, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05'),
-(12, 5, 3, 0, '2019-12-12 06:31:05', '2019-12-12 06:31:05');
+(13, 4, 1, 30, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(14, 1, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(15, 11, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(16, 5, 1, 25, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(17, 13, 1, 10, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(18, 1, 1, 0, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
+(19, 5, 1, 0, '2019-12-13 22:48:27', '2019-12-13 22:48:27');
 
 -- --------------------------------------------------------
 
@@ -1016,9 +1013,7 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`id`, `student_id`, `ans`, `marks`, `common`, `common_marks`, `time`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:28:29', '2019-12-12 06:28:29'),
-(2, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:30:15', '2019-12-12 06:30:15'),
-(3, 1, NULL, 0, NULL, '0', NULL, '2019-12-12 06:31:05', '2019-12-12 06:31:05');
+(1, 1, '{\"160\":\"d\",\"162\":\"a\",\"164\":\"b\",\"167\":\"a\",\"170\":\"d\",\"171\":\"a\",\"173\":\"b\",\"174\":\"c\",\"176\":\"c\",\"177\":\"a\",\"183\":\"a\",\"185\":\"b\",\"188\":\"c\",\"194\":\"d\",\"198\":\"a\",\"200\":\"a\",\"204\":\"a\",\"205\":\"c\",\"206\":\"c\",\"209\":\"c\",\"107\":\"c\",\"109\":\"b\",\"110\":\"a\",\"114\":\"d\",\"115\":\"c\",\"116\":\"c\",\"118\":\"a\",\"119\":\"d\",\"122\":\"a\",\"131\":\"c\",\"133\":\"c\",\"136\":\"d\",\"141\":\"d\",\"142\":\"c\",\"144\":\"d\",\"146\":\"b\",\"150\":\"a\",\"152\":\"d\",\"156\":\"c\",\"157\":\"a\",\"576\":\"a\",\"577\":\"b\",\"580\":\"d\",\"581\":\"b\",\"585\":\"a\",\"586\":\"b\",\"589\":\"d\",\"590\":\"c\",\"597\":\"a\",\"602\":\"d\",\"606\":\"a\",\"607\":\"d\",\"611\":\"d\",\"613\":\"d\",\"614\":\"d\",\"616\":\"a\",\"619\":\"a\",\"620\":\"d\",\"624\":\"a\",\"625\":\"c\",\"5\":\"d\",\"6\":\"a\",\"7\":\"b\",\"10\":\"c\",\"11\":\"d\",\"16\":\"d\",\"19\":\"b\",\"20\":\"a\",\"21\":\"d\",\"22\":\"b\",\"26\":\"a\",\"27\":\"b\",\"33\":\"a\",\"34\":\"c\",\"38\":\"c\",\"39\":\"c\",\"42\":\"b\",\"44\":\"d\",\"52\":\"a\",\"53\":\"d\",\"473\":\"d\",\"476\":\"a\",\"480\":\"b\",\"481\":\"d\",\"484\":\"a\",\"485\":\"d\",\"488\":\"d\",\"492\":\"d\",\"493\":\"a\",\"495\":\"d\",\"497\":\"a\",\"500\":\"c\",\"501\":\"d\",\"504\":\"d\",\"505\":\"a\",\"506\":\"d\",\"509\":\"d\",\"514\":\"b\",\"517\":\"d\",\"522\":\"d\"}', 19, NULL, '0', NULL, '2019-12-11 22:48:26', '2019-12-13 22:48:26');
 
 --
 -- Indexes for dumped tables
@@ -1118,7 +1113,7 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1166,7 +1161,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `ranks`
 --
 ALTER TABLE `ranks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -1184,7 +1179,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
