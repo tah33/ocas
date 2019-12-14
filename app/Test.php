@@ -8,8 +8,6 @@ class Test extends Model
 {
 	protected $fillable=['student_id','ans','marks','common','common_marks','time'];
 
-	public $appends = ['answer'];
-
 	protected $casts = ['ans' => 'array',
 		'common' => 'array'
 		];

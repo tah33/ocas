@@ -20,8 +20,10 @@ class ExamController extends Controller
 
     public function create()
     {
+        $title = "Set Exam Rule";
+
         $exam = Exam::first();
-        return view('exams.create',compact('exam'));
+        return view('exams.create',compact('exam','title'));
     }
 
     public function store(Request $request)

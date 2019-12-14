@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Activity;
 use App\Test;
+use App\Exam;
 use Illuminate\Http\Request;
 use DB;
 class ActivityController extends Controller
@@ -15,8 +16,9 @@ class ActivityController extends Controller
 
     public function index()
     {
+        $title = "Activities List";
         $activities = Activity::all();
-        return view('activities.index',compact('activities'));
+        return view('activities.index',compact('activities','title'));
     }
 
     public function create()
@@ -34,7 +36,8 @@ class ActivityController extends Controller
         $activities = Activity::whereDate('created_at',$activity->created_at)->get();
         $tests = Test::whereDate('created_at',$activity->created_at)
                     ->where('student_id',$activity->student_id)->get();
-        return view('activities.show',compact('activities','tests'));
+        $exam = Exam::first();
+        return view('activities.show',compact('activities','tests','exam'));
     }
 
     public function edit(Activity $activity)

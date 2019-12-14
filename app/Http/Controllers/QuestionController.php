@@ -16,18 +16,21 @@ class QuestionController extends Controller
 
     public function index()
     {
+        $title = "Pick Subject";
+
         $this->authorize('viewAny',Question::class);
 
         $subjects=Subject::all();
-        return view('questions.index',compact('subjects'));
+        return view('questions.index',compact('subjects','title'));
     }
 
     public function create($id)
     {
         $this->authorize('create',Question::class);
+        $title = "Add Question";
 
         $subject=Subject::find($id);
-        return view('questions.create',compact('subject'));
+        return view('questions.create',compact('subject','title'));
     }
 
     public function store(QuestionRequest $request,$id)
@@ -54,14 +57,17 @@ class QuestionController extends Controller
         $this->authorize('view',Question::class);
 
         $subject=Subject::find($id);
-        return view('questions.show',compact('subject'));
+        $title = $subject->name;
+
+        return view('questions.show',compact('subject','title'));
     }
 
     public function edit(Question $question)
     {
         $this->authorize('update',Question::class);
+        $title = "Edit Question";
 
-        return view('questions.edit',compact('question'));
+        return view('questions.edit',compact('question','title'));
     }
 
     public function update(Request $request, Question $question)

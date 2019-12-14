@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('backend.title',$title)
 @section('master.content')
     <div class="row">
         <div class="col-md-8">

@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
  <div id="ams-class">
         <div class="row">

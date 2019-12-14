@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
         <div class="col-md-8">
             <div class="box box-primary">

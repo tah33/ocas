@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
     <style>
         div.dataTables_wrapper div.dataTables_filter input {
@@ -14,20 +16,6 @@
 
     <div class="box box-primary">
         <div class="box-body">
-            <div class="center">
-                <div class="input-group margin" style="margin: 0 0 0 190px">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
-                            <span class="fa fa-caret-down"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{url('ranks-view')}}" target="_blank">View</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('ranks-download')}}">Download</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
             <table class="table table-hover">
                 <caption>{{$subject->name}}'s History</caption>
                  <thead>

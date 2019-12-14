@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('backend.title', $title)
 @section('master.content')
     @if(Auth::guard('admin')->check())
         <div class="col-md-6">

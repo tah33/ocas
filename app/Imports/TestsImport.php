@@ -17,9 +17,9 @@ class TestsImport implements ToModel , WithHeadingRow
     {
         $test         = new Test;
         $test->student_id   = $row['student_id'];
-        $test->ans   = $row['major'];
+        $test->ans   = json_decode($row['major']);
         $test->marks   = $row['marks'];
-        $test->common   = $row['common'];
+        $test->common   = json_decode($row['common']);
         $test->common_marks   = $row['common_marks'];
         return $test;
     }

@@ -25,7 +25,7 @@ Route::post('question/store/{id}', 'QuestionController@store');
 Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
-Route::get('test-rank/{id}/result/{test}','TestController@ranks');
+// Route::get('test-rank/{id}/result/{test}','TestController@ranks');
 //CommonController
 Route::resource('commons', 'CommonController');
 //ExamController
@@ -48,8 +48,8 @@ Route::get('question-view/{id}','PdfController@viewQuestion');
 Route::get('question-download/{id}','PdfController@downloadQuestion');
 Route::get('tests-view','PdfController@viewTest');
 Route::get('tests-download','PdfController@downloadTest');
-Route::get('ranks-view','PdfController@viewRank');
-Route::get('ranks-download','PdfController@downloadRank');
+Route::get('ranks-view/{id}','PdfController@viewRank');
+Route::get('ranks-download/{id}','PdfController@downloadRank');
 Route::get('activity-view/{student_id}/{created_at}','PdfController@viewActivity');
 Route::get('activity-download/{student_id}/{created_at}','PdfController@downloadActivity');
 //ExcelController

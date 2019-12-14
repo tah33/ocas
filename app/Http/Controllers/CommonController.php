@@ -16,17 +16,18 @@ class CommonController extends Controller
 
     public function index()
     {
+        $title = "Common Subject List";
         $commons    = Common::all();
         $subjects   = Subject::all();
-        return view('commons.index',compact('commons','subjects'));
+        return view('commons.index',compact('commons','subjects','title'));
     }
 
     public function create()
     {
         $this->authorize('create',Common::class);
-
+        $title = "Create Common";
         $subjects = Subject::all();
-        return view('commons.create',compact('subjects'));
+        return view('commons.create',compact('subjects','title'));
     }
 
     public function store(Request $request)

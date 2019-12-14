@@ -64,6 +64,8 @@ class HomeController extends Controller
                 'questions'      => Question::all(),
                 'blocked'      => Student::onlyTrashed()->get(),
                 'activities'    => Activity::orderBy('id','desc')->take(10)->get(),
+                'all_activities'    => Activity::all(),
+                'tests'    => Test::all(),
             ];
             return view('admin.home')->with(array_merge($this->data, $data));
         }

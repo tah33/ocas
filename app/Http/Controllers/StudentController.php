@@ -19,8 +19,10 @@ class StudentController extends Controller
     public function index()
     {
         $this->authorize('viewAny', Student::class);
+        $title ="Students List";
+
         $students = Student::all();
-        return view('student.index', compact('students'));
+        return view('student.index', compact('students','title'));
     }
 
     public function create()
@@ -53,7 +55,8 @@ class StudentController extends Controller
     {
         $activities =Activity::selectRaw('*, Date(created_at) as date')
                     ->where('student_id',$student->id)->groupBy('date')->get();
-        return view('student.show', compact('student','activities'));
+        $title =$student->name."'s Info";
+        return view('student.show', compact('student','activities','title'));
     }
 
     public function update(Request $request, Student $student)
@@ -72,9 +75,10 @@ class StudentController extends Controller
     public function blockedUsers()
     {
         $this->authorize('block', Student::class);
+        $title ="Blocked Students";
 
         $students = Student::onlyTrashed()->get();
-        return view('student.blockedusers', compact('students'));
+        return view('student.blockedusers', compact('students','title'));
     }
 
     public function unblock($id)

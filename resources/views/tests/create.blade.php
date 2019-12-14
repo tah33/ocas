@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
     <style>
         .nav-tabs-custom>.nav-tabs>li>a, .nav-tabs-custom>.nav-tabs>li>a:hover {
@@ -31,8 +33,7 @@
                                 @php
                                     $ids[] = $subject->id;
                                 @endphp
-                                <li class=" {{$key == 0 ? 'active' : ''}}"><a href="#tab_{{ $subject->id }}"
-                                                                              data-toggle="tab">{{$subject->name}}</a>
+                                <li class=" {{$key == 0 ? 'active' : ''}}"><a href="#tab_{{ $subject->id }}" data-toggle="tab">{{$subject->name}}</a>
                                 </li>
                             @endforeach
                             @foreach($commons as $key => $common)

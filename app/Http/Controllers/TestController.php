@@ -23,12 +23,16 @@ class TestController extends Controller
 
     public function index()
     {
+        $title ="Given Tests";
+
         $tests = Test::all();
-        return view('tests.index',compact('tests'));
+        return view('tests.index',compact('tests','title'));
     }
 
     public function create(Request $request)
     {
+        $title ="Test Area";
+
         $this->authorize('create', Test::class);
 
         $subjects = '';
@@ -67,7 +71,7 @@ class TestController extends Controller
         else
             $greater = $exam->common - $multiple;
 
-        return view('tests.create', compact('majors', 'div', 'sub', 'add', 'commons', 'less', 'greater','divide'));
+        return view('tests.create', compact('majors', 'div', 'sub', 'add', 'commons', 'less', 'greater','divide','title'));
     }
 
     public function store(Request $request)
@@ -180,17 +184,68 @@ class TestController extends Controller
 
     public function show(Test $test)
     {
-        return view('tests.show',compact('test'));
+        $title ="Asessments";
+
+        $questions =$answers=$questions = [];
+
+        $answers  = $test->answer;
+
+        if ($answers) {
+            foreach ($answers as $key => $answer) {
+                $question = Question::where('id',  $key)->first();
+
+                if ($question) {
+                    if ($answer == 'a') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option1;
+                    } else if ($answer == 'b') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option2;
+                    }else if ($answer == 'c') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option3;
+                    }else if ($answer == 'd') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option4;
+                    } else {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = '';
+                    }
+                }
+            }
+        }
+
+        $questions = collect($questions);
+        return view('tests.show',compact('test','questions','title'));
     }
 
     public function edit($id)
     {
-        $questions =$answers= [];
-
-        $subject = Subject::find($id);
-
-
-        $questions = [];
+    
 
 
     }
@@ -202,61 +257,58 @@ class TestController extends Controller
 
     public function ranks($id,$test)
     {
-        $questions =$answers= [];
 
-        $subject = Subject::find($id);
-        $rank = Rank::where('subject_id',$subject->id)->where('test_id',$test)->first();
+        // $questions =$answers= [];
 
-        $questions = [];
+        // $subject = Subject::find($id);
+        // $rank = Rank::where('subject_id',$subject->id)->where('test_id',$test)->first();
 
-        $answers  = $rank->test->answer;
+        // $questions = [];
 
-        if ($answers) {
-            foreach ($answers as $key => $answer) {
-                $question = Question::where('id',  $key)->where('subject_id', $subject->id)->first();
+        // $answers  = $rank->test->answer;
 
-                if ($question) {
-                    if ($answer == 'a') {
-                        $questions[$key]['question_id'] = $question->id;
-                        $questions[$key]['question'] = $question->question;
-                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
-                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
-                        $questions[$key]['answer'] = $question->option1;
-                    } else if ($answer == 'b') {
-                        $questions[$key]['question_id'] = $question->id;
-                        $questions[$key]['question'] = $question->question;
-                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
-                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
-                        $questions[$key]['answer'] = $question->option2;
-                    }else if ($answer == 'c') {
-                        $questions[$key]['question_id'] = $question->id;
-                        $questions[$key]['question'] = $question->question;
-                        $questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
-                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
-                        $questions[$key]['answer'] = $question->option3;
-                    }else if ($answer == 'd') {
-                        $questions[$key]['question_id'] = $question->id;
-                        $questions[$key]['question'] = $question->question;
-                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
-                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
-                        $questions[$key]['answer'] = $question->option4;
-                    } else {
-                        $questions[$key]['question_id'] = $question->id;
-                        $questions[$key]['question'] = $question->question;
-                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
-                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
-                        $questions[$key]['answer'] = '';
-                    }
-                }
-            }
-        }
+        // if ($answers) {
+        //     foreach ($answers as $key => $answer) {
+        //         $question = Question::where('id',  $key)->where('subject_id', $subject->id)->first();
 
-        $questions = collect($questions);
+        //         if ($question) {
+        //             if ($answer == 'a') {
+        //                 $questions[$key]['question_id'] = $question->id;
+        //                 $questions[$key]['question'] = $question->question;
+        //                 $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+        //                     ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+        //                 $questions[$key]['answer'] = $question->option1;
+        //             } else if ($answer == 'b') {
+        //                 $questions[$key]['question_id'] = $question->id;
+        //                 $questions[$key]['question'] = $question->question;
+        //                 $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+        //                     ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+        //                 $questions[$key]['answer'] = $question->option2;
+        //             }else if ($answer == 'c') {
+        //                 $questions[$key]['question_id'] = $question->id;
+        //                 $questions[$key]['question'] = $question->question;
+        //                 $questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+        //                     ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+        //                 $questions[$key]['answer'] = $question->option3;
+        //             }else if ($answer == 'd') {
+        //                 $questions[$key]['question_id'] = $question->id;
+        //                 $questions[$key]['question'] = $question->question;
+        //                 $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+        //                     ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+        //                 $questions[$key]['answer'] = $question->option4;
+        //             } else {
+        //                 $questions[$key]['question_id'] = $question->id;
+        //                 $questions[$key]['question'] = $question->question;
+        //                 $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+        //                     ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+        //                 $questions[$key]['answer'] = '';
+        //             }
+        //         }
+        //     }
+        // }
 
-
-        // $questions = array_filter($questions);
-
-        return view('tests.edit',compact('questions','subject','answers'));
+        // $questions = collect($questions);
+        // return view('tests.edit',compact('questions','subject','answers'));
     }
 
 }

@@ -81,6 +81,36 @@
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-3 col-6">
+                <!-- Card for Departments -->
+                <div class="small-box bg-purple">
+                    <div class="inner">
+                        <h3>{{count($all_activities)}}</h3>
+
+                        <p>Activities of Students</p>
+                    </div>
+                    <div class="icon">
+                        <img src="{{asset('icons/activity.png')}}" width="70px" height="70px">
+                    </div>
+                    <a href="{{url('subjects')}}" class="small-box-footer">More info <i
+                            class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- Card for Departments -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{count($tests)}}</h3>
+
+                        <p>Total Given Tests</p>
+                    </div>
+                    <div class="icon">
+                        <img src="{{asset('icons/exam.svg')}}" width="70px" height="70px">
+                    </div>
+                    <a href="{{url('subjects')}}" class="small-box-footer">More info <i
+                            class="glyphicon glyphicon-chevron-right"></i></a>
+                </div>
+            </div>
             @if(count($activities) > 0)
 
         </div>

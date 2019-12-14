@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
     <style>
         div.dataTables_wrapper div.dataTables_filter input {
@@ -22,17 +24,6 @@
                             <li><a href="{{url('test-export')}}">Export</a></li>
                             <li class="divider"></li>
                             <li><a href="#" data-toggle="modal" data-target="#test-modal">Import</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="input-group margin" style="margin: -30px 0 0 180px">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
-                            <span class="fa fa-caret-down"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{url('tests-view')}}" target="_blank">View</a></li>
-                            <li class="divider"></li>
-                            <li><a href="{{url('tests-download')}}">Download</a></li>
                         </ul>
                     </div>
                 </div>

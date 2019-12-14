@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
     <style>
         div.dataTables_wrapper div.dataTables_filter input {

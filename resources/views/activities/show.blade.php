@@ -22,19 +22,6 @@
                         <div class="center">
                             <div class="input-group margin">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">Excel
-                                        <span class="fa fa-caret-down"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{url('activities-export')}}">Export</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#" data-toggle='modal' data-target="#activity-modal">Import</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="input-group margin" style="margin: -40px  0 0 70px">
-                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                             data-toggle="dropdown">PDF
                                         <span class="fa fa-caret-down"></span></button>
@@ -77,19 +64,6 @@
                         <div class="center">
                             <div class="input-group margin">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-danger btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">Excel
-                                        <span class="fa fa-caret-down"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{url('activity-export')}}">Export</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#" data-toggle='modal' data-target="#activity-modal">Import</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="input-group margin" style="margin: -40px 0 0 70px">
-                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                             data-toggle="dropdown">PDF
                                         <span class="fa fa-caret-down"></span></button>
@@ -105,7 +79,7 @@
                             <thead>
                             <tr class="bg-gray">
                                 <th rowspan="2" class="text-center">SL</th>
-                                <th rowspan="2" class="text-center">Total marks</th>
+                                <th rowspan="2" class="text-center">Total Percentage</th>
                                 <th rowspan="2" class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -113,8 +87,8 @@
                             @foreach ($tests as $key => $test)
                                 <tr>
                                     <td class="text-center">{{ $key+1 }}</td>
-                                    <td class="text-center">{{$test->marks + $test->common_marks }}</td>
-                                    <td class="text-center"><a href="" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                                    <td class="text-center">{{$test->marks + $test->common_marks }}% out of {{$exam->major + $exam->common}}%</td>
+                                    <td class="text-center"><a href="{{url('tests/'.$test->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

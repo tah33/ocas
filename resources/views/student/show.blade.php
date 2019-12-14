@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
            <div class="row">
         <div class="col-md-4">
@@ -27,7 +29,7 @@
           <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">About Me</h3>
+              <h3 class="box-title">About {{$student->name}}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

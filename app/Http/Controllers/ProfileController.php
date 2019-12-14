@@ -21,15 +21,17 @@ class ProfileController extends Controller
 
     public function show($id)
     {
+        $title = "OCAS::Profile";
         if (Auth::guard('admin')->check())
             $user = Admin::find($id);
         else
             $user = Student::find($id);
-        return view('profiles.show', compact('user'));
+        return view('profiles.show', compact('user','title'));
     }
 
     public function edit($id)
     {
+        $title = "Edit Profile";
         $departments = '';
         if (Auth::guard('admin')->check())
             $user = Admin::find($id);
@@ -39,7 +41,7 @@ class ProfileController extends Controller
                 $ids[] = $department->id;
             $departments = Department::whereNotIn('id', $ids)->get();
         }
-        return view('profiles.edit', compact('user', 'departments'));
+        return view('profiles.edit', compact('user', 'departments','title'));
     }
 
     public function update(Request $request, $id)
@@ -95,11 +97,13 @@ class ProfileController extends Controller
 
     public function password()
     {
+        $title = "Change Password";
+
         if (Auth::guard('admin')->check())
             $user = Auth::guard('admin')->user();
         else
             $user = Auth::guard('student')->user();
-        return view('profiles.reset-password', compact('user'));
+        return view('profiles.reset-password', compact('user','title'));
     }
 
     public function resetpassword(Password $request, $id)

@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('backend.title', $title)
+
 @section('master.content')
     @push('backend.css')
         <link rel="stylesheet" href="{{URL::to('assets/custom.css')}}">

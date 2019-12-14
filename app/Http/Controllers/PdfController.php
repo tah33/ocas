@@ -108,8 +108,9 @@ class PdfController extends Controller
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
         $tests = Test::all();
+        $exam = Exam::first();
         $date = date('Y-M-d');
-        $pdf = PDF::loadView('pdf.tests', compact('tests'));
+        $pdf = PDF::loadView('pdf.tests', compact('tests','exam'));
         return $pdf->stream("tests-{$date}.pdf");
     }
 
@@ -118,26 +119,135 @@ class PdfController extends Controller
         $customPaper = array(0, 0, 792.00, 1300.00);
         $tests = Test::all();
         $date = date('Y-M-d');
-        $pdf = PDF::loadView('pdf.tests', compact('tests'));
+        $exam = Exam::first();
+        $pdf = PDF::loadView('pdf.tests', compact('tests','exam'));
         return $pdf->download("tests-{$date}.pdf");
     }
 
-    public function viewRank()
+    public function viewRank($id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        $tests = Test::all();
+        
+        $questions =$answers=$questions = [];
+        $test = Test::find($id);
+        $answers  = $test->answer;
+
+        if ($answers) {
+            foreach ($answers as $key => $answer) {
+                $question = Question::where('id',  $key)->first();
+
+                if ($question) {
+                    if ($answer == 'a') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option1;
+                    } else if ($answer == 'b') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option2;
+                    }else if ($answer == 'c') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option3;
+                    }else if ($answer == 'd') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option4;
+                    } else {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = '';
+                    }
+                }
+            }
+        }
+
+        $questions = collect($questions);
         $date = date('Y-M-d');
-        $pdf = PDF::loadView('pdf.tests', compact('tests'));
-        return $pdf->stream("tests-{$date}.pdf");
+        $pdf = PDF::loadView('pdf.tests', compact('test','questions'))->setPaper($customPaper, 'landscape');
+        return $pdf->stream("test-{$date}.pdf");
     }
 
-    public function downloadRank()
+    public function downloadRank($id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        $tests = Test::all();
+        
+        $questions =$answers=$questions = [];
+        $test = Test::find($id);
+        $answers  = $test->answer;
+
+        if ($answers) {
+            foreach ($answers as $key => $answer) {
+                $question = Question::where('id',  $key)->first();
+
+                if ($question) {
+                    if ($answer == 'a') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option1;
+                    } else if ($answer == 'b') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option2;
+                    }else if ($answer == 'c') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option3;
+                    }else if ($answer == 'd') {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = $question->option4;
+                    } else {
+                        $questions[$key]['question_id'] = $question->id;
+                        $questions[$key]['subject_id'] = $question->subject_id;
+                        
+                        $questions[$key]['question'] = $question->question;
+                        $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $questions[$key]['answer'] = '';
+                    }
+                }
+            }
+        }
+
+        $questions = collect($questions);
         $date = date('Y-M-d');
-        $pdf = PDF::loadView('pdf.tests', compact('tests'));
-        return $pdf->download("tests-{$date}.pdf");
+        $pdf = PDF::loadView('pdf.tests', compact('test','questions'))->setPaper($customPaper, 'landscape');
+        return $pdf->download("test-{$date}.pdf");
     }
 
     public function viewActivity($created_at,$student_id)

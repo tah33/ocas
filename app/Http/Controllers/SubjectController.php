@@ -15,15 +15,17 @@ class SubjectController extends Controller
 
     public function index()
     {
+        $title ="Subjects List";
         $subjects = Subject::all();
-        return view('subjects.index', compact('subjects'));
+        return view('subjects.index', compact('subjects','title'));
     }
 
     public function create()
     {
         $this->authorize('update', Subject::class);
+        $title ="Add Subject";
 
-        return view('subjects.create');
+        return view('subjects.create',compact('title'));
     }
 
     public function store(Request $request)
@@ -47,8 +49,9 @@ class SubjectController extends Controller
     public function edit(Subject $subject)
     {
         $this->authorize('update', Subject::class);
+        $title ="Edit {$subject->name}'s Info";
 
-        return view('subjects.edit', compact('subject'));
+        return view('subjects.edit', compact('subject','title'));
     }
 
     public function update(Request $request, Subject $subject)

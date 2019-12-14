@@ -19,16 +19,19 @@ class DepartmentController extends Controller
 
     public function index()
     {
+        $title = "Departments List";
+
         $departments = Department::all();
-        return view('departments.index', compact('departments'));
+        return view('departments.index', compact('departments','title'));
     }
 
     public function create()
     {
         $this->authorize('create',Department::class);
+        $title = "Create Departments";
 
         $subjects = Subject::all();
-        return view('departments.create', compact('subjects'));
+        return view('departments.create', compact('subjects','title'));
     }
 
     public function store(DepartmentRequest $request)
@@ -48,17 +51,19 @@ class DepartmentController extends Controller
     public function show(Department $department)
     {
         $this->authorize('view',Department::class);
+        $title = $department->slug ? $department->slug : $department->name;
 
-        return view('departments.show', compact('department'));
+        return view('departments.show', compact('department','title'));
     }
 
     public function edit(Department $department)
     {
         $this->authorize('update',Department::class);
+        $title = " Edit info";
 
         $multiplesubjects = Subject::all();
         $subjects = Subject::all();
-        return view('departments.edit', compact('department', 'multiplesubjects', 'subjects'));
+        return view('departments.edit', compact('department', 'multiplesubjects', 'subjects','title'));
     }
 
     public function update(Request $request, $id)
