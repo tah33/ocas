@@ -25,6 +25,7 @@ Route::post('question/store/{id}', 'QuestionController@store');
 Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
+Route::get('test-rank/{id}/result/{test}','TestController@ranks');
 //CommonController
 Route::resource('commons', 'CommonController');
 //ExamController

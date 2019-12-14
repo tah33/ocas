@@ -30,7 +30,7 @@
                             <li class="list-group-item">
                                 <b>Address</b> <a class="pull-right">{{ $test->student->address }}</a>
                             </li>
-                             
+
                         </ul>
                     <a href="{{url('students',$test->student->id)}}" class="btn btn-primary btn-block"><b>View
                                                 Profile</b></a>
@@ -57,7 +57,7 @@
                                             <ul class="list-group list-group-unbordered">
                                                 @foreach($test->ranks as $key => $rank)
                             <li class="list-group-item">
-                                <a href="{{url('tests/'.$rank->subject_id.'/edit')}}"><b>{{$rank->subject->name}}</b></a> <a class="pull-right">{{$rank->marks}}</a>
+                                <a href="{{url('test-rank',$rank->subject->id.'/result/'. $test->id)}}"><b>{{$rank->subject->name}}</b></a> <a class="pull-right">{{$rank->marks}}%</a>
                             </li>
                             @endforeach
                         </ul>

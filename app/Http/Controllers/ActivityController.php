@@ -34,7 +34,6 @@ class ActivityController extends Controller
         $activities = Activity::whereDate('created_at',$activity->created_at)->get();
         $tests = Test::whereDate('created_at',$activity->created_at)
                     ->where('student_id',$activity->student_id)->get();
-dd($tests);
         return view('activities.show',compact('activities','tests'));
     }
 

@@ -9,7 +9,7 @@ class Question extends Model
 	protected $fillable = [
         'subject_id','question','option1','option2','option3','option4','correct_ans',
     ];
-    
+
     public function exams()
     {
         return $this->hasMany(Exam::class);
@@ -18,5 +18,4 @@ class Question extends Model
     {
         return $this->belongsTo(Subject::class);
     }
-
 }

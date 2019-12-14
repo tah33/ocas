@@ -38,31 +38,39 @@
                                 <th rowspan="2" class="text-center">Remarks</th>
                             </tr>
                             <tr class="bg-gray">
-                                <th>Coorect</th>
-                                <th>Given</th>
+                                <th class="text-center">Coorect</th>
+                                <th class="text-center">Given</th>
                             </tr>
                         </thead>
                 <tbody align="center">
+                @php  $count = 0;@endphp
                 @foreach ($questions as $key => $question)
                     <tr>
                         <td style="text-align: center">{{ $key+1 }}</td>
-                        <td style="text-align: left">{{ $question->question }}</td>
-                        <td style="text-align: left;">{{ $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 : ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") ))  }}</td>
-                        <td>Given</td>
-                        <td><a><i class="fa  fa-check-circle"></i></a></td>
-                    </tr>    
+                        <td style="text-align: left">{{ $question['question'] }}</td>
+                        <td style="text-align: left;">{{ $question['correct_answer'] }}</td>
+                        <td>{{ $question['answer'] }}</td>
+                        <td>
+                            @if( $question['correct_answer'] == $question['answer'])
+                                @php  $count++;@endphp
+                            <span class="label label-success"><i class="fa fa-check"></i></span>
+                            @else
+                                <span class="label label-danger"><i class="fa  fa-times"></i></span>
+                                @endif
+                        </td>
+                    </tr>
                 @endforeach
                 <tr class="bg-gray">
                     <th colspan="4">Total
                     </th>
-                    <td width="25%"><b>25 out of {{count($questions)}}</b></td>
+                    <td width="25%"><b>{{$count}} out of {{count($questions)}}</b></td>
                 </tr>
 
                 </tbody>
             </table>
         </div>
     </div>
-   
+
 @stop
 
 
