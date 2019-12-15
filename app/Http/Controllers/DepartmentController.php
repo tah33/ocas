@@ -50,7 +50,7 @@ class DepartmentController extends Controller
 
     public function show(Department $department)
     {
-        $this->authorize('view',Department::class);
+       // $this->authorize('view',Department::class);
         $title = $department->slug ? $department->slug : $department->name;
 
         return view('departments.show', compact('department','title'));

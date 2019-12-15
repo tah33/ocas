@@ -30,7 +30,9 @@
                             </li>
                             @endif
                         </ul>
+                        @if(Auth::guard('admin')->check())
                         <a href="{{$department->id.'/edit'}}" class="btn btn-primary btn-block"><b>Edit details</b></a>
+                            @endif
                     </div>
                     <!-- /.box-body -->
                 </div>

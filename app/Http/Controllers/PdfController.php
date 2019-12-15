@@ -127,7 +127,7 @@ class PdfController extends Controller
     public function viewRank($id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        
+
         $questions =$answers=$questions = [];
         $test = Test::find($id);
         $answers  = $test->answer;
@@ -171,7 +171,7 @@ class PdfController extends Controller
                     } else {
                         $questions[$key]['question_id'] = $question->id;
                         $questions[$key]['subject_id'] = $question->subject_id;
-                        
+
                         $questions[$key]['question'] = $question->question;
                         $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
                             ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
@@ -190,7 +190,7 @@ class PdfController extends Controller
     public function downloadRank($id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        
+
         $questions =$answers=$questions = [];
         $test = Test::find($id);
         $answers  = $test->answer;
@@ -234,7 +234,7 @@ class PdfController extends Controller
                     } else {
                         $questions[$key]['question_id'] = $question->id;
                         $questions[$key]['subject_id'] = $question->subject_id;
-                        
+
                         $questions[$key]['question'] = $question->question;
                         $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
                             ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
@@ -253,8 +253,8 @@ class PdfController extends Controller
     public function viewActivity($created_at,$student_id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        $activities = Activity::whereDate('created_at',Carbon::parse($created_at))->where('student_id',$student_id)->get();
-        $tests = Test::where('student_id',$student_id)->whereDate('created_at',Carbon::parse($created_at))->get();
+        $activities = Activity::where('student_id',$student_id)->get();
+        $tests = Test::where('student_id',$student_id)->get();
         $exam = Exam::first();
         $date = date('Y-M-d');
         $pdf = PDF::loadView('pdf.activities', compact('activities','tests','exam'));

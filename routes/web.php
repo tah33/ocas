@@ -10,6 +10,7 @@ Route::get('logout','HomeController@logout');
 //StudentController
 Route::resource('students', 'StudentController');
 Route::get('test/{id}','StudentController@test');
+Route::get('activity/{id}','StudentController@activity');
 Route::get('blocked-students','StudentController@blockedUsers');
 Route::get('unblock/{id}','StudentController@unblock');
 //ProfileController
@@ -26,7 +27,7 @@ Route::post('question/store/{id}', 'QuestionController@store');
 Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
-// Route::get('test-rank/{id}/result/{test}','TestController@ranks');
+ Route::get('advise','TestController@advise');
 //CommonController
 Route::resource('commons', 'CommonController');
 //ExamController

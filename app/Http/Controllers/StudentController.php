@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Exam;
 use App\Http\Requests\Register;
 use App\Student;
 use App\Activity;
@@ -95,7 +96,16 @@ class StudentController extends Controller
 
     public function test($id)
     {
+        $title = "Students Tests";
         $tests = Test::where('student_id',$id)->get();
-        return redirect('students');
+        return view('student.test',compact('tests','title'));
+    }
+
+    public function activity($id)
+    {
+        $title = "Students Activities";
+        $exam = Exam::first();
+        $activities = Activity::where('student_id',$id)->get();
+        return view('student.activity',compact('activities','title','exam'));
     }
 }

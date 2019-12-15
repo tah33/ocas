@@ -25,7 +25,8 @@
                     <li class="{{ Request::is('profiles/*') ? 'active' : '' }}">
                         <a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i
                                 class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
-                    <li class="{{ Request::is('change-password') ? 'active' : '' }}"><a href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change
+                    <li class="{{ Request::is('change-password') ? 'active' : '' }}"><a
+                            href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change
                             Password</a></li>
                 </ul>
             </li>
@@ -50,8 +51,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{Request::is('departments/create') ? 'active' : ''}}"><a href="{{url('departments/create')}}"><i class="fa fa-plus-circle"></i>Create Department</a></li>
-                        <li class=" {{ Request::is('departments') ? 'active' : '' }}"><a href="{{url('departments')}}"><i
+                        <li class="{{Request::is('departments/create') ? 'active' : ''}}"><a
+                                href="{{url('departments/create')}}"><i class="fa fa-plus-circle"></i>Create Department</a>
+                        </li>
+                        <li class=" {{ Request::is('departments') ? 'active' : '' }}"><a
+                                href="{{url('departments')}}"><i
                                     class="fa fa-university"></i>Departments</a></li>
                     </ul>
                 </li>
@@ -65,9 +69,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{Request::is('subjects/create') ? 'active' : ''}}"><a href="{{url('subjects/create')}}"><i class="fa fa-plus"></i>Create Subject</a>
+                        <li class="{{Request::is('subjects/create') ? 'active' : ''}}"><a
+                                href="{{url('subjects/create')}}"><i class="fa fa-plus"></i>Create Subject</a>
                         </li>
-                        <li class="{{Request::is('subjects') ? 'active' : ''}}"><a href="{{url('subjects')}}"><i class="fa fa-book"></i>Subjects</a></li>
+                        <li class="{{Request::is('subjects') ? 'active' : ''}}"><a href="{{url('subjects')}}"><i
+                                    class="fa fa-book"></i>Subjects</a></li>
                     </ul>
                 </li>
                 <!-- Students Info -->
@@ -96,28 +102,53 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{  Request::is('commons/create') ? 'active' : '' }}"><a href="{{url('commons/create')}}"><i class="fa fa-check"></i>Choose
+                        <li class="{{  Request::is('commons/create') ? 'active' : '' }}"><a
+                                href="{{url('commons/create')}}"><i class="fa fa-check"></i>Choose
                                 Subject</a></li>
-                        <li class="{{  Request::is('commons') ? 'active' : '' }}"><a href="{{url('commons')}}"><i class="fa fa-book"></i>Subjects</a></li>
+                        <li class="{{  Request::is('commons') ? 'active' : '' }}"><a href="{{url('commons')}}"><i
+                                    class="fa fa-book"></i>Subjects</a></li>
                     </ul>
                 </li>
             @endif
 
             @if(Auth::guard('student')->check())
-            <li class="header">Tests</li>
+                <li class="header">Tests</li>
 
-            <li class="{{  Request::is('tests/create') ? 'active' : '' }}">
-                <a href="{{url('tests/create')}}">
-                    <i class="fa fa-question-circle"></i> <span>Test</span>
-                    <span class="pull-right-container"></span>
-                </a>
-            </li>
-                @endif
+                <li class="{{  Request::is('tests/create') ? 'active' : '' }}">
+                    <a href="{{url('tests/create')}}">
+                        <i class="fa fa-question-circle"></i> <span>Test</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+            @endif
             @if(Auth::guard('admin')->check())
-            <li class="header">Exam Inspect</li>
+                <li class="header">Exam Inspect</li>
                 <li class="{{  Request::is('tests/*') || Request::is('tests') ? 'active' : '' }}">
                     <a href="{{url('tests')}}">
                         <i class="fa fa-question-circle"></i> <span>Test</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+            @endif
+            @if(Auth::guard('student')->check())
+                <li class="header">Departments</li>
+                <li class="{{  Request::is('departmnets') ? 'active' : '' }}">
+                    <a href="{{url('departments')}}">
+                        <i class="fa fa-question-circle"></i> <span>Departments</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+                <li class="header">Subjects</li>
+                <li class="{{  Request::is('subjects') ? 'active' : '' }}">
+                    <a href="{{url('subjects')}}">
+                        <i class="fa fa-question-circle"></i> <span>Subjects</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+                <li class="header">Activities</li>
+                <li class="{{  Request::is('subjects') ? 'active' : '' }}">
+                    <a href="{{url('activity',Auth::guard('student')->id())}}">
+                        <i class="fa fa-cogs"></i> <span>Activities</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>

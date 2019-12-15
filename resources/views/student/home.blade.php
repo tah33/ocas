@@ -63,11 +63,39 @@
                     <div class="icon">
                         <img src="{{asset('icons/activity.png')}}" width="70px" height="70px">
                     </div>
-                    <a href="{{url('tests/'.Auth::guard('student')->id())}}" class="small-box-footer">More info <i
+                    <a href="{{url('activity/'.Auth::guard('student')->id())}}" class="small-box-footer">More info <i
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
-
         </div>
+        @if(count($todays_activities) > 0)
+            <div class="box  box-primary">
+                <div class="box-body">
+                    <table class="table table-hover">
+                        <caption>Today's Login & Logout Time</caption>
+                        <thead>
+                        <tr>
+                            <th style="text-align: center">No.</th>
+                            <th style="text-align: center">Login Time</th>
+                            <th style="text-align: center">Logout Time</th>
+                            <th style="text-align: center">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($todays_activities as $key => $activity)
+                            <tr>
+                                <td style="text-align: center">{{ $key+1 }}</td>
+                                <td style="text-align: center">{{ $activity->login_time }}</td>
+                                <td style="text-align: center">{{ $activity->logout_time ? $activity->logout_time : "Active" }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    {{$todays_activities->links()}}
+                    <hr>
+                    <center><a href="{{url('activity',$activity->student_id)}}">See all of Your Activities <i class="fa  fa-arrow-right"></i></a></center>
+                </div>
+            </div>
+        @endif
     </div>
 @stop

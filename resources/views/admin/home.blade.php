@@ -111,9 +111,8 @@
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
-            @if(count($activities) > 0)
-
         </div>
+        @if(count($activities) > 0)
         <div class="box  box-primary">
             <div class="box-body">
                 <table class="table table-hover">

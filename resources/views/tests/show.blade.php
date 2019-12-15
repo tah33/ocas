@@ -25,7 +25,7 @@
                     <div class="tab-content">
                         <!-- /.tab-pane -->
                         @foreach($test->ranks as $key => $rank)
-                        <div class="tab-pane active" id="subject{{$key}}">
+                        <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="subject{{$key}}">
                         <table class="table table-hover">
                  <thead>
                             <tr class="bg-gray">
@@ -40,7 +40,7 @@
                             </tr>
                         </thead>
                 <tbody align="center">
-                @php  
+                @php
                 $count = 0;
                 $serial = 1;
                 @endphp
@@ -75,7 +75,7 @@
                 </tr>
                 </tbody>
             </table>
-                                       
+
                         </div>
                         @endforeach
                         <!-- /.tab-pane -->

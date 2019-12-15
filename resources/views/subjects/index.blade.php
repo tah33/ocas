@@ -62,7 +62,9 @@
                     <th style="text-align: center">No.</th>
                     <th style="text-align: left">Name</th>
                     <th style="text-align: center">Logo</th>
+                    @if(Auth::guard('admin')->check())
                     <th style="text-align: center; width: 15%">Action</th>
+                        @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -72,6 +74,7 @@
                         <td style="text-align: left">{{ $subject->name }}</td>
                         <td style="text-align: center"><img src="{{url('images/subjects/'.$subject->logo)}}"
                                                      alt="Subject Logo" height="50px" width="50px"></td>
+                        @if(Auth::guard('admin')->check())
 
                         <td style="text-align: center">
                             <a href="{{url('subjects/'.$subject->id.'/edit')}}"
@@ -86,6 +89,7 @@
                                         class="fa fa-trash"></i></button>
                             </form>
                         </td>
+                            @endif
                     </tr>
                 @endforeach
                 </tbody>

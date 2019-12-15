@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Exam;
 use App\Question;
 use App\Test;
 use Carbon\Carbon;
@@ -57,26 +58,29 @@ class HomeController extends Controller
         if (Auth::guard('admin')->check()) {
 
             $data = [
-                'page_title'    => 'Dashboard :: Admin',
-                'departments'   => Department::all(),
-                'subjects'      => Subject::all(),
-                'students'      => Student::all(),
-                'questions'      => Question::all(),
-                'blocked'      => Student::onlyTrashed()->get(),
-                'activities'    => Activity::orderBy('id','desc')->take(10)->get(),
+                'page_title'        => 'Dashboard :: Admin',
+                'departments'       => Department::all(),
+                'subjects'          => Subject::all(),
+                'students'          => Student::all(),
+                'questions'         => Question::all(),
+                'blocked'           => Student::onlyTrashed()->get(),
+                'activities'        => Activity::orderBy('id','desc')->take(10)->get(),
                 'all_activities'    => Activity::all(),
-                'tests'    => Test::all(),
+                'tests'             => Test::all(),
             ];
             return view('admin.home')->with(array_merge($this->data, $data));
         }
         else {
             $data = [
-                'page_title'    => 'Dashboard :: Student',
-                'departments'   => Department::all(),
-                'subjects'      => Subject::all(),
-                'students'      => Student::all(),
-                'activities'    => Activity::where('student_id',Auth::guard('student')->id())->get(),
-                'tests'      => Test::where('student_id',Auth::guard('student')->id())->get(),
+                'page_title'            => 'Dashboard :: Student',
+                'departments'           => Department::all(),
+                'subjects'              => Subject::all(),
+                'students'              => Student::all(),
+                'activities'            => Activity::where('student_id',Auth::guard('student')->id())->get(),
+                'todays_activities'     => Activity::where('student_id',Auth::guard('student')->id())->whereDate('created_at',today())->paginate(10),
+                'todays_tests'          => Test::where('student_id',Auth::guard('student')->id())->whereDate('created_at',today())->paginate(10),
+                'tests'                 => Test::where('student_id',Auth::guard('student')->id())->get(),
+                'exam'                  => Exam::first(),
             ];
             return view('student.home')->with(array_merge($this->data, $data));
         }

@@ -19,7 +19,7 @@
     </style>
     <div class="row">
         <div class="col-md-12">
-            <form method="post" id="form" action="{{url('tests')}}"
+            <form method="post" id="form" name="form" action="{{url('tests')}}"
                   onsubmit="return confirm('Are you sure you want to submit your answers')">
             @csrf
             <!-- Custom Tabs -->
@@ -44,6 +44,7 @@
                                 @endif
                             @endforeach
                         </ul>
+                    <h1 id="clock" style="margin-right: 10px" class="pull-right"></h1>
                     <div class="tab-content">
                         @if(!empty($majors))
                             @foreach($majors as $key => $subject)
@@ -134,6 +135,8 @@
 
 @endsection
 @push("backend.js")
+    <script src="{{URL::to('assets/countdown/jquery.countdown.js')}}"></script>
+    <script src="{{URL::to('assets/countdown/jquery.countdown.min.js')}}"></script>
     <script>
         window.onscroll = function() {myFunction()};
 
@@ -147,6 +150,40 @@
                 header.classList.remove("sticky");
             }
         }
+
+        document.getElementById('clock').innerHTML = {!! $exam->time-1 !!} + ":" + 59;
+        startTimer();
+        function startTimer() {
+            var time = {!! $exam->time !!};
+            var presentTime = document.getElementById('clock').innerHTML;
+            var timeArray = presentTime.split(/[:]+/);
+            var m = timeArray[0];
+            var s = checkSecond((timeArray[1] - 1));
+            if(s==59){m=m-1}
+            //if(m<0){alert('timer completed')}
+            document.getElementById('clock').innerHTML =
+                m + ":" + s;
+            // console.log(time)
+            setTimeout(startTimer, 1000);
+        }
+
+        function checkSecond(sec) {
+            if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+            if (sec < 0) {sec = "59"};
+            return sec;
+        }
+        /*  setTimeout(function(){
+       var exam_time = {!! $exam->time !!};
+            console.log(exam_time)
+            window.location.href = "{{url('home')}}";
+        },  {!! (($exam->time * 1000)*60)-1000 !!} );
+*/
+        setTimeout(function () {
+            alert('Time is out');
+        }, {!! (($exam->time * 1000)*60)-1000 !!});
+        jQuery(document).ready(function() {
+             setTimeout('document.form.submit()',{!! (($exam->time * 1000)*60)-1000 !!});
+        });
     </script>
 @endpush
 
