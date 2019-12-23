@@ -50,7 +50,7 @@
             }
         });
         //Select2
-        $("#select2").select2();
+        $(".select2").select2();
     });
     function goBack() {
   window.history.back();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 02:13 PM
+-- Generation Time: Dec 23, 2019 at 07:35 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -47,7 +47,8 @@ INSERT INTO `activities` (`id`, `student_id`, `login_time`, `logout_time`, `crea
 (3, 1, '16:37:40', '18:21:05', '2019-12-12 04:37:40', '2019-12-12 06:21:05'),
 (4, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58'),
 (5, 1, '10:47:53', '10:50:27', '2019-12-13 22:47:53', '2019-12-13 22:50:27'),
-(6, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58');
+(6, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58'),
+(7, 1, '00:12:22', NULL, '2019-12-14 12:12:22', '2019-12-14 12:12:22');
 
 -- --------------------------------------------------------
 
@@ -107,6 +108,7 @@ CREATE TABLE `departments` (
   `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `subject_id` bigint(20) UNSIGNED DEFAULT NULL,
   `marks` int(11) DEFAULT NULL,
+  `scope` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -115,16 +117,16 @@ CREATE TABLE `departments` (
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `marks`, `created_at`, `updated_at`) VALUES
-(1, 'BBA', 'Bachelor of Business Administration', 50, 'BBA.jpg', 10, 60, NULL, '2019-12-11 23:19:55'),
-(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, NULL, '2019-12-11 23:20:19'),
-(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 1, 70, NULL, '2019-12-11 23:20:33'),
-(4, 'SME', 'Bachelor of Science in Mechanical Engineering', 60, 'SME.jpg', 3, 60, NULL, '2019-12-11 23:20:58'),
-(5, 'EEE', 'Bachelor of Electrical & Electronics Engineering', 60, 'EEE.jpg', 3, 70, NULL, '2019-12-11 23:21:12'),
-(6, 'BSN', 'Bachelor of Science in Nursing', 40, 'BSN.jpg', 11, 60, NULL, '2019-12-11 23:21:22'),
-(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, 'BATHM.jpg', 5, 80, NULL, '2019-12-11 23:22:10'),
-(8, 'BAG', 'Bachelor of Science in Agriculture', 45, 'BAG.png', 13, 70, NULL, '2019-12-11 23:22:33'),
-(9, 'BAE', 'Bachelor of Arts in Economics', 40, 'BAE.png', 14, 80, NULL, '2019-12-11 23:22:49');
+INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `marks`, `scope`, `created_at`, `updated_at`) VALUES
+(1, 'BBA', 'Bachelor of Business Administration', 50, 'BBA.jpg', 10, 60, 'Finance Manager\r\nBusiness Administration Researcher\r\nHuman Resource Manager\r\nResearch and Development Manager\r\nBusiness Consultant\r\nInformation Systems Manager\r\nMarketing Manager', NULL, '2019-12-23 11:30:38'),
+(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, NULL, NULL, '2019-12-11 23:20:19'),
+(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 1, 70, NULL, NULL, '2019-12-11 23:20:33'),
+(4, 'SME', 'Bachelor of Science in Mechanical Engineering', 60, 'SME.jpg', 3, 60, NULL, NULL, '2019-12-11 23:20:58'),
+(5, 'EEE', 'Bachelor of Electrical & Electronics Engineering', 60, 'EEE.jpg', 3, 70, NULL, NULL, '2019-12-11 23:21:12'),
+(6, 'BSN', 'Bachelor of Science in Nursing', 40, 'BSN.jpg', 11, 60, NULL, NULL, '2019-12-11 23:21:22'),
+(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, 'BATHM.jpg', 5, 80, NULL, NULL, '2019-12-11 23:22:10'),
+(8, 'BAG', 'Bachelor of Science in Agriculture', 45, 'BAG.png', 13, 70, NULL, NULL, '2019-12-11 23:22:33'),
+(9, 'BAE', 'Bachelor of Arts in Economics', 40, 'BAE.png', 14, 80, NULL, NULL, '2019-12-11 23:22:49');
 
 -- --------------------------------------------------------
 
@@ -922,9 +924,7 @@ INSERT INTO `ranks` (`id`, `subject_id`, `test_id`, `marks`, `created_at`, `upda
 (14, 1, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
 (15, 11, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
 (16, 5, 1, 25, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(17, 13, 1, 10, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(18, 1, 1, 0, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(19, 5, 1, 0, '2019-12-13 22:48:27', '2019-12-13 22:48:27');
+(17, 13, 1, 10, '2019-12-13 22:48:27', '2019-12-13 22:48:27');
 
 -- --------------------------------------------------------
 
@@ -1113,7 +1113,7 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1131,7 +1131,7 @@ ALTER TABLE `commons`
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `department_student`
@@ -1179,7 +1179,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables

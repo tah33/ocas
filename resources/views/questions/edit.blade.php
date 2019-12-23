@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                    <a href="{{url('questions')}}" class="btn btn-warning btn-sm">Cancel</a>
+                    <a href="{{url('questions/'.$question->subject->id)}}" class="btn btn-warning btn-sm">Go Back</a>
                 </form>
 
             </div>

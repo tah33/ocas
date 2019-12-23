@@ -15,9 +15,9 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-eye-slash"></i>
+                                    <a onclick="if (old.type == 'text') old.type = 'password';else old.type = 'text';"><i class="fa fa-eye-slash"></i></a>
                                 </div>
-                                <input type="password" class="form-control" name="old" placeholder="Old Password...">
+                                <input type="password" class="form-control" name="old" placeholder="Old Password..." id="old">
                             </div>
                             @error('old')
                                 <span class="invalid-feedback" role="alert">
@@ -32,11 +32,9 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-eye-slash"></i>
-                                </div>
-                                <input id="password" type="password"
-                                       class="form-control @error('password') is-invalid @enderror"
-                                       name="password" placeholder="Change Password">
+                                    <a onclick="if (current.type == 'text') current.type = 'password';else current.type = 'text';"><i class="fa fa-eye-slash"></i></a>                             </div>
+                                <input type="password"
+                                       class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Change Password" id="current">
                             </div>
                             @error('password')
                                 <span style="color: red" class="invalid-feedback" role="alert">
@@ -51,10 +49,10 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <div class="input-group-addon">
-                                    <i class="fa fa-eye-slash"></i>
+                                    <a onclick="if (confirmed.type == 'text') confirmed.type = 'password';else confirmed.type = 'text';"><i class="fa fa-eye-slash"></i></a>
                                 </div>
-                                <input id="password-confirm" type="password" class="form-control"
-                                       name="password_confirmation" placeholder="Confirm Password...">
+                                <input type="password" class="form-control"
+                                       name="password_confirmation" placeholder="Confirm Password..." id="confirmed">
                             </div>
                         </div>
                     </div>

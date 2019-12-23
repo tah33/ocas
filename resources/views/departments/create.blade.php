@@ -88,6 +88,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Future Scope') }}</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-line-chart"></i>
+                                        </div>
+                                        <textarea id="scope"class="form-control" name="scope"  autocomplete="requirements" placeholder="Describe something about this department what student can do...">{{old('scope')}}</textarea>
+                                        @error('scope')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                             <div class="panel panel-danger" style="padding:  10px">
                                 <div class="panel-heading">Add Conditions</div>
                                 <div class="form-group row">

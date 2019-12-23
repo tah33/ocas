@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                    <a class="btn btn-warning btn-sm" href="{{url('subjects')}}">Cancel</a>
+                    <a class="btn btn-warning btn-sm" onclick="goBack()">Cancel</a>
                 </form>
 
             </div>

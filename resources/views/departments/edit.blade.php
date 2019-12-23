@@ -100,7 +100,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-file-photo-o"></i>
+                                            <i class="fa fa-line-chart"></i>
                                         </div>
                                         <textarea id="scope"class="form-control" name="scope"  autocomplete="requirements" placeholder="Describe something about this department what student can do...">{{$department->scope ?$department->scope : old('scope')}}</textarea>
                                         @error('scope')

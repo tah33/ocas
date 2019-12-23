@@ -102,7 +102,7 @@
                             </div>
                         </div>
                       <button type="submit" class="btn btn-primary btn-sm">Save and Next</button>
-                      <a href="{{url('questions')}}" class="btn btn-warning btn-sm">Go Back</a>
+                      <a href="{{url('questions/'.$subject->id)}}" class="btn btn-warning btn-sm">Go Back</a>
                     </form>
 
                 </div>
