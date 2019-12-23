@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('backend.title', $title)
-
 @section('master.content')
     <style>
         div.dataTables_wrapper div.dataTables_filter input {
@@ -33,7 +32,7 @@
                 @if(Auth::guard('student')->check())
                 <a href="{{url('departments-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
                 @endif
-             
+
                 <div class="input-group margin"  @if(Auth::guard('admin')->check()) style="margin: -30px 0 0 180px" @else
                 style="margin: -30px 0 0 80px" @endif>
                     <div class="input-group-btn">
@@ -47,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <table id="search" class="table table-hover">
+            <table class="table table-hover search">
                 <caption>Departments List</caption>
                 <thead>
                 <tr>
@@ -92,3 +91,4 @@
     </div>
     @include('excel.department-modal')
 @stop
+

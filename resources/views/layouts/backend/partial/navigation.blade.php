@@ -31,15 +31,24 @@
                 </ul>
             </li>
         @if(Auth::guard('admin')->check())
-
             <!-- Students Info -->
-                <li class="header">Students</li>
-                <li class=" {{ Request::is('students') || Request::is('students/*') ?  'active' : '' }}">
-                    <a href="{{url('students')}}">
-                        <i class="glyphicon glyphicon-user"></i> <span>Students</span>
+                <li class="header">Users</li>
+                <li class="treeview {{ Request::is('admins/*') || Request::is('admins') || Request::is('students/*') || Request::is('students') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class="fa fa-user"></i> <span>User</span>
                         <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
+                    <ul class="treeview-menu">
+                        <li class="{{ Request::is('admins/create') ? 'active' : '' }}">
+                            <a href="{{url('admins/create')}}"><i
+                                    class="fa fa-user-plus"></i>Create Admin</a></li>
+                        <li class="{{ Request::is('admins') ? 'active' : '' }}"><a
+                                href="{{url('admins')}}"><i class="fa fa-male"></i>Admins</a></li>
+                        <li class="{{ Request::is('students') ? 'active' : '' }}"><a
+                                href="{{url('students')}}"><i class="fa  fa-child"></i>Students</a></li>
+                    </ul>
                 </li>
                 <!-- Dept Settings -->
                 <li class="header">Departments</li>
@@ -113,7 +122,6 @@
 
             @if(Auth::guard('student')->check())
                 <li class="header">Tests</li>
-
                 <li class="{{  Request::is('tests/create') ? 'active' : '' }}">
                     <a href="{{url('tests/create')}}">
                         <i class="fa fa-question-circle"></i> <span>Test</span>

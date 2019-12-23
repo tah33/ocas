@@ -13,7 +13,7 @@ body {
 
 .sidenav {
     height: 100%;
-    background-color: #000;/*image*/
+    background-color: #152733;/*image*/
     overflow-x: hidden;
     padding-top: 20px;
 }
@@ -63,7 +63,7 @@ body {
 .login-main-text{
     margin-top: 20%;
     padding: 60px;
-    color: #fff;
+    color: white;
 }
 
 .login-main-text h2{

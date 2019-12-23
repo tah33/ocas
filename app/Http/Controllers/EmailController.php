@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Mail\VerifyMail;
@@ -14,38 +15,45 @@ class EmailController extends Controller
 
     public function store(Request $request)
     {
-        $student = Student::where('email', $request->email)->first();
-        if ($student) {
-            \Mail::to($student->email)->send(new VerifyMail($student));
-            return back();
-        } else {
-            Toastr::error("Couldn't Found Any Account Associate with this Email", 'Error!');
-            return back();
+        $email = $request->email;
+        if ($request->email) {
+            \Mail::to($request->email)->send(new VerifyMail($email));
+            Toastr::success("Password Reset link has been sent, check your email", 'Success!');
         }
+
+        else {
+            Toastr::error("Couldn't Found Any Account Associate with this Email", 'Error!');
+        }
+        return back();
     }
 
-    public function edit($id)
+    public function edit($email)
     {
-        $student = Student::find($id);
-        return view('email.edit', compact('student'));
+        $user = Student::where('email',$email)->first();
+        if(!$user){
+            $user = Admin::where('email',$email)->first();
+        }
+        return view('email.edit', compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $email)
     {
         $request->validate([
             'password' => 'required|confirmed|min:8'
         ]);
-        $student = Student::find($id);
+        $user = Student::where('email',$email)->first();
+        if(!$user)
+            $user = Admin::where('email',$email)->first();
 
         if ($request->password) {
-            if (Hash::check($request->password, $student->password)) {
+            if (Hash::check($request->password, $user->password)) {
                 Toastr::error('Your new password is similar to your current password. Please try another password.', 'Error!');
                 return back();
             }
 
-            if (!Hash::check($request->password, $student->password)) {
-                $student->password = bcrypt($request->password);
-                $student->save();
+            if (!Hash::check($request->password, $user->password)) {
+                $user->password = bcrypt($request->password);
+                $user->save();
                 Toastr::success('Your Password is changed successfully', 'Success!');
                 return redirect('login');
             }

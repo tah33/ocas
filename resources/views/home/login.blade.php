@@ -1,14 +1,15 @@
 @extends('layouts.base')
+<link rel="shortcut icon" href="{{ asset('icons/login.png') }}"/>
 @push('backend.css')
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/login.css')}}">
-    <link rel="shortcut icon" href="{{ asset('icons/login.png') }}"/>
 @endpush
 @section('backend.base.content')
     <div class="overflow">
         <div class="sidenav marin-login">
-            <div class="login-main-text ">
-                <h2>Application<br> Login Page</h2>
-                <p>Login or register from here to access.</p>
+            <div class="login-main-text">
+                <a href="#" onclick="goBack()" ><img style="margin-top: -150px" src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
+                <h2>Application Login Page</h2>
+                <p>Login to get access.</p>
             </div>
         </div>
         <div class="main">

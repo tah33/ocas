@@ -5,9 +5,9 @@
 @endpush
 @section('backend.base.content')
     <div class="overflow">
-        <div class="sidenav marin-login" style="background-color:black;">
+        <div class="sidenav marin-login" style="background-color:#152733;">
             <div class="login-main-text">
-                <a href="{{url('/')}}"><img src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
+                <a href="#" onclick="goBack()" ><img style="margin-top: -300px" src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
                 <ul>
                     <h3>
                         <li class="tick">To find out a suitable career</li>
@@ -150,4 +150,11 @@
             </div>
         </div>
     </div>
+    @push('backend.js')
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    @endpush
 @stop

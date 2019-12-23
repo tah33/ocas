@@ -1,6 +1,7 @@
 body
 {
     font-family: "Lato", sans-serif;
+    background-color: gray;
 }
 .overflow
 {
@@ -11,7 +12,6 @@ body
 .marin-login
 {
     position: relative;
-    background: url('image/slider.jpg');
 }
 .main-head
 {
@@ -19,15 +19,16 @@ body
     background: #FFF;
 
 }
-.sidenav
-{
+.sidenav {
     height: 100%;
+    background-color: #152733;/*image*/
+    overflow-x: hidden;
     padding-top: 20px;
 }
 
 .main
 {
-    padding: 0px 10px;
+    padding: 0 10px;
 }
 
 @media screen and (max-height: 450px)

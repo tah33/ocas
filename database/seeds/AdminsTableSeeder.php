@@ -10,7 +10,13 @@ class AdminsTableSeeder extends Seeder
             'name' => 'Tanvir',
             'email' => 'tahmedhera@gmail.com',
             'username' => 'tanvir',
-            'password' => bcrypt('tanvir'),
+            'password' => bcrypt('000'),
+        ]);
+        Admin::create([
+            'name' => 'Tanvir',
+            'email' => 'tanvir@gmail.com',
+            'username' => 'tah',
+            'password' => bcrypt('000'),
         ]);
     }
 }
