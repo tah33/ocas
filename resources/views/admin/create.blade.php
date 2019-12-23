@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success btn-sm" style="margin-top:10px">Create</button>
-                    <a class="btn btn-warning btn-sm" style="margin-top:10px" href="{{url('home')}}">Cancel</a>
+                    <a class="btn btn-warning btn-sm" style="margin-top:10px" onclick="goBack()">Cancel</a>
                 </form>
 
             </div>

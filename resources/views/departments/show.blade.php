@@ -39,6 +39,30 @@
                 <!-- /.box -->
             </div>
             <!-- /.col -->
+            <div class="col-md-6">
+                <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#settings" data-toggle="tab">Future Scope</a></li>
+                        </ul>
+                            <div class="tab-content">
+                            <!-- /.tab-pane -->
+                                <div class="tab-pane active" id="settings">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-5">
+                                                <div class="card">
+                                                            <p>{{$department->scope}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                                <!-- /.nav-tabs-custom -->
+                            </div>
                                 </div>
                             </div>
 

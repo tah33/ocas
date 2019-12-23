@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
 	protected $fillable = [
-        'name','slug','minimum','subject_id','range','subjects','total'
+        'name','slug','minimum','subject_id','range','subjects','total','scope'
     ];
     protected $casts = [
         'subjects' => 'array'

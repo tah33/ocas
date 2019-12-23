@@ -29,14 +29,14 @@ class ProfileController extends Controller
         return view('profiles.show', compact('user','title'));
     }
 
-    public function edit($id)
+    public function edit()
     {
         $title = "Edit Profile";
         $departments = '';
         if (Auth::guard('admin')->check())
-            $user = Admin::find($id);
+            $user = Auth::guard('admin')->user();
         else {
-            $user = Student::find($id);
+            $user = Auth::guard('student')->user();
             foreach ($user->departments as $key => $department)
                 $ids[] = $department->id;
             $departments = Department::whereNotIn('id', $ids)->get();

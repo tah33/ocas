@@ -95,6 +95,22 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                <label for="logo" class="col-md-2 col-form-label text-md-right">{{ __('Future Scope') }}</label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-file-photo-o"></i>
+                                        </div>
+                                        <textarea id="scope"class="form-control" name="scope"  autocomplete="requirements" placeholder="Describe something about this department what student can do...">{{$department->scope ?$department->scope : old('scope')}}</textarea>
+                                        @error('scope')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                                 <div class="panel panel-danger">
                                     <div class="panel-heading">Add Conditions</div>
                                     <div class="panel-body">
@@ -148,7 +164,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px">Submit</button>
                         <a class="btn btn-warning btn-sm" style="margin-top:10px"
-                           href="{{url('departments')}}">Cancel</a>
+                           onclick="goBack()" >Cancel</a>
                     </form>
                 </div>
             </div>

@@ -19,7 +19,8 @@ Route::get('unblock/{id}','StudentController@unblock');
 Route::resource('admins', 'AdminController');
 
 //ProfileController
-Route::resource('profiles', 'ProfileController');
+Route::resource('profiles', 'ProfileController')->except('edit');
+Route::get('profile-edit','ProfileController@edit');
 Route::get('change-password','ProfileController@password');
 Route::post('reset-password/{id}','ProfileController@resetpassword');
 

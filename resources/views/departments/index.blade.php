@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-hover search">
+            <table id="search" class="table table-hover">
                 <caption>Departments List</caption>
                 <thead>
                 <tr>

@@ -42,6 +42,7 @@ class DepartmentController extends Controller
         $department->slug       = $request->slug;
         $department->subject_id = $request->subject_id;
         $department->marks      = $request->range;
+        $department->scope      = $request->scope;
         $department->save();
 
         Toastr::success('Department is Succesfully Added', 'Success!');
@@ -81,6 +82,8 @@ class DepartmentController extends Controller
         $department->slug           = $request->slug;
         $department->subject_id     = $request->subject_id;
         $department->marks          = $request->range;
+        $department->scope          = $request->scope;
+
         if ($request->logo) {
             $file   = $request->File('logo');
             $ext    = ($department->slug ? $department->slug : $department->name).".".($file->getClientOriginalExtension());

@@ -23,7 +23,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ Request::is('profiles/*') ? 'active' : '' }}">
-                        <a href="{{url('profiles',Auth::guard('admin')->check() ? Auth::guard('admin')->id() : Auth::guard('student')->id())}}"><i
+                        <a href="{{url('profile-edit')}}"><i
                                 class="glyphicon glyphicon-user"></i>Edit Profile</a></li>
                     <li class="{{ Request::is('change-password') ? 'active' : '' }}"><a
                             href="{{url('change-password')}}"><i class="glyphicon glyphicon-eye-close"></i>Change

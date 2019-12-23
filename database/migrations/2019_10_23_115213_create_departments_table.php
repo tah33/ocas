@@ -21,6 +21,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('logo')->nullable();
             $table->unsignedBigInteger('subject_id')->nullable();
             $table->integer('range')->nullable();
+            $table->string('scope')->nullable();
             $table->timestamps();
             $table->foreign('subject_id')
                 ->references('id')->on('subjects')
