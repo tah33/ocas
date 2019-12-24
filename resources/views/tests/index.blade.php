@@ -6,7 +6,6 @@
         div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
-
         .center {
             margin: auto;
             width: 50%;

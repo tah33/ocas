@@ -7,22 +7,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Students Report</title>
-</head>
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    table tr:nth-child(odd) {
-        background: rgba(77, 77, 77, 0.13);
-    }
-</style>
+        table tr:nth-child(odd) {
+            background: rgba(77, 77, 77, 0.13);
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: darkgray;
+            color: black;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
 <center>
     <h2 style="color: red">Online Career Advising System</h2>
     <h3><?php echo date("F-Y")?></h3>
-    <h3 style="color: green"> Activity of {{$activities->first()->student->name}} </h3>
+    <h3 style="color: green"> Activity Report of {{$activities->first()->student->name}} for <font color="red">{{$activities->first()->created_at->format('m/d/Y')}}</font> </h3>
 </center>
 
 <br>
@@ -88,5 +97,8 @@
             </tr>
         @endforeach
     </table>
+<div class="footer">
+    <p>Coyright <i class="fa fa-copyright"></i> 2019 OCAS All rights reserved</p>
+</div>
 </body>
 </html>

@@ -23,17 +23,36 @@
                             <div class="input-group margin">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">PDF
+                                            data-toggle="dropdown">Today's Report
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}" target="_blank">View</a></li>
+                                        <li>
+                                            <a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}"
+                                               target="_blank">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a></li>
+                                        <li>
+                                            <a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="input-group margin" style="margin: -40px 0 0 120px">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle"
+                                            data-toggle="dropdown" >Overall Report
+                                        <span class="fa fa-caret-down"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="{{url('activities-view/'.$activities->first()->student_id)}}"
+                                               target="_blank">View</a></li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="{{url('activities-download',$activities->first()->student_id)}}">Download</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                         <table class="table table-hover">
                             <thead>
                             <tr class="bg-gray">
@@ -50,7 +69,8 @@
                                     <td class="text-center">{{ $key+1 }}</td>
                                     @if(!in_array($activity->student_id,$ids))
                                         @php $ids[]=$activity->student_id; @endphp
-                                    <td rowspan="{{count($activities)}}" class="text-center">{{ $activity->student->name }}</td>
+                                        <td rowspan="{{count($activities)}}"
+                                            class="text-center">{{ $activity->student->name }}</td>
                                     @endif
                                     <td class="text-center">{{ $activity->login_time }}</td>
                                     <td class="text-center">{{ $activity->logout_time }}</td>
@@ -68,9 +88,13 @@
                                             data-toggle="dropdown">PDF
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}" target="_blank">View</a></li>
+                                        <li>
+                                            <a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}"
+                                               target="_blank">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a></li>
+                                        <li>
+                                            <a href="{{url('activity-download',$activities->first()->created_at.'/'.$activities->first()->student_id)}}">Download</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -87,8 +111,12 @@
                             @foreach ($tests as $key => $test)
                                 <tr>
                                     <td class="text-center">{{ $key+1 }}</td>
-                                    <td class="text-center">{{$test->marks + $test->common_marks }}% out of {{$exam->major + $exam->common}}%</td>
-                                    <td class="text-center"><a href="{{url('tests/'.$test->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                                    <td class="text-center">{{$test->marks + $test->common_marks }}% out
+                                        of {{$exam->major + $exam->common}}%
+                                    </td>
+                                    <td class="text-center"><a href="{{url('tests/'.$test->id)}}"
+                                                               class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                             </tbody>

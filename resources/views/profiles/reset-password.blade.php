@@ -1,7 +1,12 @@
 @extends('layouts.master')
 @section('backend.title', $title)
-
 @section('master.content')
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        </style>
     <div class="col-md-8">
         <div class="box box-primary">
             <div class="box-header">

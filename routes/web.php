@@ -69,6 +69,8 @@ Route::get('ranks-view/{id}','PdfController@viewRank');
 Route::get('ranks-download/{id}','PdfController@downloadRank');
 Route::get('activity-view/{student_id}/{created_at}','PdfController@viewActivity');
 Route::get('activity-download/{student_id}/{created_at}','PdfController@downloadActivity');
+Route::get('activities-view/{student_id}','PdfController@viewActivities');
+Route::get('activities-download/{student_id}','PdfController@downloadActivities');
 
 //ExcelController
 Route::get('students-export','ExcelController@studentsExport');

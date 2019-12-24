@@ -4,13 +4,15 @@
         div.dataTables_wrapper div.dataTables_filter input{
             width: 200px;
         }
+        .center {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
     </style>
     <div class="row">
         <div class="box">
             <div class="box-body">
-                <center>
-                    <a href="#" class="btn btn-primary btn-sm">Get PDF </a>
-                </center>
                 <table id="search" class="table table-hover">
                     <caption>Students Login & Logout Time</caption>
                     <thead>

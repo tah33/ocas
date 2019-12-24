@@ -390,7 +390,7 @@
     ),
     'temporary_files' => 
     array (
-      'local_path' => 'C:\\Users\\tanvi\\AppData\\Local\\Temp',
+      'local_path' => 'C:\\Users\\Tanvir\\AppData\\Local\\Temp',
       'remote_disk' => NULL,
     ),
   ),
@@ -640,7 +640,7 @@
     array (
       'font_dir' => 'C:\\xampp\\htdocs\\ocas\\storage\\fonts/',
       'font_cache' => 'C:\\xampp\\htdocs\\ocas\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\tanvi\\AppData\\Local\\Temp',
+      'temp_dir' => 'C:\\Users\\Tanvir\\AppData\\Local\\Temp',
       'chroot' => 'C:\\xampp\\htdocs\\ocas',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',

@@ -68,7 +68,7 @@
                         <td style="text-align: center"><img src="{{'images/department/'.$department->logo}}"
                           alt="department logo" height="50px" width="50px"></td>
                         <td style="text-align: center">
-                            <a href="{{url('departments',$department->id)}}" class="btn btn-success btn-sm"><i
+                            <a href="{{url('departments',$department->id)}}" class="btn btn-primary btn-sm"><i
                                     class="fa fa-eye"></i></a>
                             @if(Auth::guard('admin')->check())
                             <a href="{{url('departments/'.$department->id.'/edit')}}"

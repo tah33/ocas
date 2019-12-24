@@ -253,7 +253,7 @@ class PdfController extends Controller
     public function viewActivity($created_at,$student_id)
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
-        $activities = Activity::where('student_id',$student_id)->get();
+        $activities = Activity::where('student_id',$student_id)->whereDate('created_at',Carbon::parse($created_at))->get();
         $tests = Test::where('student_id',$student_id)->get();
         $exam = Exam::first();
         $date = date('Y-M-d');
@@ -265,6 +265,27 @@ class PdfController extends Controller
     {
         $activities = Activity::whereDate('created_at',Carbon::parse($created_at))->where('student_id',$student_id)->get();
         $tests = Test::where('student_id',$student_id)->whereDate('created_at',Carbon::parse($created_at))->get();
+        $exam = Exam::first();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.activities', compact('activities','tests','exam'));
+        return $pdf->download("activities-{$activities->first()->student->username}.pdf");
+    }
+
+    public function viewActivities($student_id)
+    {
+        $customPaper = array(0, 0, 792.00, 1300.00);
+        $activities = Activity::where('student_id',$student_id)->get();
+        $tests = Test::where('student_id',$student_id)->get();
+        $exam = Exam::first();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.activities', compact('activities','tests','exam'));
+        return $pdf->stream("activities-{$activities->first()->student->username}.pdf");
+    }
+
+    public function downloadActivities($student_id)
+    {
+        $activities = Activity::where('student_id',$student_id)->get();
+        $tests = Test::where('student_id',$student_id)->get();
         $exam = Exam::first();
         $date = date('Y-M-d');
         $pdf = PDF::loadView('pdf.activities', compact('activities','tests','exam'));

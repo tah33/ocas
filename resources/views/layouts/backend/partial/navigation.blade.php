@@ -35,7 +35,7 @@
                 <li class="header">Users</li>
                 <li class="treeview {{ Request::is('admins/*') || Request::is('admins') || Request::is('students/*') || Request::is('students') ? 'active' : '' }}">
                     <a href="#">
-                        <i class="fa fa-user"></i> <span>User</span>
+                        <i class="fa fa-user"></i> <span>Users</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

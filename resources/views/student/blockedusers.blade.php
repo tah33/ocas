@@ -14,9 +14,9 @@
     </style>
     <div class="box box-primary">
         <div class="box-body">
-            <div class="center" style="margin-left: 450px">
+            <div class="center" style="margin-left: 400px">
                 <a href="{{url('students')}}" class="btn btn-success btn-sm">Students</a>
-                <div class="input-group margin" style="margin: -30px 0 0 100px">
+                <div class="input-group margin" style="margin: -30px 0 0 80px">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>

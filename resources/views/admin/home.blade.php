@@ -77,7 +77,7 @@
                     <div class="icon">
                         <img src="{{asset('icons/banned.svg')}}" width="70px" height="70px">
                     </div>
-                    <a href="{{url('subjects')}}" class="small-box-footer">More info <i
+                    <a href="{{url('blocked-students')}}" class="small-box-footer">More info <i
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     <div class="icon">
                         <img src="{{asset('icons/activity.png')}}" width="70px" height="70px">
                     </div>
-                    <a href="{{url('subjects')}}" class="small-box-footer">More info <i
+                    <a href="{{url('activities')}}" class="small-box-footer">More info <i
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
@@ -107,7 +107,7 @@
                     <div class="icon">
                         <img src="{{asset('icons/exam.svg')}}" width="70px" height="70px">
                     </div>
-                    <a href="{{url('subjects')}}" class="small-box-footer">More info <i
+                    <a href="{{url('tests')}}" class="small-box-footer">More info <i
                             class="glyphicon glyphicon-chevron-right"></i></a>
                 </div>
             </div>
