@@ -54,8 +54,8 @@
                     <th style="text-align: center">Name</th>
                     <th style="text-align: center">Short Name</th>
                     <th style="text-align: center">Minimum Marks Required</th>
-                    <th style="text-align: center">Logo</th>
-                    <th style="text-align: center;width: 13%">Action</th>
+                    <!-- <th style="text-align: center">Logo</th> -->
+                    <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -65,20 +65,20 @@
                         <td style="text-align: left">{{ $department->name }}</td>
                         <td style="text-align: left">{{ $department->slug }}</td>
                         <td style="text-align: center">{{ $department->minimum }}</td>
-                        <td style="text-align: center"><img src="{{'images/department/'.$department->logo}}"
-                          alt="department logo" height="50px" width="50px"></td>
+                        <!-- <td style="text-align: center"><img src="{{'images/department/'.$department->logo}}"
+                          alt="department logo" height="50px" width="50px"></td> -->
                         <td style="text-align: center">
-                            <a href="{{url('departments',$department->id)}}" class="btn btn-primary btn-sm"><i
-                                    class="fa fa-eye"></i></a>
+                            <a href="{{url('departments',$department->id)}}" class="btn btn-primary btn-sm btn-flat"><i
+                                    class="fa fa-eye"></i> View</a>
                             @if(Auth::guard('admin')->check())
                             <a href="{{url('departments/'.$department->id.'/edit')}}"
-                               class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                            <form style="float: right; margin-left: -15px"
+                               class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
+                            <form style="float: right; margin-left: -15px" 
                                   action="{{url('departments',$department->id)}}" method="post"
                                   onsubmit="return confirm('Are you sure you want to Remove This Department?');">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+                                <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash-o"></i> Delete
                                 </button>
                             </form>
                                 @endif

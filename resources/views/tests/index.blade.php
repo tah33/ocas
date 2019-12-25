@@ -50,7 +50,7 @@
                         @endif
                         <td style="text-align: left">{{ $test->marks + $test->common_marks }}</td>
                         <td style="text-align: center">
-                            <a href="{{url('tests',$test->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{url('tests',$test->id)}}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-eye"> View</i></a>
                         </td>
                     </tr>
                 @endforeach

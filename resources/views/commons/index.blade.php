@@ -21,12 +21,14 @@
                             <td style="text-align: center">{{ $common->subject->name }}</td>
 
                             <td style="text-align: center">
-                                <form method="post" action="{{url('commons',$common->id)}}" onsubmit="return confirm('Are You sure? You want to delete this subject ')">
-                                    @csrf
-                                    @method('delete')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
-                                </form>
-                            </td>
+                                <form
+                                  action="{{url('commons',$common->id)}}" method="post"
+                                  onsubmit="return confirm('Are you sure you want to Remove This Subject?');">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash-o"></i> Delete
+                                </button>
+                            </form>                            </td>
                         </tr>
                     @endforeach
                     </tbody>

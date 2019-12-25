@@ -63,7 +63,7 @@
                     <th style="text-align: left">Name</th>
                     <th style="text-align: center">Logo</th>
                     @if(Auth::guard('admin')->check())
-                    <th style="text-align: center; width: 15%">Action</th>
+                    <th style="text-align: center; ">Action</th>
                         @endif
                 </tr>
                 </thead>
@@ -75,18 +75,16 @@
                         <td style="text-align: center"><img src="{{url('images/subjects/'.$subject->logo)}}"
                                                      alt="Subject Logo" height="50px" width="50px"></td>
                         @if(Auth::guard('admin')->check())
-
-                        <td style="text-align: center">
-                            <a href="{{url('subjects/'.$subject->id.'/edit')}}"
-                               class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-
-                            <form method="post" action="{{url('subjects',$subject->id)}}"
-                                  style="float: right;"
-                                  onsubmit="return confirm('Are You sure? You want to delete this question ')">
+                        <td>
+                        <a href="{{url('subjects/'.$subject->id.'/edit')}}"
+                               class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
+                            <form style="float: right; margin-left: -55px" 
+                                  action="{{url('subjects',$subject->id)}}" method="post"
+                                  onsubmit="return confirm('Are you sure you want to Remove This Subjects?');">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger btn-sm"><i
-                                        class="fa fa-trash"></i></button>
+                                <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash-o"></i> Delete
+                                </button>
                             </form>
                         </td>
                             @endif
