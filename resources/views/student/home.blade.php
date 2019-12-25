@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('backend.title', $page_title)
 @section('master.content')
+@push('backend.css')
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+    {!! Charts::assets() !!}
+@endpush
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -68,7 +73,9 @@
                 </div>
             </div>
         </div>
-        @if(count($todays_activities) > 0)
+                     
+
+        <!-- @if(count($todays_activities) > 0)
             <div class="box  box-primary">
                 <div class="box-body">
                     <table class="table table-hover">
@@ -96,6 +103,14 @@
                     <center><a href="{{url('activity',$activity->student_id)}}">See all of Your Activities <i class="fa  fa-arrow-right"></i></a></center>
                 </div>
             </div>
-        @endif
+        @endif -->
+    </div>
+         <div class="container">
+
+        <h1>Laravel 5 Chart example using Charts Package</h1>
+
+        {!! $chart->render() !!}
+
     </div>
 @stop
+

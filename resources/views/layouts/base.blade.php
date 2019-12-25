@@ -39,6 +39,7 @@
 <script src="{{URL::asset('dist/js/demo.js')}}"></script>
 <script src="{{URL::asset('assets/select2/dist/js/select2.full.min.js')}}"></script>
 <script src="{{URL::asset('http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js')}}"></script>
+
 {!! Toastr::message() !!}
 
 <script>

@@ -8,7 +8,7 @@ use App\Exam;
 class StudentsTableSeeder extends Seeder
 {
 
-    /*public function run()
+    public function run()
     {
         $gender = array('male','female');
 
@@ -27,5 +27,5 @@ class StudentsTableSeeder extends Seeder
             ]);
         }
 
-    }*/
+    }
 }

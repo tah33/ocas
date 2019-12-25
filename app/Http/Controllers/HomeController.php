@@ -82,7 +82,9 @@ class HomeController extends Controller
                 'tests'                 => Test::where('student_id',Auth::guard('student')->id())->get(),
                 'exam'                  => Exam::first(),
             ];
-            return view('student.home')->with(array_merge($this->data, $data));
+            $departments = Student::all();
+        
+            return view('student.home',compact('chart'))->with(array_merge($this->data, $data));
         }
     }
 

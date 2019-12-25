@@ -108,4 +108,9 @@ class StudentController extends Controller
         $activities = Activity::where('student_id',$id)->get();
         return view('student.activity',compact('activities','title','exam'));
     }
+
+    public function chart()
+    {
+        
+    }
 }
