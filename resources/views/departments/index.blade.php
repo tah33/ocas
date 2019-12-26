@@ -30,11 +30,11 @@
                 </div>
                 @endif
                 @if(Auth::guard('student')->check())
-                <a href="{{url('departments-export')}}" class="btn btn-danger btn-sm">Get Excel</a>
+                <a href="{{url('departments-export')}}" style="margin-left: 160px" class="btn btn-danger btn-flat btn-sm">Get Excel</a>
                 @endif
 
                 <div class="input-group margin"  @if(Auth::guard('admin')->check()) style="margin: -30px 0 0 180px" @else
-                style="margin: -30px 0 0 80px" @endif>
+                style="margin: -30px 0 0 100px" @endif>
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>
@@ -53,7 +53,7 @@
                     <th style="text-align: center">No.</th>
                     <th style="text-align: center">Name</th>
                     <th style="text-align: center">Short Name</th>
-                    <th style="text-align: center">Minimum Marks Required</th>
+                    <th style="text-align: center">Minimum Percentage</th>
                     <!-- <th style="text-align: center">Logo</th> -->
                     <th style="text-align: center;">Action</th>
                 </tr>
@@ -64,7 +64,7 @@
                         <td style="text-align: center">{{ $key+1 }}</td>
                         <td style="text-align: left">{{ $department->name }}</td>
                         <td style="text-align: left">{{ $department->slug }}</td>
-                        <td style="text-align: center">{{ $department->minimum }}</td>
+                        <td style="text-align: center">{{ $department->minimum }}%</td>
                         <!-- <td style="text-align: center"><img src="{{'images/department/'.$department->logo}}"
                           alt="department logo" height="50px" width="50px"></td> -->
                         <td style="text-align: center">
@@ -73,7 +73,7 @@
                             @if(Auth::guard('admin')->check())
                             <a href="{{url('departments/'.$department->id.'/edit')}}"
                                class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
-                            <form style="float: right; margin-left: -15px" 
+                            <form style="float: right; margin-left: -15px"
                                   action="{{url('departments',$department->id)}}" method="post"
                                   onsubmit="return confirm('Are you sure you want to Remove This Department?');">
                                 @csrf

@@ -73,12 +73,14 @@ class HomeController extends Controller
             return view('admin.home')->with(array_merge($this->data, $data));
         }
         else {
-            $marks = $names = $percentage=[];
+            $marks = $names = $subjects=$percentages=[];
             $departments           = Department::all();
             foreach ($departments as $department)
             {
                 $marks[] = $department->minimum;
-                $names[] = $department->slug;
+                $names[] = $department->slug . '('.$department->subject->slug.')';
+
+                $percentages[] = $department->marks;
             }
             $data = [
                 'page_title'            => 'Dashboard :: Student',
@@ -91,13 +93,11 @@ class HomeController extends Controller
                 'tests'                 => Test::where('student_id',Auth::guard('student')->id())->get(),
                 'exam'                  => Exam::first(),
             ];
+
             $chart = new DepartmentChart();
-            $chart->labels($names)->options([
-                'color' => '#0000CD',
-            ]);
-            $chart->dataset('My dataset 1', 'line', $marks)->options([
-                'color' => '#000080',
-            ]);
+            $chart->labels($names);
+            $chart->dataset('Departments', 'line', $marks)->color('green');
+            $chart->dataset('Subjects', 'line', $percentages)->color('red');
             return view('student.home',compact('chart'))->with(array_merge($this->data, $data));
         }
     }

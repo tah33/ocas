@@ -2,21 +2,9 @@
 @section('backend.title', $title)
 
 @section('master.content')
-    <style>
-        .nav-tabs-custom>.nav-tabs>li>a, .nav-tabs-custom>.nav-tabs>li>a:hover {
-            color: white;
-        }
-
-        .sticky {
-            position: fixed;
-            top: 0;
-            width: 100%;
-        }
-
-        .sticky + .content {
-            padding-top: 102px;
-        }
-    </style>
+    @push('backend.css')
+        <link rel="stylesheet" href="{{URL::to('css/test.css')}}">
+    @endpush
     <div class="row">
         <div class="col-md-12">
             <form method="post" id="form" name="form" action="{{url('tests')}}"
@@ -50,29 +38,26 @@
                             @foreach($majors as $key => $subject)
                                 <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $subject->id }}">
                                     @foreach($subject->questions->random($add == 0 ? $div-$sub : $div+$add) as $num => $question)
-                                        <p style="font-size: 16px"><b>Quesion{{$num+1}} : {{$question->question}}</b>
-                                        </p>
-
-                                        <div class="form-check">
-                                            <input type="radio" class= "flat-red" id="option" value="a"
-                                                   name="major[{{$question->id}}]">
-                                            <label class="form-check-label" for="option1">{{$question->option1}}</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" class="flat-red" id="option" value="b"
-                                                   name="major[{{$question->id}}]">
-                                            <label class="form-check-label" for="option2">{{$question->option2}}</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" class="flat-red" id="option" value="c"
-                                                   name="major[{{$question->id}}]">
-                                            <label class="form-check-label" for="option3">{{$question->option3}}</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="radio" class="flat-red" id="option" value="d"
-                                                   name="major[{{$question->id}}]">
-                                            <label class="form-check-label" for="option4">{{$question->option4}}</label>
-                                        </div>
+                                        <p style="font-size: 16px"><b>Quesion{{$num+1}} : {{$question->question}}</b> </p>
+                                        <label class="checkbox-container">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <div class="checkbox-wrap">{{$question->option1}}</div>
+                                        </label>
+                                        <label class="checkbox-container">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <div class="checkbox-wrap">{{$question->option2}}</div>
+                                            <span> </span>
+                                        </label>
+                                        <label class="checkbox-container">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <div class="checkbox-wrap">{{$question->option3}}</div>
+                                            <span> </span>
+                                        </label>
+                                        <label class="checkbox-container">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <div class="checkbox-wrap">{{$question->option4}} </div>
+                                            <span> </span>
+                                        </label>
 
                                     @endforeach
                                 </div>
@@ -172,17 +157,29 @@
             if (sec < 0) {sec = "59"};
             return sec;
         }
-        /*  setTimeout(function(){
-       var exam_time = {!! $exam->time !!};
-            console.log(exam_time)
-            window.location.href = "{{url('home')}}";
-        },  {!! (($exam->time * 1000)*60)-1000 !!} );
-*/
+{{--        /*  setTimeout(function(){--}}
+{{--       var exam_time = {!! $exam->time !!};--}}
+{{--            console.log(exam_time)--}}
+{{--            window.location.href = "{{url('home')}}";--}}
+{{--        },  {!! (($exam->time * 1000)*60)-1000 !!} );--}}
+{{--*/--}}
         setTimeout(function () {
             alert('Time is out');
         }, {!! (($exam->time * 1000)*60)-1000 !!});
         jQuery(document).ready(function() {
              setTimeout('document.form.submit()',{!! (($exam->time * 1000)*60)-1000 !!});
+        });
+
+        $(document).ready(function(){
+            $(".sidebar").click(function(){
+                if (!confirm("Do you want to delete")){
+                    return false;
+                }
+                if (confirm)
+                {
+                    window.location.href = "{{url('home')}}";
+                }
+            });
         });
     </script>
 @endpush

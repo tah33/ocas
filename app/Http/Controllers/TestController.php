@@ -29,6 +29,14 @@ class TestController extends Controller
         return view('tests.index',compact('tests','title'));
     }
 
+    public function rules()
+    {
+        $title = 'Rules for Tests';
+        $exam = Exam::first();
+        $commons = Common::all();
+        return view('tests.rules',compact('title','exam','commons'));
+    }
+
     public function create(Request $request)
     {
         $title ="Test Area";

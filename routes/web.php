@@ -38,6 +38,7 @@ Route::resource('subjects', 'SubjectController');
 //TestController
 Route::resource('tests', 'TestController');
 Route::get('advise','TestController@advise');
+Route::get('rules','TestController@rules');
 
 //CommonController
 Route::resource('commons', 'CommonController');

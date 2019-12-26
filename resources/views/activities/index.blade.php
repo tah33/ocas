@@ -38,7 +38,7 @@
                             <td style="text-align: center">{{ $activity->logout_time ? $activity->logout_time : "Active" }}</td>
                             <td style="text-align: center">{{Carbon\Carbon::parse($activity->created_at)->format('M d, Y')  }}</td>
                             <td style="text-align: center">
-                                <a href="{{url('students',$activity->student->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="{{url('students',$activity->student->id)}}" class="btn btn-primary btn-flat btn-sm"><i class="fa fa-eye"></i> View</a>
                             </td>
                         </tr>
                     @endforeach
