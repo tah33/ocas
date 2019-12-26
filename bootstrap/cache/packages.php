@@ -21,6 +21,13 @@
       'Toastr' => 'Brian2694\\Toastr\\Facades\\Toastr',
     ),
   ),
+  'consoletvs/charts' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'ConsoleTVs\\Charts\\ChartsServiceProvider',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -37,6 +44,13 @@
     'providers' => 
     array (
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
+  'fx3costa/laravelchartjs' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fx3costa\\LaravelChartJs\\Providers\\ChartjsServiceProvider',
     ),
   ),
   'laravel/tinker' => 

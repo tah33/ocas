@@ -175,6 +175,7 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         ),
         'F' => 
         array (
+            'Fx3costa\\LaravelChartJs\\' => 24,
             'FontLib\\' => 8,
             'Fideloper\\Proxy\\' => 16,
             'Faker\\' => 6,
@@ -198,6 +199,7 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'C' => 
         array (
             'Cron\\' => 5,
+            'ConsoleTVs\\Charts\\' => 18,
             'Complex\\' => 8,
             'Carbon\\' => 7,
         ),
@@ -205,6 +207,7 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         array (
             'Brian2694\\Toastr\\' => 17,
             'Barryvdh\\DomPDF\\' => 16,
+            'Balping\\JsonRaw\\' => 16,
         ),
         'A' => 
         array (
@@ -407,6 +410,10 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Fx3costa\\LaravelChartJs\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src',
+        ),
         'FontLib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
@@ -463,6 +470,10 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'ConsoleTVs\\Charts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/consoletvs/charts/src',
+        ),
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
@@ -478,6 +489,10 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'Barryvdh\\DomPDF\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src',
+        ),
+        'Balping\\JsonRaw\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balping/json-raw-encoder/src',
         ),
         'App\\' => 
         array (
@@ -525,6 +540,9 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'AdminsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminsTableSeeder.php',
         'App\\Activity' => __DIR__ . '/../..' . '/app/Activity.php',
         'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
+        'App\\Charts\\DepartmentChart' => __DIR__ . '/../..' . '/app/Charts/DepartmentChart.php',
+        'App\\Charts\\StudentChart' => __DIR__ . '/../..' . '/app/Charts/StudentChart.php',
+        'App\\Charts\\UserChart' => __DIR__ . '/../..' . '/app/Charts/UserChart.php',
         'App\\Common' => __DIR__ . '/../..' . '/app/Common.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
@@ -596,6 +614,9 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'App\\Subject' => __DIR__ . '/../..' . '/app/Subject.php',
         'App\\Test' => __DIR__ . '/../..' . '/app/Test.php',
         'App\\VerifyStudent' => __DIR__ . '/../..' . '/app/VerifyStudent.php',
+        'Balping\\JsonRaw\\Encoder' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Encoder.php',
+        'Balping\\JsonRaw\\Raw' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Raw.php',
+        'Balping\\JsonRaw\\Replacer' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Replacer.php',
         'Barryvdh\\DomPDF\\Facade' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/Facade.php',
         'Barryvdh\\DomPDF\\PDF' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/PDF.php',
         'Barryvdh\\DomPDF\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/ServiceProvider.php',
@@ -641,6 +662,34 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'Chemistryseeder' => __DIR__ . '/../..' . '/database/seeds/Chemistryseeder.php',
         'Complex\\Complex' => __DIR__ . '/..' . '/markbaker/complex/classes/src/Complex.php',
         'Complex\\Exception' => __DIR__ . '/..' . '/markbaker/complex/classes/src/Exception.php',
+        'ConsoleTVs\\Charts\\ChartsServiceProvider' => __DIR__ . '/..' . '/consoletvs/charts/src/ChartsServiceProvider.php',
+        'ConsoleTVs\\Charts\\Classes\\BaseChart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/BaseChart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\DatasetClass' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/DatasetClass.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Commands\\ChartsCommand' => __DIR__ . '/..' . '/consoletvs/charts/src/Commands/ChartsCommand.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Dataset.php',
         'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -1455,6 +1504,8 @@ class ComposerStaticInit2025cf1a921f4907b1310739845a3b9e
         'FontLib\\WOFF\\File' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/File.php',
         'FontLib\\WOFF\\Header' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/Header.php',
         'FontLib\\WOFF\\TableDirectoryEntry' => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php',
+        'Fx3costa\\LaravelChartJs\\Builder' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Builder.php',
+        'Fx3costa\\LaravelChartJs\\Providers\\ChartjsServiceProvider' => __DIR__ . '/..' . '/fx3costa/laravelchartjs/src/Providers/ChartjsServiceProvider.php',
         'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
         'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
         'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',

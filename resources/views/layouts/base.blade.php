@@ -19,6 +19,7 @@
     <!-- Datatable -->
     <link rel="stylesheet" href="{{URL::asset('assets/datatables/css/dataTables.bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css')}}">
+
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

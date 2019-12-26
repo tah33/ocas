@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('backend.title', $page_title)
 @section('master.content')
-@push('backend.css')
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
-    {!! Charts::assets() !!}
-@endpush
+{{--@push('backend.css')--}}
+{{--    @if($usersChart)--}}
+{{--        {!! $usersChart->script() !!}--}}
+{{--    @endif--}}
+{{--@endpush--}}
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -73,44 +73,45 @@
                 </div>
             </div>
         </div>
-                     
-
-        <!-- @if(count($todays_activities) > 0)
-            <div class="box  box-primary">
-                <div class="box-body">
-                    <table class="table table-hover">
-                        <caption>Today's Login & Logout Time</caption>
-                        <thead>
-                        <tr>
-                            <th style="text-align: center">No.</th>
-                            <th style="text-align: center">Login Time</th>
-                            <th style="text-align: center">Logout Time</th>
-                            <th style="text-align: center">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($todays_activities as $key => $activity)
-                            <tr>
-                                <td style="text-align: center">{{ $key+1 }}</td>
-                                <td style="text-align: center">{{ $activity->login_time }}</td>
-                                <td style="text-align: center">{{ $activity->logout_time ? $activity->logout_time : "Active" }}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    {{$todays_activities->links()}}
-                    <hr>
-                    <center><a href="{{url('activity',$activity->student_id)}}">See all of Your Activities <i class="fa  fa-arrow-right"></i></a></center>
-                </div>
-            </div>
-        @endif -->
+        <center>
+        <div style="width: 100%">
+{!! $chart->container() !!}
+        </div></center>
+{{--        <!-- @if(count($todays_activities) > 0)--}}
+{{--            <div class="box  box-primary">--}}
+{{--                <div class="box-body">--}}
+{{--                    <table class="table table-hover">--}}
+{{--                        <caption>Today's Login & Logout Time</caption>--}}
+{{--                        <thead>--}}
+{{--                        <tr>--}}
+{{--                            <th style="text-align: center">No.</th>--}}
+{{--                            <th style="text-align: center">Login Time</th>--}}
+{{--                            <th style="text-align: center">Logout Time</th>--}}
+{{--                            <th style="text-align: center">Action</th>--}}
+{{--                        </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
+{{--                        @foreach ($todays_activities as $key => $activity)--}}
+{{--                            <tr>--}}
+{{--                                <td style="text-align: center">{{ $key+1 }}</td>--}}
+{{--                                <td style="text-align: center">{{ $activity->login_time }}</td>--}}
+{{--                                <td style="text-align: center">{{ $activity->logout_time ? $activity->logout_time : "Active" }}</td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
+{{--                        </tbody>--}}
+{{--                    </table>--}}
+{{--                    {{$todays_activities->links()}}--}}
+{{--                    <hr>--}}
+{{--                    <center><a href="{{url('activity',$activity->student_id)}}">See all of Your Activities <i class="fa  fa-arrow-right"></i></a></center>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endif -->--}}
     </div>
-         <div class="container">
 
-        <h1>Laravel 5 Chart example using Charts Package</h1>
-
-        {!! $chart->render() !!}
-
-    </div>
 @stop
 
+@push('backend.js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
+    {!! $chart->script() !!}
+    @endpush

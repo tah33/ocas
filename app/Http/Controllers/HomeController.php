@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Charts\DepartmentChart;
+use App\Charts\StudentChart;
 use App\Exam;
 use App\Question;
 use App\Test;
@@ -71,6 +73,13 @@ class HomeController extends Controller
             return view('admin.home')->with(array_merge($this->data, $data));
         }
         else {
+            $marks = $names = $percentage=[];
+            $departments           = Department::all();
+            foreach ($departments as $department)
+            {
+                $marks[] = $department->minimum;
+                $names[] = $department->slug;
+            }
             $data = [
                 'page_title'            => 'Dashboard :: Student',
                 'departments'           => Department::all(),
@@ -82,8 +91,13 @@ class HomeController extends Controller
                 'tests'                 => Test::where('student_id',Auth::guard('student')->id())->get(),
                 'exam'                  => Exam::first(),
             ];
-            $departments = Student::all();
-        
+            $chart = new DepartmentChart();
+            $chart->labels($names)->options([
+                'color' => '#0000CD',
+            ]);
+            $chart->dataset('My dataset 1', 'line', $marks)->options([
+                'color' => '#000080',
+            ]);
             return view('student.home',compact('chart'))->with(array_merge($this->data, $data));
         }
     }
