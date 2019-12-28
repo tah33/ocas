@@ -1,9 +1,9 @@
 body {
     font-family: "Lato", sans-serif;
     background-color: grey;
+
+
 }
-
-
 
 .main-head{
     height: 150px;
@@ -88,6 +88,8 @@ body {
     -khtml-border-radius: 5px;
     border-radius: 5px;
     background-color: #FFF;
+
+
 }
 #frame h1
 {
@@ -149,15 +151,15 @@ input[type=date]:focus,input[type=file]:focus, select
 }
 /* Set a style for the submit button */
 .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
 }
 
 .btn:hover {
-  opacity: 1;
+    opacity: 1;
 }

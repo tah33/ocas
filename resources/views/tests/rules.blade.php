@@ -23,23 +23,17 @@
                     <div class=" panel panel-primary">
                         <div class="panel panel-heading">Rules & Regulations</div>
                         <div class="panel panel-body">
-                            <table class="table">
-                                <tr>
-                                    <td>Total Time</td>
-                                    <td>{{$exam->time}} Minute</td>
-                                </tr>
-                                <tr>
-                                    <td>Total Questions</td>
-                                    <td>{{  $exam->major + $exam->common }} ({{$exam->major}} for Major
-                                        & {{$exam->common}} for Common Subject)
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="row" style="margin: 0px 5px">
+                                    <strong width="40%" style="float: left">Total Time: {{$exam->time}} Minute</strong>
+                                    <strong width="60%" style="float: right">Total Questions: {{  $exam->major + $exam->common }} ({{$exam->major}} for Major
+                                        & {{$exam->common}} for Common Subject)</strong>
+                            </div>
+
                             @php
                             $subjects=[];
                             @endphp
-                            <table style="width: 70%; font-size: 15px">
-                                <caption>Question will appear from</caption>
+                            <table style="width: 70%; margin-left: 15%" class="table table-striped">
+                                <caption style="border-bottom: 1px solid #2b2b2b">Question will appear from</caption>
                                 @foreach(Auth::guard('student')->user()->departments as $department)
                                     <tr>
                                         @php
