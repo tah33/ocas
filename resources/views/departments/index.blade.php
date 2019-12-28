@@ -73,7 +73,7 @@
                             @if(Auth::guard('admin')->check())
                             <a href="{{url('departments/'.$department->id.'/edit')}}"
                                class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
-                            <form style="float: right; margin-left: -15px"
+                            <form style="display: inline"
                                   action="{{url('departments',$department->id)}}" method="post"
                                   onsubmit="return confirm('Are you sure you want to Remove This Department?');">
                                 @csrf

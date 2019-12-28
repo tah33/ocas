@@ -7,8 +7,7 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     @foreach($test->ranks as $key => $rank)
-                        <li class="{{$key == 0 ? 'active' : ''}}"><a href="#subject{{$key}}"
-                                                                     data-toggle="tab">{{$rank->subject->name}}</a></li>
+                        <li class="{{$key == 0 ? 'active' : ''}}"><a href="#subject{{$key}}" data-toggle="tab">{{$rank->subject->name}}</a></li>
                     @endforeach
                     <div class="input-group margin pull-right">
                         <div class="input-group-btn">

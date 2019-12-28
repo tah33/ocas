@@ -67,7 +67,7 @@
 
                         <td style="text-align: center">
                             <a href="{{url('students',$student->id)}}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-eye"></i> View</a>
-                            <form action="{{url('students',$student->id)}}" style="float: right; margin-left: -25px" method="post"
+                            <form action="{{url('students',$student->id)}}" style="display: inline" method="post"
                                   onsubmit="return confirm('Are you sure you want to block this students')">
                                 @csrf
                                 @method('delete')

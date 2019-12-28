@@ -75,6 +75,7 @@
         </div>
         <div class="panel panel-primary">
             <div class="panel-body">
+                @if($advise_department)
                 <p class="text-justify"> Dear Student,
                 Thank you for your spending your valuable time and effort in attending the test.
                  By utilizing your test , we found you are good in
@@ -90,6 +91,7 @@
                 But we recommend you to go with <strong>{{$advise_department->name}}</strong>, Because you hit the top score in
                     <strong>{{$advise_department->subject->name}}</strong>. By choosing this department, <strong>{{$advise_department->scope}}</strong>.
                 </p>
+                    @endif
             </div>
         </div>
     </div>

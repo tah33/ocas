@@ -56,7 +56,6 @@
                 <div class="small-box bg-aqua-active">
                     <div class="inner">
                         <h3>{{count($questions)}}</h3>
-
                         <p>Total Questions</p>
                     </div>
                     <div class="icon">
@@ -140,7 +139,8 @@
                             <td style="text-align: center">{{ $activity->logout_time ? $activity->logout_time : "Active" }}</td>
                             <td style="text-align: center">{{Carbon\Carbon::parse($activity->created_at)->format('M d, Y')  }}</td>
                             <td style="text-align: center">
-                                <a href="{{url('students',$activity->student->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                                <a href="{{url('students',$activity->student->id)}}" class="btn btn-primary btn-sm btn-flat">
+                                    <i class="fa fa-eye"> View</i></a>
                             </td>
                         </tr>
                     @endforeach

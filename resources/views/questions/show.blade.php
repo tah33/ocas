@@ -74,7 +74,7 @@
                             <td style="text-align: center">
                                 <a href="{{url('questions/'.$question->id.'/edit')}}"
                                class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
-                            <form style="float: right; margin-left: -55px" 
+                            <form style="display: inline"
                                   action="{{url('questions',$question->id)}}" method="post"
                                   onsubmit="return confirm('Are you sure you want to Remove This Question?');">
                                 @csrf

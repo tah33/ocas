@@ -24,7 +24,6 @@ class TestController extends Controller
     public function index()
     {
         $title ="Given Tests";
-
         $tests = Test::all();
         return view('tests.index',compact('tests','title'));
     }
@@ -106,9 +105,9 @@ class TestController extends Controller
         $test               = new Test;
         $test->student_id   = Auth::id();
         $test->ans          = $request->major;
-        $test->marks        = ($count / $exam->major) * 100;
+        $test->marks        = ceil(($count / $exam->major) * 100);
         $test->common       = $request->common;
-        $test->common_marks = ($common_marks / $exam->common) * 100;
+        $test->common_marks = ceil(($common_marks / $exam->common) * 100);
         $test->save();
 
         $student = Student::find(Auth::id());
@@ -165,16 +164,14 @@ class TestController extends Controller
                 $greater    = $exam->common - $multiple;
         } else
             $divide = $exam->common;
-        if ($request->commons) {
+        if ($request->common) {
             foreach ($commons as $key => $common) {
-                if ($request->common) {
                     foreach ($request->common as $key => $value) {
                         $correct = Question::where('id', $key)->where('correct_ans', $value)->first();
                         if ($correct && $correct->subject_id == $common->subject_id) {
                             $correct_ans++;
                         }
                     }
-                }
                 $rank = new Rank;
                 $rank->subject_id = $common->subject_id;
                 $rank->test_id = $test->id;
@@ -194,9 +191,10 @@ class TestController extends Controller
     {
         $title ="Asessments";
 
-        $questions =$answers=$questions = [];
+        $questions =$answers=$commons= [];
 
         $answers  = $test->answer;
+        $commons  = $test->common;
 
         if ($answers) {
             foreach ($answers as $key => $answer) {
@@ -213,7 +211,6 @@ class TestController extends Controller
                     } else if ($answer == 'b') {
                         $questions[$key]['question_id'] = $question->id;
                         $questions[$key]['subject_id'] = $question->subject_id;
-
                         $questions[$key]['question'] = $question->question;
                         $questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
                             ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;

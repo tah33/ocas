@@ -25,9 +25,13 @@ class Test extends Model
 	public function getAnswerAttribute()
     {
         $answers  = json_decode($this->attributes['ans']);
-
-
         return $answers;
+    }
+
+    public function getCommonAttribute()
+    {
+        $commons  = json_decode($this->attributes['ans']);
+        return $commons;
     }
 
 

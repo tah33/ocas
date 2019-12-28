@@ -33,7 +33,7 @@
                 <tr>
                     <th style="text-align: left">No.</th>
                     <th style="text-align: left">Student Name</th>
-                    <th style="text-align: left">Total Marks</th>
+                    <th style="text-align: left">Total Percentage</th>
                     <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
@@ -48,7 +48,7 @@
                             @endphp
                         <td rowspan="{{count($test->student->tests)}}" style="text-align: left">{{ $test->student->name }}</td>
                         @endif
-                        <td style="text-align: left">{{ $test->marks + $test->common_marks }}</td>
+                        <td style="text-align: left">{{ $test->marks + $test->common_marks }}%</td>
                         <td style="text-align: center">
                             <a href="{{url('tests',$test->id)}}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-eye"> View</i></a>
                         </td>
