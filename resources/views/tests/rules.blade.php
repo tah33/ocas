@@ -43,11 +43,9 @@
                                     </tr>
                                 @endforeach
                                 @foreach($commons as $common)
-                                    @if(!in_array($common->subject->name,$subjects))
                                     <tr>
                                         <td>{{$common->subject->name}} </td>
                                     </tr>
-                                    @endif
                                 @endforeach
                             </table>
                         </div>
