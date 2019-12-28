@@ -187,7 +187,7 @@ class TestController extends Controller
         }
 
         Toastr::success('Your answer was succesfully submitted', 'Success!');
-        return redirect('advise');
+        return redirect("advise/$test->id");
     }
 
     public function show(Test $test)
@@ -251,10 +251,10 @@ class TestController extends Controller
         return view('tests.show',compact('test','questions','title'));
     }
 
-    public function advise()
+    public function advise($id)
     {
         $title = "Advise";
-        $test = Test::where('student_id',Auth::guard('student')->id())->latest()->first();
+        $test = Test::find($id);
         return view('tests.advise',compact('test','title'));
     }
 }

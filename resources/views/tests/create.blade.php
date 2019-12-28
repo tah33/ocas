@@ -14,6 +14,7 @@
                 <div class="nav-tabs-custom ">
                     @php
                         $ids = [];
+                        $number_of_questions =0;
                     @endphp
 
                         <ul class="nav nav-tabs bg-primary" id="myHeader">
@@ -40,21 +41,21 @@
                                     @foreach($subject->questions->random($add == 0 ? $div-$sub : $div+$add) as $num => $question)
                                         <p style="font-size: 16px"><b>Quesion{{$num+1}} : {{$question->question}}</b> </p>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="a">
                                             <div class="checkbox-wrap">{{$question->option1}}</div>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="b">
                                             <div class="checkbox-wrap">{{$question->option2}}</div>
                                             <span> </span>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="c">
                                             <div class="checkbox-wrap">{{$question->option3}}</div>
                                             <span> </span>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="d">
                                             <div class="checkbox-wrap">{{$question->option4}} </div>
                                             <span> </span>
                                         </label>
@@ -73,34 +74,26 @@
                                 @if(!in_array($common->subject_id,$ids))
                                     <div class="tab-pane {{$key == 0 ? 'active' : ''}}" id="tab_{{ $common->id }}">
                                         @foreach($common->questions->random($greater == 0 ? $divide-$less : $divide+$greater) as $key => $question)
-                                            <p style="font-size: 16px"><b>Quesion{{$key+1}}
-                                                    : </b>{{$question->question}}
-                                            </p>
-
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" id="option" value="a"
-                                                       name="common[{{$question->id}}]">
-                                                <label class="form-check-label"
-                                                       for="option1">{{$question->option1}}</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" id="option" value="b"
-                                                       name="common[{{$question->id}}]">
-                                                <label class="form-check-label"
-                                                       for="option2">{{$question->option2}}</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" id="option" value="c"
-                                                       name="common[{{$question->id}}]">
-                                                <label class="form-check-label"
-                                                       for="option3">{{$question->option3}}</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="radio" class="form-check-input" id="option" value="d"
-                                                       name="common[{{$question->id}}]">
-                                                <label class="form-check-label"
-                                                       for="option4">{{$question->option4}}</label>
-                                            </div>
+                                            <p style="font-size: 16px"><b>Quesion{{$key+1}}: </b>{{$question->question}}</p>
+                                            <label class="checkbox-container">
+                                                <input type="radio" name="common[{{$question->id}}]" class="input-checkbox" value="a">
+                                                <div class="checkbox-wrap">{{$question->option1}}</div>
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="radio" name="common[{{$question->id}}]" class="input-checkbox" value="b">
+                                                <div class="checkbox-wrap">{{$question->option2}}</div>
+                                                <span> </span>
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="radio" name="common[{{$question->id}}]" class="input-checkbox" value="c">
+                                                <div class="checkbox-wrap">{{$question->option3}}</div>
+                                                <span> </span>
+                                            </label>
+                                            <label class="checkbox-container">
+                                                <input type="radio" name="common[{{$question->id}}]" class="input-checkbox" value="d">
+                                                <div class="checkbox-wrap">{{$question->option4}} </div>
+                                                <span> </span>
+                                            </label>
                                         @endforeach
                                         @endif
 
@@ -165,22 +158,19 @@
 {{--*/--}}
         setTimeout(function () {
             alert('Time is out');
-        }, {!! (($exam->time * 1000)*60)-1000 !!});
+        }, {!! (($exam->time * 1000)*60) !!});
         jQuery(document).ready(function() {
-             setTimeout('document.form.submit()',{!! (($exam->time * 1000)*60)-1000 !!});
-        });
+             setTimeout('document.form.submit()',{!! (($exam->time * 1000)*60) !!});
 
-        $(document).ready(function(){
-            $(".sidebar").click(function(){
-                if (!confirm("Do you want to delete")){
-                    return false;
-                }
-                if (confirm)
-                {
-                    window.location.href = "{{url('home')}}";
-                }
-            });
+             $(document).on('click', '.test-link', function(e) {
+                 if (!confirm("Are you sure! Your Everything will be lost")){
+                     return false;
+                 }
+             });
         });
-    </script>
+        $( document ).ready(function() {
+
+        });
+        </script>
 @endpush
 
