@@ -13,14 +13,14 @@ class Subject extends Model
         return $this->belongsTo(Department::class);
     }
 
-    public function subject()
+    public function rule()
     {
         return $this->hasOne(Rule::class);
     }
 
-    public function condition()
+    public function common()
     {
-        return $this->hasOne(Condition::class);
+        return $this->hasOne(Common::class);
     }
     public function questions()
     {

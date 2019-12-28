@@ -115,8 +115,9 @@
                                                 name="subject_id">
                                             <option value="">Select Major Subject</option>
                                             @foreach($subjects as $key => $subject)
-                                                <option
-                                                    value="{{$subject->id}}" {{ old('id') == $subject->id ? 'selected' : ''}}>{{$subject->name}}</option>
+                                                @if(! $subject->common()->exists())
+                                                <option value="{{$subject->id}}" {{ old('id') == $subject->id ? 'selected' : ''}}>{{$subject->name}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                         @error('subject_id')

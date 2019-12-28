@@ -122,13 +122,14 @@
                                                         class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}"
                                                         name="subject_id">
                                                     @if ($department->subject_id)
-                                                        <option
-                                                            value="{{$department->subject_id}}">{{$department->subject->name}}</option>
+                                                        <option value="{{$department->subject_id}}">{{$department->subject->name}}</option>
                                                     @endif
                                                     <option value="">Select Major Subject</option>
                                                     @foreach($subjects as $subject)
-                                                        <option value="{{$subject->id}}">{{$subject->name}}</option>
-                                                    @endforeach
+                                                            @if(! $subject->common()->exists())
+                                                            <option value="{{$subject->id}}">{{$subject->name}}</option>
+                                                            @endif
+                                                        @endforeach
                                                 </select>
                                                 @if ($errors->has('subject_id'))
                                                     <span style="color: red" class="invalid-feedback" role="alert">

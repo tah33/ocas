@@ -84,7 +84,7 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        $count = $common = 0;
+        $count = $common_marks = 0;
 
         $exam = Exam::first();
         if($request->major) {
@@ -99,7 +99,7 @@ class TestController extends Controller
             foreach ($request->common as $key => $common) {
                 $question = Question::where('id', $key)->where('correct_ans', $common)->first();
                 if ($question) {
-                    $common++;
+                    $common_marks++;
                 }
             }
         }
@@ -108,7 +108,7 @@ class TestController extends Controller
         $test->ans          = $request->major;
         $test->marks        = ($count / $exam->major) * 100;
         $test->common       = $request->common;
-        $test->common_marks = ($common / $exam->common) * 100;
+        $test->common_marks = ($common_marks / $exam->common) * 100;
         $test->save();
 
         $student = Student::find(Auth::id());
