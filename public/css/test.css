@@ -57,4 +57,12 @@
     transform: rotate(45deg);
     opacity: 1;
 }
+div.dataTables_wrapper div.dataTables_filter input {
+    width: 200px;
+}
 
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}

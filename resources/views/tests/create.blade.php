@@ -38,19 +38,19 @@
                                         <p style="font-size: 16px"><b>Quesion{{$num+1}} : {{$question->question}}</b>
                                         </p>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="a">
                                             <div class="checkbox-wrap">{{$question->option1}}</div>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="b">
                                             <div class="checkbox-wrap">{{$question->option2}}</div>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="c">
                                             <div class="checkbox-wrap">{{$question->option3}}</div>
                                         </label>
                                         <label class="checkbox-container">
-                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox">
+                                            <input type="radio" name="major[{{$question->id}}]" class="input-checkbox" value="d">
                                             <div class="checkbox-wrap">{{$question->option4}} </div>
                                         </label>
                                     @endforeach
@@ -161,13 +161,15 @@
         }, {!! (($exam->time * 1000)*60)-1000 !!});
         jQuery(document).ready(function () {
             setTimeout('document.form.submit()',{!! (($exam->time * 1000)*60)-1000 !!});
-        });
-        $(document).ready(function () {
             $(".test-link").click(function () {
                 if (!confirm("Are you Sure! Your Data will be loss")) {
                     return false;
                 }
             });
         });
+        function disableF5(e) { if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82) e.preventDefault(); };
+        window.onbeforeunload = function() {
+            return "Are you sure you want to leave?";
+        }
     </script>
 @endpush

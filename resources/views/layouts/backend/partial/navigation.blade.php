@@ -102,7 +102,7 @@
             </span>
                     </a>
                 </li>
-                <li class="header">Common Subjects</li>
+                {{--<li class="header">Common Subjects</li>
                 <li class="treeview {{ Request::is('commons') || Request::is('commons/*') ? 'active' : '' }}">
                     <a href="#">
                         <i class="glyphicon glyphicon-education"></i> <span>Common Subject</span>
@@ -117,7 +117,7 @@
                         <li class="{{  Request::is('commons') ? 'active' : '' }}"><a class="test-link" href="{{url('commons')}}"><i
                                     class="fa fa-book"></i>Subjects</a></li>
                     </ul>
-                </li>
+                </li>--}}
             @endif
             @if(Auth::guard('student')->check())
                 <li class="header">Tests</li>

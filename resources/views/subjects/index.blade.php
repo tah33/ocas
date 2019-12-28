@@ -1,19 +1,13 @@
 @extends('layouts.master')
 @section('backend.title', $title)
-
 @section('master.content')
+    @push('backend.css')
+        <link rel="stylesheet" href="{{URL::to('css/test.css')}}">
+    @endpush
     <style>
-        div.dataTables_wrapper div.dataTables_filter input {
-            width: 200px;
-        }
 
-        .center {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
-        }
     </style>
-    <div class="box box-primary" style="width: 800px">
+    <div class="box box-primary">
         <div class="box-body">
             <div class="center">
                  @if(Auth::guard('admin')->check())
@@ -71,14 +65,24 @@
                 @foreach ($subjects as $key => $subject)
                     <tr>
                         <td style="text-align: center">{{ $key+1 }}</td>
-                        <td style="text-align: left">{{ $subject->name }}</td>
+                        <td style="text-align: left">{{ $subject->name }} @if($subject->commons()->exists()) (Common) @endif</td>
                         <td style="text-align: center"><img src="{{url('images/subjects/'.$subject->logo)}}"
                                                      alt="Subject Logo" height="50px" width="50px"></td>
                         @if(Auth::guard('admin')->check())
                         <td>
+                            <form action="{{url('commons',$subject->id)}}" method="post" style="display: inline">
+                                @csrf
+                                @method('put')
+                                <label class="checkbox-container">
+                                    <input type="checkbox" @if($subject->commons()->exists()) checked  onclick="return confirm('Are you sure you want to remove as Common?');"
+                                           @else onclick="return confirm('Are you sure you wan to select as Common?');" @endif name="common" class="input-checkbox" value="{{$subject->id}}" onchange="this.form.submit()">
+                                    <div class="checkbox-wrap">Select as Common </div>
+                                </label>
+                            </form>
+                            <div style=" margin: -30px 0 0 150px">
                         <a href="{{url('subjects/'.$subject->id.'/edit')}}"
                                class="btn btn-warning btn-sm btn-flat"><i class="fa fa-edit"></i> Edit</a>
-                            <form style="float: right; margin-left: -55px" 
+                            <form style="display: inline"
                                   action="{{url('subjects',$subject->id)}}" method="post"
                                   onsubmit="return confirm('Are you sure you want to Remove This Subjects?');">
                                 @csrf
@@ -86,6 +90,7 @@
                                 <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash-o"></i> Delete
                                 </button>
                             </form>
+                            </div>
                         </td>
                             @endif
                     </tr>

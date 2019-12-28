@@ -39,12 +39,12 @@
                                         @php
                                             $subjects[]=$department->subject->name;
                                         @endphp
-                                        <td>{{$department->subject->name}} </td>
+                                        <td><b>{{$department->subject->name}}</b></td>
                                     </tr>
                                 @endforeach
                                 @foreach($commons as $common)
                                     <tr>
-                                        <td>{{$common->subject->name}} </td>
+                                        <td><b>{{$common->subject->name}} (Common)</b></td>
                                     </tr>
                                 @endforeach
                             </table>

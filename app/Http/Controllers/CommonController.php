@@ -16,35 +16,28 @@ class CommonController extends Controller
 
     public function index()
     {
-        $title = "Common Subject List";
-        $commons    = Common::all();
-        $subjects   = Subject::all();
-        return view('commons.index',compact('commons','subjects','title'));
+//        $title = "Common Subject List";
+//        $commons    = Common::all();
+//        $subjects   = Subject::all();
+//        return view('commons.index',compact('commons','subjects','title'));
     }
 
     public function create()
     {
-        $this->authorize('create',Common::class);
-        $title = "Create Common";
-        $subjects = Subject::all();
-        return view('commons.create',compact('subjects','title'));
+//        $this->authorize('create',Common::class);
+//        $title = "Create Common";
+//        $subjects = Subject::all();
+//        return view('commons.create',compact('subjects','title'));
     }
 
     public function store(Request $request)
     {
-        $request->validate( [
-            'subject_id' => 'required|unique:commons,subject_id',
-        ],
-            ['subject_id.required' => "Select at least one Subject"]
-    );
-
-        foreach ($request->subject_id as $key => $subject) {
-            $common                 = new Common;
-            $common->subject_id     = $subject;
-            $common->save();
-        }
-        Toastr::success('Subjects are selected as Common Subjects');
-        return back();
+//            $common                 = new Common;
+//            $common->subject_id     = $subject;
+//            $common->save();
+//
+//        Toastr::success('Subjects are selected as Common Subjects');
+//        return back();
     }
 
     public function show(Common $common)
@@ -57,15 +50,27 @@ class CommonController extends Controller
         //
     }
 
-    public function update(Request $request, Common $common)
+    public function update($id)
     {
-        //
+        $subject = Subject::find($id);
+        if ($subject->common()->exists())
+        {
+            $subject->common->delete();
+            Toastr::success('Subject was Succesfully Remove as Common','Success!');
+        }
+        else{
+        $common =new Common();
+        $common->subject_id = $id;
+        $common->save();
+        Toastr::success('Subject was Succesfully Choosen as Common','Success!');
+        }
+        return back();
     }
 
     public function destroy(Common $common)
     {
-        $common->delete();
-        Toastr::success('Subject was removed');
-        return back();
+//        $common->delete();
+//        Toastr::success('Subject was removed');
+//        return back();
     }
 }

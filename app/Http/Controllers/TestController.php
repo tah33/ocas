@@ -255,6 +255,9 @@ class TestController extends Controller
     {
         $title = "Advise";
         $test = Test::find($id);
-        return view('tests.advise',compact('test','title'));
+        $highest = $test->ranks->max('marks');
+        $advise = $test->ranks->where('marks',$highest);
+        $advise_department = Department::where('subject_id',$advise->first()->subject_id)->first();
+        return view('tests.advise',compact('test','title','advise_department'));
     }
 }
