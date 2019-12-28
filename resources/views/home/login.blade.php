@@ -3,6 +3,8 @@
 @push('backend.css')
     <link rel="stylesheet" type="text/css" href="{{URL::asset('css/login.css')}}">
 @endpush
+
+
 @section('backend.base.content')
     <div class="overflow">
         <div class="sidenav marin-login">
@@ -15,7 +17,7 @@
         <div class="main">
             <div class="col-md-8">
                 <div id='frame'>
-                    <div class='search'><h1>Sign In Here</h1>
+                    <div class='search'><h1 id="sin">Sign In Here</h1>
                         <form method="POST" action="{{url('verify-login')}}">
                             @csrf
                             <div class="content">
@@ -33,8 +35,6 @@
                                             <strong style="color: red">{{ $message }}</strong>
                                         @endif
                                     </div>
-
-
                                     <div class="col-md-8">
                                         <input id="password" type="password"
                                                class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
@@ -53,9 +53,8 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
+</div>
     @include('email.create')
 @stop

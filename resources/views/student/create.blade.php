@@ -1,3 +1,4 @@
+
 @extends('layouts.base')
 @section('backend.title','Registration')
 @push('backend.css')
@@ -106,20 +107,7 @@
                                     </span>
                                     @endif
                                 </div>
-                                                                <div class="col-md-6 float:left">
-                                    <select name="id[]"
-                                            class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }} select2"
-                                            data-placeholder="Select Departments" multiple="multiple">
-                                        @foreach($departments as $department)
-                                            <option value='{{$department->id}}'>{{$department->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @if ($errors->has('id'))
-                                        <span style="color : red" class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('id') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+
 
                                 <div class="col-md-6">
                                     <select name="gender"
@@ -135,10 +123,25 @@
                                     @endif
                                 </div>
 
-                                <div class="col-md-12">
+                                    <div class="col-md-12" style="margin-top: 20px">
+                                        <select name="id[]"
+                                                class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }} select2"
+                                                data-placeholder="Select Departments" multiple="multiple">
+                                            @foreach($departments as $department)
+                                                <option value='{{$department->id}}'>{{$department->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('id'))
+                                            <span style="color : red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('id') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                <div class="col-md-12" style="margin-top: 20px">
                                     <input type="file" name="image">
                                 </div>
                             </div>
+
                                 <p>Already Registered ? <a href="{{url('login')}}">Sing In here</a></p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
