@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 23, 2019 at 07:35 PM
+-- Generation Time: Dec 28, 2019 at 12:54 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.6
 
@@ -48,7 +48,14 @@ INSERT INTO `activities` (`id`, `student_id`, `login_time`, `logout_time`, `crea
 (4, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58'),
 (5, 1, '10:47:53', '10:50:27', '2019-12-13 22:47:53', '2019-12-13 22:50:27'),
 (6, 1, '18:26:53', '18:40:58', '2019-12-12 06:26:53', '2019-12-12 06:40:58'),
-(7, 1, '00:12:22', NULL, '2019-12-14 12:12:22', '2019-12-14 12:12:22');
+(7, 1, '00:12:22', NULL, '2019-12-14 12:12:22', '2019-12-14 12:12:22'),
+(8, 1, '11:52:14', NULL, '2019-12-25 23:52:14', '2019-12-25 23:52:14'),
+(9, 1, '10:20:37', '10:28:26', '2019-12-27 22:20:37', '2019-12-27 22:28:26'),
+(10, 1, '10:30:54', NULL, '2019-12-27 22:30:54', '2019-12-27 22:30:54'),
+(11, 1, '11:06:39', NULL, '2019-12-27 23:06:39', '2019-12-27 23:06:39'),
+(12, 1, '12:30:21', NULL, '2019-12-28 00:30:21', '2019-12-28 00:30:21'),
+(13, 1, '14:31:57', NULL, '2019-12-28 02:31:57', '2019-12-28 02:31:57'),
+(14, 1, '16:32:17', NULL, '2019-12-28 04:32:17', '2019-12-28 04:32:17');
 
 -- --------------------------------------------------------
 
@@ -91,8 +98,7 @@ CREATE TABLE `commons` (
 --
 
 INSERT INTO `commons` (`id`, `subject_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2019-12-11 23:25:44', '2019-12-11 23:25:44'),
-(2, 5, '2019-12-11 23:25:44', '2019-12-11 23:25:44');
+(5, 1, '2019-12-28 05:03:41', '2019-12-28 05:03:41');
 
 -- --------------------------------------------------------
 
@@ -118,13 +124,13 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `slug`, `name`, `minimum`, `logo`, `subject_id`, `marks`, `scope`, `created_at`, `updated_at`) VALUES
-(1, 'BBA', 'Bachelor of Business Administration', 50, 'BBA.jpg', 10, 60, 'Finance Manager\r\nBusiness Administration Researcher\r\nHuman Resource Manager\r\nResearch and Development Manager\r\nBusiness Consultant\r\nInformation Systems Manager\r\nMarketing Manager', NULL, '2019-12-23 11:30:38'),
-(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, NULL, NULL, '2019-12-11 23:20:19'),
-(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 1, 70, NULL, NULL, '2019-12-11 23:20:33'),
+(1, 'BBA', 'Bachelor of Business Administration', 70, 'BBA.jpg', 10, 60, 'BBA graduates can look for jobs in sales and marketing department of companies as members of sales teams or as management trainees.', NULL, '2019-12-28 05:22:10'),
+(2, 'CSE', 'Bachelor of Computer Science and Engineering', 60, 'CSE.jpg', 4, 60, 'After the completion of your degree in Computer Science Engineering, you can work in the field of database management, embedded systems, IT, telecommunication, multimedia, computer hardware and software implementation, computer hardware & software mainten', NULL, '2019-12-28 05:24:15'),
+(3, 'SCE', 'Bachelor of Science in Civil Engineering', 60, 'SCE.jpg', 3, 70, 'A career after civil engineering is highly rewarding. There are jobs that involve supervision, construction, design and analyzes of private as well as public projects, such as dams, highways, canals, water sewages and bridges', NULL, '2019-12-28 04:30:14'),
 (4, 'SME', 'Bachelor of Science in Mechanical Engineering', 60, 'SME.jpg', 3, 60, NULL, NULL, '2019-12-11 23:20:58'),
 (5, 'EEE', 'Bachelor of Electrical & Electronics Engineering', 60, 'EEE.jpg', 3, 70, NULL, NULL, '2019-12-11 23:21:12'),
 (6, 'BSN', 'Bachelor of Science in Nursing', 40, 'BSN.jpg', 11, 60, NULL, NULL, '2019-12-11 23:21:22'),
-(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, 'BATHM.jpg', 5, 80, NULL, NULL, '2019-12-11 23:22:10'),
+(7, 'BATHM', 'Bachelor of Arts in Tourism and Hospitality Management', 40, 'BATHM.jpg', 23, 80, NULL, NULL, '2019-12-28 00:52:41'),
 (8, 'BAG', 'Bachelor of Science in Agriculture', 45, 'BAG.png', 13, 70, NULL, NULL, '2019-12-11 23:22:33'),
 (9, 'BAE', 'Bachelor of Arts in Economics', 40, 'BAE.png', 14, 80, NULL, NULL, '2019-12-11 23:22:49');
 
@@ -173,7 +179,7 @@ CREATE TABLE `exams` (
 --
 
 INSERT INTO `exams` (`id`, `major`, `common`, `time`, `created_at`, `updated_at`) VALUES
-(1, 100, 40, 140, '2019-12-12 03:30:06', '2019-12-12 03:30:19');
+(1, 100, 40, 100, '2019-12-12 03:30:06', '2019-12-28 02:48:37');
 
 -- --------------------------------------------------------
 
@@ -920,11 +926,11 @@ CREATE TABLE `ranks` (
 --
 
 INSERT INTO `ranks` (`id`, `subject_id`, `test_id`, `marks`, `created_at`, `updated_at`) VALUES
-(13, 4, 1, 30, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(14, 1, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(15, 11, 1, 15, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(16, 5, 1, 25, '2019-12-13 22:48:27', '2019-12-13 22:48:27'),
-(17, 13, 1, 10, '2019-12-13 22:48:27', '2019-12-13 22:48:27');
+(65, 4, 21, 60, '2019-12-28 03:22:01', '2019-12-28 03:22:01'),
+(66, 3, 21, 70, '2019-12-28 03:22:01', '2019-12-28 03:22:01'),
+(67, 11, 21, 70, '2019-12-28 03:22:01', '2019-12-28 03:22:01'),
+(68, 23, 21, 25, '2019-12-28 03:22:01', '2019-12-28 03:22:01'),
+(69, 13, 21, 30, '2019-12-28 03:22:01', '2019-12-28 03:22:01');
 
 -- --------------------------------------------------------
 
@@ -1013,7 +1019,7 @@ CREATE TABLE `tests` (
 --
 
 INSERT INTO `tests` (`id`, `student_id`, `ans`, `marks`, `common`, `common_marks`, `time`, `created_at`, `updated_at`) VALUES
-(1, 1, '{\"160\":\"d\",\"162\":\"a\",\"164\":\"b\",\"167\":\"a\",\"170\":\"d\",\"171\":\"a\",\"173\":\"b\",\"174\":\"c\",\"176\":\"c\",\"177\":\"a\",\"183\":\"a\",\"185\":\"b\",\"188\":\"c\",\"194\":\"d\",\"198\":\"a\",\"200\":\"a\",\"204\":\"a\",\"205\":\"c\",\"206\":\"c\",\"209\":\"c\",\"107\":\"c\",\"109\":\"b\",\"110\":\"a\",\"114\":\"d\",\"115\":\"c\",\"116\":\"c\",\"118\":\"a\",\"119\":\"d\",\"122\":\"a\",\"131\":\"c\",\"133\":\"c\",\"136\":\"d\",\"141\":\"d\",\"142\":\"c\",\"144\":\"d\",\"146\":\"b\",\"150\":\"a\",\"152\":\"d\",\"156\":\"c\",\"157\":\"a\",\"576\":\"a\",\"577\":\"b\",\"580\":\"d\",\"581\":\"b\",\"585\":\"a\",\"586\":\"b\",\"589\":\"d\",\"590\":\"c\",\"597\":\"a\",\"602\":\"d\",\"606\":\"a\",\"607\":\"d\",\"611\":\"d\",\"613\":\"d\",\"614\":\"d\",\"616\":\"a\",\"619\":\"a\",\"620\":\"d\",\"624\":\"a\",\"625\":\"c\",\"5\":\"d\",\"6\":\"a\",\"7\":\"b\",\"10\":\"c\",\"11\":\"d\",\"16\":\"d\",\"19\":\"b\",\"20\":\"a\",\"21\":\"d\",\"22\":\"b\",\"26\":\"a\",\"27\":\"b\",\"33\":\"a\",\"34\":\"c\",\"38\":\"c\",\"39\":\"c\",\"42\":\"b\",\"44\":\"d\",\"52\":\"a\",\"53\":\"d\",\"473\":\"d\",\"476\":\"a\",\"480\":\"b\",\"481\":\"d\",\"484\":\"a\",\"485\":\"d\",\"488\":\"d\",\"492\":\"d\",\"493\":\"a\",\"495\":\"d\",\"497\":\"a\",\"500\":\"c\",\"501\":\"d\",\"504\":\"d\",\"505\":\"a\",\"506\":\"d\",\"509\":\"d\",\"514\":\"b\",\"517\":\"d\",\"522\":\"d\"}', 19, NULL, '0', NULL, '2019-12-11 22:48:26', '2019-12-13 22:48:26');
+(21, 1, '{\"215\":\"b\",\"216\":\"c\",\"217\":\"b\",\"220\":\"d\",\"222\":\"b\",\"224\":\"d\",\"229\":\"b\",\"230\":\"d\",\"233\":\"c\",\"236\":\"c\",\"238\":\"b\",\"244\":\"b\",\"248\":\"d\",\"251\":\"a\",\"257\":\"b\",\"260\":\"a\",\"261\":\"a\",\"263\":\"a\",\"264\":\"c\",\"265\":\"a\",\"108\":\"d\",\"110\":\"a\",\"111\":\"b\",\"115\":\"d\",\"117\":\"c\",\"119\":\"d\",\"120\":\"c\",\"124\":\"d\",\"126\":\"c\",\"128\":\"b\",\"130\":\"a\",\"132\":\"b\",\"137\":\"d\",\"138\":\"a\",\"141\":\"a\",\"144\":\"c\",\"147\":\"a\",\"150\":\"c\",\"152\":\"d\",\"155\":\"b\",\"1\":\"c\",\"6\":\"b\",\"10\":\"c\",\"14\":\"b\",\"15\":\"d\",\"17\":\"b\",\"19\":\"c\",\"23\":\"c\",\"24\":\"b\",\"25\":\"b\",\"28\":\"d\",\"34\":\"c\",\"40\":\"a\",\"41\":\"b\",\"42\":\"c\",\"45\":\"b\",\"47\":\"d\",\"51\":\"a\",\"52\":\"d\",\"53\":\"b\",\"473\":\"a\",\"475\":\"d\",\"479\":\"c\",\"482\":\"a\",\"487\":\"b\",\"488\":\"d\",\"490\":\"a\",\"491\":\"d\",\"495\":\"b\",\"496\":\"c\",\"500\":\"a\",\"508\":\"a\",\"509\":\"c\",\"510\":\"d\",\"512\":\"b\",\"513\":\"b\",\"515\":\"d\",\"517\":\"d\",\"518\":\"b\",\"520\":\"c\",\"779\":\"d\",\"782\":\"a\",\"783\":\"a\",\"785\":\"b\",\"788\":\"b\",\"789\":\"d\",\"792\":\"c\",\"797\":\"c\",\"800\":\"b\",\"801\":\"c\",\"802\":\"a\",\"803\":\"c\",\"806\":\"d\",\"807\":\"b\",\"808\":\"c\",\"814\":\"c\",\"818\":\"b\",\"821\":\"d\",\"822\":\"a\",\"823\":\"a\"}', 31, '{\"160\":\"a\",\"162\":\"c\",\"166\":\"d\",\"168\":\"a\",\"171\":\"c\",\"173\":\"c\",\"176\":\"c\",\"178\":\"d\",\"179\":\"c\",\"184\":\"a\",\"188\":\"c\",\"192\":\"c\",\"193\":\"c\",\"196\":\"c\",\"200\":\"d\",\"202\":\"a\",\"204\":\"a\",\"207\":\"c\",\"208\":\"b\",\"209\":\"b\",\"577\":\"d\",\"579\":\"a\",\"580\":\"b\",\"585\":\"b\",\"586\":\"d\",\"588\":\"b\",\"592\":\"b\",\"594\":\"c\",\"596\":\"c\",\"598\":\"c\",\"601\":\"b\",\"603\":\"c\",\"604\":\"a\",\"608\":\"a\",\"609\":\"c\",\"610\":\"d\",\"612\":\"b\",\"614\":\"c\",\"617\":\"d\",\"618\":\"b\"}', '30', NULL, '2019-12-28 03:22:01', '2019-12-28 03:22:01');
 
 --
 -- Indexes for dumped tables
@@ -1113,7 +1119,7 @@ ALTER TABLE `tests`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `admins`
@@ -1125,7 +1131,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `commons`
 --
 ALTER TABLE `commons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -1161,7 +1167,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `ranks`
 --
 ALTER TABLE `ranks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `students`
@@ -1179,7 +1185,7 @@ ALTER TABLE `subjects`
 -- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
