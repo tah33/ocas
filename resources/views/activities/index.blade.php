@@ -10,6 +10,50 @@
             padding: 10px;
         }
     </style>
+     <div class="box box-primary">
+        <div class="box-body">
+        <form method="post" action="{{url('particular-activity')}}">@csrf
+            <div class="form-group row">
+                                <div class="col-md-4">
+                                <strong>From:</strong>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input id="name" type="date"
+                                               class="form-control{{ $errors->has('start_date') ? ' is-invalid' : '' }}"
+                                               name="start_date" value="{{ old('start_date') }}"
+                                               placeholder="Enter Department Name">
+                                    </div>
+                                    @error('start_date')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                </div>
+                                <div class="col-md-4">
+                                <strong>To:</strong>
+
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input id="end_date" type="date"
+                                               class="form-control{{ $errors->has('end_date') ? ' is-invalid' : '' }}"
+                                               name="end_date" value="{{ old('end_date') }}" placeholder="Enter Short Name">
+                                    </div>
+                                    @error('end_date')
+                                        <span style="color: red" class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                </div>
+                            </div>
+       <input  name="" type="submit" value="Get Reports" target="_blank" class="btn btn-danger btn-sm btn-flat" style="margin-top:10px">
+        </form>    
+        </div>
+    </div>
+   
     <div class="row">
         <div class="box">
             <div class="box-body">

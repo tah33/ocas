@@ -73,9 +73,7 @@ class HomeController extends Controller
             return view('admin.home')->with(array_merge($this->data, $data));
         }
         else {
-            $marks = $names = $subjects=$percentages=[];
-            $departments           = Department::all();
-            foreach ($departments as $department)
+            foreach (Auth::guard('student')->user()->departments as $department)
             {
                 $marks[] = $department->minimum;
                 $names[] = $department->slug . '('.$department->subject->slug.')';

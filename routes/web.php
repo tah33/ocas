@@ -65,6 +65,8 @@ Route::get('subject-download','PdfController@downloadSubject');
 Route::get('question-view/{id}','PdfController@viewQuestion');
 Route::get('question-download/{id}','PdfController@downloadQuestion');
 Route::get('tests-view','PdfController@viewTest');
+Route::post('particular-test','PdfController@particularTest');
+Route::post('particular-activity','PdfController@particularActivity');
 Route::get('tests-download','PdfController@downloadTest');
 Route::get('ranks-view/{id}','PdfController@viewRank');
 Route::get('ranks-download/{id}','PdfController@downloadRank');

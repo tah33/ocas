@@ -191,7 +191,7 @@ class TestController extends Controller
     {
         $title ="Asessments";
 
-        $questions =$answers=$commons= [];
+        $questions =$common_questions= [];
 
         $answers  = $test->answer;
         $commons  = $test->common;
@@ -244,8 +244,55 @@ class TestController extends Controller
             }
         }
 
+        if ($commons) {
+            foreach ($commons as $key => $common) {
+                $question = Question::where('id',  $key)->first();
+                if ($question) {
+                    if ($common == 'a') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option1;
+                    } else if ($common == 'b') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option2;
+                    }else if ($common == 'c') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option3;
+                    }else if ($common == 'd') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option4;
+                    } else {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = '';
+                    }
+                }
+            }
+        }
         $questions = collect($questions);
-        return view('tests.show',compact('test','questions','title'));
+        $common_questions = collect($common_questions);
+        return view('tests.show',compact('test','questions','title','common_questions'));
     }
 
     public function advise($id)

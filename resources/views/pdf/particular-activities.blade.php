@@ -34,7 +34,7 @@
     @if(! $end_date)
     <h3 style="color: green"> Test Reports for <font color="red">{{$activities->first()->created_at->format('m/d/Y')}}</font> </h3>
     @else
-    <h3 style="color: green"> Activity Reports from <font color="red">{{$activities->first()->created_at->format('m/d/Y')}} to {{$activities->last()->created_at->format('m/d/Y')}}</font> </h3>
+    <h3 style="color: green"> Test Reports from <font color="red">{{$tests->first()->created_at->format('m/d/Y')}} to {{$activities->last()->created_at->format('m/d/Y')}}</font> </h3>
     @endif
 </center>
 

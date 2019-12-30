@@ -67,7 +67,7 @@
                                                     class="pull-right">{{ Auth::guard('student')->user()->address }}</a>
                                             </li>
                                         </ul>
-                                        <a href="{{url('profiles',$user->id.'/edit')}}" class="btn btn-primary btn-block"><b>Edit
+                                        <a href="{{url('profile-edit')}}" class="btn btn-primary btn-block"><b>Edit
                                                 Profile</b></a>
                                     </div>
                                     <!-- /.box-body -->

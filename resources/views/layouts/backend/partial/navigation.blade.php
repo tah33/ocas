@@ -168,6 +168,14 @@
                     </a>
                 </li>
             @endif
+            <li class="header">Activities</li>
+                <li class="{{  Request::is('subjects') ? 'active' : '' }}">
+                    <a href="{{url('activities')}}" class="test-link">
+                        <i class="fa fa-cogs"></i> <span>Activities</span>
+                        <span class="pull-right-container"></span>
+                    </a>
+                </li>
+
         </ul>
     </section>
     <!-- /.sidebar -->

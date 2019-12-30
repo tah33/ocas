@@ -63,6 +63,30 @@
                                         </tr>
                                     @endif
                                 @endforeach
+                                @if($rank->subject->common()->exists())
+                                @foreach ($common_questions as $key => $question)
+                                    @php  
+                                    $ques = App\Question::where('id',$key)->first();
+                                    @endphp
+                                    @if($ques->subject_id == $rank->subject_id)
+                                    
+                                        <tr>
+                                            <td style="text-align: center">{{ $serial++ }}</td>
+                                            <td style="text-align: left">{{ $question['question'] }}</td>
+                                            <td style="text-align: left;">{{ $question['correct_answer'] }}</td>
+                                            <td>{{ $question['answer'] }}</td>
+                                            <td>
+                                                @if( $question['correct_answer'] == $question['answer'])
+                                                    @php  $count++;@endphp
+                                                    <span class="label label-success"><i class="fa fa-check"></i></span>
+                                                @else
+                                                    <span class="label label-danger"><i class="fa  fa-times"></i></span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endif
+                                    @endforeach
+                                @endif
                                 <tr class="bg-gray">
                                     <th colspan="4">Correct
                                     </th>

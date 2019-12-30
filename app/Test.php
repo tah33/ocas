@@ -30,7 +30,7 @@ class Test extends Model
 
     public function getCommonAttribute()
     {
-        $commons  = json_decode($this->attributes['ans']);
+        $commons  = json_decode($this->attributes['common']);
         return $commons;
     }
 

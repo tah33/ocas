@@ -114,6 +114,23 @@ class PdfController extends Controller
         return $pdf->stream("tests-{$date}.pdf");
     }
 
+    public function particularTest(Request $request)
+    {
+        $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'nullable|after:start_date',
+        ]);
+        $end_date = $request->end_date; 
+        if (! $end_date)
+            $tests = Test::whereDate('created_at',$request->start_date)->get();
+        else
+            $tests = Test::whereDate('created_at','>=', $request->start_date)->whereDate('created_at','<=',$request->end_date)->get();
+        $exam = Exam::first();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.particular-tests', compact('tests','exam','end_date'));
+        return $pdf->stream("tests-{$date}.pdf");
+    }
+
     public function downloadTest()
     {
         $customPaper = array(0, 0, 792.00, 1300.00);
@@ -131,6 +148,7 @@ class PdfController extends Controller
         $questions =$answers=$questions = [];
         $test = Test::find($id);
         $answers  = $test->answer;
+        $commons  = $test->common;
 
         if ($answers) {
             foreach ($answers as $key => $answer) {
@@ -180,10 +198,57 @@ class PdfController extends Controller
                 }
             }
         }
+        if ($commons) {
+            foreach ($commons as $key => $common) {
+                $question = Question::where('id',  $key)->first();
+                if ($question) {
+                    if ($common == 'a') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option1;
+                    } else if ($common == 'b') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option2;
+                    }else if ($common == 'c') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] =$question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option3;
+                    }else if ($common == 'd') {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = $question->option4;
+                    } else {
+                        $common_questions[$key]['question_id'] = $question->id;
+                        $common_questions[$key]['subject_id'] = $question->subject_id;
+
+                        $common_questions[$key]['question'] = $question->question;
+                        $common_questions[$key]['correct_answer'] = $question->correct_ans == 'a' ? $question->option1 : ($question->correct_ans == 'b' ? $question->option2 :
+                            ($question->correct_ans == 'c' ? $question->option3 : ($question->correct_ans == 'd' ? $question->option4 : "") )) ;
+                        $common_questions[$key]['answer'] = '';
+                    }
+                }
+            }
+        }
 
         $questions = collect($questions);
+        $common_questions = collect($common_questions);
         $date = date('Y-M-d');
-        $pdf = PDF::loadView('pdf.tests', compact('test','questions'))->setPaper($customPaper, 'landscape');
+        $pdf = PDF::loadView('pdf.tests', compact('test','questions','common_questions'))->setPaper($customPaper, 'landscape');
         return $pdf->stream("test-{$date}.pdf");
     }
 
@@ -290,5 +355,26 @@ class PdfController extends Controller
         $date = date('Y-M-d');
         $pdf = PDF::loadView('pdf.activities', compact('activities','tests','exam'));
         return $pdf->download("activities-{$activities->first()->student->username}.pdf");
+    }
+
+    public function particularActivity(Request $request)
+    {
+                $request->validate([
+            'start_date' => 'required',
+            'end_date' => 'nullable|after:start_date',
+        ]);
+        $end_date = $request->end_date; 
+        if (! $end_date)
+            $activities = Activity::whereDate('created_at',$request->start_date)->get();
+        else
+            $activities = Activity::whereDate('created_at','>=', $request->start_date)->whereDate('created_at','<=',$request->end_date)->get();
+        if (! $end_date)
+            $tests = Test::whereDate('created_at',$request->start_date)->get();
+        else
+            $tests = Test::whereDate('created_at','>=', $request->start_date)->whereDate('created_at','<=',$request->end_date)->get();
+        $exam = Exam::first();
+        $date = date('Y-M-d');
+        $pdf = PDF::loadView('pdf.all-activities', compact('activities','tests','exam','end_date'));
+        return $pdf->stream("activities-{$activities->first()->student->username}.pdf");
     }
 }
