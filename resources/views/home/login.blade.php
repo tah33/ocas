@@ -9,8 +9,7 @@
     <div class="overflow">
         <div class="sidenav marin-login">
             <div class="login-main-text">
-                <a href="#" onclick="goBack()" ><img style="margin-top: -150px" src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
-                <h2>Application Login Page</h2>
+                <h2> <img src="{{ asset('images/hr.png') }}" alt="" width="50px">Application Login Page</h2>
                 <p>Login to get access.</p>
             </div>
         </div>
@@ -47,7 +46,8 @@
                                     </div>
                                 </div>
                                 <p>Forgot Password? <a href="#" data-toggle="modal" data-target="#modal-reset">Click Here</a></p>
-                                <p>Not Registered? <a href="{{url('students/create')}}">Register Now</a></p>
+                                <p>Not Registered? <a href="{{url('students/create')}}">Register Now</a></p><p>
+                                <a href="{{url('/')}}"><i class="fa fa-home"></i> Go Home</a></p>
                                 <button type="submit"  class="btn btn-primary">Submit</button>
                             </div>
                         </form>

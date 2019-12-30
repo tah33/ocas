@@ -6,9 +6,9 @@
 @endpush
 @section('backend.base.content')
     <div class="overflow">
-        <div class="sidenav marin-login" style="background-color:#152733;">
+        <div class="sidenav marin-login">
             <div class="login-main-text">
-                <a href="#" onclick="goBack()" ><img style="margin-top: -300px" src="{{url('icons/back.svg')}}" width="50px" height="50px"></a>
+            
                 <ul>
                     <h3>
                         <li class="tick">To find out a suitable career</li>
@@ -143,6 +143,7 @@
                             </div>
 
                                 <p>Already Registered ? <a href="{{url('login')}}">Sing In here</a></p>
+                                <p><a href="{{url('/')}}"><i class="fa fa-home"></i> Go Home</a></p>
                                 <button type="submit" class="btn btn-primary">Submit</button>
 
                             </div>

@@ -21,7 +21,8 @@ body
 }
 .sidenav {
     height: 100%;
-    background-color: #152733;/*image*/
+    background-color: #02AD8B;/*image*/
+    
     overflow-x: hidden;
     padding-top: 20px;
 }
