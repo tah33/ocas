@@ -9,7 +9,7 @@
     <div class="overflow">
         <div class="sidenav marin-login">
             <div class="login-main-text">
-                <h2> <img src="{{ asset('images/hr.png') }}" alt="" width="50px">Application Login Page</h2>
+                <h2> <img src="{{ asset('images/hr.png') }}" alt="" width="50px"> Application Login Page</h2>
                 <p>Login to get access.</p>
             </div>
         </div>

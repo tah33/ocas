@@ -30,9 +30,9 @@ class TestController extends Controller
 
     public function rules()
     {
-        $title = 'Rules for Tests';
-        $exam = Exam::first();
-        $commons = Common::all();
+        $title      = 'Rules for Tests';
+        $exam       = Exam::first();
+        $commons    = Common::all();
         return view('tests.rules',compact('title','exam','commons'));
     }
 
@@ -299,9 +299,11 @@ class TestController extends Controller
     {
         $title = "Advise";
         $test = Test::find($id);
+        $exam = Exam::first();
         $highest = $test->ranks->max('marks');
         $advise = $test->ranks->where('marks',$highest);
         $advise_department = Department::where('subject_id',$advise->first()->subject_id)->first();
-        return view('tests.advise',compact('test','title','advise_department'));
+        return view('tests.advise',compact('test','title','exam','advise_department'));
     }
+
 }

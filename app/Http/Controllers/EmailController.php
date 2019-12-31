@@ -54,7 +54,7 @@ class EmailController extends Controller
             if (!Hash::check($request->password, $user->password)) {
                 $user->password = bcrypt($request->password);
                 $user->save();
-                Toastr::success('Your Password is changed successfully', 'Success!');
+                Toastr::success('Your Password is changed successfully, You can now login', 'Success!');
                 return redirect('login');
             }
         }

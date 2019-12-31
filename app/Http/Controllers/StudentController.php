@@ -98,7 +98,8 @@ class StudentController extends Controller
     {
         $title = "Students Tests";
         $tests = Test::where('student_id',$id)->get();
-        return view('student.test',compact('tests','title'));
+        $exam = Exam::first();
+        return view('student.test',compact('tests','title','exam'));
     }
 
     public function activity($id)

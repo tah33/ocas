@@ -8,7 +8,7 @@
 
         .center {
             margin: auto;
-            width: 50%;
+            width: 20%;
             padding: 10px;
         }
     </style>
@@ -29,12 +29,7 @@
                     </div>
                 </div>
                 @endif
-                @if(Auth::guard('student')->check())
-                <a href="{{url('departments-export')}}" style="margin-left: 160px" class="btn btn-danger btn-flat btn-sm">Get Excel</a>
-                @endif
-
-                <div class="input-group margin"  @if(Auth::guard('admin')->check()) style="margin: -30px 0 0 180px" @else
-                style="margin: -30px 0 0 100px" @endif>
+                <div class="input-group margin"  @if(Auth::guard('admin')->check()) style="margin: -30px 0 0 180px" @endif>
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">PDF
                             <span class="fa fa-caret-down"></span></button>

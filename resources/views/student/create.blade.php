@@ -19,7 +19,7 @@
                         <br>
                     </h3>
                 </ul>
-                <h3 style="margin-left: 40px">Register Now!</h3>
+                <h3 style="margin-left: 40px">Register Now to Access!</h3>
             </div>
         </div>
         <div class="main" style="margin-top: -90px">

@@ -377,4 +377,16 @@ class PdfController extends Controller
         $pdf = PDF::loadView('pdf.all-activities', compact('activities','tests','exam','end_date'));
         return $pdf->stream("activities-{$activities->first()->student->username}.pdf");
     }
+
+    public function advise()
+    {
+        $title = "Advise";
+        $test = Test::latest()->first();
+        $exam = Exam::first();
+        $highest = $test->ranks->max('marks');
+        $advise = $test->ranks->where('marks',$highest);
+        $advise_department = Department::where('subject_id',$advise->first()->subject_id)->first();
+        $pdf = PDF::loadView('pdf.advise', compact('test','exam','highest','advise','advise_department'));
+        return $pdf->stream("advise-{$test->student->name}.pdf");
+    }
 }

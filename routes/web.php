@@ -74,6 +74,7 @@ Route::get('activity-view/{student_id}/{created_at}','PdfController@viewActivity
 Route::get('activity-download/{student_id}/{created_at}','PdfController@downloadActivity');
 Route::get('activities-view/{student_id}','PdfController@viewActivities');
 Route::get('activities-download/{student_id}','PdfController@downloadActivities');
+Route::get('advise-report','PdfController@advise');
 
 //ExcelController
 Route::get('students-export','ExcelController@studentsExport');

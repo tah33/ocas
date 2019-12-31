@@ -131,7 +131,7 @@
                     <ul class="treeview-menu">
                         <li class="{{  Request::is('rules') ? 'active' : '' }}"><a class="test-link"
                                 href="{{url('rules')}}"><i class="fa fa-check"></i>Give Test</a></li>
-                        <li class="{{  Request::is('student-tests') ? 'active' : '' }}"><a class="test-link" href="{{url('student-tests')}}"><i
+                        <li class="{{  Request::is('tests/*') ? 'active' : '' }}"><a class="test-link" href="{{url('test/'.Auth::guard('student')->id())}}"><i
                                     class="fa fa-question-circle"></i>Given Tests</a></li>
                     </ul>
                 </li>
@@ -161,13 +161,14 @@
                     </a>
                 </li>
                 <li class="header">Activities</li>
-                <li class="{{  Request::is('subjects') ? 'active' : '' }}">
+                <li class="{{  Request::is('activity/*') ? 'active' : '' }}">
                     <a href="{{url('activity',Auth::guard('student')->id())}}" class="test-link">
                         <i class="fa fa-cogs"></i> <span>Activities</span>
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
             @endif
+            @if(Auth::guard('admin')->check())
             <li class="header">Activities</li>
                 <li class="{{  Request::is('subjects') ? 'active' : '' }}">
                     <a href="{{url('activities')}}" class="test-link">
@@ -175,6 +176,7 @@
                         <span class="pull-right-container"></span>
                     </a>
                 </li>
+                @endif
 
         </ul>
     </section>

@@ -1,11 +1,7 @@
 @extends('layouts.master')
 @section('backend.title', $page_title)
 @section('master.content')
-    {{--@push('backend.css')--}}
-    {{--    @if($usersChart)--}}
-    {{--        {!! $usersChart->script() !!}--}}
-    {{--    @endif--}}
-    {{--@endpush--}}
+   
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">

@@ -20,6 +20,10 @@ use App\Http\Requests\Login;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth:admin,student')->only('home');
+    }
     public function welcome()
     {
         $departments = Department::all();
@@ -94,6 +98,7 @@ class HomeController extends Controller
 
             $chart = new DepartmentChart();
             $chart->labels($names);
+            $chart->title("Conditions for Enroll Departments (Marks in Percentage)");
             $chart->dataset('Departments', 'line', $marks)->color('green');
             $chart->dataset('Subjects', 'line', $percentages)->color('red');
             return view('student.home',compact('chart'))->with(array_merge($this->data, $data));

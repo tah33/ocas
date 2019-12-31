@@ -4,6 +4,11 @@
         div.dataTables_wrapper div.dataTables_filter input {
             width: 200px;
         }
+        .center {
+            margin: auto;
+            width: 20%;
+            padding: 10px;
+        }
     </style>
     <div class="row">
         <div class="col-md-6">
@@ -14,10 +19,11 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
+            <div class="center">
+
                             <div class="input-group margin pull-right">
                                 <div class="input-group-btn">
-                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">PDF
+                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" style="margin: -20px 0 0 80px">PDF
                                         <span class="fa fa-caret-down"></span></button>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{url('activity-view',$activities->first()->created_at.'/'.$activities->first()->student_id)}}" target="_blank">View</a></li>
@@ -26,15 +32,15 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
 
-                        <table class="table table-hover">
+                        <table id="search" class="table table-hover">
                             <thead>
                             <tr class="bg-gray">
-                                <th rowspan="2" class="text-center">SL</th>
-                                <th rowspan="2" class="text-center">Student Name</th>
-                                <th rowspan="2" class="text-center">Login Time</th>
-                                <th rowspan="2" class="text-center">LogOut Time</th>
-                                <th rowspan="2" class="text-center">Date</th>
+                                <th class="text-center">SL</th>
+                                <th class="text-center">Login Time</th>
+                                <th class="text-center">LogOut Time</th>
+                                <th class="text-center">Date</th>
                             </tr>
                             </thead>
                             @php $ids=[]; @endphp
@@ -42,10 +48,6 @@
                             @foreach ($activities as $key => $activity)
                                 <tr>
                                     <td class="text-center">{{ $key+1 }}</td>
-                                    @if(!in_array($activity->student_id,$ids))
-                                        @php $ids[]=$activity->student_id; @endphp
-                                        <td rowspan="{{count($activities)}}" class="text-center">{{ $activity->student->name }}</td>
-                                    @endif
                                     <td class="text-center">{{ $activity->login_time }}</td>
                                     <td class="text-center">{{ $activity->logout_time ? $activity->logout_time : 'Active'}}</td>
                                     <td class="text-center">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$activity->created_at)->format('Y-m-d')  }}</td>
@@ -73,10 +75,10 @@
                         <table class="table table-hover">
                             <thead>
                             <tr class="bg-gray">
-                                <th rowspan="2" class="text-center">SL</th>
-                                <th rowspan="2" class="text-center">Total Percentage</th>
-                                <th rowspan="2" class="text-center">Date</th>
-                                <th rowspan="2" class="text-center">Action</th>
+                                <th class="text-center">SL</th>
+                                <th class="text-center">Total Percentage</th>
+                                <th class="text-center">Date</th>
+                                <th class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody align="center">
@@ -85,7 +87,7 @@
                                     <td class="text-center">{{ $key+1 }}</td>
                                     <td class="text-center">{{$test->marks + $test->common_marks }}% out of {{$exam->major + $exam->common}}%</td>
                                     <td class="text-center">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$test->created_at)->format('Y-m-d')  }}</td>
-                                    <td class="text-center"><a href="{{url('tests/'.$test->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a></td>
+                                    <td class="text-center"><a href="{{url('tests/'.$test->id)}}" class="btn btn-primary btn-flat btn-sm">View <i class="fa fa-eye"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

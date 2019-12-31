@@ -17,7 +17,7 @@
         <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header">
-                    <h3 class="box-title">Create Department</h3>
+                    <h3 class="box-title">Read First</h3>
                 </div>
                 <div class="box-body">
                     <div class=" panel panel-primary">
@@ -36,10 +36,8 @@
                                 <caption style="border-bottom: 1px solid #2b2b2b">Question will appear from</caption>
                                 @foreach(Auth::guard('student')->user()->departments as $department)
                                     <tr>
-                                        @php
-                                            $subjects[]=$department->subject->name;
-                                        @endphp
-                                        <td><b>{{$department->subject->name}}</b></td>
+                                        
+                                        <td><b>{{$department->subject->name}} ({{$department->slug}})</b></td>
                                     </tr>
                                 @endforeach
                                 @foreach($commons as $common)
@@ -50,8 +48,7 @@
                             </table>
                         </div>
                     </div>
-                    <a href="{{url('tests/create')}}" class="btn btn-primary btn-flat btn-sm"><i
-                            class="fa fa-caret-square-o-right"> Agree & Start Test</i></a>
+                    <a href="{{url('tests/create')}}" onclick="return confirm('Are you sure you want to Proceed?')" class="btn btn-primary btn-flat btn-sm"><i class="fa fa-caret-square-o-right"> Agree & Start Test</i></a>
                     <a href="{{url('home')}}" class="btn btn-warning btn-flat btn-sm"><i class="fa fa-home"> Cancel & Go
                             Home</i></a>
 

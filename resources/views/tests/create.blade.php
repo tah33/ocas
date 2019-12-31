@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             <form method="post" id="form" name="form" action="{{url('tests')}}"
-                  onsubmit="return confirm('Are you sure you want to submit your answers')">
+                 >
             @csrf
             <!-- Custom Tabs -->
                 <div class="nav-tabs-custom ">

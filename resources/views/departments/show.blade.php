@@ -19,14 +19,14 @@
                                 <b>Short Name</b> <a class="pull-right">{{ $department->slug }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>Minimum Marks Required</b> <a class="pull-right">{{ $department->minimum }}</a>
+                                <b>Minimum Marks Required</b> <a class="pull-right">{{ $department->minimum }}%</a>
                             </li>
                             @if($department->subject()->exists())
                             <li class="list-group-item">
                                 <b>Major Subject</b> <a class="pull-right">{{ $department->subject->name }}</a>
                             </li>
                             <li class="list-group-item">
-                                <b>Range</b> <a class="pull-right">{{ $department->marks }}</a>
+                                <b>Range</b> <a class="pull-right">{{ $department->marks }}%</a>
                             </li>
                             @endif
                         </ul>

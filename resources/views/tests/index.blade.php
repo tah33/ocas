@@ -80,17 +80,12 @@
                     <th style="text-align: center;">Action</th>
                 </tr>
                 </thead>
-                @php $names = []; @endphp
+                @php $ids = []; @endphp
                 <tbody>
                 @foreach ($tests as $key => $test)
                     <tr>
                         <td style="text-align: left">{{ $key+1 }}</td>
-                        @if(!in_array($test->student->name,$names))
-                            @php
-                            $names[] = $test->student->name;
-                            @endphp
-                        <td rowspan="{{count($test->student->tests)}}" style="text-align: left">{{ $test->student->name }}</td>
-                        @endif
+                        <td style="text-align: left">{{ $test->student->name }}</td>
                         <td style="text-align: left">{{ $test->marks + $test->common_marks }}%</td>
                         <td style="text-align: center">
                             <a href="{{url('tests',$test->id)}}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-eye"> View</i></a>

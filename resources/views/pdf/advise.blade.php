@@ -1,18 +1,38 @@
-@extends('layouts.master')
-@section('backend.title', $title)
-
-@section('master.content')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Students Report</title>
     <style>
-        div.dataTables_wrapper div.dataTables_filter input {
-            width: 200px;
+        table {
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        .center {
-            margin: auto;
-            width: 50%;
-            padding: 10px;
+        table tr:nth-child(odd) {
+            background: rgba(77, 77, 77, 0.13);
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: darkgray;
+            color: black;
+            text-align: center;
         }
     </style>
+</head>
+<body>
+    <center>
+    <h2 style="color: red">Online Career Advising System</h2>
+    <h3 style="color: red"><?php echo date("F-Y")?></h3>
+    <h3 style="color: green"> Advise Report </h3>
+</center>
     @php
         $departments =  [];
         $subjects    =  [];
@@ -22,9 +42,7 @@
         $tests =[];
         $highest = $test->ranks->max('marks');
     @endphp
-    <div class="box box-primary">
-        <div class="box-body">
-            <table class="table table-hover">
+            <table width="100%" border="1" cellspacing="0" cellpadding="10px">
                 <caption>Advise</caption>
                 <thead>
                 <tr>
@@ -43,7 +61,7 @@
                             @php
                                 $tests[]=$test->id;
                             @endphp
-                        <td style="text-align: center;vertical-align: middle" rowspan="{{count($test->ranks)}}">{{ $test->marks + $test->common_marks}}% out of {{$exam->major + $exam->common}}%</td>
+                        <td style="text-align: center;" rowspan="{{count($test->ranks)}}">{{ $test->marks + $test->common_marks}}% out of {{$exam->major + $exam->common}}%</td>
                         @endif
                         <td style="text-align: left">{{ $department->name }}</td>
                         <td style="text-align: center">{{ $department->minimum }}% out of {{$exam->major + $exam->common}}%</td>
@@ -66,7 +84,6 @@
                             @endif
                         @endforeach
 
-
                     </tr>
                 @endforeach
                         @foreach($test->ranks as $rank)
@@ -82,10 +99,7 @@
 
                 </tbody>
             </table>
-        </div>
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <strong><p class="text-center" style="font-size: 25px;color: green">Congratulation!</p></strong>
+                <strong><p style="font-size: 25px;color: green;text-align: center;">Congratulation!</p></strong>
                 <p class="text-center" style="font-size: 20px;">Dear Student,Thank you for spending your valuable time and effort in attending the test.
                  By utilizing your test , we found</p>
                 @if($departments)
@@ -103,13 +117,13 @@
                     <strong>{{$advise_department->subject->name}}</strong>. By choosing this department, <strong>{{$advise_department->scope}}</strong>.
                 </p>
                 @else
-                <p class="text-justify" style="font-size: 20px">  
+                <p style="font-size: 20px;text-align: justify">  
                     your performance is very poor, your preparation is not enough for your desired department. you need to put more effort to select your desirable department for your future career planning. So, Beleive in your strength and try harder. <font color="red">Best of luck!</font>
                 </p>
                 @endif
-            </div>
-        </div>
-    </div>
-    <center>
-    <a href="{{url('advise-report')}}" target="_blank" class="btn btn-primary btn-flat btn-sm">Get PDF</a></center>
-@stop
+          
+<div class="footer">
+    <p>Coyright <i class="fa fa-copyright"></i> 2019 OCAS All rights reserved</p>
+</div>
+</body>
+</html>

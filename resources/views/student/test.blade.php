@@ -48,9 +48,9 @@
                             @endphp
                         <td rowspan="{{count($test->student->tests)}}" style="text-align: left">{{ $test->student->name }}</td>
                         @endif
-                        <td style="text-align: left">{{ $test->marks + $test->common_marks }}</td>
+                        <td style="text-align: left">{{ $test->marks + $test->common_marks }}% out of {{$exam->major + $exam->common}}%</td>
                         <td style="text-align: center">
-                            <a href="{{url('tests',$test->id)}}" class="btn btn-success btn-sm"><i class="fa fa-eye"></i></a>
+                            <a href="{{url('tests',$test->id)}}" class="btn btn-primary btn-flat btn-sm"><i class="fa fa-eye"></i> View</a>
                         </td>
                     </tr>
                 @endforeach
